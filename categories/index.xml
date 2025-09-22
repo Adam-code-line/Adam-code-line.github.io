@@ -6,7 +6,16 @@
         <description>Recent content in Categories on Adam&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <copyright>Adam</copyright><atom:link href="https://adam-code-line.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <copyright>Adam</copyright>
+        <lastBuildDate>Sun, 21 Sep 2025 23:35:33 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Life</title>
+        <link>https://adam-code-line.github.io/categories/life/</link>
+        <pubDate>Sun, 21 Sep 2025 23:35:33 +0800</pubDate>
+        
+        <guid>https://adam-code-line.github.io/categories/life/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Life</title>
         <link>https://adam-code-line.github.io/categories/test/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
