@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Adam&#34;s Blog</title>
+        <title>Adam&#39;s Blog</title>
         <link>https://adam-code-line.github.io/</link>
-        <description>Recent content on Adam&#34;s Blog</description>
+        <description>Recent content on Adam&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Adam</copyright>
