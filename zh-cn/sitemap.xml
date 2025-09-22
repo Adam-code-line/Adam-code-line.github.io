@@ -23,7 +23,7 @@
     <loc>https://adam-code-line.github.io/post/</loc>
     <lastmod>2025-09-21T23:35:33+08:00</lastmod>
   </url><url>
-    <loc>https://adam-code-line.github.io/p/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</loc>
+    <loc>https://adam-code-line.github.io/p/life/</loc>
     <lastmod>2025-09-21T23:35:33+08:00</lastmod>
   </url><url>
     <loc>https://adam-code-line.github.io/page/</loc>
@@ -49,6 +49,8 @@
                 href="https://adam-code-line.github.io/categories/"
                 />
   </url><url>
+    <loc>https://adam-code-line.github.io/categories/test/</loc>
+  </url><url>
     <loc>https://adam-code-line.github.io/tags/</loc>
     <xhtml:link
                 rel="alternate"
@@ -65,8 +67,6 @@
                 hreflang="zh-cn"
                 href="https://adam-code-line.github.io/tags/"
                 />
-  </url><url>
-    <loc>https://adam-code-line.github.io/categories/test/</loc>
   </url><url>
     <loc>https://adam-code-line.github.io/%E5%85%B3%E4%BA%8E/</loc>
   </url><url>
