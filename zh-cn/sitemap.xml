@@ -20,8 +20,19 @@
                 href="https://adam-code-line.github.io/"
                 />
   </url><url>
-    <loc>https://adam-code-line.github.io/categories/</loc>
+    <loc>https://adam-code-line.github.io/post/</loc>
     <lastmod>2025-09-21T23:35:33+08:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/p/life/</loc>
+    <lastmod>2025-09-21T23:35:33+08:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/page/</loc>
+    <lastmod>2025-09-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/archives/</loc>
+    <lastmod>2025-09-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -39,21 +50,6 @@
                 />
   </url><url>
     <loc>https://adam-code-line.github.io/categories/life/</loc>
-    <lastmod>2025-09-21T23:35:33+08:00</lastmod>
-  </url><url>
-    <loc>https://adam-code-line.github.io/post/</loc>
-    <lastmod>2025-09-21T23:35:33+08:00</lastmod>
-  </url><url>
-    <loc>https://adam-code-line.github.io/p/life/</loc>
-    <lastmod>2025-09-21T23:35:33+08:00</lastmod>
-  </url><url>
-    <loc>https://adam-code-line.github.io/page/</loc>
-    <lastmod>2025-09-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://adam-code-line.github.io/archives/</loc>
-    <lastmod>2025-09-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://adam-code-line.github.io/categories/test/</loc>
   </url><url>
     <loc>https://adam-code-line.github.io/tags/</loc>
     <xhtml:link
