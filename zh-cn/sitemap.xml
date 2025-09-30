@@ -20,14 +20,8 @@
                 href="https://adam-code-line.github.io/"
                 />
   </url><url>
-    <loc>https://adam-code-line.github.io/post/</loc>
-    <lastmod>2025-09-30T11:04:33+08:00</lastmod>
-  </url><url>
-    <loc>https://adam-code-line.github.io/p/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</loc>
-    <lastmod>2025-09-30T11:04:33+08:00</lastmod>
-  </url><url>
     <loc>https://adam-code-line.github.io/categories/</loc>
-    <lastmod>2025-09-21T23:35:33+08:00</lastmod>
+    <lastmod>2025-09-30T11:04:33+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -43,6 +37,18 @@
                 hreflang="zh-cn"
                 href="https://adam-code-line.github.io/categories/"
                 />
+  </url><url>
+    <loc>https://adam-code-line.github.io/categories/frontend/</loc>
+    <lastmod>2025-09-30T11:04:33+08:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/categories/learning/</loc>
+    <lastmod>2025-09-30T11:04:33+08:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/post/</loc>
+    <lastmod>2025-09-30T11:04:33+08:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/p/frontend-learning-path/</loc>
+    <lastmod>2025-09-30T11:04:33+08:00</lastmod>
   </url><url>
     <loc>https://adam-code-line.github.io/categories/life/</loc>
     <lastmod>2025-09-21T23:35:33+08:00</lastmod>

@@ -9,10 +9,10 @@
         <copyright>Adam</copyright>
         <lastBuildDate>Tue, 30 Sep 2025 11:04:33 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>前端学习路线</title>
-        <link>https://adam-code-line.github.io/p/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</link>
+        <link>https://adam-code-line.github.io/p/frontend-learning-path/</link>
         <pubDate>Tue, 30 Sep 2025 11:04:33 +0800</pubDate>
         
-        <guid>https://adam-code-line.github.io/p/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</guid>
+        <guid>https://adam-code-line.github.io/p/frontend-learning-path/</guid>
         <description>&lt;h1 id=&#34;前端学习路线&#34;&gt;前端学习路线
 &lt;/h1&gt;&lt;p&gt;写博客是把自己学到的知识沉淀并分享给别人的好方法。本文模仿项目中的风格，给出一套清晰的前端学习路线，适用于刚入门的同学，也适合想系统提升的开发者。&lt;/p&gt;
 &lt;h2 id=&#34;为什么需要一条明确的学习路线&#34;&gt;为什么需要一条明确的学习路线
@@ -81,6 +81,12 @@
 &lt;li&gt;Vue 官方文档 / React 官方文档&lt;/li&gt;
 &lt;li&gt;Vite, Tailwind, TypeScript 官方指南&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;学习路线图&#34;&gt;学习路线图
+&lt;/h2&gt;&lt;figure class=&#34;center-image&#34;&gt;&lt;img src=&#34;frontend-learning-path.jpg&#34; width=&#34;80%&#34;&gt;&lt;figcaption&gt;
+      &lt;h4&gt;前端学习路线图&lt;/h4&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
 </description>
         </item>
         <item>
