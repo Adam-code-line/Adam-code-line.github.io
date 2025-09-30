@@ -7,7 +7,83 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Adam</copyright>
-        <lastBuildDate>Sun, 21 Sep 2025 23:35:33 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 30 Sep 2025 11:04:33 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>前端学习路线</title>
+        <link>https://adam-code-line.github.io/p/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</link>
+        <pubDate>Tue, 30 Sep 2025 11:04:33 +0800</pubDate>
+        
+        <guid>https://adam-code-line.github.io/p/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</guid>
+        <description>&lt;h1 id=&#34;前端学习路线&#34;&gt;前端学习路线
+&lt;/h1&gt;&lt;p&gt;写博客是把自己学到的知识沉淀并分享给别人的好方法。本文模仿项目中的风格，给出一套清晰的前端学习路线，适用于刚入门的同学，也适合想系统提升的开发者。&lt;/p&gt;
+&lt;h2 id=&#34;为什么需要一条明确的学习路线&#34;&gt;为什么需要一条明确的学习路线
+&lt;/h2&gt;&lt;p&gt;前端技术栈庞杂，工具和框架迭代快。如果没有系统性的学习计划，容易在碎片化的资料中迷失，不知下一步该学什么。一个合理的路线能帮助你建立知识体系、提升可迁移能力，并且尽早能做出完整的项目。&lt;/p&gt;
+&lt;h2 id=&#34;学习路线总览&#34;&gt;学习路线总览
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;阶段 0：准备 (工具, 英语, 开发环境)&lt;/li&gt;
+&lt;li&gt;阶段 1：基础前端三剑客 (HTML/CSS/JavaScript)&lt;/li&gt;
+&lt;li&gt;阶段 2：前端三件套 (框架, 路由, 状态管理)&lt;/li&gt;
+&lt;li&gt;阶段 3：进阶 (TypeScript, 构建工具, 性能, 无障碍)&lt;/li&gt;
+&lt;li&gt;阶段 4：全栈与工程化 (后端基础, 部署, 测试)&lt;/li&gt;
+&lt;li&gt;阶段 5：项目驱动学习与实习面试准备&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面逐步展开每个阶段的推荐内容与练习方式。&lt;/p&gt;
+&lt;h3 id=&#34;阶段-0准备&#34;&gt;阶段 0：准备
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;安装并熟练使用一套编辑器 (VS Code 推荐) 和常用插件 (格式化, ESLint, vue(official)).&lt;/li&gt;
+&lt;li&gt;学习使用 Git 与 GitHub，掌握基本的 push、分支与 Pull Request 流程。&lt;/li&gt;
+&lt;li&gt;提升阅读英文文档的能力，前端优秀资源大多以英文为主。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;阶段-1基础-约-12-个月&#34;&gt;阶段 1：基础 (约 1–2 个月)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;HTML: 语义化标签, 表单, 可访问性 (ARIA) 基础.&lt;/li&gt;
+&lt;li&gt;CSS: 盒模型, Flexbox, Grid, 响应式设计, 常见布局技巧.&lt;/li&gt;
+&lt;li&gt;JavaScript: 语法, 闭包, 原型链, 异步 (Promise, async/await), 模块化.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;练习：实现若干静态页面（登录页、博客列表页、卡片布局），并尝试移动端适配。&lt;/p&gt;
+&lt;h3 id=&#34;阶段-2前端三件套-约-13-个月&#34;&gt;阶段 2：前端三件套 (约 1–3 个月)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;框架: Vue 3 (或 React/Angular, 视团队与个人喜好). 掌握组件, 组合式 API (Vue 的 &lt;code&gt;script setup&lt;/code&gt;), 生命周期, Props/Emit.&lt;/li&gt;
+&lt;li&gt;路由: 客户端路由的使用与懒加载 (例如 Vue Router).&lt;/li&gt;
+&lt;li&gt;状态管理: Pinia (Vue) 或 Redux (React) 的基本模式与实践.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;练习：基于框架实现一个小型应用（Todo、简单博客、记账工具），包含路由和状态管理。&lt;/p&gt;
+&lt;h3 id=&#34;阶段-3进阶-约-24-个月&#34;&gt;阶段 3：进阶 (约 2–4 个月)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;TypeScript: 类型系统, 泛型, 声明文件 (&lt;code&gt;.d.ts&lt;/code&gt;), 与现有 JS 项目迁移技巧.&lt;/li&gt;
+&lt;li&gt;构建工具: Vite / Webpack / Rollup 的基础配置与性能优化思路.&lt;/li&gt;
+&lt;li&gt;CSS 工具: TailwindCSS, 预处理器 (Sass/LESS), CSS Modules.&lt;/li&gt;
+&lt;li&gt;性能与可访问性: 懒加载, code-splitting, 图片优化, 无障碍 (a11y) 最佳实践.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;练习：给已有项目引入 TypeScript，做一次性能审计并逐项优化。&lt;/p&gt;
+&lt;h3 id=&#34;阶段-4全栈与工程化-约-24-个月&#34;&gt;阶段 4：全栈与工程化 (约 2–4 个月)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;后端基础: RESTful API, GraphQL, 基础数据库 (Postgres, MongoDB) 概念.&lt;/li&gt;
+&lt;li&gt;部署: Docker, CI/CD (GitHub Actions), 托管平台 (Vercel, Netlify, 云主机).&lt;/li&gt;
+&lt;li&gt;测试: 单元测试 (Vitest/Jest), 端到端测试 (Cypress).&lt;/li&gt;
+&lt;li&gt;监控与日志: Sentry, 性能监控 (Lighthouse).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;练习：把应用后端作为简单服务部署，使用 GitHub Actions 做自动化部署。&lt;/p&gt;
+&lt;h3 id=&#34;阶段-5项目驱动学习与面试准备&#34;&gt;阶段 5：项目驱动学习与面试准备
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;用项目驱动: 选择一个中等复杂度的项目 (支持用户登录, 数据持久化, 文件上传, 搜索/筛选), 把学习的技术整合进来.&lt;/li&gt;
+&lt;li&gt;写技术博客与读源码: 把你遇到的问题记录成文章, 帮助他人也帮助自己.&lt;/li&gt;
+&lt;li&gt;面试题训练: 算法基础, 网络/浏览器原理, 系统设计的简要理解.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;学习建议與心態&#34;&gt;学习建议與心態
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;输出优先于输入: 能把学到的知识写成文章或实现成项目, 才算真正掌握.&lt;/li&gt;
+&lt;li&gt;定期复盘: 每 2–4 周总结学习进度, 调整计划.&lt;/li&gt;
+&lt;li&gt;社区与开源: 参与讨论, PR, 能快速提升工程能力.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;参考资源部分&#34;&gt;参考资源（部分）
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;MDN (HTML/CSS/JS)&lt;/li&gt;
+&lt;li&gt;Vue 官方文档 / React 官方文档&lt;/li&gt;
+&lt;li&gt;Vite, Tailwind, TypeScript 官方指南&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>我的第一篇文章</title>
         <link>https://adam-code-line.github.io/p/life/</link>
         <pubDate>Sun, 21 Sep 2025 23:35:33 +0800</pubDate>
