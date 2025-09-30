@@ -99,10 +99,10 @@
 &lt;/figure&gt;
 
 
-
-&lt;a href=&#34;#&#34; id=&#34;full-screen-前端学习路线图&#34; class=&#34;full-screen-viewer&#34; title=&#34;点击任意位置关闭&#34;&gt;
-    &lt;img src=&#34;./frontend-learning-path.png&#34; alt=&#34;前端学习路线图&#34; /&gt;
-&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;a href=&#34;#&#34; id=&#34;full-screen-前端学习路线图&#34; class=&#34;full-screen-viewer&#34; title=&#34;点击任意位置关闭&#34;&gt;
+        &lt;img src=&#34;./frontend-learning-path.png&#34; alt=&#34;前端学习路线图&#34; /&gt;
+    &lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
