@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://adam-code-line.github.io/</loc>
-    <lastmod>2025-09-21T23:35:33+08:00</lastmod>
+    <lastmod>2025-09-30T12:00:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -19,6 +19,9 @@
                 hreflang="zh-cn"
                 href="https://adam-code-line.github.io/"
                 />
+  </url><url>
+    <loc>https://adam-code-line.github.io/post/</loc>
+    <lastmod>2025-09-30T12:00:00+08:00</lastmod>
   </url><url>
     <loc>https://adam-code-line.github.io/categories/</loc>
     <lastmod>2025-09-21T23:35:33+08:00</lastmod>
@@ -39,9 +42,6 @@
                 />
   </url><url>
     <loc>https://adam-code-line.github.io/categories/life/</loc>
-    <lastmod>2025-09-21T23:35:33+08:00</lastmod>
-  </url><url>
-    <loc>https://adam-code-line.github.io/post/</loc>
     <lastmod>2025-09-21T23:35:33+08:00</lastmod>
   </url><url>
     <loc>https://adam-code-line.github.io/p/life/</loc>
