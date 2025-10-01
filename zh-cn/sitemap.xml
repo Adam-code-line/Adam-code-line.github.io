@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://adam-code-line.github.io/</loc>
-    <lastmod>2025-10-01T10:52:24+08:00</lastmod>
+    <lastmod>2025-10-01T11:35:10+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -21,7 +21,7 @@
                 />
   </url><url>
     <loc>https://adam-code-line.github.io/categories/</loc>
-    <lastmod>2025-10-01T10:52:24+08:00</lastmod>
+    <lastmod>2025-10-01T11:35:10+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -39,13 +39,19 @@
                 />
   </url><url>
     <loc>https://adam-code-line.github.io/categories/frontend/</loc>
-    <lastmod>2025-10-01T10:52:24+08:00</lastmod>
+    <lastmod>2025-10-01T11:35:10+08:00</lastmod>
   </url><url>
     <loc>https://adam-code-line.github.io/categories/learning/</loc>
-    <lastmod>2025-10-01T10:52:24+08:00</lastmod>
+    <lastmod>2025-10-01T11:35:10+08:00</lastmod>
   </url><url>
     <loc>https://adam-code-line.github.io/post/</loc>
-    <lastmod>2025-10-01T10:52:24+08:00</lastmod>
+    <lastmod>2025-10-01T11:35:10+08:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/categories/typescript/</loc>
+    <lastmod>2025-10-01T11:35:10+08:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/p/typescript-learning-guide/</loc>
+    <lastmod>2025-10-01T11:35:10+08:00</lastmod>
   </url><url>
     <loc>https://adam-code-line.github.io/categories/vue/</loc>
     <lastmod>2025-10-01T10:52:24+08:00</lastmod>
@@ -84,6 +90,8 @@
                 hreflang="zh-cn"
                 href="https://adam-code-line.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://adam-code-line.github.io/categories/typescripte/</loc>
   </url><url>
     <loc>https://adam-code-line.github.io/%E5%85%B3%E4%BA%8E/</loc>
   </url><url>
