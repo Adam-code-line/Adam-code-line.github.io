@@ -29,7 +29,7 @@
         <pubDate>Wed, 01 Oct 2025 11:35:10 +0800</pubDate>
         
         <guid>https://adam-code-line.github.io/categories/typescript/</guid>
-        <description></description>
+        <description>&lt;img src="https://adam-code-line.github.io/categories/typescript/cover.jpg" alt="Featured image of post TypeScript" /&gt;</description>
         </item>
         <item>
         <title>Vue</title>
@@ -46,14 +46,6 @@
         
         <guid>https://adam-code-line.github.io/categories/life/</guid>
         <description>&lt;img src="https://adam-code-line.github.io/categories/life/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Life" /&gt;</description>
-        </item>
-        <item>
-        <title>TypeScript</title>
-        <link>https://adam-code-line.github.io/categories/typescripte/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://adam-code-line.github.io/categories/typescripte/</guid>
-        <description>&lt;img src="https://adam-code-line.github.io/categories/typescripte/cover.jpg" alt="Featured image of post TypeScript" /&gt;</description>
         </item>
         
     </channel>
