@@ -295,8 +295,9 @@
     <li><a href="#3-ref-的工作原理">3. <code>ref</code> 的工作原理</a></li>
     <li><a href="#4-reactive-的工作原理">4. <code>reactive</code> 的工作原理</a></li>
     <li><a href="#5-依赖追踪与副作用函数">5. 依赖追踪与副作用函数</a></li>
-    <li><a href="#6-总结">6. 总结</a></li>
-    <li><a href="#7-参考资料">7. 参考资料</a></li>
+    <li><a href="#6-ref-与-reactive-的区别与联系">6. <code>ref</code> 与 <code>reactive</code> 的区别与联系</a></li>
+    <li><a href="#7-总结">7. 总结</a></li>
+    <li><a href="#8-参考资料">8. 参考资料</a></li>
   </ol>
 </nav>
         </div>
@@ -369,7 +370,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 4 分钟
                 </time>
             </div>
         
@@ -397,9 +398,9 @@
 </h2><p>Vue 3 的响应式系统基于 ES6 的 <code>Proxy</code> 对象实现，主要通过 <code>ref</code> 和 <code>reactive</code> 两个 API 来创建响应式数据。</p>
 <ul>
 <li><code>ref</code>：用于创建基本类型的响应式数据，如字符串、数字、布尔值等。它返回一个包含 <code>.value</code> 属性的对象。</li>
-<li><code>reactive</code>：用于创建复杂类型的响应式数据，如对象和数组。
-这两个 API 都会追踪数据的变化，并在数据更新时通知相关的组件进行重新渲染。</li>
+<li><code>reactive</code>：用于创建复杂类型的响应式数据，如对象和数组。</li>
 </ul>
+<p>这两个 API 都会追踪数据的变化，并在数据更新时通知相关的组件进行重新渲染。</p>
 <h2 id="3-ref-的工作原理">3. <code>ref</code> 的工作原理
 </h2><p><code>ref</code> 函数接受一个初始值，并返回一个包含该值的响应式对象。其核心原理如下：</p>
 <div class="highlight"><div class="chroma">
@@ -419,11 +420,9 @@
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
-</span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">reactive</span><span class="p">,</span> <span class="nx">effect</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;vue&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">ref</span><span class="p">(</span><span class="nx">initialValue</span><span class="p">)</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">ref</span><span class="p">(</span><span class="nx">initialValue</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">r</span> <span class="o">=</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kr">get</span> <span class="nx">value() {</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// 依赖收集
@@ -574,9 +573,17 @@
 <li><strong>track 函数</strong>：将当前的 <code>activeEffect</code> 添加到对应属性的依赖集合中。</li>
 <li><strong>trigger 函数</strong>：遍历属性的依赖集合，执行所有副作用函数。</li>
 </ul>
-<h2 id="6-总结">6. 总结
+<h2 id="6-ref-与-reactive-的区别与联系">6. <code>ref</code> 与 <code>reactive</code> 的区别与联系
+</h2><ul>
+<li><strong>数据类型</strong>：<code>ref</code> 适用于基本类型数据，而 <code>reactive</code> 适用于对象和数组。</li>
+<li><strong>访问方式</strong>：<code>ref</code> 需要通过 <code>.value</code> 访问和修改值，而 <code>reactive</code> 可以直接通过属性访问和修改。</li>
+<li><strong>嵌套响应式</strong>：<code>reactive</code> 会递归地将嵌套对象转换为响应式，而 <code>ref</code> 只会对其初始值进行响应式处理。</li>
+<li><strong>性能</strong>：<code>ref</code> 在处理大量基本类型数据时，性能可能优于 <code>reactive</code>，因为后者需要处理更多的代理逻辑。</li>
+<li><strong>使用注意</strong>： <code>reactive</code>底层是通过<code>Proxy</code>实现的，因此不能直接对<code>reactive</code>对象进行解构赋值，否则会失去响应式特性，同样它也不能监听原始数据类型。相反，<code>ref</code>可以安全地解构，因为它返回的是一个包含<code>.value</code>属性的对象。</li>
+</ul>
+<h2 id="7-总结">7. 总结
 </h2><p>通过学习 Vue 的响应式原理，开发者可以更深入地理解框架的工作机制，从而在实际开发中更有效地利用这些特性。掌握 <code>ref</code> 和 <code>reactive</code> 的实现原理，有助于提高调试能力、优化性能，并编写更易于维护的代码。</p>
-<h2 id="7-参考资料">7. 参考资料
+<h2 id="8-参考资料">8. 参考资料
 </h2><ul>
 <li><a class="link" href="https://vuejs.org/"  target="_blank" rel="noopener"
     >Vue 3 源码解析</a></li>

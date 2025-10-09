@@ -551,10 +551,10 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">defineProps</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">defineProps</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;vue&#39;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Props</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="nx">string</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Props</span> <span class="p">{</span> <span class="nx">title</span>: <span class="kt">string</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">props</span> <span class="o">=</span> <span class="nx">defineProps</span><span class="p">&lt;</span><span class="nt">Props</span><span class="p">&gt;()</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">

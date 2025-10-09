@@ -454,18 +454,18 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Count</span><span class="o">:</span> <span class="p">{{</span> <span class="nx">count</span> <span class="p">}}&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">button</span> <span class="nt">@click</span><span class="s">=&#34;increment&#34;</span><span class="p">&gt;</span><span class="na">Increment</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&#34;increment&#34;</span><span class="p">&gt;</span><span class="nx">Increment</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">ref</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">ref</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;vue&#39;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">increment</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">increment() {</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">count</span><span class="p">.</span><span class="nx">value</span><span class="o">++</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
@@ -494,19 +494,19 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">button</span> <span class="nt">@click</span><span class="s">=&#34;onClick&#34;</span><span class="p">&gt;{{</span> <span class="na">label</span> <span class="p">}}&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&#34;onClick&#34;</span><span class="p">&gt;{{</span> <span class="nx">label</span> <span class="p">}}&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">defineProps</span><span class="p">,</span> <span class="nx">defineEmits</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vue&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">defineProps</span><span class="p">,</span> <span class="nx">defineEmits</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;vue&#39;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">props</span> <span class="o">=</span> <span class="nx">defineProps</span><span class="o">&lt;</span><span class="p">{</span> <span class="nx">label</span><span class="o">:</span> <span class="nx">string</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">props</span> <span class="o">=</span> <span class="nx">defineProps</span><span class="o">&lt;</span><span class="p">{</span> <span class="nx">label</span>: <span class="kt">string</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">emit</span> <span class="o">=</span> <span class="nx">defineEmits</span><span class="o">&lt;</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="p">(</span><span class="nx">e</span><span class="o">:</span> <span class="s1">&#39;clicked&#39;</span><span class="p">)</span><span class="o">:</span> <span class="k">void</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span><span class="o">&gt;</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">onClick</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">onClick() {</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;clicked&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
@@ -528,14 +528,14 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">Child</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;Click me&#34;</span> <span class="nt">@clicked</span><span class="s">=&#34;handle&#34;</span><span class="p"> /&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">Child</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;Click me&#34;</span> <span class="err">@</span><span class="na">clicked</span><span class="o">=</span><span class="s">&#34;handle&#34;</span> <span class="p">/&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">Child</span> <span class="nx">from</span> <span class="s1">&#39;./Child.vue&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">Child</span> <span class="kr">from</span> <span class="s1">&#39;./Child.vue&#39;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">handle</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">handle() {</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;child clicked&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
