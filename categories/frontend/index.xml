@@ -7,7 +7,72 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Adam</copyright>
-        <lastBuildDate>Thu, 09 Oct 2025 18:45:11 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/categories/frontend/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 11 Oct 2025 11:07:50 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/categories/frontend/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Vue 条件渲染：v-if vs v-show</title>
+        <link>https://adam-code-line.github.io/p/v-if-v-show/</link>
+        <pubDate>Sat, 11 Oct 2025 11:07:50 +0800</pubDate>
+        
+        <guid>https://adam-code-line.github.io/p/v-if-v-show/</guid>
+        <description>&lt;h1 id=&#34;vue-条件渲染v-if-vs-v-show&#34;&gt;Vue 条件渲染：v-if vs v-show
+&lt;/h1&gt;&lt;p&gt;在 Vue.js 中，条件渲染是构建动态用户界面的重要技术。Vue 提供了两种主要的条件渲染指令：&lt;code&gt;v-if&lt;/code&gt; 和 &lt;code&gt;v-show&lt;/code&gt;。本文将探讨这两者的区别、使用场景及其底层原理，帮助开发者更好地选择合适的指令来优化应用性能和用户体验。&lt;/p&gt;
+&lt;h2 id=&#34;1-v-if-的工作原理&#34;&gt;1. v-if 的工作原理
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;v-if&lt;/code&gt; 指令用于根据条件动态地添加或移除 DOM 元素。当条件为真时，Vue 会创建并插入元素；当条件为假时，Vue 会销毁并移除元素。&lt;/p&gt;
+&lt;h2 id=&#34;2-v-show-的工作原理&#34;&gt;2. v-show 的工作原理
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;v-show&lt;/code&gt; 指令也用于条件渲染，但其工作原理与 &lt;code&gt;v-if&lt;/code&gt; 不同。&lt;code&gt;v-show&lt;/code&gt; 通过设置元素的 CSS &lt;code&gt;display&lt;/code&gt; 属性来控制元素的显示与隐藏。当条件为真时，元素会被渲染并显示；当条件为假时，元素仍然存在于 DOM 中，但会被隐藏。&lt;/p&gt;
+&lt;h2 id=&#34;3-v-if-vs-v-show-的区别&#34;&gt;3. v-if vs v-show 的区别
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;特性&lt;/th&gt;
+          &lt;th&gt;v-if&lt;/th&gt;
+          &lt;th&gt;v-show&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;DOM 操作&lt;/td&gt;
+          &lt;td&gt;动态添加和移除元素&lt;/td&gt;
+          &lt;td&gt;仅切换 CSS &lt;code&gt;display&lt;/code&gt; 属性&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;初始渲染性能&lt;/td&gt;
+          &lt;td&gt;较慢，因为需要创建和销毁元素&lt;/td&gt;
+          &lt;td&gt;较快，因为元素始终存在于 DOM 中&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;适用场景&lt;/td&gt;
+          &lt;td&gt;条件不频繁变化的情况&lt;/td&gt;
+          &lt;td&gt;条件频繁变化的情况&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;内存占用&lt;/td&gt;
+          &lt;td&gt;较低，因为不需要保留元素&lt;/td&gt;
+          &lt;td&gt;较高，因为元素始终存在于 DOM 中&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;事件监听&lt;/td&gt;
+          &lt;td&gt;事件监听器会被移除&lt;/td&gt;
+          &lt;td&gt;事件监听器始终存在&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;4-选择指南&#34;&gt;4. 选择指南
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;使用 &lt;code&gt;v-if&lt;/code&gt; 当条件不频繁变化，且需要节省内存时。例如，用户登录状态的切换。&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;v-show&lt;/code&gt; 当条件频繁变化，且需要快速切换显示状态时。例如，选项卡切换或模态框显示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;5-执行顺序&#34;&gt;5. 执行顺序
+&lt;/h2&gt;&lt;p&gt;在 Vue 的渲染过程中，当 &lt;code&gt;v-if&lt;/code&gt; 和 &lt;code&gt;v-show&lt;/code&gt; 同时存在于一个元素的时候，&lt;code&gt;v-if&lt;/code&gt; 会优先执行。也就是说，如果 &lt;code&gt;v-if&lt;/code&gt; 条件为假，元素不会被渲染，&lt;code&gt;v-show&lt;/code&gt; 的条件将不会被评估。但 Vue 官方并不推荐同时使用这两个指令在同一个元素上，因为这可能会导致代码的可读性和维护性降低。&lt;/p&gt;
+&lt;h2 id=&#34;6-总结&#34;&gt;6. 总结
+&lt;/h2&gt;&lt;p&gt;在选择使用 &lt;code&gt;v-if&lt;/code&gt; 还是 &lt;code&gt;v-show&lt;/code&gt; 时，开发者需要根据具体的业务场景和性能需求来做出决策。一般来说，&lt;code&gt;v-if&lt;/code&gt; 更适合用于条件不频繁变化的场景，而 &lt;code&gt;v-show&lt;/code&gt; 则更适合用于需要频繁切换显示状态的场景。通过合理地使用这两种指令，可以有效地提升 Vue 应用的性能和用户体验。&lt;/p&gt;
+&lt;h2 id=&#34;7-参考资料&#34;&gt;7. 参考资料
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://vuejs.org/guide/essentials/conditional.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Vue.js 官方文档 - 条件渲染&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Vue 计算属性原理 </title>
         <link>https://adam-code-line.github.io/p/computed/</link>
         <pubDate>Thu, 09 Oct 2025 18:45:11 +0800</pubDate>
