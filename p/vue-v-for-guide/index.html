@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Vue 条件渲染：v-if vs v-show 在 Vue.js 中，条件渲染是构建动态用户界面的重要技术。Vue 提供了两种主要的条件渲染指令：v-if 和 v-show。本文将探讨这两者的区别、使用场景及其底层原理，帮助开发者更好地选择合适的指令来优化应用性能和用户体验。\n">
-<title>Vue 条件渲染：v-if vs v-show</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Vue v-for 指令详解 v-for 是 Vue.js 中用于渲染列表的指令，允许你基于一个数组或对象动态生成多个元素。本文将详细介绍 v-for 的用法、语法以及一些常见的实践。\n1. 基本语法 v-for 的基本语法如下：\n">
+<title>Vue v-for 指令详解</title>
 
-<link rel='canonical' href='https://adam-code-line.github.io/p/v-if-v-show/'>
+<link rel='canonical' href='https://adam-code-line.github.io/p/vue-v-for-guide/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Vue 条件渲染：v-if vs v-show">
-<meta property='og:description' content="Vue 条件渲染：v-if vs v-show 在 Vue.js 中，条件渲染是构建动态用户界面的重要技术。Vue 提供了两种主要的条件渲染指令：v-if 和 v-show。本文将探讨这两者的区别、使用场景及其底层原理，帮助开发者更好地选择合适的指令来优化应用性能和用户体验。\n">
-<meta property='og:url' content='https://adam-code-line.github.io/p/v-if-v-show/'>
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Vue v-for 指令详解">
+<meta property='og:description' content="Vue v-for 指令详解 v-for 是 Vue.js 中用于渲染列表的指令，允许你基于一个数组或对象动态生成多个元素。本文将详细介绍 v-for 的用法、语法以及一些常见的实践。\n1. 基本语法 v-for 的基本语法如下：\n">
+<meta property='og:url' content='https://adam-code-line.github.io/p/vue-v-for-guide/'>
 <meta property='og:site_name' content='Adam&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-11T11:07:50&#43;08:00'/><meta property='article:modified_time' content='2025-10-11T11:07:50&#43;08:00'/>
-<meta name="twitter:title" content="Vue 条件渲染：v-if vs v-show">
-<meta name="twitter:description" content="Vue 条件渲染：v-if vs v-show 在 Vue.js 中，条件渲染是构建动态用户界面的重要技术。Vue 提供了两种主要的条件渲染指令：v-if 和 v-show。本文将探讨这两者的区别、使用场景及其底层原理，帮助开发者更好地选择合适的指令来优化应用性能和用户体验。\n">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-11T16:03:55&#43;08:00'/><meta property='article:modified_time' content='2025-10-11T16:03:55&#43;08:00'/>
+<meta name="twitter:title" content="Vue v-for 指令详解">
+<meta name="twitter:description" content="Vue v-for 指令详解 v-for 是 Vue.js 中用于渲染列表的指令，允许你基于一个数组或对象动态生成多个元素。本文将详细介绍 v-for 的用法、语法以及一些常见的实践。\n1. 基本语法 v-for 的基本语法如下：\n">
     </head>
     <body class="
     article-page
@@ -290,23 +290,15 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#1-v-if-的工作原理与使用">1. v-if 的工作原理与使用</a>
-      <ol>
-        <li><a href="#使用示例">使用示例</a></li>
-        <li><a href="#v-if-与-v-else-和-v-else-if">v-if 与 v-else 和 v-else-if</a></li>
-        <li><a href="#v-if-控制多元素的渲染">v-if 控制多元素的渲染</a></li>
-      </ol>
-    </li>
-    <li><a href="#2-v-show-的工作原理与使用">2. v-show 的工作原理与使用</a>
-      <ol>
-        <li><a href="#使用示例-1">使用示例</a></li>
-      </ol>
-    </li>
-    <li><a href="#3-v-if-vs-v-show-的区别">3. v-if vs v-show 的区别</a></li>
-    <li><a href="#4-选择指南">4. 选择指南</a></li>
-    <li><a href="#5-执行顺序">5. 执行顺序</a></li>
-    <li><a href="#6-总结">6. 总结</a></li>
-    <li><a href="#7-参考资料">7. 参考资料</a></li>
+    <li><a href="#1-基本语法">1. 基本语法</a></li>
+    <li><a href="#2-作用域">2. 作用域</a></li>
+    <li><a href="#3-遍历对象">3. 遍历对象</a></li>
+    <li><a href="#4-获取索引">4. 获取索引</a></li>
+    <li><a href="#5-使用-v-for-渲染组件">5. 使用 <code>v-for</code> 渲染组件</a></li>
+    <li><a href="#6-注意事项">6. 注意事项</a></li>
+    <li><a href="#7-结合其他指令使用">7. 结合其他指令使用</a></li>
+    <li><a href="#8-总结">8. 总结</a></li>
+    <li><a href="#9-参考资料">9. 参考资料</a></li>
   </ol>
 </nav>
         </div>
@@ -342,7 +334,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/v-if-v-show/">Vue 条件渲染：v-if vs v-show</a>
+            <a href="/p/vue-v-for-guide/">Vue v-for 指令详解</a>
         </h2>
     
         
@@ -394,29 +386,10 @@
     <section class="article-content">
     
     
-    <h1 id="vue-条件渲染v-if-vs-v-show">Vue 条件渲染：v-if vs v-show
-</h1><p>在 Vue.js 中，条件渲染是构建动态用户界面的重要技术。Vue 提供了两种主要的条件渲染指令：<code>v-if</code> 和 <code>v-show</code>。本文将探讨这两者的区别、使用场景及其底层原理，帮助开发者更好地选择合适的指令来优化应用性能和用户体验。</p>
-<h2 id="1-v-if-的工作原理与使用">1. v-if 的工作原理与使用
-</h2><p><code>v-if</code> 指令用于根据条件动态地添加或移除 DOM 元素。当条件为真时，Vue 会创建并插入元素；当条件为假时，Vue 会销毁并移除元素。</p>
-<h3 id="使用示例">使用示例
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;isVisible&#34;</span><span class="p">&gt;</span>这是一个可见的段落。<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="v-if-与-v-else-和-v-else-if">v-if 与 v-else 和 v-else-if
-</h3><p><code>v-if</code> 可以与 <code>v-else</code> 和 <code>v-else-if</code> 结合使用，以实现多条件渲染。</p>
+    <h1 id="vue-v-for-指令详解">Vue <code>v-for</code> 指令详解
+</h1><p><code>v-for</code> 是 Vue.js 中用于渲染列表的指令，允许你基于一个数组或对象动态生成多个元素。本文将详细介绍 <code>v-for</code> 的用法、语法以及一些常见的实践。</p>
+<h2 id="1-基本语法">1. 基本语法
+</h2><p><code>v-for</code> 的基本语法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -429,16 +402,21 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;status === &#39;success&#39;&#34;</span><span class="p">&gt;</span>操作成功！<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">v-else-if</span><span class="o">=</span><span class="s">&#34;status === &#39;error&#39;&#34;</span><span class="p">&gt;</span>操作失败！<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">v-else</span><span class="p">&gt;</span>操作进行中...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;item in items&#34;</span> <span class="na">:key</span><span class="o">=</span><span class="s">&#34;item.id&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      {{ item.name }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="v-if-控制多元素的渲染">v-if 控制多元素的渲染
-</h3><p><code>v-if</code> 也可以用于控制多个元素的渲染，通过包裹在一个父元素中实现。</p>
+</div><p>在这个例子中，<code>items</code> 是一个数组，<code>item</code> 是数组中的每个元素。<code>v-for</code> 会遍历 <code>items</code> 数组，并为每个元素生成一个 <code>&lt;li&gt;</code> 元素。
+而 <code>:key</code> 是一个特殊属性，用于帮助 Vue 跟踪每个节点的身份，从而提高渲染效率。</p>
+<ul>
+<li><strong>分隔符</strong>：<code>v-for</code> 的分隔符是 <code>in</code>，用于指定要遍历的数组或对象,但也可以使用 <code>of</code> 来替代 <code>in</code>。</li>
+</ul>
+<h2 id="2-作用域">2. 作用域
+</h2><p><code>v-for</code> 创建了一个新的作用域，在这个作用域内你可以访问当前迭代的元素以及它的索引：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -447,35 +425,69 @@
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;isVisible&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>标题<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>这是一个段落。<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;(item, index) in items&#34;</span> <span class="na">:key</span><span class="o">=</span><span class="s">&#34;item.id&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- 此处可以访问外层的变量，但`item`和`index`只能在该作用域内使用 --&gt;</span>
+</span></span><span class="line"><span class="cl">      {{ index }} - {{ item.name }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>或者在 Vue 3 中使用 <code>&lt;template&gt;</code> 标签：</p>
+</div><h2 id="3-遍历对象">3. 遍历对象
+</h2><p>除了遍历数组，<code>v-for</code> 也可以用来遍历对象的属性：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;isVisible&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>标题<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>这是一个段落。<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;(value, key) in object&#34;</span> <span class="na">:key</span><span class="o">=</span><span class="s">&#34;key&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      {{ key }}: {{ value }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="2-v-show-的工作原理与使用">2. v-show 的工作原理与使用
-</h2><p><code>v-show</code> 指令也用于条件渲染，但其工作原理与 <code>v-if</code> 不同。<code>v-show</code> 通过设置元素的 CSS <code>display</code> 属性来控制元素的显示与隐藏。当条件为真时，元素会被渲染并显示；当条件为假时，元素仍然存在于 DOM 中，但会被隐藏。</p>
-<h3 id="使用示例-1">使用示例
-</h3><div class="highlight"><div class="chroma">
+</div><p>在这个例子中，<code>object</code> 是一个对象，<code>key</code> 是对象的属性名，<code>value</code> 是对应的属性值。</p>
+<h2 id="4-获取索引">4. 获取索引
+</h2><p>你还可以在 <code>v-for</code> 中获取当前元素的索引：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;(item, index) in items&#34;</span> <span class="na">:key</span><span class="o">=</span><span class="s">&#34;item.id&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      {{ index }} - {{ item.name }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里，<code>index</code> 是当前元素在数组中的索引。</p>
+<h2 id="5-使用-v-for-渲染组件">5. 使用 <code>v-for</code> 渲染组件
+</h2><p><code>v-for</code> 也可以用来渲染自定义组件：</p>
+<div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -486,61 +498,100 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">v-show</span><span class="o">=</span><span class="s">&#34;isVisible&#34;</span><span class="p">&gt;</span>这是一个可见的段落。<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">my-component</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;item in items&#34;</span> <span class="na">:key</span><span class="o">=</span><span class="s">&#34;item.id&#34;</span> <span class="na">:data</span><span class="o">=</span><span class="s">&#34;item&#34;</span> <span class="p">/&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="3-v-if-vs-v-show-的区别">3. v-if vs v-show 的区别
-</h2><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>特性</th>
-          <th>v-if</th>
-          <th>v-show</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>DOM 操作</td>
-          <td>动态添加和移除元素</td>
-          <td>仅切换 CSS <code>display</code> 属性</td>
-      </tr>
-      <tr>
-          <td>初始渲染性能</td>
-          <td>较慢，因为需要创建和销毁元素</td>
-          <td>较快，因为元素始终存在于 DOM 中</td>
-      </tr>
-      <tr>
-          <td>适用场景</td>
-          <td>条件不频繁变化的情况</td>
-          <td>条件频繁变化的情况</td>
-      </tr>
-      <tr>
-          <td>内存占用</td>
-          <td>较低，因为不需要保留元素</td>
-          <td>较高，因为元素始终存在于 DOM 中</td>
-      </tr>
-      <tr>
-          <td>事件监听</td>
-          <td>事件监听器会被移除</td>
-          <td>事件监听器始终存在</td>
-      </tr>
-  </tbody>
-</table></div>
-<h2 id="4-选择指南">4. 选择指南
+</div><p>在这个例子中，<code>my-component</code> 是一个自定义组件，<code>data</code> 是传递给组件的属性。</p>
+<h2 id="6-注意事项">6. 注意事项
 </h2><ul>
-<li>使用 <code>v-if</code> 当条件不频繁变化，且需要节省内存时。例如，用户登录状态的切换。</li>
-<li>使用 <code>v-show</code> 当条件频繁变化，且需要快速切换显示状态时。例如，选项卡切换或模态框显示。</li>
+<li><strong>唯一的 <code>key</code></strong>：确保每个元素都有一个唯一的 <code>key</code>，这对于 Vue 的虚拟 DOM 进行高效更新非常重要。</li>
+<li><strong>避免使用索引作为 <code>key</code></strong>：除非列表是静态的或不会被重新排序，否则不建议使用索引作为 <code>key</code>，因为这可能会导致渲染问题。</li>
+<li><strong>性能考虑</strong>：对于大型列表，考虑使用虚拟滚动或分页来提高性能。</li>
+<li><strong>嵌套 <code>v-for</code></strong>：可以在一个元素内嵌套多个 <code>v-for</code>，但要注意性能和可读性。</li>
 </ul>
-<h2 id="5-执行顺序">5. 执行顺序
-</h2><p>在 Vue 的渲染过程中，当 <code>v-if</code> 和 <code>v-show</code> 同时存在于一个元素的时候，<code>v-if</code> 会优先执行。也就是说，如果 <code>v-if</code> 条件为假，元素不会被渲染，<code>v-show</code> 的条件将不会被评估。但 Vue 官方并不推荐同时使用这两个指令在同一个元素上，因为这可能会导致代码的可读性和维护性降低。</p>
-<h2 id="6-总结">6. 总结
-</h2><p>在选择使用 <code>v-if</code> 还是 <code>v-show</code> 时，开发者需要根据具体的业务场景和性能需求来做出决策。一般来说，<code>v-if</code> 更适合用于条件不频繁变化的场景，而 <code>v-show</code> 则更适合用于需要频繁切换显示状态的场景。通过合理地使用这两种指令，可以有效地提升 Vue 应用的性能和用户体验。</p>
-<h2 id="7-参考资料">7. 参考资料
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;(group, groupIndex) in groups&#34;</span> <span class="na">:key</span><span class="o">=</span><span class="s">&#34;group.id&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>{{ group.name }}<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;(item, itemIndex) in group.items&#34;</span> <span class="na">:key</span><span class="o">=</span><span class="s">&#34;item.id&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            {{ item.name }}
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="7-结合其他指令使用">7. 结合其他指令使用
+</h2><p>当位于于同一元素上时，<code>v-for</code> 的优先级低于 <code>v-if</code>。这意味着 <code>v-if</code> 会先于 <code>v-for</code> 被处理，此时 <code>v-if</code> 的条件将无法访问到 <code>v-for</code> 作用域内定义的变量别名。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="c">&lt;!--这会抛出错误，因为属性 it 在 v-if 中没有定义--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;it in items&#34;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;it.isActive&#34;</span> <span class="na">:key</span><span class="o">=</span><span class="s">&#34;it.id&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      {{ it.name }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以在外层包裹一个 <code>&lt;template&gt;</code> 标签来解决这个问题：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">template</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&#34;item in items&#34;</span> <span class="na">:key</span><span class="o">=</span><span class="s">&#34;item.id&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">p</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;item.isActive&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        {{ item.name }}
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="8-总结">8. 总结
+</h2><p><code>v-for</code> 是 Vue.js 中非常强大且常用的指令，能够帮助开发者高效地渲染列表和处理动态数据。通过理解其语法、作用域以及与其他指令的结合使用，可以更好地利用 <code>v-for</code> 来构建复杂的用户界面。希望本文能帮助你更深入地理解和应用 <code>v-for</code> 指令。</p>
+<h2 id="9-参考资料">9. 参考资料
 </h2><ul>
-<li><a class="link" href="https://vuejs.org/guide/essentials/conditional.html"  target="_blank" rel="noopener"
-    >Vue.js 官方文档 - 条件渲染</a></li>
+<li><a class="link" href="https://vuejs.org/guide/essentials/list.html"  target="_blank" rel="noopener"
+    >Vue.js 官方文档 - 列表渲染</a></li>
 </ul>
 
 </section>
@@ -578,12 +629,12 @@
             
                 
 <article class="">
-    <a href="/p/vue-v-for-guide/">
+    <a href="/p/v-if-v-show/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">Vue v-for 指令详解</h2>
+            <h2 class="article-title">Vue 条件渲染：v-if vs v-show</h2>
         </div>
     </a>
 </article>
