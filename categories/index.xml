@@ -7,10 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Adam</copyright>
-        <lastBuildDate>Sat, 11 Oct 2025 21:37:37 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 12 Oct 2025 11:51:13 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Frontend</title>
         <link>https://adam-code-line.github.io/categories/frontend/</link>
-        <pubDate>Sat, 11 Oct 2025 21:37:37 +0800</pubDate>
+        <pubDate>Sun, 12 Oct 2025 11:51:13 +0800</pubDate>
         
         <guid>https://adam-code-line.github.io/categories/frontend/</guid>
         <description>&lt;img src="https://adam-code-line.github.io/categories/frontend/cover.jpg" alt="Featured image of post Frontend" /&gt;</description>
@@ -18,15 +18,23 @@
         <item>
         <title>Learning</title>
         <link>https://adam-code-line.github.io/categories/learning/</link>
-        <pubDate>Sat, 11 Oct 2025 21:37:37 +0800</pubDate>
+        <pubDate>Sun, 12 Oct 2025 11:51:13 +0800</pubDate>
         
         <guid>https://adam-code-line.github.io/categories/learning/</guid>
         <description>&lt;img src="https://adam-code-line.github.io/categories/learning/cover.jpg" alt="Featured image of post Learning" /&gt;</description>
         </item>
         <item>
+        <title>Nuxt</title>
+        <link>https://adam-code-line.github.io/categories/nuxt/</link>
+        <pubDate>Sun, 12 Oct 2025 11:51:13 +0800</pubDate>
+        
+        <guid>https://adam-code-line.github.io/categories/nuxt/</guid>
+        <description>&lt;img src="https://adam-code-line.github.io/categories/nuxt/cover.jpg" alt="Featured image of post Nuxt" /&gt;</description>
+        </item>
+        <item>
         <title>Vue</title>
         <link>https://adam-code-line.github.io/categories/vue/</link>
-        <pubDate>Sat, 11 Oct 2025 16:03:55 +0800</pubDate>
+        <pubDate>Sun, 12 Oct 2025 11:51:13 +0800</pubDate>
         
         <guid>https://adam-code-line.github.io/categories/vue/</guid>
         <description>&lt;img src="https://adam-code-line.github.io/categories/vue/cover.jpg" alt="Featured image of post Vue" /&gt;</description>
