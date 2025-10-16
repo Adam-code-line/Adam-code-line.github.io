@@ -134,7 +134,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;4-总结&#34;&gt;4. 总结
-&lt;/h2&gt;&lt;p&gt;Web API在现代前端开发中扮演着至关重要的角色。通过利用浏览器API和第三方API，开发者可以创建功能丰富、交互性强的Web应用程序。理解和掌握这些API的使用方法，将大大提升开发效率和用户体验。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Web API&lt;/code&gt;在现代前端开发中扮演着至关重要的角色。通过利用&lt;code&gt;浏览器API&lt;/code&gt;和&lt;code&gt;第三方API&lt;/code&gt;，开发者可以创建功能丰富、交互性强的Web应用程序。理解和掌握这些&lt;code&gt;API&lt;/code&gt;的使用方法，将大大提升开发效率和用户体验。&lt;/p&gt;
 &lt;h2 id=&#34;5-参考资料&#34;&gt;5. 参考资料
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Client-side_APIs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
