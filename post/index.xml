@@ -63,7 +63,7 @@
     
 &lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&#34;html超文本标记语言&#34;&gt;HTML（超文本标记语言）
-&lt;/h3&gt;&lt;p&gt;&lt;code&gt;HTML&lt;/code&gt; 是构建网页的基础，用于定义网页的结构和内容。它使用标签来标识不同类型的内容，如标题、段落、链接、图像等。通俗点说，&lt;code&gt;HTML&lt;/code&gt;负责网页的架构，是前端的&amp;quot;骨架&amp;quot;。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;HTML（HyperText Markup Language）&lt;/code&gt; 是构建网页的基础，用于定义网页的结构和内容。它使用标签来标识不同类型的内容，如标题、段落、链接、图像等。通俗点说，&lt;code&gt;HTML&lt;/code&gt;负责网页的架构，是前端的&amp;quot;骨架&amp;quot;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;HTML 的基本结构&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -108,7 +108,7 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;HTML&lt;/code&gt; 通过一系列的标签定义了网页中元素，比如哪个是标题，哪个是段落，哪里放图片，为前端搭建了基本的结构和内容。&lt;/p&gt;
 &lt;h3 id=&#34;css层叠样式表&#34;&gt;CSS（层叠样式表）
-&lt;/h3&gt;&lt;p&gt;&lt;code&gt;CSS&lt;/code&gt; 用于控制网页的外观和布局。通过 &lt;code&gt;CSS&lt;/code&gt;，开发者可以设置颜色、字体、间距、对齐方式等，使网页更具吸引力和可读性，也可以控制网页的布局，使得网页在不同的屏幕尺寸和设备上都能保持良好的视觉体验，也即响应式设计。简单的说，&lt;code&gt;CSS&lt;/code&gt; 负责网页的样式、美化，是前端的&amp;quot;皮肤、衣服&amp;quot;。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;CSS（Cascading Style Sheets）&lt;/code&gt; 用于控制网页的外观和布局。通过 &lt;code&gt;CSS&lt;/code&gt;，开发者可以设置颜色、字体、间距、对齐方式等，使网页更具吸引力和可读性，也可以控制网页的布局，使得网页在不同的屏幕尺寸和设备上都能保持良好的视觉体验，也即响应式设计。简单的说，&lt;code&gt;CSS&lt;/code&gt; 负责网页的样式、美化，是前端的&amp;quot;皮肤、衣服&amp;quot;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;CSS 的基本用法&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
