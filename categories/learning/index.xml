@@ -47,6 +47,21 @@
 &lt;/ol&gt;
 &lt;h2 id=&#34;前端开发的核心技术&#34;&gt;前端开发的核心技术
 &lt;/h2&gt;&lt;p&gt;相比较与后端，前段的技术更迭要更为迅速，可能每一天都有新的前端框架和工具出现。尽管如此，前端开发的核心技术还是比较稳定的，主要包括以下三大核心技术，也被称为 &lt;code&gt;前端三剑客&lt;/code&gt; :&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;image-with-tools&#34;&gt;
+    
+    &lt;a href=&#34;./The_Big_Three_of_Front-End_Development.png&#34; target=&#34;_blank&#34; title=&#34;点击查看大图&#34;&gt;
+        &lt;img src=&#34;./The_Big_Three_of_Front-End_Development.png&#34; alt=&#34;前端三剑客&#34;  title=&#34;前端三剑客(出处:https://blog.csdn.net/askf01/article/details/132234956)&#34;  loading=&#34;lazy&#34; /&gt;
+    &lt;/a&gt;
+
+    
+    &lt;a href=&#34;./The_Big_Three_of_Front-End_Development.png&#34; download=&#34;前端三剑客&#34; class=&#34;download-btn&#34; title=&#34;下载原图&#34;&gt;
+        ⬇️ 下载
+    &lt;/a&gt;
+
+    
+    &lt;figcaption&gt;前端三剑客(出处:https://blog.csdn.net/askf01/article/details/132234956)&lt;/figcaption&gt;
+    
+&lt;/figure&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;HTML（超文本标记语言）&lt;/strong&gt;：&lt;code&gt;HTML&lt;/code&gt; 是构建网页的基础，用于定义网页的结构和内容。它使用标签来标识不同类型的内容，如标题、段落、链接、图像等。通俗点说，&lt;code&gt;HTML&lt;/code&gt;负责网页的架构，是前端的&amp;quot;骨架&amp;quot;。&lt;/li&gt;
 &lt;/ol&gt;
@@ -94,7 +109,7 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;HTML&lt;/code&gt; 通过一系列的标签定义了网页中元素，比如哪个是标题，哪个是段落，哪里放图片，为前端搭建了基本的结构和内容。&lt;/p&gt;
 &lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;&lt;strong&gt;CSS（层叠样式表）&lt;/strong&gt;：CSS 用于控制网页的外观和布局。通过 CSS，开发者可以设置颜色、字体、间距、对齐方式等，使网页更具吸引力和可读性，也可以控制网页的布局，使得网页在不同的屏幕尺寸和设备上都能保持良好的视觉体验，也即响应式设计。简单的说，&lt;code&gt;CSS&lt;/code&gt; 负责网页的样式、美化，是前端的&amp;quot;皮肤、衣服&amp;quot;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSS（层叠样式表）&lt;/strong&gt;：&lt;code&gt;CSS&lt;/code&gt; 用于控制网页的外观和布局。通过 &lt;code&gt;CSS&lt;/code&gt;，开发者可以设置颜色、字体、间距、对齐方式等，使网页更具吸引力和可读性，也可以控制网页的布局，使得网页在不同的屏幕尺寸和设备上都能保持良好的视觉体验，也即响应式设计。简单的说，&lt;code&gt;CSS&lt;/code&gt; 负责网页的样式、美化，是前端的&amp;quot;皮肤、衣服&amp;quot;。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;css-的基本用法&#34;&gt;CSS 的基本用法
 &lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -164,7 +179,7 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;CSS&lt;/code&gt; 通过定义样式规则，调整网页的布局，修改元素的样式，实现丰富的视觉效果&lt;/p&gt;
 &lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;&lt;strong&gt;JavaScript&lt;/strong&gt;：JavaScript 是一种编程语言，用于为网页添加交互功能。通过 JavaScript，开发者可以实现动态内容更新、表单验证、动画效果等，使用户体验更加丰富，让网页不仅仅是静态的内容，而是可以响应用户的操作。总的来说，&lt;code&gt;JavaScript&lt;/code&gt; 负责网页的交互，是前端的&amp;quot;动作&amp;quot;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;JavaScript&lt;/strong&gt;：&lt;code&gt;JavaScript&lt;/code&gt; 是一种编程语言，用于为网页添加交互功能。通过 &lt;code&gt;JavaScript&lt;/code&gt;，开发者可以实现动态内容更新、表单验证、动画效果等，使用户体验更加丰富，让网页不仅仅是静态的内容，而是可以响应用户的操作。总的来说，&lt;code&gt;JavaScript&lt;/code&gt; 负责网页的交互，是前端的&amp;quot;动作&amp;quot;。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;javascript-的基本用法&#34;&gt;JavaScript 的基本用法
 &lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -233,24 +248,25 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;在上面的例子中：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; 标签用于在 HTML 文档中嵌入 JavaScript 代码。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; 标签用于在 &lt;code&gt;HTML&lt;/code&gt; 文档中嵌入 &lt;code&gt;JavaScript&lt;/code&gt; 代码。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;showMessage&lt;/code&gt; 函数定义了一个弹出消息的功能。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;&amp;lt;button&amp;gt;&lt;/code&gt; 标签创建了一个按钮，&lt;code&gt;onclick&lt;/code&gt; 属性绑定了点击事件，当按钮被点击时，会调用 &lt;code&gt;showMessage&lt;/code&gt; 函数，弹出一个消息框。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;JavaScript&lt;/code&gt; 通过编写脚本，实现网页的动态交互功能，让页面不仅仅是静态的内容，而是可以响应用户的操作。&lt;/p&gt;
+&lt;p&gt;下图展示了前端三大核心技术各自的职责与关系：&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&#34;image-with-tools&#34;&gt;
     
     &lt;a href=&#34;./frontend-development-basics.png&#34; target=&#34;_blank&#34; title=&#34;点击查看大图&#34;&gt;
-        &lt;img src=&#34;./frontend-development-basics.png&#34; alt=&#34;前端三剑客&#34;  title=&#34;前端三剑客(出处:https://blog.csdn.net/weixin_46913665/article/details/124391067)&#34;  loading=&#34;lazy&#34; /&gt;
+        &lt;img src=&#34;./frontend-development-basics.png&#34; alt=&#34;前端三剑客职责与关系&#34;  title=&#34;前端三剑客职责与关系(出处:https://blog.csdn.net/weixin_46913665/article/details/124391067)&#34;  loading=&#34;lazy&#34; /&gt;
     &lt;/a&gt;
 
     
-    &lt;a href=&#34;./frontend-development-basics.png&#34; download=&#34;前端三剑客&#34; class=&#34;download-btn&#34; title=&#34;下载原图&#34;&gt;
+    &lt;a href=&#34;./frontend-development-basics.png&#34; download=&#34;前端三剑客职责与关系&#34; class=&#34;download-btn&#34; title=&#34;下载原图&#34;&gt;
         ⬇️ 下载
     &lt;/a&gt;
 
     
-    &lt;figcaption&gt;前端三剑客(出处:https://blog.csdn.net/weixin_46913665/article/details/124391067)&lt;/figcaption&gt;
+    &lt;figcaption&gt;前端三剑客职责与关系(出处:https://blog.csdn.net/weixin_46913665/article/details/124391067)&lt;/figcaption&gt;
     
 &lt;/figure&gt;&lt;/p&gt;
 &lt;h2 id=&#34;前端开发的常用工具和框架&#34;&gt;前端开发的常用工具和框架
@@ -260,7 +276,7 @@
 &lt;p&gt;&lt;strong&gt;版本控制系统（如 Git）&lt;/strong&gt;：用于跟踪代码的更改，协作开发和管理项目历史，在多人协作开发的环境中尤为重要。在开发过程也会使用到如 GitHub、Gitee代码托管平台来存储和管理代码仓库，这也是一个开发者必须掌握的技能。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;包管理器（如 npm、Yarn、pnpm）&lt;/strong&gt;：用于管理项目依赖的库和工具，简化安装和更新过程,一般建议新手先使用npm,等到后面熟悉后可以尝试其他的包管理器。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;包管理器（如 npm、Yarn、pnpm）&lt;/strong&gt;：用于管理项目依赖的库和工具，简化安装和更新过程,一般建议新手先使用&lt;code&gt;npm&lt;/code&gt;,等到后面熟悉后可以尝试其他的包管理器。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;前端框架（如 React、Vue、Angular）&lt;/strong&gt;：这些框架提供了结构化的方法来构建复杂的用户界面，简化开发过程，提高效率，框架的学习是一个长期的且比较困难的过程，需要等到对前端知识有一定的掌握后再深入学习。&lt;/p&gt;
