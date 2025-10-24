@@ -7,10 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Adam</copyright>
-        <lastBuildDate>Sun, 19 Oct 2025 14:18:40 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 24 Oct 2025 13:52:42 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Frontend</title>
         <link>https://adam-code-line.github.io/categories/frontend/</link>
-        <pubDate>Sun, 19 Oct 2025 14:18:40 +0800</pubDate>
+        <pubDate>Fri, 24 Oct 2025 13:52:42 +0800</pubDate>
         
         <guid>https://adam-code-line.github.io/categories/frontend/</guid>
         <description>&lt;img src="https://adam-code-line.github.io/categories/frontend/cover.jpg" alt="Featured image of post Frontend" /&gt;</description>
@@ -18,10 +18,18 @@
         <item>
         <title>Learning</title>
         <link>https://adam-code-line.github.io/categories/learning/</link>
-        <pubDate>Sun, 19 Oct 2025 14:18:40 +0800</pubDate>
+        <pubDate>Fri, 24 Oct 2025 13:52:42 +0800</pubDate>
         
         <guid>https://adam-code-line.github.io/categories/learning/</guid>
         <description>&lt;img src="https://adam-code-line.github.io/categories/learning/cover.jpg" alt="Featured image of post Learning" /&gt;</description>
+        </item>
+        <item>
+        <title>Vue</title>
+        <link>https://adam-code-line.github.io/categories/vue/</link>
+        <pubDate>Fri, 24 Oct 2025 13:52:42 +0800</pubDate>
+        
+        <guid>https://adam-code-line.github.io/categories/vue/</guid>
+        <description>&lt;img src="https://adam-code-line.github.io/categories/vue/cover.jpg" alt="Featured image of post Vue" /&gt;</description>
         </item>
         <item>
         <title>Nuxt</title>
@@ -30,14 +38,6 @@
         
         <guid>https://adam-code-line.github.io/categories/nuxt/</guid>
         <description>&lt;img src="https://adam-code-line.github.io/categories/nuxt/cover.jpg" alt="Featured image of post Nuxt" /&gt;</description>
-        </item>
-        <item>
-        <title>Vue</title>
-        <link>https://adam-code-line.github.io/categories/vue/</link>
-        <pubDate>Sun, 12 Oct 2025 11:51:13 +0800</pubDate>
-        
-        <guid>https://adam-code-line.github.io/categories/vue/</guid>
-        <description>&lt;img src="https://adam-code-line.github.io/categories/vue/cover.jpg" alt="Featured image of post Vue" /&gt;</description>
         </item>
         <item>
         <title>TypeScript</title>
