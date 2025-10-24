@@ -257,13 +257,13 @@
 &lt;/h2&gt;&lt;p&gt;除了上述核心技术外，前端开发还依赖于许多工具和框架来提高开发效率和代码质量。以下是一些常用的工具和框架：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;版本控制系统（如 Git）&lt;/strong&gt;：用于跟踪代码的更改，协作开发和管理项目历史，在多人协作开发的环境中尤为重要。在开发过程也会使用到如 GitHub、Gitee代码托管平台来存储和管理代码仓库，这也是一个开发必须掌握的技能。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;版本控制系统（如 Git）&lt;/strong&gt;：用于跟踪代码的更改，协作开发和管理项目历史，在多人协作开发的环境中尤为重要。在开发过程也会使用到如 GitHub、Gitee代码托管平台来存储和管理代码仓库，这也是一个开发者必须掌握的技能。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;包管理器（如 npm、Yarn、pnpm）&lt;/strong&gt;：用于管理项目依赖的库和工具，简化安装和更新过程。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;包管理器（如 npm、Yarn、pnpm）&lt;/strong&gt;：用于管理项目依赖的库和工具，简化安装和更新过程,一般建议新手先使用npm,等到后面熟悉后可以尝试其他的包管理器。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;前端框架（如 React、Vue、Angular）&lt;/strong&gt;：这些框架提供了结构化的方法来构建复杂的用户界面，简化开发过程，提高效率。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;前端框架（如 React、Vue、Angular）&lt;/strong&gt;：这些框架提供了结构化的方法来构建复杂的用户界面，简化开发过程，提高效率，框架的学习是一个长期的且比较困难的过程，需要等到对前端知识有一定的掌握后再深入学习。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;构建工具（如 Webpack、Vite）&lt;/strong&gt;：用于打包和优化前端代码，提高加载速度和性能。&lt;/p&gt;
