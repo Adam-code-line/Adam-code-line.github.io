@@ -15,6 +15,14 @@
         <guid>https://adam-code-line.github.io/p/frontend-development-basics/</guid>
         <description>&lt;h1 id=&#34;前端开发扫盲&#34;&gt;前端开发扫盲
 &lt;/h1&gt;&lt;p&gt;本文的目的是帮助零基础的读者了解前端开发的基本概念和技术栈，扫除入门障碍，为进一步学习打下坚实基础。本文也会回答“前端是什么”“前端开发需要掌握哪些核心技术”等基本问题。&lt;/p&gt;
+&lt;h2 id=&#34;对前端的错误认知&#34;&gt;对前端的错误认知
+&lt;/h2&gt;&lt;p&gt;介绍前端之前，先来澄清一些对前端的常见误解：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;前端只是网页设计&lt;/strong&gt;：虽然前端开发涉及到网页的视觉设计，但它不仅仅是设计。前端开发还包括编写代码实现网页的结构、样式和交互功能,也涉及对网页的性能优化和用户体验的提升等方面。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;前端不需要编程&lt;/strong&gt;：前端开发需要掌握多种编程语言和技术，如 HTML、CSS 和 JavaScript，这些都是编程的基础,而且前端开发的工作中也会涉及到一些编程逻辑和算法。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;前端开发很简单&lt;/strong&gt;：虽然入门相对容易，但前端开发的深度和广度都很大，要成为一名优秀的前端开发者，需要深入理解各种技术和工具，尤其是到中后期学习框架的时候，需要深入学习框架的规范和各种使用方法，学习难度相对比较大。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;前端和后端是完全独立的&lt;/strong&gt;：前端和后端是相互依赖的，前端需要与后端协作，确保数据的正确传输和处理，在一些工作中可能会涉及到后端的知识，也会有全栈开发的情况。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2 id=&#34;什么是前端&#34;&gt;什么是前端？
 &lt;/h2&gt;&lt;p&gt;要回答“前端是什么”,得先说说前端的概念,前端(Front-end)是网站前台部分，指运行在PC端、移动端等浏览器上并直接展现给用户浏览并提供给用户交互的网页界面。换句话说，你在网站或应用程序的屏幕上能看到的所有内容都属于前端。你访问的网站的图片、文字、可点击的按钮、导航栏等，以及你在手机上看到的应用界面，用手势放大缩小的图片，播放的视频等，都是前端的一部分。前端开发就是在构建所有的这些内容和功能，也即创造了你在屏幕上看到的外观和触摸到的体验。&lt;/p&gt;
 &lt;h2 id=&#34;前端开发的职责&#34;&gt;前端开发的职责
@@ -84,7 +92,7 @@
 &lt;li&gt;&lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; 标签表示一级标题，&lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; 标签表示段落。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;meta&lt;/code&gt; 标签用于提供关于 HTML 文档的信息，如字符编码和视口设置。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;HTML&lt;/code&gt; 通过一系列的标签定义了网页中元素，为前端搭建了基本的结构和内容。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;HTML&lt;/code&gt; 通过一系列的标签定义了网页中元素，比如哪个是标题，哪个是段落，哪里放图片，为前端搭建了基本的结构和内容。&lt;/p&gt;
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;&lt;strong&gt;CSS（层叠样式表）&lt;/strong&gt;：CSS 用于控制网页的外观和布局。通过 CSS，开发者可以设置颜色、字体、间距、对齐方式等，使网页更具吸引力和可读性，也可以控制网页的布局，使得网页在不同的屏幕尺寸和设备上都能保持良好的视觉体验，也即响应式设计。简单的说，&lt;code&gt;CSS&lt;/code&gt; 负责网页的样式、美化，是前端的&amp;quot;皮肤、衣服&amp;quot;。&lt;/li&gt;
 &lt;/ol&gt;
@@ -189,9 +197,11 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;lang&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;charset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;UTF-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
