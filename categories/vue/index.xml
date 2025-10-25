@@ -14,7 +14,7 @@
         
         <guid>https://adam-code-line.github.io/p/component-communication-in-vue/</guid>
         <description>&lt;h1 id=&#34;vue中组件之间传值的几种方式&#34;&gt;vue中组件之间传值的几种方式
-&lt;/h1&gt;&lt;p&gt;在Vue开发中，组件之间的通信是一个常见的需求。本文将介绍几种常用的组件通信方式，包括&lt;code&gt;props&lt;/code&gt;和&lt;code&gt;$emit&lt;/code&gt;事件、&lt;code&gt;provide/inject&lt;/code&gt;、自定义事件总线、Vuex状态管理等。&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;在Vue开发中，组件之间的通信是一个常见的需求。本文将介绍几种常用的组件通信方式，包括&lt;code&gt;props&lt;/code&gt;和&lt;code&gt;$emit&lt;/code&gt;事件、&lt;code&gt;provide/inject&lt;/code&gt;、自定义事件总线、&lt;code&gt;Vuex&lt;/code&gt;状态管理、&lt;code&gt;v-model&lt;/code&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;props-和-emit事件&#34;&gt;Props 和 $emit(事件)
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;Props&lt;/code&gt;和&lt;code&gt;$emit&lt;/code&gt;是Vue中最基本的组件通信方式。父组件通过&lt;code&gt;props&lt;/code&gt;向子组件传递数据，子组件通过&lt;code&gt;$emit&lt;/code&gt;触发事件向父组件传递数据。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1.Props传值：&lt;/strong&gt;&lt;/p&gt;
@@ -573,7 +573,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;结论&#34;&gt;结论
-&lt;/h2&gt;&lt;p&gt;本文介绍了几种常用的Vue组件通信方式，包括&lt;code&gt;props&lt;/code&gt;和&lt;code&gt;$emit&lt;/code&gt;事件、&lt;code&gt;provide/inject&lt;/code&gt;、自定义事件总线以及Vuex状态管理。根据具体的应用场景和需求，选择合适的通信方式可以提高代码的可维护性和可读性。Vue组件传参的方式多种多样，本文只介绍了几种常见的方法，实际可以有更多的变通和组合使用，灵活运用这些技术可以帮助开发者更好地管理组件之间的通信。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;本文介绍了几种常用的Vue组件通信方式，根据具体的应用场景和需求，选择合适的通信方式可以提高代码的可维护性和可读性。Vue组件传参的方式多种多样，本文只介绍了几种常见的方法，实际可以有更多的变通和组合使用，灵活运用这些技术可以帮助开发者更好地管理组件之间的通信。&lt;/p&gt;
 &lt;h2 id=&#34;参考资料&#34;&gt;参考资料
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://cn.vuejs.org/guide/components/props.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
