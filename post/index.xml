@@ -852,12 +852,12 @@
 &lt;p&gt;下图展示了前端三大核心技术各自的职责与关系：&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&#34;image-with-tools&#34;&gt;
     
-    &lt;a href=&#34;./Frontend-Development-Basics.png&#34; target=&#34;_blank&#34; title=&#34;点击查看大图&#34;&gt;
-        &lt;img src=&#34;./Frontend-Development-Basics.png&#34; alt=&#34;前端三剑客职责与关系&#34;  title=&#34;前端三剑客职责与关系(出处:https://blog.csdn.net/weixin_46913665/article/details/124391067)&#34;  loading=&#34;lazy&#34; /&gt;
+    &lt;a href=&#34;./frontend-development-basics.png&#34; target=&#34;_blank&#34; title=&#34;点击查看大图&#34;&gt;
+        &lt;img src=&#34;./frontend-development-basics.png&#34; alt=&#34;前端三剑客职责与关系&#34;  title=&#34;前端三剑客职责与关系(出处:https://blog.csdn.net/weixin_46913665/article/details/124391067)&#34;  loading=&#34;lazy&#34; /&gt;
     &lt;/a&gt;
 
     
-    &lt;a href=&#34;./Frontend-Development-Basics.png&#34; download=&#34;前端三剑客职责与关系&#34; class=&#34;download-btn&#34; title=&#34;下载原图&#34;&gt;
+    &lt;a href=&#34;./frontend-development-basics.png&#34; download=&#34;前端三剑客职责与关系&#34; class=&#34;download-btn&#34; title=&#34;下载原图&#34;&gt;
         ⬇️ 下载
     &lt;/a&gt;
 
