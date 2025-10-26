@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="vue中组件之间传值的几种方式 在Vue开发中，组件之间的通信是一个常见的需求。本文将介绍几种常用的组件通信方式，包括props和$emit事件、provide/inject、自定义事件总线、Vuex状态管理、v-model。\n">
-<title>vue中组件之间传值的几种方式</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="vue中组件之间传值的八种方式 在Vue开发中，组件之间的通信是一个常见的需求。本文将介绍几种常用的组件通信方式，包括props和$emit事件、provide/inject、自定义事件总线、Vuex状态管理、v-model、透传 Attributes、插槽 Slots。\n">
+<title>vue中组件之间传值的八种方式</title>
 
 <link rel='canonical' href='https://adam-code-line.github.io/p/component-communication-in-vue/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="vue中组件之间传值的几种方式">
-<meta property='og:description' content="vue中组件之间传值的几种方式 在Vue开发中，组件之间的通信是一个常见的需求。本文将介绍几种常用的组件通信方式，包括props和$emit事件、provide/inject、自定义事件总线、Vuex状态管理、v-model。\n">
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="vue中组件之间传值的八种方式">
+<meta property='og:description' content="vue中组件之间传值的八种方式 在Vue开发中，组件之间的通信是一个常见的需求。本文将介绍几种常用的组件通信方式，包括props和$emit事件、provide/inject、自定义事件总线、Vuex状态管理、v-model、透传 Attributes、插槽 Slots。\n">
 <meta property='og:url' content='https://adam-code-line.github.io/p/component-communication-in-vue/'>
 <meta property='og:site_name' content='Adam&#39;s Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-24T13:52:42&#43;08:00'/><meta property='article:modified_time' content='2025-10-24T13:52:42&#43;08:00'/>
-<meta name="twitter:title" content="vue中组件之间传值的几种方式">
-<meta name="twitter:description" content="vue中组件之间传值的几种方式 在Vue开发中，组件之间的通信是一个常见的需求。本文将介绍几种常用的组件通信方式，包括props和$emit事件、provide/inject、自定义事件总线、Vuex状态管理、v-model。\n">
+<meta name="twitter:title" content="vue中组件之间传值的八种方式">
+<meta name="twitter:description" content="vue中组件之间传值的八种方式 在Vue开发中，组件之间的通信是一个常见的需求。本文将介绍几种常用的组件通信方式，包括props和$emit事件、provide/inject、自定义事件总线、Vuex状态管理、v-model、透传 Attributes、插槽 Slots。\n">
     </head>
     <body class="
     article-page
@@ -295,6 +295,8 @@
     <li><a href="#自定义事件总线">自定义事件总线</a></li>
     <li><a href="#vuex-状态管理">Vuex 状态管理</a></li>
     <li><a href="#v-model-双向绑定">V-Model 双向绑定</a></li>
+    <li><a href="#透传-attributes">透传 Attributes</a></li>
+    <li><a href="#插槽-slots">插槽 Slots</a></li>
     <li><a href="#结论">结论</a></li>
     <li><a href="#参考资料">参考资料</a></li>
   </ol>
@@ -332,7 +334,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/component-communication-in-vue/">vue中组件之间传值的几种方式</a>
+            <a href="/p/component-communication-in-vue/">vue中组件之间传值的八种方式</a>
         </h2>
     
         
@@ -369,7 +371,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 5 分钟
+                    阅读时长: 8 分钟
                 </time>
             </div>
         
@@ -384,8 +386,8 @@
     <section class="article-content">
     
     
-    <h1 id="vue中组件之间传值的几种方式">vue中组件之间传值的几种方式
-</h1><p>在Vue开发中，组件之间的通信是一个常见的需求。本文将介绍几种常用的组件通信方式，包括<code>props</code>和<code>$emit</code>事件、<code>provide/inject</code>、自定义事件总线、<code>Vuex</code>状态管理、<code>v-model</code>。</p>
+    <h1 id="vue中组件之间传值的八种方式">vue中组件之间传值的八种方式
+</h1><p>在Vue开发中，组件之间的通信是一个常见的需求。本文将介绍几种常用的组件通信方式，包括<code>props</code>和<code>$emit</code>事件、<code>provide/inject</code>、自定义事件总线、<code>Vuex</code>状态管理、<code>v-model</code>、<code>透传 Attributes</code>、<code>插槽 Slots</code>。</p>
 <h2 id="props-和-emit事件">Props 和 $emit(事件)
 </h2><p><code>Props</code>和<code>$emit</code>是Vue中最基本的组件通信方式。父组件通过<code>props</code>向子组件传递数据，子组件通过<code>$emit</code>触发事件向父组件传递数据。</p>
 <p><strong>1.Props传值：</strong></p>
@@ -943,8 +945,449 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="结论">结论
-</h2><p>本文介绍了几种常用的Vue组件通信方式，根据具体的应用场景和需求，选择合适的通信方式可以提高代码的可维护性和可读性。Vue组件传参的方式多种多样，本文只介绍了几种常见的方法，实际可以有更多的变通和组合使用，灵活运用这些技术可以帮助开发者更好地管理组件之间的通信。</p>
+</div><h2 id="透传-attributes">透传 Attributes
+</h2><p><code>透传 attributes</code> 是指传递给子组件，却没有在子组件中显式声明为 <code>props</code> 或 <code>emits</code> 的 attribute或 <code>v-on</code>事件监视器，最常见的是<code>class</code>、<code>style</code>和<code>id</code>。这些属性会被自动添加到子组件的根元素上，适用于需要传递大量属性但不想逐一声明的场景。</p>
+<p><strong>1. 透传 Attributes 示例：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ChildComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">Child</span> <span class="nx">Component</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//如果已经有了class、style或id属性，这些属性会和从父组件继承的值合并
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//子组件没有显式声明任何 props 或 emits
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ParentComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">ChildComponent</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;custom-class&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;color: red;&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;child-component&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//父组件传递的 class、style 和 id 会被自动添加到子组件的根元素上
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">ChildComponent</span> <span class="kr">from</span> <span class="s1">&#39;./ChildComponent.vue&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后渲染的结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;child-component&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;custom-class&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;color: red;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  Child Component
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li><strong>禁用透传 Attributes</strong></li>
+</ol>
+<p>有时我们可能不希望某些属性被透传到子组件，这时可以使用 <code>inheritAttrs: false</code> 选项来禁用透传。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// ChildComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">Child</span> <span class="nx">Component</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">defineOptions</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">inheritAttrs</span>: <span class="kt">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当子组件有多个根元素时，Vue 默认会将透传的属性添加到第一个根元素上，这可能不是我们想要的效果。通过禁用透传，我们可以手动将属性绑定到特定的元素上。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// ChildComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">First</span> <span class="nx">Root</span> <span class="nx">Element</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-bind</span><span class="o">=</span><span class="s">&#34;$attrs&#34;</span><span class="p">&gt;</span><span class="nx">Second</span> <span class="nx">Root</span> <span class="nx">Element</span> <span class="kd">with</span> <span class="nx">inherited</span> <span class="nx">attributes</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">//将透传的属性绑定到第二个根元素上
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">defineOptions</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">inheritAttrs</span>: <span class="kt">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意：没有参数的<code>v-bind</code>会将一个对象的所有属性都作为attribute应用到目标元素上。</p>
+<ol start="3">
+<li><strong>多根节点的透传</strong></li>
+</ol>
+<p>多根节点的组件没有自动attribute透传功能，如果<code>$attrs</code>没有被显式绑定，将会抛出一个运行时的警告。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// MultiRootComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span><span class="nx">First</span> <span class="nx">Root</span> <span class="nx">Element</span><span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span><span class="nx">Second</span> <span class="nx">Root</span> <span class="nx">Element</span><span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//没有显式绑定 $attrs，会抛出警告
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>要解决这个问题，可以显式绑定<code>$attrs</code>到其中一个根元素上：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// MultiRootComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">header</span> <span class="na">v-bind</span><span class="o">=</span><span class="s">&#34;$attrs&#34;</span><span class="p">&gt;</span><span class="nx">First</span> <span class="nx">Root</span> <span class="nx">Element</span> <span class="kd">with</span> <span class="nx">inherited</span> <span class="nx">attributes</span><span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span><span class="nx">Second</span> <span class="nx">Root</span> <span class="nx">Element</span><span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="插槽-slots">插槽 Slots
+</h2><p>插槽（Slots）是Vue中用于组件间传递内容的一种机制，允许父组件向子组件传递任意的模板内容。插槽适用于需要在子组件中动态渲染父组件提供的内容的场景。</p>
+<p><strong>1. 基本插槽</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ChildComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">slot</span><span class="p">&gt;&lt;/</span><span class="nt">slot</span><span class="p">&gt;</span> <span class="c1">//插槽占位符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ParentComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">ChildComponent</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">This</span> <span class="k">is</span> <span class="nx">content</span> <span class="nx">passed</span> <span class="kr">from</span> <span class="nx">Parent</span> <span class="nx">to</span> <span class="nx">Child</span> <span class="nx">via</span> <span class="nx">slot</span><span class="p">.&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//传递给子组件的内容,会渲染在子组件的插槽位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">&lt;/</span><span class="nt">ChildComponent</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">ChildComponent</span> <span class="kr">from</span> <span class="s1">&#39;./ChildComponent.vue&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li><strong>具名插槽</strong></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// ChildComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;header&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">slot</span><span class="p">&gt;</span> <span class="c1">//具名插槽
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">slot</span><span class="p">&gt;&lt;/</span><span class="nt">slot</span><span class="p">&gt;</span> <span class="c1">//默认插槽
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;footer&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">slot</span><span class="p">&gt;</span> <span class="c1">//具名插槽
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// ParentComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">ChildComponent</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">template</span> <span class="err">#</span><span class="na">header</span><span class="p">&gt;</span><span class="c1">//使用含v-slot的&lt;template&gt;元素，并将插槽的名字传给该指令，此处是语法糖，等同于v-slot:header
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">This</span> <span class="k">is</span> <span class="nx">the</span> <span class="nx">header</span> <span class="nx">content</span><span class="p">.&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">This</span> <span class="k">is</span> <span class="nx">the</span> <span class="nx">main</span> <span class="nx">content</span><span class="p">.&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">template</span> <span class="err">#</span><span class="na">footer</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">This</span> <span class="k">is</span> <span class="nx">the</span> <span class="nx">footer</span> <span class="nx">content</span><span class="p">.&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">ChildComponent</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">ChildComponent</span> <span class="kr">from</span> <span class="s1">&#39;./ChildComponent.vue&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li><strong>条件插槽</strong></li>
+</ol>
+<p>根据内容是否被传入了插槽来渲染某些内容,可以使用<code>$slots</code>和<code>v-if</code>来实现条件插槽：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// ChildComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">header</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;$slots.header&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;header&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">slot</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">slot</span><span class="p">&gt;&lt;/</span><span class="nt">slot</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">footer</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&#34;$slots.footer&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;footer&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">slot</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li><strong>动态插槽</strong></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// ParentComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">base</span><span class="err">-</span><span class="na">layout</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">template</span> <span class="na">v</span><span class="err">-</span><span class="na">slot</span><span class="err">:[</span><span class="na">dynamicSlotName</span><span class="err">]</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- 缩写为 --&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">template</span> <span class="err">#[</span><span class="na">dynamicSlotName</span><span class="err">]</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="err">/base-layout&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在上面的例子中，<code>dynamicSlotName</code>是一个动态变量，可以根据需要传递不同的插槽名称，实现更灵活的插槽内容传递。</p>
+<ol start="5">
+<li><strong>作用域插槽</strong></li>
+</ol>
+<p>作用域插槽（Scoped Slots）是指插槽可以接收来自子组件的数据，并将这些数据传递给插槽的内容。通过作用域插槽，父组件可以更灵活地控制插槽的渲染内容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// ChildComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">slot</span> <span class="err">:</span><span class="na">data</span><span class="o">=</span><span class="s">&#34;slotData&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">slot</span><span class="p">&gt;</span> <span class="c1">//将数据传递给插槽
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">slotData</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Hello from ChildComponent!&#39;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// ParentComponent.vue
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">ChildComponent</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">template</span> <span class="err">#</span><span class="na">default</span><span class="o">=</span><span class="s">&#34;{ data }&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;{{</span> <span class="nx">data</span><span class="p">.</span><span class="nx">message</span> <span class="p">}}&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">ChildComponent</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">ChildComponent</span> <span class="kr">from</span> <span class="s1">&#39;./ChildComponent.vue&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在上面的例子中，子组件通过<code>slot</code>将<code>slotData</code>对象传递给插槽内容，父组件通过作用域插槽接收这个数据并进行渲染。</p>
+<p>注意：在 Vue 3 中，作用域插槽的语法有所简化，可以直接在<code>template</code>标签上使用<code>#default</code>来定义默认插槽(最好使用显示的默认插槽防止歧义，即使用<code>&lt;template #default&gt;</code>)，并通过解构语法获取传递的数据。</p>
+<h2 id="结论">结论
+</h2><p>本文介绍了八种常用的Vue组件通信方式，根据具体的应用场景和需求，选择合适的通信方式可以提高代码的可维护性和可读性。Vue组件传参的方式多种多样，本文只介绍了几种常见的方法，实际可以有更多的变通和组合使用，灵活运用这些技术可以帮助开发者更好地管理组件之间的通信。</p>
 <h2 id="参考资料">参考资料
 </h2><ul>
 <li><a class="link" href="https://vuex.vuejs.org/zh/"  target="_blank" rel="noopener"
