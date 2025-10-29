@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="TypeScript 学习指南 本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。\n1. 为什么学 TypeScript 静态类型可以在编译期发现很多常见错误，提高代码可维护性。 与现代 IDE（例如 VS Code）结合，能获得更好的智能提示、重构支持和文档提示。 2. 快速开始 1 2 3 4 # 初始化项目 pnpm init -y pnpm add -D typescript npx tsc --init 这会生成 tsconfig.json。\n">
-<title>TypeScript</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="React 学习概述 React是由Facebook开发的一个用于构建用户界面的JavaScript库。它采用组件化的开发方式，使得构建复杂的应用变得更加简单和高效。React的核心特点包括声明式编程、组件化、虚拟DOM和单向数据流等。这些我下面都会一一介绍：\n">
+<title>React概述</title>
 
-<link rel='canonical' href='https://adam-code-line.github.io/p/typescript-learning-guide/'>
+<link rel='canonical' href='https://adam-code-line.github.io/p/react-learning-guide/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="TypeScript">
-<meta property='og:description' content="TypeScript 学习指南 本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。\n1. 为什么学 TypeScript 静态类型可以在编译期发现很多常见错误，提高代码可维护性。 与现代 IDE（例如 VS Code）结合，能获得更好的智能提示、重构支持和文档提示。 2. 快速开始 1 2 3 4 # 初始化项目 pnpm init -y pnpm add -D typescript npx tsc --init 这会生成 tsconfig.json。\n">
-<meta property='og:url' content='https://adam-code-line.github.io/p/typescript-learning-guide/'>
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="React概述">
+<meta property='og:description' content="React 学习概述 React是由Facebook开发的一个用于构建用户界面的JavaScript库。它采用组件化的开发方式，使得构建复杂的应用变得更加简单和高效。React的核心特点包括声明式编程、组件化、虚拟DOM和单向数据流等。这些我下面都会一一介绍：\n">
+<meta property='og:url' content='https://adam-code-line.github.io/p/react-learning-guide/'>
 <meta property='og:site_name' content='Adam&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-01T11:35:10&#43;08:00'/><meta property='article:modified_time' content='2025-10-01T11:35:10&#43;08:00'/><meta property='og:image' content='https://adam-code-line.github.io/p/typescript-learning-guide/cover.jpg' />
-<meta name="twitter:title" content="TypeScript">
-<meta name="twitter:description" content="TypeScript 学习指南 本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。\n1. 为什么学 TypeScript 静态类型可以在编译期发现很多常见错误，提高代码可维护性。 与现代 IDE（例如 VS Code）结合，能获得更好的智能提示、重构支持和文档提示。 2. 快速开始 1 2 3 4 # 初始化项目 pnpm init -y pnpm add -D typescript npx tsc --init 这会生成 tsconfig.json。\n"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://adam-code-line.github.io/p/typescript-learning-guide/cover.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-29T19:55:32&#43;08:00'/><meta property='article:modified_time' content='2025-10-29T19:55:32&#43;08:00'/>
+<meta name="twitter:title" content="React概述">
+<meta name="twitter:description" content="React 学习概述 React是由Facebook开发的一个用于构建用户界面的JavaScript库。它采用组件化的开发方式，使得构建复杂的应用变得更加简单和高效。React的核心特点包括声明式编程、组件化、虚拟DOM和单向数据流等。这些我下面都会一一介绍：\n">
     </head>
     <body class="
     article-page
@@ -291,15 +290,21 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#1-为什么学-typescript">1. 为什么学 TypeScript</a></li>
-    <li><a href="#2-快速开始">2. 快速开始</a></li>
-    <li><a href="#3-基础类型示例">3. 基础类型示例</a></li>
-    <li><a href="#4-进阶类型">4. 进阶类型</a></li>
-    <li><a href="#5-在-vue-中使用-typescript">5. 在 Vue 中使用 TypeScript</a></li>
-    <li><a href="#6-常见模式与技巧">6. 常见模式与技巧</a></li>
-    <li><a href="#7-配合工具链">7. 配合工具链</a></li>
-    <li><a href="#8-练习任务">8. 练习任务</a></li>
-    <li><a href="#9-参考资源">9. 参考资源</a></li>
+    <li><a href="#react的核心概念">React的核心概念</a>
+      <ol>
+        <li><a href="#1-声明式编程">1. 声明式编程</a></li>
+        <li><a href="#2-组件components">2. 组件（Components）</a></li>
+        <li><a href="#3-jsx语法">3. JSX语法</a></li>
+        <li><a href="#4-虚拟domvirtual-dom">4. 虚拟DOM（Virtual DOM）</a></li>
+        <li><a href="#5-单向数据流one-way-data-flow">5. 单向数据流（One-way Data Flow）</a></li>
+        <li><a href="#6-状态管理state-management">6. 状态管理（State Management）</a></li>
+        <li><a href="#7-react-hooks">7. React Hooks</a></li>
+      </ol>
+    </li>
+    <li><a href="#快速开始">快速开始</a></li>
+    <li><a href="#组件示例">组件示例</a></li>
+    <li><a href="#hooks-示例">Hooks 示例</a></li>
+    <li><a href="#结语">结语</a></li>
   </ol>
 </nav>
         </div>
@@ -311,20 +316,8 @@
 
 
             <main class="main full-width">
-    <article class="has-image main-article">
+    <article class="main-article">
     <header class="article-header">
-        <div class="article-image">
-            <a href="/p/typescript-learning-guide/">
-                <img src="/p/typescript-learning-guide/cover_hu_d306b3ba29487788.jpg"
-                        srcset="/p/typescript-learning-guide/cover_hu_d306b3ba29487788.jpg 800w, /p/typescript-learning-guide/cover_hu_a5964db1b2b24f10.jpg 1600w"
-                        width="800" 
-                        height="450" 
-                        loading="lazy"
-                        alt="Featured image of post TypeScript" />
-                
-            </a>
-        </div>
-    
 
     <div class="article-details">
     
@@ -334,8 +327,8 @@
                 Frontend
             </a>
         
-            <a href="/categories/typescript/" style="background-color: #2a9d8f; color: #fff;">
-                TypeScript
+            <a href="/categories/react/" style="background-color: #2a9d8f; color: #fff;">
+                React
             </a>
         
             <a href="/categories/learning/" style="background-color: #2a9d8f; color: #fff;">
@@ -347,7 +340,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/typescript-learning-guide/">TypeScript</a>
+            <a href="/p/react-learning-guide/">React概述</a>
         </h2>
     
         
@@ -369,7 +362,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Oct 01, 2025</time>
+                <time class="article-time--published">Oct 29, 2025</time>
             </div>
         
 
@@ -384,7 +377,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 4 分钟
                 </time>
             </div>
         
@@ -399,30 +392,25 @@
     <section class="article-content">
     
     
-    <h1 id="typescript-学习指南">TypeScript 学习指南
-</h1><p>本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。</p>
-<h2 id="1-为什么学-typescript">1. 为什么学 TypeScript
-</h2><ul>
-<li>静态类型可以在编译期发现很多常见错误，提高代码可维护性。</li>
-<li>与现代 IDE（例如 VS Code）结合，能获得更好的智能提示、重构支持和文档提示。</li>
-</ul>
-<h2 id="2-快速开始">2. 快速开始
-</h2><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 初始化项目</span>
-</span></span><span class="line"><span class="cl">pnpm init -y
-</span></span><span class="line"><span class="cl">pnpm add -D typescript
-</span></span><span class="line"><span class="cl">npx tsc --init
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>这会生成 <code>tsconfig.json</code>。</p>
-<p>一个常见的 <code>tsconfig.json</code> 最小配置：</p>
+    <h1 id="react-学习概述">React 学习概述
+</h1><p>React是由Facebook开发的一个用于构建用户界面的JavaScript库。它采用组件化的开发方式，使得构建复杂的应用变得更加简单和高效。React的核心特点包括声明式编程、组件化、虚拟DOM和单向数据流等。这些我下面都会一一介绍：</p>
+<h2 id="react的核心概念">React的核心概念
+</h2><h3 id="1-声明式编程">1. 声明式编程
+</h3><p>React采用声明式编程范式，开发者只需描述UI在不同状态下的样子，React会负责更新和渲染组件。这种方式使得代码更加简洁易读，减少了手动操作DOM的复杂性。</p>
+<h3 id="2-组件components">2. 组件（Components）
+</h3><p>组件是React应用的基本构建块。每个组件都是一个独立的、可复用的UI单元，可以包含自己的状态和逻辑。组件可以是函数组件或类组件。组件化就是将整体UI拆分成多个小的、独立的部分，从而提高代码的可维护性和复用性。</p>
+<h3 id="3-jsx语法">3. JSX语法
+</h3><p>JSX是一种JavaScript的语法扩展，允许在JavaScript代码中直接编写类似HTML的代码。JSX使得定义组件的结构更加直观。</p>
+<h3 id="4-虚拟domvirtual-dom">4. 虚拟DOM（Virtual DOM）
+</h3><p>React使用虚拟DOM来提高性能。虚拟DOM是一个轻量级的JavaScript对象，表示真实DOM的副本。当组件的状态发生变化时，React会首先更新虚拟DOM，然后通过比较新旧虚拟DOM的差异，最小化地更新真实DOM。</p>
+<h3 id="5-单向数据流one-way-data-flow">5. 单向数据流（One-way Data Flow）
+</h3><p>React采用单向数据流的设计理念，数据从父组件传递到子组件。这样可以更容易地追踪数据的变化，提升应用的可维护性。</p>
+<h3 id="6-状态管理state-management">6. 状态管理（State Management）
+</h3><p>React组件可以拥有自己的状态（state），用于存储组件的动态数据。状态的变化会触发组件的重新渲染。对于复杂的应用，可以使用状态管理库（如Redux、MobX）来集中管理应用的状态。</p>
+<h3 id="7-react-hooks">7. React Hooks
+</h3><p>React Hooks是React 16.8引入的一组函数，允许在函数组件中使用状态和其他React特性。常用的Hooks包括useState、useEffect、useContext等。</p>
+<h2 id="快速开始">快速开始
+</h2><p>React在2025年2月就表明正式弃用<code>Create React App</code>作为新应用的推荐工具，并建议现有应用迁移至框架(如<code>Next.js</code>、<code>Remix</code>等)或使用现代构建工具(如<code>Vite</code>、<code>parcel</code>等)来创建React项目。所以在读一些旧文档的时候要注意这一点。下面我以<code>Vite</code>为例，介绍如何快速创建一个React项目：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -439,21 +427,57 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nt">&#34;compilerOptions&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;target&#34;</span><span class="p">:</span> <span class="s2">&#34;ES2020&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;module&#34;</span><span class="p">:</span> <span class="s2">&#34;ESNext&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;moduleResolution&#34;</span><span class="p">:</span> <span class="s2">&#34;Node&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;strict&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;jsx&#34;</span><span class="p">:</span> <span class="s2">&#34;preserve&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;esModuleInterop&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;skipLibCheck&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">		<span class="nt">&#34;forceConsistentCasingInFileNames&#34;</span><span class="p">:</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 全局安装pnpm（可选），也可直接使用npm创建</span>
+</span></span><span class="line"><span class="cl">npm install -g pnpm
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建一个新的Vite项目</span>
+</span></span><span class="line"><span class="cl">pnpm create vite@latest my-react-app --template react
+</span></span><span class="line"><span class="cl"><span class="c1"># 进入项目目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> my-react-app
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装依赖</span>
+</span></span><span class="line"><span class="cl">pnpm install
+</span></span><span class="line"><span class="cl"><span class="c1"># 启动开发服务器</span>
+</span></span><span class="line"><span class="cl">pnpm dev
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="3-基础类型示例">3. 基础类型示例
+</div><p>打开浏览器访问<code>http://localhost:5173</code>即可预览React应用。</p>
+<h2 id="组件示例">组件示例
+</h2><p>以下是一个简单的React函数组件示例，实现了一个计数器功能：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">Counter</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kr">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Count</span><span class="o">:</span> <span class="p">{</span><span class="nx">count</span><span class="p">}&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">&lt;</span><span class="nt">button</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">setCount</span><span class="p">(</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)}&gt;</span><span class="nx">Increment</span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">Counter</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个组件使用了<code>useState</code> Hook来管理计数器的状态。当点击按钮时，计数器的值会增加1，并触发组件重新渲染以显示最新的计数值。</p>
+<h2 id="hooks-示例">Hooks 示例
 </h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -472,124 +496,29 @@
 </span><span class="lnt">14
 </span><span class="lnt">15
 </span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// 原始类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">s</span>: <span class="kt">string</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">n</span>: <span class="kt">number</span> <span class="o">=</span> <span class="mi">123</span>
-</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">b</span>: <span class="kt">boolean</span> <span class="o">=</span> <span class="kc">true</span>
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 数组与元组
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">arr</span>: <span class="kt">number</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">tup</span><span class="o">:</span> <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">number</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">Timer</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kr">const</span> <span class="p">[</span><span class="nx">seconds</span><span class="p">,</span> <span class="nx">setSeconds</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 联合类型与类型别名
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">type</span> <span class="nx">ID</span> <span class="o">=</span> <span class="kt">string</span> <span class="o">|</span> <span class="kt">number</span>
-</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">id</span>: <span class="kt">ID</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="kr">const</span> <span class="nx">interval</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">setSeconds</span><span class="p">((</span><span class="nx">prev</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">prev</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">interval</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span> <span class="p">[]);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 接口与类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span> <span class="nx">id</span>: <span class="kt">ID</span><span class="p">;</span> <span class="nx">name</span>: <span class="kt">string</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">user</span>: <span class="kt">User</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Alice&#39;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">Timer</span><span class="o">:</span> <span class="p">{</span><span class="nx">seconds</span><span class="p">}</span> <span class="nx">seconds</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 函数类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">b</span>: <span class="kt">number</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">Timer</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="4-进阶类型">4. 进阶类型
-</h2><ul>
-<li>泛型（Generics）</li>
-<li>映射类型（Mapped Types）</li>
-<li>条件类型（Conditional Types）</li>
-</ul>
-<p>泛型示例：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">identity</span><span class="p">&lt;</span><span class="nt">T</span><span class="p">&gt;(</span><span class="nx">arg</span>: <span class="kt">T</span><span class="p">)</span><span class="o">:</span> <span class="nx">T</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">arg</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">identity</span><span class="p">&lt;</span><span class="nt">string</span><span class="p">&gt;(</span><span class="s1">&#39;hi&#39;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="5-在-vue-中使用-typescript">5. 在 Vue 中使用 TypeScript
-</h2><ul>
-<li>推荐使用 <code>script setup lang=&quot;ts&quot;</code>。</li>
-<li>在 Vite + Vue 项目中，<code>shims-vue.d.ts</code> 可能需要声明 Vue 文件支持：</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">declare</span> <span class="nx">module</span> <span class="s1">&#39;*.vue&#39;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="kr">import</span> <span class="p">{</span> <span class="nx">DefineComponent</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;vue&#39;</span>
-</span></span><span class="line"><span class="cl">	<span class="kr">const</span> <span class="nx">component</span>: <span class="kt">DefineComponent</span><span class="o">&lt;</span><span class="p">{},</span> <span class="p">{},</span> <span class="kt">any</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl">	<span class="kr">export</span> <span class="k">default</span> <span class="nx">component</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>组件示例：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;ts&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">defineProps</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;vue&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">Props</span> <span class="p">{</span> <span class="nx">title</span>: <span class="kt">string</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">props</span> <span class="o">=</span> <span class="nx">defineProps</span><span class="p">&lt;</span><span class="nt">Props</span><span class="p">&gt;()</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;{{</span> <span class="nx">props</span><span class="p">.</span><span class="nx">title</span> <span class="p">}}&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="6-常见模式与技巧">6. 常见模式与技巧
-</h2><ul>
-<li>使用 <code>as const</code> 固定字面量类型。</li>
-<li>使用 <code>unknown</code> 代替 <code>any</code> 做更严格的类型收敛。</li>
-<li>使用 <code>ReturnType&lt;&gt;</code>, <code>Partial&lt;&gt;</code>, <code>Required&lt;&gt;</code> 等工具类型提高复用性。</li>
-</ul>
-<h2 id="7-配合工具链">7. 配合工具链
-</h2><ul>
-<li>ESLint 与 TypeScript: 使用 <code>@typescript-eslint/parser</code> 和 <code>@typescript-eslint/eslint-plugin</code>。</li>
-<li>编辑器：确保安装 <code>TypeScript</code> 相关插件并在项目中使用本地 TypeScript（避免全局版本不一致）。</li>
-</ul>
-<h2 id="8-练习任务">8. 练习任务
-</h2><ol>
-<li>把一个小型 JS 项目迁移到 TypeScript（从 <code>--strict</code> 放宽到逐步开启 strict 规则）。</li>
-<li>写一个简单的泛型工具函数并写测试（Vitest）。</li>
-</ol>
-<h2 id="9-参考资源">9. 参考资源
-</h2><ul>
-<li><a class="link" href="https://www.typescriptlang.org/docs/"  target="_blank" rel="noopener"
-    >TypeScript 官方文档</a></li>
-<li><a class="link" href="https://basarat.gitbook.io/typescript/"  target="_blank" rel="noopener"
-    >TypeScript Deep Dive</a></li>
-<li><a class="link" href="https://vuejs.org/guide/typescript/overview.html"  target="_blank" rel="noopener"
-    >Vue + TypeScript 官方指南</a></li>
-<li><a class="link" href="https://typescript-eslint.io/"  target="_blank" rel="noopener"
-    >TypeScript ESLint</a></li>
-</ul>
+</div><p>这个组件使用了<code>useEffect</code> Hook来设置一个定时器，每秒钟更新一次计数器的值。当组件卸载时，清除定时器以避免内存泄漏。</p>
+<h2 id="结语">结语
+</h2><p>React是一个功能强大的JavaScript库，很多大厂都在使用React,它也是目前前端开发的主流框架，所以学习React是非常有必要的。因为React的知识体系庞大且较为复杂，本文只作为入门概述，建议结合官方文档和实际项目进行深入学习和实践，后面我也会一步步更新React的学习文档，不断深化理解。</p>
 
 </section>
 
@@ -623,19 +552,6 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/p/react-learning-guide/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">React概述</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="">
@@ -684,6 +600,19 @@
 
         <div class="article-details">
             <h2 class="article-title">Web API</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/nuxt/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Nuxt 基础总述</h2>
         </div>
     </a>
 </article>
