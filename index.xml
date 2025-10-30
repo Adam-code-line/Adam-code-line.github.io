@@ -16,19 +16,19 @@
         <description>&lt;h1 id=&#34;react-学习概述&#34;&gt;React 学习概述
 &lt;/h1&gt;&lt;p&gt;React是由Facebook开发的一个用于构建用户界面的JavaScript库。它采用组件化的开发方式，使得构建复杂的应用变得更加简单和高效。React的核心特点包括声明式编程、组件化、虚拟DOM和单向数据流等。这些我下面都会一一介绍：&lt;/p&gt;
 &lt;h2 id=&#34;react的核心概念&#34;&gt;React的核心概念
-&lt;/h2&gt;&lt;h3 id=&#34;1-声明式编程&#34;&gt;1. 声明式编程
+&lt;/h2&gt;&lt;h3 id=&#34;声明式编程&#34;&gt;声明式编程
 &lt;/h3&gt;&lt;p&gt;React采用声明式编程范式，开发者只需描述UI在不同状态下的样子，React会负责更新和渲染组件。这种方式使得代码更加简洁易读，减少了手动操作DOM的复杂性。&lt;/p&gt;
-&lt;h3 id=&#34;2-组件components&#34;&gt;2. 组件（Components）
+&lt;h3 id=&#34;组件components&#34;&gt;组件（Components）
 &lt;/h3&gt;&lt;p&gt;组件是React应用的基本构建块。每个组件都是一个独立的、可复用的UI单元，可以包含自己的状态和逻辑。组件可以是函数组件或类组件。组件化就是将整体UI拆分成多个小的、独立的部分，从而提高代码的可维护性和复用性。&lt;/p&gt;
-&lt;h3 id=&#34;3-jsx语法&#34;&gt;3. JSX语法
+&lt;h3 id=&#34;jsx语法&#34;&gt;JSX语法
 &lt;/h3&gt;&lt;p&gt;JSX是一种JavaScript的语法扩展，允许在JavaScript代码中直接编写类似HTML的代码。JSX使得定义组件的结构更加直观。&lt;/p&gt;
-&lt;h3 id=&#34;4-虚拟domvirtual-dom&#34;&gt;4. 虚拟DOM（Virtual DOM）
+&lt;h3 id=&#34;虚拟domvirtual-dom&#34;&gt;虚拟DOM（Virtual DOM）
 &lt;/h3&gt;&lt;p&gt;React使用虚拟DOM来提高性能。虚拟DOM是一个轻量级的JavaScript对象，表示真实DOM的副本。当组件的状态发生变化时，React会首先更新虚拟DOM，然后通过比较新旧虚拟DOM的差异，最小化地更新真实DOM。&lt;/p&gt;
-&lt;h3 id=&#34;5-单向数据流one-way-data-flow&#34;&gt;5. 单向数据流（One-way Data Flow）
+&lt;h3 id=&#34;单向数据流one-way-data-flow&#34;&gt;单向数据流（One-way Data Flow）
 &lt;/h3&gt;&lt;p&gt;React采用单向数据流的设计理念，数据从父组件传递到子组件。这样可以更容易地追踪数据的变化，提升应用的可维护性。&lt;/p&gt;
-&lt;h3 id=&#34;6-状态管理state-management&#34;&gt;6. 状态管理（State Management）
+&lt;h3 id=&#34;状态管理state-management&#34;&gt;状态管理（State Management）
 &lt;/h3&gt;&lt;p&gt;React组件可以拥有自己的状态（state），用于存储组件的动态数据。状态的变化会触发组件的重新渲染。对于复杂的应用，可以使用状态管理库（如Redux、MobX）来集中管理应用的状态。&lt;/p&gt;
-&lt;h3 id=&#34;7-react-hooks&#34;&gt;7. React Hooks
+&lt;h3 id=&#34;react-hooks&#34;&gt;React Hooks
 &lt;/h3&gt;&lt;p&gt;React Hooks是React 16.8引入的一组函数，允许在函数组件中使用状态和其他React特性。常用的Hooks包括useState、useEffect、useContext等。&lt;/p&gt;
 &lt;h2 id=&#34;快速开始&#34;&gt;快速开始
 &lt;/h2&gt;&lt;p&gt;React在2025年2月就表明正式弃用&lt;code&gt;Create React App&lt;/code&gt;作为新应用的推荐工具，并建议现有应用迁移至框架(如&lt;code&gt;Next.js&lt;/code&gt;、&lt;code&gt;Remix&lt;/code&gt;等)或使用现代构建工具(如&lt;code&gt;Vite&lt;/code&gt;、&lt;code&gt;parcel&lt;/code&gt;等)来创建React项目。所以在读一些旧文档的时候要注意这一点。下面我以&lt;code&gt;Vite&lt;/code&gt;为例，介绍如何快速创建一个React项目：&lt;/p&gt;

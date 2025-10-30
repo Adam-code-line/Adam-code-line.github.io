@@ -292,13 +292,13 @@
   <ol>
     <li><a href="#react的核心概念">React的核心概念</a>
       <ol>
-        <li><a href="#1-声明式编程">1. 声明式编程</a></li>
-        <li><a href="#2-组件components">2. 组件（Components）</a></li>
-        <li><a href="#3-jsx语法">3. JSX语法</a></li>
-        <li><a href="#4-虚拟domvirtual-dom">4. 虚拟DOM（Virtual DOM）</a></li>
-        <li><a href="#5-单向数据流one-way-data-flow">5. 单向数据流（One-way Data Flow）</a></li>
-        <li><a href="#6-状态管理state-management">6. 状态管理（State Management）</a></li>
-        <li><a href="#7-react-hooks">7. React Hooks</a></li>
+        <li><a href="#声明式编程">声明式编程</a></li>
+        <li><a href="#组件components">组件（Components）</a></li>
+        <li><a href="#jsx语法">JSX语法</a></li>
+        <li><a href="#虚拟domvirtual-dom">虚拟DOM（Virtual DOM）</a></li>
+        <li><a href="#单向数据流one-way-data-flow">单向数据流（One-way Data Flow）</a></li>
+        <li><a href="#状态管理state-management">状态管理（State Management）</a></li>
+        <li><a href="#react-hooks">React Hooks</a></li>
       </ol>
     </li>
     <li><a href="#快速开始">快速开始</a></li>
@@ -395,19 +395,19 @@
     <h1 id="react-学习概述">React 学习概述
 </h1><p>React是由Facebook开发的一个用于构建用户界面的JavaScript库。它采用组件化的开发方式，使得构建复杂的应用变得更加简单和高效。React的核心特点包括声明式编程、组件化、虚拟DOM和单向数据流等。这些我下面都会一一介绍：</p>
 <h2 id="react的核心概念">React的核心概念
-</h2><h3 id="1-声明式编程">1. 声明式编程
+</h2><h3 id="声明式编程">声明式编程
 </h3><p>React采用声明式编程范式，开发者只需描述UI在不同状态下的样子，React会负责更新和渲染组件。这种方式使得代码更加简洁易读，减少了手动操作DOM的复杂性。</p>
-<h3 id="2-组件components">2. 组件（Components）
+<h3 id="组件components">组件（Components）
 </h3><p>组件是React应用的基本构建块。每个组件都是一个独立的、可复用的UI单元，可以包含自己的状态和逻辑。组件可以是函数组件或类组件。组件化就是将整体UI拆分成多个小的、独立的部分，从而提高代码的可维护性和复用性。</p>
-<h3 id="3-jsx语法">3. JSX语法
+<h3 id="jsx语法">JSX语法
 </h3><p>JSX是一种JavaScript的语法扩展，允许在JavaScript代码中直接编写类似HTML的代码。JSX使得定义组件的结构更加直观。</p>
-<h3 id="4-虚拟domvirtual-dom">4. 虚拟DOM（Virtual DOM）
+<h3 id="虚拟domvirtual-dom">虚拟DOM（Virtual DOM）
 </h3><p>React使用虚拟DOM来提高性能。虚拟DOM是一个轻量级的JavaScript对象，表示真实DOM的副本。当组件的状态发生变化时，React会首先更新虚拟DOM，然后通过比较新旧虚拟DOM的差异，最小化地更新真实DOM。</p>
-<h3 id="5-单向数据流one-way-data-flow">5. 单向数据流（One-way Data Flow）
+<h3 id="单向数据流one-way-data-flow">单向数据流（One-way Data Flow）
 </h3><p>React采用单向数据流的设计理念，数据从父组件传递到子组件。这样可以更容易地追踪数据的变化，提升应用的可维护性。</p>
-<h3 id="6-状态管理state-management">6. 状态管理（State Management）
+<h3 id="状态管理state-management">状态管理（State Management）
 </h3><p>React组件可以拥有自己的状态（state），用于存储组件的动态数据。状态的变化会触发组件的重新渲染。对于复杂的应用，可以使用状态管理库（如Redux、MobX）来集中管理应用的状态。</p>
-<h3 id="7-react-hooks">7. React Hooks
+<h3 id="react-hooks">React Hooks
 </h3><p>React Hooks是React 16.8引入的一组函数，允许在函数组件中使用状态和其他React特性。常用的Hooks包括useState、useEffect、useContext等。</p>
 <h2 id="快速开始">快速开始
 </h2><p>React在2025年2月就表明正式弃用<code>Create React App</code>作为新应用的推荐工具，并建议现有应用迁移至框架(如<code>Next.js</code>、<code>Remix</code>等)或使用现代构建工具(如<code>Vite</code>、<code>parcel</code>等)来创建React项目。所以在读一些旧文档的时候要注意这一点。下面我以<code>Vite</code>为例，介绍如何快速创建一个React项目：</p>
