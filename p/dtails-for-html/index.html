@@ -292,6 +292,7 @@
   <ol>
     <li><a href="#html的基本结构">HTML的基本结构</a></li>
     <li><a href="#html-的语义化标签">HTML 的语义化标签</a></li>
+    <li><a href="#html的块级元素和行内元素">HTML的块级元素和行内元素</a></li>
     <li><a href="#html的多媒体元素">HTML的多媒体元素</a></li>
     <li><a href="#html的canvas和svg">HTML的Canvas和SVG</a></li>
     <li><a href="#html5的本地存储">HTML5的本地存储</a></li>
@@ -365,7 +366,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 10 分钟
+                    阅读时长: 12 分钟
                 </time>
             </div>
         
@@ -489,7 +490,67 @@
 <li><strong>footer</strong>：定义文档或节的底部区域，通常包含版权信息、联系信息等内容。</li>
 </ul>
 <p>使用语义化标签有助于提高网页的可读性和可维护性，同时也有助于搜索引擎优化(SEO)和辅助技术的支持。</p>
-<h2 id="html的多媒体元素">HTML的多媒体元素
+<h2 id="html的块级元素和行内元素">HTML的块级元素和行内元素
+</h2><p>在HTML中，元素可以分为块级元素(block-level elements)和行内元素(inline elements)两大类。这两类元素在网页布局和显示方式上有显著的区别。</p>
+<ul>
+<li>
+<p><strong>块级元素</strong>：块级元素通常会占据其父元素的整个宽度，并且在其前后会自动换行。块级元素可以包含其他块级元素和行内元素。常见的块级元素有：</p>
+<ul>
+<li><code>&lt;div&gt;</code>：用于定义一个容器，可以包含其他元素。</li>
+<li><code>&lt;p&gt;</code>：用于定义段落。</li>
+<li><code>&lt;h1&gt;</code>至<code>&lt;h6&gt;</code>：用于定义标题，<code>&lt;h1&gt;</code>表示最高级别的标题，<code>&lt;h6&gt;</code>表示最低级别的标题。</li>
+<li><code>&lt;ul&gt;</code>和<code>&lt;ol&gt;</code>：用于定义无序列表和有序列表。</li>
+<li><code>&lt;li&gt;</code>：用于定义列表项。</li>
+<li><code>&lt;table&gt;</code>：用于定义表格。</li>
+</ul>
+</li>
+<li>
+<p><strong>行内元素</strong>：行内元素不会占据整个宽度，只会占据其内容所需的宽度，并且不会在其前后换行。行内元素通常只能包含文本或其他行内元素。常见的行内元素有：</p>
+<ul>
+<li><code>&lt;span&gt;</code>：用于定义一个行内容器，可以包含文本或其他行内元素。</li>
+<li><code>&lt;a&gt;</code>：用于定义超链接。</li>
+<li><code>&lt;strong&gt;</code>：用于定义重要的文本，通常以粗体显示。</li>
+<li><code>&lt;em&gt;</code>：用于定义强调的文本，通常以斜体显示。</li>
+<li><code>&lt;img&gt;</code>：用于嵌入图像。</li>
+</ul>
+</li>
+<li>
+<p><strong>行内块元素</strong>：行内块元素结合了块级元素和行内元素的特性，它们在文档流中表现为行内元素，但可以设置宽度和高度。常见的行内块元素有：</p>
+<ul>
+<li><code>&lt;button&gt;</code>：用于定义按钮。</li>
+<li><code>&lt;input&gt;</code>：用于定义输入字段。</li>
+<li><code>&lt;label&gt;</code>：用于定义表单控件的标签。</li>
+</ul>
+</li>
+</ul>
+<p>块级元素和行内元素可以嵌套使用，但需要遵循一定的规则。例如，块级元素不能嵌套在行内元素内，而行内元素可以嵌套在块级元素内。块级元素和行内元素之间也可以转化，例如通过CSS的<code>display</code>属性将块级元素设置为行内元素，反之亦然。</p>
+<p>将块级元素转化为行内元素：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">div</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">display</span><span class="p">:</span> <span class="kc">inline</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将行内元素转化为块级元素：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">span</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="html的多媒体元素">HTML的多媒体元素
 </h2><p>HTML5引入了多媒体元素，使得在网页中嵌入音频和视频可以不再依赖外部插件。下面我将介绍HTML中的多媒体元素：</p>
 <ul>
 <li><strong>audio</strong>：用于在网页中嵌入音频文件。常见的属性有<code>src</code>(指定音频文件的URL)、<code>controls</code>(显示音频控件)、<code>autoplay</code>(自动播放音频)、<code>loop</code>(循环播放音频)等。例如：</li>
