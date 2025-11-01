@@ -730,10 +730,96 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;在这个例子中，&lt;code&gt;.item&lt;/code&gt;类的子元素将具有初始尺寸为100px，并且可以增长以填充剩余空间，但不会缩小。设置&lt;code&gt;flex: 1&lt;/code&gt;也表示每个子元素将平分剩余空间。即每个元素在主轴上占据相等的空间,这是个无单位的比例值，表示每个元素按比例分配剩余空间。&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;在这个例子中，&lt;code&gt;.item&lt;/code&gt;类的子元素将具有初始尺寸为100px，并且可以增长以填充剩余空间，但不会缩小。设置&lt;code&gt;flex: 1&lt;/code&gt;也表示每个子元素将平分剩余空间。即每个元素在主轴上占据相等的空间,这是个无单位的比例值，表示每个元素按比例分配空间。&lt;/p&gt;
+&lt;h4 id=&#34;flex的换行&#34;&gt;flex的换行
+&lt;/h4&gt;&lt;p&gt;默认情况下，Flexbox容器内的子元素会在一行内排列，超出容器宽度时不会换行。可以使用&lt;code&gt;flex-wrap&lt;/code&gt;属性来控制子元素的换行行为，常见的取值有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nowrap&lt;/code&gt;：默认值，子元素不换行，超出容器宽度时会溢出。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wrap&lt;/code&gt;：子元素换行，超出容器宽度时会自动换到下一行。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wrap-reverse&lt;/code&gt;：子元素换行，超出容器宽度时会自动换到上一行。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;网格布局grid-layout&#34;&gt;网格布局(Grid Layout)
 &lt;/h3&gt;&lt;p&gt;网格布局使用&lt;code&gt;display: grid&lt;/code&gt;属性创建一个二维的网格容器，允许开发者定义行和列，并将子元素放置在指定的网格单元格中。Grid布局非常适合用于复杂的网页布局，如报纸式布局。常用的Grid属性包括&lt;code&gt;grid-template-rows&lt;/code&gt;、&lt;code&gt;grid-template-columns&lt;/code&gt;、&lt;code&gt;grid-gap&lt;/code&gt;等。&lt;/p&gt;
-&lt;h2 id=&#34;css的伪类和伪元素&#34;&gt;CSS的伪类和伪元素
+&lt;h4 id=&#34;grid布局的行和列&#34;&gt;grid布局的行和列
+&lt;/h4&gt;&lt;p&gt;在Grid布局中，可以使用&lt;code&gt;grid-template-rows&lt;/code&gt;和&lt;code&gt;grid-template-columns&lt;/code&gt;属性来定义网格的行和列。可以使用具体的长度值（如&lt;code&gt;100px&lt;/code&gt;）、百分比（如&lt;code&gt;50%&lt;/code&gt;）或灵活单位（如&lt;code&gt;fr&lt;/code&gt;）来设置行和列的大小。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;container&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;grid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;grid-template-rows&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;px&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;200&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;px&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fr&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;grid-gap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;px&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在这个例子中，&lt;code&gt;.container&lt;/code&gt;类定义了一个Grid容器，包含两行和两列。第一行高度为100px，第二行高度为200px；第一列宽度为1fr，第二列宽度为2fr，表示第二列的宽度是第一列的两倍。&lt;code&gt;grid-gap&lt;/code&gt;属性用于设置网格单元格之间的间距。&lt;/p&gt;
+&lt;h4 id=&#34;grid布局的子元素定位&#34;&gt;grid布局的子元素定位
+&lt;/h4&gt;&lt;p&gt;在Grid布局中，可以使用&lt;code&gt;grid-row&lt;/code&gt;和&lt;code&gt;grid-column&lt;/code&gt;属性来控制子元素在网格中的位置。可以指定子元素跨越的行和列。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;item1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;grid-row&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;/* 跨越第一行 */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;grid-column&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;/* 跨越第一列和第二列 */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;item2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;grid-row&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;/* 跨越第二行 */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;grid-column&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;/* 跨越第一列 */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在这个例子中，&lt;code&gt;.item1&lt;/code&gt;类的子元素将跨越第一行和第一列、第二列，而&lt;code&gt;.item2&lt;/code&gt;类的子元素将跨越第二行和第一列。&lt;/p&gt;
+&lt;h4 id=&#34;grid布局的自动放置&#34;&gt;grid布局的自动放置
+&lt;/h4&gt;&lt;p&gt;Grid布局还支持自动放置子元素，可以使用&lt;code&gt;grid-auto-rows&lt;/code&gt;和&lt;code&gt;grid-auto-columns&lt;/code&gt;属性来定义自动生成的行和列的大小。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;container&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;grid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;grid-auto-rows&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;px&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;grid-auto-columns&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;grid-gap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;px&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在这个例子中，&lt;code&gt;.container&lt;/code&gt;类定义了一个Grid容器，自动生成的行高度为100px，自动生成的列宽度为1fr，表示每列宽度相等。&lt;code&gt;grid-gap&lt;/code&gt;属性用于设置网格单元格之间的间距。&lt;/p&gt;
+&lt;h4 id=&#34;grid布局的对齐&#34;&gt;grid布局的对齐
+&lt;/h4&gt;&lt;p&gt;在Grid布局中，可以使用&lt;code&gt;justify-items&lt;/code&gt;和&lt;code&gt;align-items&lt;/code&gt;属性来控制子元素在网格单元格内的对齐方式。常见的取值有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;start&lt;/code&gt;：子元素向单元格的起始位置对齐。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;end&lt;/code&gt;：子元素向单元格的结束位置对齐。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;center&lt;/code&gt;：子元素在单元格内居中对齐。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;stretch&lt;/code&gt;：默认值，子元素拉伸以填充整个单元格。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;&#34;&gt;
+&lt;/h4&gt;&lt;h2 id=&#34;css的伪类和伪元素&#34;&gt;CSS的伪类和伪元素
 &lt;/h2&gt;&lt;h3 id=&#34;伪类pseudo-classes&#34;&gt;伪类(Pseudo-classes)
 &lt;/h3&gt;&lt;p&gt;伪类用于定义元素的特殊状态或条件，常见的伪类有：&lt;/p&gt;
 &lt;ul&gt;
@@ -786,6 +872,10 @@
     &gt;深入理解CSS盒子模型：从基础到实战 （第四回）&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://juejin.cn/post/7338717224436793394&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;解析CSS面试考点：盒模型、选择器、单位和像素概念，一网打尽！&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://juejin.cn/post/7397433958060654618?searchId=20251101205521B14330E8F928A9D0B484&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;flex布局在css中的使用，一看就会&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://juejin.cn/post/7409110408991522827?searchId=20251101212016332ACB9206C5660000F6&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;CSS3最强布局-Grid布局&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
