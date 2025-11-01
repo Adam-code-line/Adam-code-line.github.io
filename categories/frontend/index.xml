@@ -525,7 +525,8 @@
         
         <guid>https://adam-code-line.github.io/p/react-learning-guide/</guid>
         <description>&lt;h1 id=&#34;react-学习概述&#34;&gt;React 学习概述
-&lt;/h1&gt;&lt;p&gt;React是由Facebook开发的一个用于构建用户界面的JavaScript库。它采用组件化的开发方式，使得构建复杂的应用变得更加简单和高效。React的核心特点包括声明式编程、组件化、虚拟DOM和单向数据流等。这些我下面都会一一介绍：&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;React是由Facebook开发的一个用于构建用户界面的JavaScript库。它采用组件化的开发方式，使得构建复杂的应用变得更加简单和高效。React的核心特点包括声明式编程、组件化、虚拟DOM和单向数据流等。这些我下面都会一一介绍：&lt;/p&gt;
 &lt;h2 id=&#34;react的核心概念&#34;&gt;React的核心概念
 &lt;/h2&gt;&lt;h3 id=&#34;声明式编程&#34;&gt;声明式编程
 &lt;/h3&gt;&lt;p&gt;React采用声明式编程范式，开发者只需描述UI在不同状态下的样子，React会负责更新和渲染组件。这种方式使得代码更加简洁易读，减少了手动操作DOM的复杂性。&lt;/p&gt;
@@ -1119,7 +1120,8 @@
         
         <guid>https://adam-code-line.github.io/p/component-communication-in-vue/</guid>
         <description>&lt;h1 id=&#34;vue中组件之间传值的八种方式&#34;&gt;vue中组件之间传值的八种方式
-&lt;/h1&gt;&lt;p&gt;在Vue开发中，组件之间的通信是一个常见的需求。本文将介绍几种常用的组件通信方式，包括&lt;code&gt;props&lt;/code&gt;和&lt;code&gt;$emit&lt;/code&gt;事件、&lt;code&gt;provide/inject&lt;/code&gt;、自定义事件总线、&lt;code&gt;Vuex&lt;/code&gt;状态管理、&lt;code&gt;v-model&lt;/code&gt;、&lt;code&gt;透传 Attributes&lt;/code&gt;、&lt;code&gt;插槽 Slots&lt;/code&gt;。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;在Vue开发中，组件之间的通信是一个常见的需求。本文将介绍几种常用的组件通信方式，包括&lt;code&gt;props&lt;/code&gt;和&lt;code&gt;$emit&lt;/code&gt;事件、&lt;code&gt;provide/inject&lt;/code&gt;、自定义事件总线、&lt;code&gt;Vuex&lt;/code&gt;状态管理、&lt;code&gt;v-model&lt;/code&gt;、&lt;code&gt;透传 Attributes&lt;/code&gt;、&lt;code&gt;插槽 Slots&lt;/code&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;props-和-emit事件&#34;&gt;Props 和 $emit(事件)
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;Props&lt;/code&gt;和&lt;code&gt;$emit&lt;/code&gt;是Vue中最基本的组件通信方式。父组件通过&lt;code&gt;props&lt;/code&gt;向子组件传递数据，子组件通过&lt;code&gt;$emit&lt;/code&gt;触发事件向父组件传递数据。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1.Props传值：&lt;/strong&gt;&lt;/p&gt;
@@ -2447,7 +2449,8 @@
         
         <guid>https://adam-code-line.github.io/p/web-api/</guid>
         <description>&lt;h1 id=&#34;web-api&#34;&gt;Web API
-&lt;/h1&gt;&lt;p&gt;&lt;code&gt;API&lt;/code&gt;（Application Programming Interface，应用程序编程接口）在软件程序开发中扮演着重要角色。本文将简单介绍什么是&lt;code&gt;API&lt;/code&gt;，特别是&lt;code&gt;Web API&lt;/code&gt;的概念、类型及其在前端开发中的简单应用。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;API&lt;/code&gt;（Application Programming Interface，应用程序编程接口）在软件程序开发中扮演着重要角色。本文将简单介绍什么是&lt;code&gt;API&lt;/code&gt;，特别是&lt;code&gt;Web API&lt;/code&gt;的概念、类型及其在前端开发中的简单应用。&lt;/p&gt;
 &lt;h2 id=&#34;1-什么是api&#34;&gt;1. 什么是API
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;API&lt;/code&gt;是一组定义和协议，允许不同软件应用程序之间进行通信和交互。API抽象了复杂的代码，通过API，开发者可以直接使用已经封装好的代码功能，而无需从头开始编写代码功能的底层逻辑。&lt;/p&gt;
 &lt;h2 id=&#34;2-web-api的类型&#34;&gt;2. Web API的类型
@@ -2585,7 +2588,8 @@
         
         <guid>https://adam-code-line.github.io/p/nuxt/</guid>
         <description>&lt;h1 id=&#34;nuxt-基础总述&#34;&gt;Nuxt 基础总述
-&lt;/h1&gt;&lt;p&gt;Nuxt 是一个基于 Vue.js 的开源全栈式框架，旨在简化服务端渲染（SSR）和静态网站生成（SSG）的开发过程。它提供了许多开箱即用的功能，如自动路由、状态管理、API 集成等，使开发者能够更专注于业务逻辑而非配置细节。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;Nuxt 是一个基于 Vue.js 的开源全栈式框架，旨在简化服务端渲染（SSR）和静态网站生成（SSG）的开发过程。它提供了许多开箱即用的功能，如自动路由、状态管理、API 集成等，使开发者能够更专注于业务逻辑而非配置细节。&lt;/p&gt;
 &lt;h2 id=&#34;1-nuxt-的核心特性&#34;&gt;1. Nuxt 的核心特性
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;服务端渲染（SSR）&lt;/strong&gt;：提升首屏加载速度和 SEO 性能。&lt;/li&gt;
@@ -3072,7 +3076,8 @@
         
         <guid>https://adam-code-line.github.io/p/javascript/</guid>
         <description>&lt;h1 id=&#34;javascript-基础知识入门&#34;&gt;JavaScript 基础知识入门
-&lt;/h1&gt;&lt;p&gt;JavaScript 是一种广泛用于网页开发的编程语言。本文将介绍 JavaScript 的基本概念、语法及其应用，帮助初学者快速入门。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;JavaScript 是一种广泛用于网页开发的编程语言。本文将介绍 JavaScript 的基本概念、语法及其应用，帮助初学者快速入门。&lt;/p&gt;
 &lt;h2 id=&#34;1-javascript-基本概念&#34;&gt;1. JavaScript 基本概念
 &lt;/h2&gt;&lt;p&gt;JavaScript 是一种动态、弱类型的脚本语言，主要用于增强网页的交互性。它可以在浏览器中运行，也可以在服务器端使用（如 Node.js）。JavaScript 代码通常嵌入在 HTML 文档中，通过 &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; 标签引入。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3296,7 +3301,8 @@
         
         <guid>https://adam-code-line.github.io/p/css/</guid>
         <description>&lt;h1 id=&#34;css-基础知识入门&#34;&gt;CSS 基础知识入门
-&lt;/h1&gt;&lt;p&gt;CSS（层叠样式表）是用于描述 HTML 文档外观和格式的语言。本文将介绍 CSS 的基本概念、选择器及其应用，帮助初学者快速入门。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;CSS（层叠样式表）是用于描述 HTML 文档外观和格式的语言。本文将介绍 CSS 的基本概念、选择器及其应用，帮助初学者快速入门。&lt;/p&gt;
 &lt;h2 id=&#34;1-css-基本概念&#34;&gt;1. CSS 基本概念
 &lt;/h2&gt;&lt;p&gt;CSS 用于控制网页的布局、颜色、字体等视觉效果。它可以与 HTML 结合使用，通过选择器选择 HTML 元素并应用样式规则。
 一个简单的 CSS 规则如下：&lt;/p&gt;
@@ -3497,7 +3503,8 @@
         
         <guid>https://adam-code-line.github.io/p/html/</guid>
         <description>&lt;h1 id=&#34;html-基础知识入门&#34;&gt;HTML 基础知识入门
-&lt;/h1&gt;&lt;p&gt;HTML（超文本标记语言）是构建网页的基础语言。本文将介绍 HTML 的基本概念、常用标签及其结构，帮助初学者快速入门。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;HTML（超文本标记语言）是构建网页的基础语言。本文将介绍 HTML 的基本概念、常用标签及其结构，帮助初学者快速入门。&lt;/p&gt;
 &lt;h2 id=&#34;1-html-基本结构&#34;&gt;1. HTML 基本结构
 &lt;/h2&gt;&lt;p&gt;一个标准的 HTML 文档包含以下基本结构：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3703,7 +3710,8 @@
         
         <guid>https://adam-code-line.github.io/p/vue-v-for-guide/</guid>
         <description>&lt;h1 id=&#34;vue-v-for-指令详解&#34;&gt;Vue &lt;code&gt;v-for&lt;/code&gt; 指令详解
-&lt;/h1&gt;&lt;p&gt;&lt;code&gt;v-for&lt;/code&gt; 是 Vue.js 中用于渲染列表的指令，允许你基于一个数组或对象动态生成多个元素。本文将详细介绍 &lt;code&gt;v-for&lt;/code&gt; 的用法、语法以及一些常见的实践。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;v-for&lt;/code&gt; 是 Vue.js 中用于渲染列表的指令，允许你基于一个数组或对象动态生成多个元素。本文将详细介绍 &lt;code&gt;v-for&lt;/code&gt; 的用法、语法以及一些常见的实践。&lt;/p&gt;
 &lt;h2 id=&#34;1-基本语法&#34;&gt;1. 基本语法
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;v-for&lt;/code&gt; 的基本语法如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -3918,7 +3926,8 @@
         
         <guid>https://adam-code-line.github.io/p/v-if-v-show/</guid>
         <description>&lt;h1 id=&#34;vue-条件渲染v-if-vs-v-show&#34;&gt;Vue 条件渲染：v-if vs v-show
-&lt;/h1&gt;&lt;p&gt;在 Vue.js 中，条件渲染是构建动态用户界面的重要技术。Vue 提供了两种主要的条件渲染指令：&lt;code&gt;v-if&lt;/code&gt; 和 &lt;code&gt;v-show&lt;/code&gt;。本文将探讨这两者的区别、使用场景及其底层原理，帮助开发者更好地选择合适的指令来优化应用性能和用户体验。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;在 Vue.js 中，条件渲染是构建动态用户界面的重要技术。Vue 提供了两种主要的条件渲染指令：&lt;code&gt;v-if&lt;/code&gt; 和 &lt;code&gt;v-show&lt;/code&gt;。本文将探讨这两者的区别、使用场景及其底层原理，帮助开发者更好地选择合适的指令来优化应用性能和用户体验。&lt;/p&gt;
 &lt;h2 id=&#34;1-v-if-的工作原理与使用&#34;&gt;1. v-if 的工作原理与使用
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;v-if&lt;/code&gt; 指令用于根据条件动态地添加或移除 DOM 元素。当条件为真时，Vue 会创建并插入元素；当条件为假时，Vue 会销毁并移除元素。&lt;/p&gt;
 &lt;h3 id=&#34;使用示例&#34;&gt;使用示例
@@ -4074,7 +4083,8 @@
         
         <guid>https://adam-code-line.github.io/p/computed/</guid>
         <description>&lt;h1 id=&#34;vue-计算属性原理&#34;&gt;Vue 计算属性原理
-&lt;/h1&gt;&lt;p&gt;本文为想学习 Vue 计算属性的前端开发者准备，涵盖 &lt;code&gt;computed&lt;/code&gt; 的工作原理及其在 Vue 3 中的实现机制。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;本文为想学习 Vue 计算属性的前端开发者准备，涵盖 &lt;code&gt;computed&lt;/code&gt; 的工作原理及其在 Vue 3 中的实现机制。&lt;/p&gt;
 &lt;h2 id=&#34;1-为什么学习计算属性原理&#34;&gt;1. 为什么学习计算属性原理
 &lt;/h2&gt;&lt;p&gt;Vue的计算属性能够描述依赖响应式状态复杂逻辑，并且计算属性值会基于其响应式依赖被缓存,只有在computed属性的响应式依赖发生变化时才会重新计算。这种特性使得计算属性在性能优化和代码简洁性方面具有显著优势。&lt;/p&gt;
 &lt;h2 id=&#34;2-计算属性的工作原理&#34;&gt;2. 计算属性的工作原理
@@ -4307,7 +4317,8 @@
         
         <guid>https://adam-code-line.github.io/p/ref-reactive/</guid>
         <description>&lt;h1 id=&#34;vue-响应式原理&#34;&gt;Vue 响应式原理
-&lt;/h1&gt;&lt;p&gt;本文为想学习 Vue 响应式系统的前端开发者准备，涵盖 &lt;code&gt;ref&lt;/code&gt; 和 &lt;code&gt;reactive&lt;/code&gt; 的工作原理及其在 Vue 3 中的实现机制。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;本文为想学习 Vue 响应式系统的前端开发者准备，涵盖 &lt;code&gt;ref&lt;/code&gt; 和 &lt;code&gt;reactive&lt;/code&gt; 的工作原理及其在 Vue 3 中的实现机制。&lt;/p&gt;
 &lt;h2 id=&#34;1-为什么学习响应式原理&#34;&gt;1. 为什么学习响应式原理
 &lt;/h2&gt;&lt;p&gt;学习 Vue 的响应式原理可以帮助开发者更好地理解框架的内部机制，从而在实际开发中更有效地利用这些特性。掌握响应式原理有助于：&lt;/p&gt;
 &lt;ul&gt;
@@ -4520,7 +4531,8 @@
         
         <guid>https://adam-code-line.github.io/p/typescript-learning-guide/</guid>
         <description>&lt;img src="https://adam-code-line.github.io/p/typescript-learning-guide/cover.jpg" alt="Featured image of post TypeScript" /&gt;&lt;h1 id=&#34;typescript-学习指南&#34;&gt;TypeScript 学习指南
-&lt;/h1&gt;&lt;p&gt;本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。&lt;/p&gt;
 &lt;h2 id=&#34;1-为什么学-typescript&#34;&gt;1. 为什么学 TypeScript
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;静态类型可以在编译期发现很多常见错误，提高代码可维护性。&lt;/li&gt;
@@ -4719,7 +4731,8 @@
         
         <guid>https://adam-code-line.github.io/p/vue-learning-guide/</guid>
         <description>&lt;img src="https://adam-code-line.github.io/p/vue-learning-guide/cover.jpg" alt="Featured image of post Vue概述" /&gt;&lt;h1 id=&#34;vue-学习概述&#34;&gt;Vue 学习概述
-&lt;/h1&gt;&lt;p&gt;&lt;code&gt;Vue&lt;/code&gt;是款由尤雨溪（Evan You）创建的渐进式 JavaScript 框架，旨在通过简洁易用的 API 构建用户界面。&lt;code&gt;Vue&lt;/code&gt; 采用组件化开发方式，支持响应式数据绑定和组合式 API，使得构建复杂应用变得高效且灵活。&lt;code&gt;Vue&lt;/code&gt; 的核心特点包括响应式系统、组件化、虚拟 DOM 和单向数据流等。以下是对 &lt;code&gt;Vue &lt;/code&gt;的简要讲解：&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Vue&lt;/code&gt;是款由尤雨溪（Evan You）创建的渐进式 JavaScript 框架，旨在通过简洁易用的 API 构建用户界面。&lt;code&gt;Vue&lt;/code&gt; 采用组件化开发方式，支持响应式数据绑定和组合式 API，使得构建复杂应用变得高效且灵活。&lt;code&gt;Vue&lt;/code&gt; 的核心特点包括响应式系统、组件化、虚拟 DOM 和单向数据流等。以下是对 &lt;code&gt;Vue &lt;/code&gt;的简要讲解：&lt;/p&gt;
 &lt;h2 id=&#34;核心概念&#34;&gt;核心概念
 &lt;/h2&gt;&lt;h3 id=&#34;1-响应式系统&#34;&gt;1. 响应式系统
 &lt;/h3&gt;&lt;p&gt;&lt;code&gt;Vue&lt;/code&gt; 的响应式系统允许数据变化时自动更新视图。通过使用 &lt;code&gt;ref&lt;/code&gt; 和 &lt;code&gt;reactive&lt;/code&gt;，开发者可以轻松创建响应式数据对象。当这些数据发生变化时，相关的组件会自动重新渲染。&lt;/p&gt;
@@ -5070,7 +5083,8 @@
         
         <guid>https://adam-code-line.github.io/p/frontend-learning-path/</guid>
         <description>&lt;img src="https://adam-code-line.github.io/p/frontend-learning-path/cover.jpg" alt="Featured image of post 前端学习路线" /&gt;&lt;h1 id=&#34;前端学习路线&#34;&gt;前端学习路线
-&lt;/h1&gt;&lt;p&gt;写博客是把自己学到的知识沉淀并分享给别人的好方法。本文模仿项目中的风格，给出一套清晰的前端学习路线，适用于刚入门的同学，也适合想系统提升的开发者。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;写博客是把自己学到的知识沉淀并分享给别人的好方法。本文模仿项目中的风格，给出一套清晰的前端学习路线，适用于刚入门的同学，也适合想系统提升的开发者。&lt;/p&gt;
 &lt;h2 id=&#34;为什么需要一条明确的学习路线&#34;&gt;为什么需要一条明确的学习路线
 &lt;/h2&gt;&lt;p&gt;前端技术栈庞杂，工具和框架迭代快。如果没有系统性的学习计划，容易在碎片化的资料中迷失，不知下一步该学什么。一个合理的路线能帮助你建立知识体系、提升可迁移能力，并且尽早能做出完整的项目。&lt;/p&gt;
 &lt;h2 id=&#34;学习路线总览&#34;&gt;学习路线总览

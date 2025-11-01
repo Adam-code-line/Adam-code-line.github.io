@@ -14,7 +14,8 @@
         
         <guid>https://adam-code-line.github.io/p/typescript-learning-guide/</guid>
         <description>&lt;img src="https://adam-code-line.github.io/p/typescript-learning-guide/cover.jpg" alt="Featured image of post TypeScript" /&gt;&lt;h1 id=&#34;typescript-学习指南&#34;&gt;TypeScript 学习指南
-&lt;/h1&gt;&lt;p&gt;本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。&lt;/p&gt;
 &lt;h2 id=&#34;1-为什么学-typescript&#34;&gt;1. 为什么学 TypeScript
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;静态类型可以在编译期发现很多常见错误，提高代码可维护性。&lt;/li&gt;

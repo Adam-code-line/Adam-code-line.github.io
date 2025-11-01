@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Vue 响应式原理 本文为想学习 Vue 响应式系统的前端开发者准备，涵盖 ref 和 reactive 的工作原理及其在 Vue 3 中的实现机制。\n1. 为什么学习响应式原理 学习 Vue 的响应式原理可以帮助开发者更好地理解框架的内部机制，从而在实际开发中更有效地利用这些特性。掌握响应式原理有助于：\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Vue 响应式原理 前言 本文为想学习 Vue 响应式系统的前端开发者准备，涵盖 ref 和 reactive 的工作原理及其在 Vue 3 中的实现机制。\n1. 为什么学习响应式原理 学习 Vue 的响应式原理可以帮助开发者更好地理解框架的内部机制，从而在实际开发中更有效地利用这些特性。掌握响应式原理有助于：\n">
 <title>Vue 响应式原理 </title>
 
 <link rel='canonical' href='https://adam-code-line.github.io/p/ref-reactive/'>
 
 <link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Vue 响应式原理 ">
-<meta property='og:description' content="Vue 响应式原理 本文为想学习 Vue 响应式系统的前端开发者准备，涵盖 ref 和 reactive 的工作原理及其在 Vue 3 中的实现机制。\n1. 为什么学习响应式原理 学习 Vue 的响应式原理可以帮助开发者更好地理解框架的内部机制，从而在实际开发中更有效地利用这些特性。掌握响应式原理有助于：\n">
+<meta property='og:description' content="Vue 响应式原理 前言 本文为想学习 Vue 响应式系统的前端开发者准备，涵盖 ref 和 reactive 的工作原理及其在 Vue 3 中的实现机制。\n1. 为什么学习响应式原理 学习 Vue 的响应式原理可以帮助开发者更好地理解框架的内部机制，从而在实际开发中更有效地利用这些特性。掌握响应式原理有助于：\n">
 <meta property='og:url' content='https://adam-code-line.github.io/p/ref-reactive/'>
 <meta property='og:site_name' content='Adam&#39;s Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-09T17:00:49&#43;08:00'/><meta property='article:modified_time' content='2025-10-09T17:00:49&#43;08:00'/>
 <meta name="twitter:title" content="Vue 响应式原理 ">
-<meta name="twitter:description" content="Vue 响应式原理 本文为想学习 Vue 响应式系统的前端开发者准备，涵盖 ref 和 reactive 的工作原理及其在 Vue 3 中的实现机制。\n1. 为什么学习响应式原理 学习 Vue 的响应式原理可以帮助开发者更好地理解框架的内部机制，从而在实际开发中更有效地利用这些特性。掌握响应式原理有助于：\n">
+<meta name="twitter:description" content="Vue 响应式原理 前言 本文为想学习 Vue 响应式系统的前端开发者准备，涵盖 ref 和 reactive 的工作原理及其在 Vue 3 中的实现机制。\n1. 为什么学习响应式原理 学习 Vue 的响应式原理可以帮助开发者更好地理解框架的内部机制，从而在实际开发中更有效地利用这些特性。掌握响应式原理有助于：\n">
     </head>
     <body class="
     article-page
@@ -290,6 +290,7 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
+    <li><a href="#前言">前言</a></li>
     <li><a href="#1-为什么学习响应式原理">1. 为什么学习响应式原理</a></li>
     <li><a href="#2-vue-响应式系统概述">2. Vue 响应式系统概述</a></li>
     <li><a href="#3-ref-的工作原理">3. <code>ref</code> 的工作原理</a></li>
@@ -386,7 +387,8 @@
     
     
     <h1 id="vue-响应式原理">Vue 响应式原理
-</h1><p>本文为想学习 Vue 响应式系统的前端开发者准备，涵盖 <code>ref</code> 和 <code>reactive</code> 的工作原理及其在 Vue 3 中的实现机制。</p>
+</h1><h2 id="前言">前言
+</h2><p>本文为想学习 Vue 响应式系统的前端开发者准备，涵盖 <code>ref</code> 和 <code>reactive</code> 的工作原理及其在 Vue 3 中的实现机制。</p>
 <h2 id="1-为什么学习响应式原理">1. 为什么学习响应式原理
 </h2><p>学习 Vue 的响应式原理可以帮助开发者更好地理解框架的内部机制，从而在实际开发中更有效地利用这些特性。掌握响应式原理有助于：</p>
 <ul>

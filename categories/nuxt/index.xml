@@ -14,7 +14,8 @@
         
         <guid>https://adam-code-line.github.io/p/nuxt/</guid>
         <description>&lt;h1 id=&#34;nuxt-基础总述&#34;&gt;Nuxt 基础总述
-&lt;/h1&gt;&lt;p&gt;Nuxt 是一个基于 Vue.js 的开源全栈式框架，旨在简化服务端渲染（SSR）和静态网站生成（SSG）的开发过程。它提供了许多开箱即用的功能，如自动路由、状态管理、API 集成等，使开发者能够更专注于业务逻辑而非配置细节。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;Nuxt 是一个基于 Vue.js 的开源全栈式框架，旨在简化服务端渲染（SSR）和静态网站生成（SSG）的开发过程。它提供了许多开箱即用的功能，如自动路由、状态管理、API 集成等，使开发者能够更专注于业务逻辑而非配置细节。&lt;/p&gt;
 &lt;h2 id=&#34;1-nuxt-的核心特性&#34;&gt;1. Nuxt 的核心特性
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;服务端渲染（SSR）&lt;/strong&gt;：提升首屏加载速度和 SEO 性能。&lt;/li&gt;

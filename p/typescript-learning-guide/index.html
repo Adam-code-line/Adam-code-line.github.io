@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="TypeScript 学习指南 本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。\n1. 为什么学 TypeScript 静态类型可以在编译期发现很多常见错误，提高代码可维护性。 与现代 IDE（例如 VS Code）结合，能获得更好的智能提示、重构支持和文档提示。 2. 快速开始 1 2 3 4 # 初始化项目 pnpm init -y pnpm add -D typescript npx tsc --init 这会生成 tsconfig.json。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="TypeScript 学习指南 前言 本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。\n1. 为什么学 TypeScript 静态类型可以在编译期发现很多常见错误，提高代码可维护性。 与现代 IDE（例如 VS Code）结合，能获得更好的智能提示、重构支持和文档提示。 2. 快速开始 1 2 3 4 # 初始化项目 pnpm init -y pnpm add -D typescript npx tsc --init 这会生成 tsconfig.json。\n">
 <title>TypeScript</title>
 
 <link rel='canonical' href='https://adam-code-line.github.io/p/typescript-learning-guide/'>
 
 <link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="TypeScript">
-<meta property='og:description' content="TypeScript 学习指南 本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。\n1. 为什么学 TypeScript 静态类型可以在编译期发现很多常见错误，提高代码可维护性。 与现代 IDE（例如 VS Code）结合，能获得更好的智能提示、重构支持和文档提示。 2. 快速开始 1 2 3 4 # 初始化项目 pnpm init -y pnpm add -D typescript npx tsc --init 这会生成 tsconfig.json。\n">
+<meta property='og:description' content="TypeScript 学习指南 前言 本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。\n1. 为什么学 TypeScript 静态类型可以在编译期发现很多常见错误，提高代码可维护性。 与现代 IDE（例如 VS Code）结合，能获得更好的智能提示、重构支持和文档提示。 2. 快速开始 1 2 3 4 # 初始化项目 pnpm init -y pnpm add -D typescript npx tsc --init 这会生成 tsconfig.json。\n">
 <meta property='og:url' content='https://adam-code-line.github.io/p/typescript-learning-guide/'>
 <meta property='og:site_name' content='Adam&#39;s Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-01T11:35:10&#43;08:00'/><meta property='article:modified_time' content='2025-10-01T11:35:10&#43;08:00'/><meta property='og:image' content='https://adam-code-line.github.io/p/typescript-learning-guide/cover.jpg' />
 <meta name="twitter:title" content="TypeScript">
-<meta name="twitter:description" content="TypeScript 学习指南 本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。\n1. 为什么学 TypeScript 静态类型可以在编译期发现很多常见错误，提高代码可维护性。 与现代 IDE（例如 VS Code）结合，能获得更好的智能提示、重构支持和文档提示。 2. 快速开始 1 2 3 4 # 初始化项目 pnpm init -y pnpm add -D typescript npx tsc --init 这会生成 tsconfig.json。\n"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="TypeScript 学习指南 前言 本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。\n1. 为什么学 TypeScript 静态类型可以在编译期发现很多常见错误，提高代码可维护性。 与现代 IDE（例如 VS Code）结合，能获得更好的智能提示、重构支持和文档提示。 2. 快速开始 1 2 3 4 # 初始化项目 pnpm init -y pnpm add -D typescript npx tsc --init 这会生成 tsconfig.json。\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://adam-code-line.github.io/p/typescript-learning-guide/cover.jpg' />
     </head>
     <body class="
@@ -291,6 +291,7 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
+    <li><a href="#前言">前言</a></li>
     <li><a href="#1-为什么学-typescript">1. 为什么学 TypeScript</a></li>
     <li><a href="#2-快速开始">2. 快速开始</a></li>
     <li><a href="#3-基础类型示例">3. 基础类型示例</a></li>
@@ -400,7 +401,8 @@
     
     
     <h1 id="typescript-学习指南">TypeScript 学习指南
-</h1><p>本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。</p>
+</h1><h2 id="前言">前言
+</h2><p>本文为想系统学习 TypeScript 的前端开发者准备，覆盖从基础类型、配置、进阶类型到在 Vue 项目中使用 TypeScript 的简单实战示例。</p>
 <h2 id="1-为什么学-typescript">1. 为什么学 TypeScript
 </h2><ul>
 <li>静态类型可以在编译期发现很多常见错误，提高代码可维护性。</li>

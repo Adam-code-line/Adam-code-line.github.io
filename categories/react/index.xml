@@ -14,7 +14,8 @@
         
         <guid>https://adam-code-line.github.io/p/react-learning-guide/</guid>
         <description>&lt;h1 id=&#34;react-学习概述&#34;&gt;React 学习概述
-&lt;/h1&gt;&lt;p&gt;React是由Facebook开发的一个用于构建用户界面的JavaScript库。它采用组件化的开发方式，使得构建复杂的应用变得更加简单和高效。React的核心特点包括声明式编程、组件化、虚拟DOM和单向数据流等。这些我下面都会一一介绍：&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;React是由Facebook开发的一个用于构建用户界面的JavaScript库。它采用组件化的开发方式，使得构建复杂的应用变得更加简单和高效。React的核心特点包括声明式编程、组件化、虚拟DOM和单向数据流等。这些我下面都会一一介绍：&lt;/p&gt;
 &lt;h2 id=&#34;react的核心概念&#34;&gt;React的核心概念
 &lt;/h2&gt;&lt;h3 id=&#34;声明式编程&#34;&gt;声明式编程
 &lt;/h3&gt;&lt;p&gt;React采用声明式编程范式，开发者只需描述UI在不同状态下的样子，React会负责更新和渲染组件。这种方式使得代码更加简洁易读，减少了手动操作DOM的复杂性。&lt;/p&gt;
