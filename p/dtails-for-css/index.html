@@ -372,7 +372,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 4 分钟
                 </time>
             </div>
         
@@ -559,26 +559,96 @@
 </div><h2 id="css-盒模型">CSS 盒模型
 </h2><p>CSS 盒模型是理解网页布局的基础概念。每个HTML元素都可以看作一个矩形盒子，盒模型由四个部分组成：</p>
 <ol>
-<li><strong>内容(content)</strong>：盒子的实际内容区域，如文本或图像。</li>
-<li><strong>内边距(padding)</strong>：内容与边框之间的空间，用于增加内容周围的空白区域。</li>
-<li><strong>边框(border)</strong>：包围内容和内边距的线条，可以设置宽度、样式和颜色。</li>
-<li><strong>外边距(margin)</strong>：盒子与其他元素之间的空间，用于控制元素之间的距离。</li>
+<li><strong>内容(content)</strong>：盒子的实际内容区域，如文本或图像，可以用<code>inline-size</code>和<code>block-size</code>或者<code>width</code>和<code>height</code>来设置内容的宽度和高度。</li>
+<li><strong>内边距(padding)</strong>：内容与边框之间的空间，用于增加内容周围的空白区域，用<code>padding</code>属性来设置大小。</li>
+<li><strong>边框(border)</strong>：包围内容和内边距的线条，可以设置宽度、样式和颜色，用<code>border</code>属性来定义。</li>
+<li><strong>外边距(margin)</strong>：盒子与其他元素之间的空间，用于控制元素之间的距离，用<code>margin</code>属性来设置大小。</li>
 </ol>
-<p>盒模型图：</p>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;UTF-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1.0&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="nc">box</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">width</span><span class="p">:</span> <span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">padding</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">border</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#333</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">margin</span><span class="p">:</span> <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">background-color</span><span class="p">:</span> <span class="kc">lightgray</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;box&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个例子中，<code>.box</code>类定义了一个盒子模型，内容区域宽度为200px，高度为100px，内边距为20px，边框宽度为5px，外边距为30px。</p>
 <p><figure class="image-with-tools">
     
-    <a href="./box.png" target="_blank" title="点击查看大图">
-        <img src="./box.png" alt="CSS盒模型"  loading="lazy" />
+    <a href="./box1.png" target="_blank" title="点击查看大图">
+        <img src="./box1.png" alt="CSS 盒模型示意图"  loading="lazy" />
     </a>
 
     
-    <a href="./box.png" download="CSS盒模型" class="download-btn" title="下载原图">
+    <a href="./box1.png" download="CSS 盒模型示意图" class="download-btn" title="下载原图">
+        ⬇️ 下载
+    </a>
+
+    
+</figure>
+<figure class="image-with-tools">
+    
+    <a href="./box2.png" target="_blank" title="点击查看大图">
+        <img src="./box2.png" alt="CSS 盒模型示意图"  loading="lazy" />
+    </a>
+
+    
+    <a href="./box2.png" download="CSS 盒模型示意图" class="download-btn" title="下载原图">
         ⬇️ 下载
     </a>
 
     
 </figure></p>
-<p>理解盒模型对于布局设计和调试非常重要。可以使用<code>box-sizing</code>属性来控制盒模型的计算方式：</p>
+<p>其中的<code>199.992×99.984</code>和<code>4.500</code>属于浏览器渲染时的精度偏差。浏览器在渲染元素时，会涉及像素的亚像素（sub-pixel）计算（即像素的细分精度，比如把一个物理像素拆分为多个逻辑像素计算）。这种偏差是浏览器底层渲染引擎的 “精度妥协”，属于正常现象——它不会影响视觉呈现，最终元素的实际显示仍会对齐到物理像素，保证视觉上的清晰。</p>
 
 </section>
 
