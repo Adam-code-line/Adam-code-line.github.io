@@ -506,6 +506,15 @@
 &lt;/div&gt;&lt;p&gt;在这个例子中，&lt;code&gt;::before&lt;/code&gt;伪元素在每个段落内容之前插入了“Note: ”，并将其设置为粗体；&lt;code&gt;::after&lt;/code&gt;伪元素在段落内容之后插入了“ (end of paragraph)”，并将其设置为斜体。&lt;/p&gt;
 &lt;h2 id=&#34;结语&#34;&gt;结语
 &lt;/h2&gt;&lt;p&gt;本文详细介绍了CSS的层叠与继承、盒模型、布局方式以及伪类和伪元素等内容。CSS是前端开发中不可或缺的技术，它的上手相对简单，但是想要精通却很困难。在之后的开发中除了原生CSS外，我们还会接触到各种CSS预处理器（如Sass、Less）和CSS框架（如Bootstrap、Tailwind CSS），这些工具可以帮助我们更高效地编写和管理CSS代码。本文仅对CSS做了一些详细的介绍，后面还需要自己不断学习和实践。&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MDN Web Docs - CSS 构建&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://juejin.cn/post/7532751613656629302?searchId=20251101100628E6957AE949BB40963603&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;深入理解CSS盒子模型：从基础到实战 （第四回）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://juejin.cn/post/7338717224436793394&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;解析CSS面试考点：盒模型、选择器、单位和像素概念，一网打尽！&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
