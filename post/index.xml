@@ -659,10 +659,12 @@
         
         <guid>https://adam-code-line.github.io/p/dtails-for-html/</guid>
         <description>&lt;h1 id=&#34;html详解&#34;&gt;HTML详解
-&lt;/h1&gt;&lt;p&gt;之前的&lt;a class=&#34;link&#34; href=&#34;../html&#34; &gt;HTML 基础知识入门&lt;/a&gt;文章中我已经介绍了HTML的基础知识，在本文中我会进行更详细的讲解。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;之前的&lt;a class=&#34;link&#34; href=&#34;../html&#34; &gt;HTML 基础知识入门&lt;/a&gt;文章中我已经介绍了HTML的基础知识，在本文中我会进行更详细的讲解。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;HTML&lt;/code&gt;全称为超文本标记语言(Hyper Text Markup Language),是构建网页和Web应用的标准标记语言，&lt;code&gt;超文本（hypertext）&lt;/code&gt;是指连接单个网站内或多个网站间的网页的链接&lt;code&gt;标记(markup)&lt;/code&gt;用来注明文本、图片和其他内容。HTML使用一系列标签和属性来定义网页的结构和内容,包括文本、图像、链接、表格、表单等元素。浏览器通过解析HTML代码,将其渲染为用户可以看到和交互的网页界面。需要明确的是HTML本身并不是一种编程语言，而是标记语言,它主要用于描述网页的结构和内容,而不是实现逻辑和功能。HTML通常与CSS(层叠样式表)和JavaScript一起使用,以实现网页的样式和交互功能。&lt;/p&gt;
-&lt;h2 id=&#34;html的基本结构&#34;&gt;HTML的基本结构
-&lt;/h2&gt;&lt;p&gt;在之前的&lt;a class=&#34;link&#34; href=&#34;../html&#34; &gt;HTML 基础知识入门&lt;/a&gt;中我们已经介绍了 &lt;code&gt;HTML&lt;/code&gt; 的基本结构,并简单讲解了一些基本标签，下面我将更详细地讲解HTML的基本结构：&lt;/p&gt;
+&lt;h2 id=&#34;基础&#34;&gt;基础
+&lt;/h2&gt;&lt;h3 id=&#34;html-的基本结构&#34;&gt;HTML 的基本结构
+&lt;/h3&gt;&lt;p&gt;在之前的&lt;a class=&#34;link&#34; href=&#34;../html&#34; &gt;HTML 基础知识入门&lt;/a&gt;中我们已经介绍了 &lt;code&gt;HTML&lt;/code&gt; 的基本结构,并简单讲解了一些基本标签，下面我将更详细地讲解HTML的基本结构：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -711,16 +713,16 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;!DOCTYPE html&lt;/strong&gt;&lt;code&gt;DOCTYPE&lt;/code&gt;是HTML5的文档声明，它可以告诉浏览器，使用哪一个HTML版本解析文档。在浏览器发展的过程中出现过很多HTML的版本，如果没有提前告诉浏览器，那么浏览器就不知道文档解析标准是什么。此时，大部分浏览器将开启最大兼容模式来解析网页，我们一般称为怪异模式，这不仅会降低解析效率，而且会在解析过程中产生一些难以预知的bug，所以文档声明是必须的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DOCTYPE&lt;/strong&gt;：&lt;code&gt;DOCTYPE&lt;/code&gt;是HTML5的文档声明，它可以告诉浏览器，使用哪一个HTML版本解析文档。在浏览器发展的过程中出现过很多HTML的版本，如果没有提前告诉浏览器，那么浏览器就不知道文档解析标准是什么。此时，大部分浏览器将开启最大兼容模式来解析网页，我们一般称为怪异模式，这不仅会降低解析效率，而且会在解析过程中产生一些难以预知的bug，所以文档声明是必须的。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;html lang=&amp;ldquo;zh-CN&amp;rdquo;&lt;/strong&gt;&lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt;标签是HTML文档的根元素，所有其他HTML元素都必须包含在&lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt;标签内。&lt;code&gt;lang&lt;/code&gt;属性指定了文档的语言，这对于搜索引擎优化(SEO)和辅助技术(如屏幕阅读器)非常重要。在这里，&lt;code&gt;zh-CN&lt;/code&gt;表示中文(中国大陆)。常见的还有&lt;code&gt;en&lt;/code&gt;(英语)、&lt;code&gt;fr&lt;/code&gt;(法语)、&lt;code&gt;es&lt;/code&gt;(西班牙语)等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;html&lt;/strong&gt;：&lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt;标签是HTML文档的根元素，所有其他HTML元素都必须包含在&lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt;标签内。&lt;code&gt;lang&lt;/code&gt;属性指定了文档的语言，这对于搜索引擎优化(SEO)和辅助技术(如屏幕阅读器)非常重要。在这里，&lt;code&gt;zh-CN&lt;/code&gt;表示中文(中国大陆)。常见的还有&lt;code&gt;en&lt;/code&gt;(英语)、&lt;code&gt;fr&lt;/code&gt;(法语)、&lt;code&gt;es&lt;/code&gt;(西班牙语)等。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;head&lt;/strong&gt;&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;标签包含了文档的元数据(metadata)，这些信息不会直接显示在网页上，但对网页的功能和表现非常重要。常见的元数据包括字符集声明、页面标题、样式表链接、脚本文件链接等。meta就是元，data就是数据，元数据是用来描述数据的数据，如一个数据200，我们并不知道这个数据代表什么，但是体重：200，我们就可以知道这个数据代表体重200斤，其中的体重就是元数据，它用来描述200这个数据。下面来详细介绍几个常用的元数据标签以及标签中属性的含义：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;head&lt;/strong&gt;：&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;标签包含了文档的元数据(metadata)，这些信息不会直接显示在网页上，但对网页的功能和表现非常重要。常见的元数据包括字符集声明、页面标题、样式表链接、脚本文件链接等。meta就是元，data就是数据，元数据是用来描述数据的数据，如一个数据200，我们并不知道这个数据代表什么，但是体重：200，我们就可以知道这个数据代表体重200斤，其中的体重就是元数据，它用来描述200这个数据。下面来详细介绍几个常用的元数据标签以及标签中属性的含义：&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;meta&lt;/strong&gt;&lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt;标签用于定义文档的元数据，如字符集、作者、描述等。&lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt;常见的属性有：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;meta&lt;/strong&gt;：&lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt;标签用于定义文档的元数据，如字符集、作者、描述等。&lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt;常见的属性有：&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;ol&gt;
@@ -756,8 +758,8 @@
 &lt;p&gt;&lt;strong&gt;body&lt;/strong&gt;：&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;标签包含了网页的主要内容，这些内容会直接显示在浏览器中。所有可见的网页元素，如文本、图像、链接、表格等，都必须包含在&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;标签内。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;html-的语义化标签&#34;&gt;HTML 的语义化标签
-&lt;/h2&gt;&lt;p&gt;在之前的&lt;code&gt;HTML&lt;/code&gt; 基础知识入门文章中我已经介绍了HTML的基本标签，所以在本文就不再赘述。在HTML5中引入的语义化标签，这是HTML5的重要特性，下面我将介绍一些常用的HTML语义化标签：&lt;/p&gt;
+&lt;h3 id=&#34;语义化标签&#34;&gt;语义化标签
+&lt;/h3&gt;&lt;p&gt;在之前的&lt;code&gt;HTML&lt;/code&gt; 基础知识入门文章中我已经介绍了HTML的基本标签，所以在本文就不再赘述。在HTML5中引入的语义化标签，这是HTML5的重要特性，下面我将介绍一些常用的HTML语义化标签：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;header&lt;/strong&gt;：定义文档或节的头部区域，通常包含标题、导航链接等内容。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;nav&lt;/strong&gt;：定义导航链接的区域，通常包含网站的主要导航菜单。&lt;/li&gt;
@@ -768,8 +770,8 @@
 &lt;li&gt;&lt;strong&gt;footer&lt;/strong&gt;：定义文档或节的底部区域，通常包含版权信息、联系信息等内容。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;使用语义化标签有助于提高网页的可读性和可维护性，同时也有助于搜索引擎优化(SEO)和辅助技术的支持。&lt;/p&gt;
-&lt;h2 id=&#34;html的块级元素和行内元素&#34;&gt;HTML的块级元素和行内元素
-&lt;/h2&gt;&lt;p&gt;在HTML中，元素可以分为块级元素(block-level elements)和行内元素(inline elements)两大类。这两类元素在网页布局和显示方式上有显著的区别。&lt;/p&gt;
+&lt;h3 id=&#34;块级元素与行内行内块&#34;&gt;块级元素与行内/行内块
+&lt;/h3&gt;&lt;p&gt;在HTML中，元素可以分为块级元素(block-level elements)和行内元素(inline elements)两大类。这两类元素在网页布局和显示方式上有显著的区别。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;块级元素&lt;/strong&gt;：块级元素通常会占据其父元素的整个宽度，并且在其前后会自动换行。块级元素可以包含其他块级元素和行内元素。常见的块级元素有：&lt;/p&gt;
@@ -841,8 +843,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;html的多媒体元素&#34;&gt;HTML的多媒体元素
-&lt;/h2&gt;&lt;p&gt;HTML5引入了多媒体元素，使得在网页中嵌入音频和视频可以不再依赖外部插件。下面我将介绍HTML中的多媒体元素：&lt;/p&gt;
+&lt;/div&gt;&lt;h2 id=&#34;媒体与图形&#34;&gt;媒体与图形
+&lt;/h2&gt;&lt;h3 id=&#34;多媒体元素&#34;&gt;多媒体元素
+&lt;/h3&gt;&lt;p&gt;HTML5引入了多媒体元素，使得在网页中嵌入音频和视频可以不再依赖外部插件。下面我将介绍HTML中的多媒体元素：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;audio&lt;/strong&gt;：用于在网页中嵌入音频文件。常见的属性有&lt;code&gt;src&lt;/code&gt;(指定音频文件的URL)、&lt;code&gt;controls&lt;/code&gt;(显示音频控件)、&lt;code&gt;autoplay&lt;/code&gt;(自动播放音频)、&lt;code&gt;loop&lt;/code&gt;(循环播放音频)等。例如：&lt;/li&gt;
 &lt;/ul&gt;
@@ -884,8 +887,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;video&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;html的canvas和svg&#34;&gt;HTML的Canvas和SVG
-&lt;/h2&gt;&lt;p&gt;HTML5引入了&lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;svg&amp;gt;&lt;/code&gt;元素，用于在网页中绘制图形和矢量图形,。&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;canvas-与-svg&#34;&gt;Canvas 与 SVG
+&lt;/h3&gt;&lt;p&gt;HTML5引入了&lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;svg&amp;gt;&lt;/code&gt;元素，用于在网页中绘制图形和矢量图形,。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;canvas&lt;/strong&gt;：&lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt;元素用于在网页中绘制位图图形。它提供了一个绘图区域，可以通过JavaScript使用Canvas API进行绘图操作。常见的属性有&lt;code&gt;width&lt;/code&gt;和&lt;code&gt;height&lt;/code&gt;(指定画布的宽度和高度)。例如：&lt;/li&gt;
 &lt;/ul&gt;
@@ -941,8 +944,9 @@
 &lt;li&gt;&lt;code&gt;fill&lt;/code&gt;属性指定填充颜色。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;因为&lt;code&gt;canvas&lt;/code&gt;和&lt;code&gt;svg&lt;/code&gt;的内容较多且涉及的知识较复杂,在本文就不再详细介绍,后续我会单独写文章进行讲解。&lt;/p&gt;
-&lt;h2 id=&#34;html5的本地存储&#34;&gt;HTML5的本地存储
-&lt;/h2&gt;&lt;p&gt;HTML5引入了本地存储(Local Storage)和会话存储(Session Storage)两种机制，用于在用户浏览器中存储数据。这些存储机制允许网页在用户关闭浏览器后仍然保留数据，提供更好的用户体验。下面我将介绍HTML5的本地存储：&lt;/p&gt;
+&lt;h2 id=&#34;浏览器能力存储与实时通信&#34;&gt;浏览器能力：存储与实时通信
+&lt;/h2&gt;&lt;h3 id=&#34;本地存储与会话存储&#34;&gt;本地存储与会话存储
+&lt;/h3&gt;&lt;p&gt;HTML5引入了本地存储(Local Storage)和会话存储(Session Storage)两种机制，用于在用户浏览器中存储数据。这些存储机制允许网页在用户关闭浏览器后仍然保留数据，提供更好的用户体验。下面我将介绍HTML5的本地存储：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;本地存储(Local Storage)&lt;/strong&gt;：本地存储允许网页在用户浏览器中存储数据，数据没有过期时间，除非用户手动清除，否则数据会一直保留。常用的方法有：
 &lt;ul&gt;
@@ -1023,18 +1027,14 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;sessionStorage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;clear&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;html的web-workers和websockets&#34;&gt;HTML的Web Workers和WebSockets
-&lt;/h2&gt;&lt;p&gt;HTML5引入了Web Workers和WebSockets两种技术，用于提升网页的性能和实时通信能力,这也是HTML5的重要特性之一。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Web Workers&lt;/strong&gt;：Web Workers允许网页在后台线程中运行JavaScript代码，从而避免阻塞主线程，提高网页的响应速度。常用的方法有：
-&lt;ul&gt;
-&lt;li&gt;创建Worker：&lt;code&gt;let worker = new Worker(&amp;quot;worker.js&amp;quot;)&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;发送消息：&lt;code&gt;worker.postMessage(data)&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;接收消息：&lt;code&gt;worker.onmessage = function(event) { ... }&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;终止Worker：&lt;code&gt;worker.terminate()&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/div&gt;&lt;h3 id=&#34;web-workers-与-websockets&#34;&gt;Web Workers 与 WebSockets
+&lt;/h3&gt;&lt;p&gt;HTML5引入了Web Workers和WebSockets两种技术，用于提升网页的性能和实时通信能力,这也是HTML5的重要特性之一。&lt;/p&gt;
+&lt;h4 id=&#34;web-workers&#34;&gt;Web Workers
+&lt;/h4&gt;&lt;p&gt;Web Workers允许网页在后台线程中运行JavaScript代码，从而避免阻塞主线程，提高网页的响应速度。常用的方法有：
+- 创建Worker：&lt;code&gt;let worker = new Worker(&amp;quot;worker.js&amp;quot;)&lt;/code&gt;。
+- 发送消息：&lt;code&gt;worker.postMessage(data)&lt;/code&gt;。
+- 接收消息：&lt;code&gt;worker.onmessage = function(event) { ... }&lt;/code&gt;。
+- 终止Worker：&lt;code&gt;worker.terminate()&lt;/code&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1048,11 +1048,9 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// main.js
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// main.js
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;worker&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Worker&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;worker.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;worker&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;postMessage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Hello, Worker!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;worker&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;onmessage&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;event&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -1065,16 +1063,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;WebSockets&lt;/strong&gt;：WebSockets提供了一种在客户端和服务器之间进行双向通信的机制，允许实时数据传输。常用的方法有：
-&lt;ul&gt;
-&lt;li&gt;创建WebSocket连接：&lt;code&gt;let socket = new WebSocket(&amp;quot;ws://example.com/socket&amp;quot;)&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;发送消息：&lt;code&gt;socket.send(data)&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;接收消息：&lt;code&gt;socket.onmessage = function(event) { ... }&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;关闭连接：&lt;code&gt;socket.close()&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/div&gt;&lt;h4 id=&#34;websockets&#34;&gt;WebSockets
+&lt;/h4&gt;&lt;p&gt;WebSockets提供了一种在客户端和服务器之间进行双向通信的机制，允许实时数据传输。常用的方法有：
+- 创建WebSocket连接：&lt;code&gt;let socket = new WebSocket(&amp;quot;ws://example.com/socket&amp;quot;)&lt;/code&gt;。
+- 发送消息：&lt;code&gt;socket.send(data)&lt;/code&gt;。
+- 接收消息：&lt;code&gt;socket.onmessage = function(event) { ... }&lt;/code&gt;。
+- 关闭连接：&lt;code&gt;socket.close()&lt;/code&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1087,11 +1081,9 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;socket&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;WebSocket&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ws://example.com/socket&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;let&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;socket&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;WebSocket&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ws://example.com/socket&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;socket&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;onopen&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;event&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;socket&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;send&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Hello, Server!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
