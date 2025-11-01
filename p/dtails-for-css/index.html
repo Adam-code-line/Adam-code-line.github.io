@@ -299,6 +299,7 @@
         <li><a href="#特异性specificity">特异性(Specificity)</a></li>
       </ol>
     </li>
+    <li><a href="#积分规则">积分规则</a></li>
     <li><a href="#css的继承">CSS的继承</a>
       <ol>
         <li><a href="#继承的控制">继承的控制</a></li>
@@ -309,15 +310,35 @@
         <li><a href="#盒模型概述">盒模型概述</a></li>
         <li><a href="#标准盒模型">标准盒模型</a></li>
         <li><a href="#替代盒模型">替代盒模型</a></li>
-        <li><a href="#盒模型的边距问题">盒模型的边距问题</a></li>
+        <li><a href="#盒模型的边距和溢出问题">盒模型的边距和溢出问题</a>
+          <ol>
+            <li><a href="#外边距合并margin-collapsing">外边距合并(Margin Collapsing)</a></li>
+            <li><a href="#盒子溢出overflow">盒子溢出(Overflow)</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
+    <li><a href="#盒子溢出示例">盒子溢出示例</a></li>
     <li><a href="#css的布局方式">CSS的布局方式</a>
       <ol>
         <li><a href="#流式布局flow-layout">流式布局(Flow Layout)</a></li>
-        <li><a href="#定位布局positioning-layout">定位布局(Positioning Layout)</a></li>
+        <li><a href="#定位布局positioning-layout">定位布局(Positioning Layout)</a>
+          <ol>
+            <li><a href="#relative-解析">relative 解析：</a></li>
+            <li><a href="#absolute-解析">absolute 解析：</a></li>
+            <li><a href="#fixed-解析">fixed 解析：</a></li>
+            <li><a href="#sticky-解析">sticky 解析：</a></li>
+          </ol>
+        </li>
         <li><a href="#浮动布局floating-layout">浮动布局(Floating Layout)</a></li>
-        <li><a href="#弹性盒布局flexbox-layout">弹性盒布局(Flexbox Layout)</a></li>
+        <li><a href="#弹性盒布局flexbox-layout">弹性盒布局(Flexbox Layout)</a>
+          <ol>
+            <li><a href="#flex布局的主轴">flex布局的主轴</a></li>
+            <li><a href="#flex布局的交叉轴">flex布局的交叉轴</a></li>
+            <li><a href="#flex的内容对齐">flex的内容对齐</a></li>
+            <li><a href="#flex的尺寸">flex的尺寸</a></li>
+          </ol>
+        </li>
         <li><a href="#网格布局grid-layout">网格布局(Grid Layout)</a></li>
       </ol>
     </li>
@@ -397,7 +418,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 9 分钟
+                    阅读时长: 14 分钟
                 </time>
             </div>
         
@@ -527,6 +548,40 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在这个例子中，段落文本的颜色将是绿色，因为ID选择器的特异性最高。特异性也可以理解成具体程度，越具体的选择器优先级越高。</p>
+<h2 id="积分规则">积分规则
+</h2><p>CSS的优先级可以通过积分规则来计算：</p>
+<ul>
+<li>内联样式：1000分</li>
+<li>ID选择器：0100分</li>
+<li>类选择器、属性选择器和伪类选择器：0010分</li>
+<li>元素选择器和伪元素选择器：0001分</li>
+</ul>
+<p>例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">#</span><span class="nn">header</span> <span class="nt">p</span> <span class="p">{</span>          <span class="c">/* 0100 + 0001 = 0101 */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="kc">green</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">header</span> <span class="nt">p</span> <span class="p">{</span>        <span class="c">/* 0010 + 0001 = 0011 */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="kc">orange</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">p</span> <span class="p">{</span>                 <span class="c">/* 0001 */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="kc">purple</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个例子中，<code>#header p</code>的总积分为0101，<code>.header p</code>的总积分为0011，<code>p</code>的总积分为0001。因此，段落文本的颜色将是绿色，因为它具有最高的积分。在使用多个选择器时，可以通过计算积分来确定最终应用的样式规则。</p>
 <h2 id="css的继承">CSS的继承
 </h2><p>CSS的继承是指某些CSS属性会从父元素传递给子元素。并不是所有的CSS属性都具有继承性，只有一些特定的属性会被继承。常见的可继承属性包括：</p>
 <ul>
@@ -536,7 +591,7 @@
 而像<code>margin</code>、<code>padding</code>、<code>border</code>、<code>width</code>、<code>height</code>等属性则不会被继承。</li>
 </ul>
 <h3 id="继承的控制">继承的控制
-</h3><p>可以使用<code>inherit</code>、<code>initial</code>和<code>unset</code>关键字来控制继承行为：</p>
+</h3><p>可以使用<code>inherit</code>、<code>initial</code>、<code>unset</code>和关键字来控制继承行为：</p>
 <ul>
 <li><code>inherit</code>：强制子元素继承父元素的属性值。</li>
 </ul>
@@ -554,7 +609,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
-<li><code>initial</code>：将属性值重置为其初始值。</li>
+<li><code>inherit</code>：强制子元素继承父元素的属性值。</li>
 </ul>
 <p>示例：</p>
 <div class="highlight"><div class="chroma">
@@ -570,7 +625,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
-<li><code>unset</code>：如果属性是可继承的，则继承父元素的值；如果不可继承，则设置为初始值。</li>
+<li><code>initial</code>：将属性值重置为其初始值。</li>
 </ul>
 <p>示例：</p>
 <div class="highlight"><div class="chroma">
@@ -585,7 +640,10 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="css-盒模型">CSS 盒模型
+</div><ul>
+<li><code>unset</code>：如果属性是可继承的，则继承父元素的值；如果不可继承，则设置为初始值。</li>
+</ul>
+<h2 id="css-盒模型">CSS 盒模型
 </h2><h3 id="盒模型概述">盒模型概述
 </h3><p>CSS 盒模型是理解网页布局的基础概念。每个HTML元素都可以看作一个矩形盒子，盒模型由四个部分组成：</p>
 <ol>
@@ -595,7 +653,8 @@
 <li><strong>外边距(margin)</strong>：盒子与其他元素之间的空间，用于控制元素之间的距离，用<code>margin</code>属性来设置大小。</li>
 </ol>
 <h3 id="标准盒模型">标准盒模型
-</h3><p>示例：</p>
+</h3><p>CSS标准盒模型中，元素的宽度和高度仅包括内容区域的宽度和高度，不包括内边距和边框。即<code>width</code>和<code>height</code>属性设置的值仅仅是内容区域的大小。</p>
+<p>示例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -656,11 +715,11 @@
 <p><figure class="image-with-tools">
     
     <a href="./box1.png" target="_blank" title="点击查看大图">
-        <img src="./box1.png" alt="CSS 盒模型示意图"  loading="lazy" />
+        <img src="./box1.png" alt="CSS 标准盒模型示意图"  loading="lazy" />
     </a>
 
     
-    <a href="./box1.png" download="CSS 盒模型示意图" class="download-btn" title="下载原图">
+    <a href="./box1.png" download="CSS 标准盒模型示意图" class="download-btn" title="下载原图">
         ⬇️ 下载
     </a>
 
@@ -669,11 +728,11 @@
 <figure class="image-with-tools">
     
     <a href="./box2.png" target="_blank" title="点击查看大图">
-        <img src="./box2.png" alt="CSS 盒模型示意图"  loading="lazy" />
+        <img src="./box2.png" alt="CSS 标准盒模型示意图"  loading="lazy" />
     </a>
 
     
-    <a href="./box2.png" download="CSS 盒模型示意图" class="download-btn" title="下载原图">
+    <a href="./box2.png" download="CSS 标准盒模型示意图" class="download-btn" title="下载原图">
         ⬇️ 下载
     </a>
 
@@ -711,7 +770,7 @@
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>在这个例子中，<code>.box</code>类使用了<code>border-box</code>盒模型，因此盒子的总宽度和高度仍然是200px和100px，而不是内容区域的宽度和高度。因此元素的总宽 = 200px，总高 = 100px，内容区域的宽度和高度会根据内边距和边框的大小自动调整。</p>
+</div><p>在这个例子中，<code>.box</code>类使用了<code>border-box</code>盒模型，因此盒子的总宽度和高度仍然是200px和100px，而不是内容区域的宽度和高度。因此元素的总宽 = 200px，总高 = 100px，内容区域的宽度和高度会根据内边距和边框的大小自动调整。即内容的宽度 = 总宽 - 左右内边距 - 左右边框 = 200 - 20<em>2 - 5</em>2 = 150px；内容的高度 = 总高 - 上下内边距 - 上下边框 = 100 - 20<em>2 - 5</em>2 = 50px。</p>
 <p><figure class="image-with-tools">
     
     <a href="./box3.png" target="_blank" title="点击查看大图">
@@ -739,10 +798,9 @@
     
 </figure></p>
 <p>大多数开发者更倾向于使用<code>border-box</code>盒模型，因为它更直观，尤其是在进行复杂布局时，可以更容易地控制元素的总大小。</p>
-<h3 id="盒模型的边距问题">盒模型的边距问题
-</h3><ol>
-<li><strong>外边距合并(Margin Collapsing)</strong> 在CSS盒模型中，外边距（margin）有一个特殊的行为，称为“边距合并”（margin collapsing）。当两个垂直相邻的块级元素的外边距相遇时，浏览器会将它们合并为一个外边距，而不是简单地相加。这意味着最终的外边距大小将是两个外边距中较大的那个。但是如果两个外边距是负值，则取较小的那个值。如果一个是正值一个是负值，则相当于做加法运算。</li>
-</ol>
+<h3 id="盒模型的边距和溢出问题">盒模型的边距和溢出问题
+</h3><h4 id="外边距合并margin-collapsing">外边距合并(Margin Collapsing)
+</h4><p>在CSS盒模型中，外边距（margin）有一个特殊的行为，称为“边距合并”（margin collapsing）。当两个垂直相邻的块级元素的外边距相遇时，浏览器会将它们合并为一个外边距，而不是简单地相加。这意味着最终的外边距大小将是两个外边距中较大的那个。但是如果两个外边距是负值，则取较小的那个值。如果一个是正值一个是负值，则相当于做加法运算。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -842,6 +900,74 @@
     
 </figure></p>
 <p>观感上就像外边距小的那个被大边距“吃掉”了一样。理解边距合并对于布局设计非常重要，尤其是在处理多个块级元素时，可以帮助避免意外的间距问题。解决方法可以使用内边距（padding）或边框（border）来替代外边距，或者添加边框或内边距来阻止边距合并。也可以使用<code>flex</code>布局或<code>grid</code>布局来避免这种情况,这在后面的布局章节中会详细介绍。</p>
+<h4 id="盒子溢出overflow">盒子溢出(Overflow)
+</h4><p>盒子溢出是指当内容的大小超过其容器的尺寸时，内容会溢出容器的边界。CSS提供了<code>overflow</code>属性来控制溢出内容的显示方式。<code>overflow</code>属性有以下几个常用值：</p>
+<ul>
+<li><code>visible</code>：默认值，溢出内容会显示在容器之外。</li>
+<li><code>hidden</code>：溢出内容会被裁剪，不会显示在容器之外。</li>
+<li><code>scroll</code>：无论是否溢出，容器都会显示滚动条。</li>
+<li><code>auto</code>：当内容溢出时，自动显示滚动条。</li>
+</ul>
+<h2 id="盒子溢出示例">盒子溢出示例
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;UTF-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1.0&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Overflow Example<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">width</span><span class="p">:</span> <span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">border</span><span class="p">:</span> <span class="mi">2</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#333</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">overflow</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span> <span class="c">/* 可以尝试更改为 visible、hidden、scroll */</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="nc">content</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">width</span><span class="p">:</span> <span class="mi">300</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">height</span><span class="p">:</span> <span class="mi">150</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">background-color</span><span class="p">:</span> <span class="kc">lightgreen</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;container&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;content&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个例子中，<code>.container</code>类定义了一个固定大小的容器，而<code>.content</code>类定义了一个比容器大的内容区域。根据<code>overflow</code>属性的不同设置，溢出内容的显示方式会有所不同。</p>
 <h2 id="css的布局方式">CSS的布局方式
 </h2><p>CSS提供了多种布局方式，常见的布局方式包括：</p>
 <h3 id="流式布局flow-layout">流式布局(Flow Layout)
@@ -855,10 +981,176 @@
 <li><code>fixed</code>：相对于浏览器窗口进行定位，滚动页面时位置不变。</li>
 <li><code>sticky</code>：在特定的滚动位置下表现为<code>relative</code>，否则表现为<code>fixed</code>。</li>
 </ul>
+<h4 id="relative-解析">relative 解析：
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">box</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">top</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">left</span><span class="p">:</span> <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在上面的例子中，<code>.box</code>元素将相对于其正常位置向下移动20px，向右移动30px。这个相对是相对于它在文档流中的原始位置。</p>
+<h4 id="absolute-解析">absolute 解析：
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span> <span class="c">/* 设定一个已定位的祖先元素 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">box</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">top</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">left</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个例子中，<code>.box</code>元素将相对于其最近的已定位祖先元素<code>.container</code>定位，距离顶部50px，距离左侧100px。注意，如果没有已定位的祖先元素，<code>.box</code>将相对于初始包含块（通常是<code>&lt;html&gt;</code>元素）进行定位。所以，使用<code>absolute</code>定位时，通常会为其祖先元素设置<code>position: relative</code>以确保定位的参考点正确。</p>
+<h4 id="fixed-解析">fixed 解析：
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">box</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">position</span><span class="p">:</span> <span class="kc">fixed</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">top</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">right</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个例子中，<code>.box</code>元素将固定在浏览器窗口的右上角，距离顶部10px，距离右侧10px。无论页面如何滚动，<code>.box</code>的位置都不会改变。</p>
+<h4 id="sticky-解析">sticky 解析：
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">box</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">position</span><span class="p">:</span> <span class="kc">sticky</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个例子中，<code>.box</code>元素在滚动到达其父容器的顶部时会固定在视口的顶部（距离顶部0px）。在滚动之前，它会按照正常的文档流进行排列。</p>
+<p>注意，<code>sticky</code>定位需要父容器有足够的高度，否则可能无法达到预期效果。且<code>sticky</code>的父级元素不能有<code>overflow: hidden</code>、<code>overflow: scroll</code>或<code>overflow: auto</code>属性，否则会影响其粘性行为。以及<code>flex</code>的布局主轴方向和<code>sticky</code>定位的方向要一致，否则可能无法达到预期效果。要触发粘性效果，需要设置<code>top</code>、<code>bottom</code>、<code>left</code>或<code>right</code>中的至少一个属性。</p>
 <h3 id="浮动布局floating-layout">浮动布局(Floating Layout)
 </h3><p>浮动布局使用<code>float</code>属性将元素从正常文档流中取出，并使其向左或向右浮动。常用于实现文本环绕效果或创建多栏布局。需要注意的是，浮动元素不会影响后续元素的布局，可能需要使用清除浮动（clear）来避免布局问题。</p>
 <h3 id="弹性盒布局flexbox-layout">弹性盒布局(Flexbox Layout)
-</h3><p>弹性盒布局使用<code>display: flex</code>属性创建一个灵活的容器，允许子元素在主轴和交叉轴上进行对齐和分配空间。Flexbox非常适合用于一维布局，如水平或垂直排列元素。常用的Flexbox属性包括<code>justify-content</code>、<code>align-items</code>、<code>flex-direction</code>等。</p>
+</h3><p>弹性盒布局使用<code>display: flex</code>属性创建一个灵活的容器，允许子元素在主轴和交叉轴上进行对齐和分配空间。Flexbox非常适合用于一维布局，如水平或垂直排列元素。常用的Flexbox属性包括<code>flex-direction</code>、<code>justify-content</code>、<code>align-items</code>等。</p>
+<h4 id="flex布局的主轴">flex布局的主轴
+</h4><p>在Flexbox中，主轴是指元素在容器中排列的方向。主轴的方向可以通过<code>flex-direction</code>属性来设置，常见的取值有：</p>
+<ul>
+<li><code>row</code>：默认值，主轴为水平方向，从左到右排列。</li>
+<li><code>row-reverse</code>：主轴为水平方向，从右到左排列。</li>
+<li><code>column</code>：主轴为垂直方向，从上到下排列。</li>
+<li><code>column-reverse</code>：主轴为垂直方向，从下到上排列。</li>
+</ul>
+<h4 id="flex布局的交叉轴">flex布局的交叉轴
+</h4><p>交叉轴是指与主轴垂直的方向。交叉轴的方向取决于主轴的方向：</p>
+<ul>
+<li>当主轴为水平方向（<code>row</code>或<code>row-reverse</code>）时，交叉轴为垂直方向。</li>
+<li>当主轴为垂直方向（<code>column</code>或<code>column-reverse</code>）时，交叉轴为水平方向。</li>
+</ul>
+<p><figure class="image-with-tools">
+    
+    <a href="./flex.png" target="_blank" title="点击查看大图">
+        <img src="./flex.png" alt="Flexbox 主轴和交叉轴示意图"  title="出处：https://blog.csdn.net/weixin_51938171/article/details/125548920"  loading="lazy" />
+    </a>
+
+    
+    <a href="./flex.png" download="Flexbox 主轴和交叉轴示意图" class="download-btn" title="下载原图">
+        ⬇️ 下载
+    </a>
+
+    
+    <figcaption>出处：https://blog.csdn.net/weixin_51938171/article/details/125548920</figcaption>
+    
+</figure></p>
+<h4 id="flex的内容对齐">flex的内容对齐
+</h4><p>在Flexbox中，可以使用<code>justify-content</code>属性来控制主轴上的内容对齐方式，常见的取值有：</p>
+<ul>
+<li><code>flex-start</code>：默认值，内容向主轴的起始位置对齐。</li>
+<li><code>flex-end</code>：内容向主轴的结束位置对齐。</li>
+<li><code>center</code>：内容在主轴上居中对齐。</li>
+<li><code>space-between</code>：内容在主轴上均匀分布，首尾元素紧贴容器边缘。</li>
+<li><code>space-around</code>：内容在主轴上均匀分布，首尾元素与容器边缘之间留有空隙。</li>
+</ul>
+<p><figure class="image-with-tools">
+    
+    <a href="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/79b3155d4cd4482fbc6b16fe5d5bb225~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg55-l5ZCm5oqA5pyv:q75.awebp?rk3s=f64ab15b&amp;x-expires=1762314555&amp;x-signature=943o%2Bkxf2i7uXLoh1dXudg0sgF4%3D" target="_blank" title="点击查看大图">
+        <img src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/79b3155d4cd4482fbc6b16fe5d5bb225~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg55-l5ZCm5oqA5pyv:q75.awebp?rk3s=f64ab15b&amp;x-expires=1762314555&amp;x-signature=943o%2Bkxf2i7uXLoh1dXudg0sgF4%3D" alt="Flexbox 主轴设为row内容对齐示意图"  loading="lazy" />
+    </a>
+
+    
+    <a href="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/79b3155d4cd4482fbc6b16fe5d5bb225~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg55-l5ZCm5oqA5pyv:q75.awebp?rk3s=f64ab15b&amp;x-expires=1762314555&amp;x-signature=943o%2Bkxf2i7uXLoh1dXudg0sgF4%3D" download="Flexbox 主轴设为row内容对齐示意图" class="download-btn" title="下载原图">
+        ⬇️ 下载
+    </a>
+
+    
+</figure></p>
+<p><figure class="image-with-tools">
+    
+    <a href="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/5767af73aa9f49a9b0d014efb5963344~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg55-l5ZCm5oqA5pyv:q75.awebp?rk3s=f64ab15b&amp;x-expires=1762314555&amp;x-signature=zZ0lzK8ADmjGwDzDqL4VWSYlGSg%3D" target="_blank" title="点击查看大图">
+        <img src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/5767af73aa9f49a9b0d014efb5963344~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg55-l5ZCm5oqA5pyv:q75.awebp?rk3s=f64ab15b&amp;x-expires=1762314555&amp;x-signature=zZ0lzK8ADmjGwDzDqL4VWSYlGSg%3D" alt="Flexbox 主轴设为column内容对齐示意图"  loading="lazy" />
+    </a>
+
+    
+    <a href="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/5767af73aa9f49a9b0d014efb5963344~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg55-l5ZCm5oqA5pyv:q75.awebp?rk3s=f64ab15b&amp;x-expires=1762314555&amp;x-signature=zZ0lzK8ADmjGwDzDqL4VWSYlGSg%3D" download="Flexbox 主轴设为column内容对齐示意图" class="download-btn" title="下载原图">
+        ⬇️ 下载
+    </a>
+
+    
+</figure></p>
+<h4 id="flex的尺寸">flex的尺寸
+</h4><p>在Flexbox中，可以使用<code>flex</code>属性来控制子元素在主轴上的尺寸分配。<code>flex</code>属性是一个简写属性，包含三个子属性：<code>flex-grow</code>、<code>flex-shrink</code>和<code>flex-basis</code>。</p>
+<ul>
+<li><code>flex-grow</code>：定义子元素在主轴上如何增长以填充剩余空间。默认值为0，表示不增长。</li>
+<li><code>flex-shrink</code>：定义子元素在主轴上如何缩小以适应容器。默认值为1，表示可以缩小。</li>
+<li><code>flex-basis</code>：定义子元素在主轴上的初始尺寸。可以设置为具体的长度值（如<code>100px</code>）或百分比（如<code>50%</code>），也可以设置为<code>auto</code>，表示根据内容自动计算尺寸。</li>
+</ul>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">flex</span><span class="p">:</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span> <span class="c">/* flex-grow: 1; flex-shrink: 0; flex-basis: 100px; */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在这个例子中，<code>.item</code>类的子元素将具有初始尺寸为100px，并且可以增长以填充剩余空间，但不会缩小。设置<code>flex: 1</code>也表示每个子元素将平分剩余空间。即每个元素在主轴上占据相等的空间,这是个无单位的比例值，表示每个元素按比例分配剩余空间。</p>
 <h3 id="网格布局grid-layout">网格布局(Grid Layout)
 </h3><p>网格布局使用<code>display: grid</code>属性创建一个二维的网格容器，允许开发者定义行和列，并将子元素放置在指定的网格单元格中。Grid布局非常适合用于复杂的网页布局，如报纸式布局。常用的Grid属性包括<code>grid-template-rows</code>、<code>grid-template-columns</code>、<code>grid-gap</code>等。</p>
 <h2 id="css的伪类和伪元素">CSS的伪类和伪元素
