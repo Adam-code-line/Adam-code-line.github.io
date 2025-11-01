@@ -14,7 +14,8 @@
         
         <guid>https://adam-code-line.github.io/p/dtails-for-css/</guid>
         <description>&lt;h1 id=&#34;css详解&#34;&gt;CSS详解
-&lt;/h1&gt;&lt;p&gt;在之前的&lt;a class=&#34;link&#34; href=&#34;../css&#34; &gt;CSS 基础知识入门&lt;/a&gt;文章中，我们介绍了CSS的基本概念和常用选择器和三种引入方式。本文将更深入地探讨CSS的详细内容，包括CSS的层叠与继承、盒模型、布局方式、伪类和伪元素等。&lt;/p&gt;
+&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
+&lt;/h2&gt;&lt;p&gt;在之前的&lt;a class=&#34;link&#34; href=&#34;../css&#34; &gt;CSS 基础知识入门&lt;/a&gt;文章中，我们介绍了CSS的基本概念和常用选择器和三种引入方式。本文将更深入地探讨CSS的详细内容，包括CSS的层叠与继承、盒模型、布局方式、伪类和伪元素等。&lt;/p&gt;
 &lt;h2 id=&#34;css的层叠&#34;&gt;CSS的层叠
 &lt;/h2&gt;&lt;p&gt;CSS的全称是层叠样式表（Cascading Style Sheets），其中“层叠”指的是当多个样式规则应用于同一个元素时，浏览器如何决定最终应用哪一个规则,也即优先级的概念。CSS的层叠规则主要包括以下几个方面：&lt;/p&gt;
 &lt;h3 id=&#34;重要性importance&#34;&gt;重要性(Importance)
