@@ -15,7 +15,62 @@
         <guid>https://adam-code-line.github.io/p/dtails-for-css/</guid>
         <description>&lt;h1 id=&#34;css详解&#34;&gt;CSS详解
 &lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
-&lt;/h2&gt;&lt;p&gt;在之前的&lt;a class=&#34;link&#34; href=&#34;../css&#34; &gt;CSS 基础知识入门&lt;/a&gt;文章中，我们介绍了CSS的基本概念和常用选择器和三种引入方式。本文将更深入地探讨CSS的详细内容，包括CSS的层叠与继承、盒模型、布局方式、伪类和伪元素等。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;在之前的&lt;a class=&#34;link&#34; href=&#34;../css&#34; &gt;CSS 基础知识入门&lt;/a&gt;文章中，我们介绍了CSS的基本概念和常用选择器和三种引入方式。本文将更深入地探讨CSS的详细内容，包括CSS的语法解析，层叠与继承、盒模型、布局方式、伪类和伪元素等。&lt;/p&gt;
+&lt;h2 id=&#34;css语法解析&#34;&gt;CSS语法解析
+&lt;/h2&gt;&lt;h3 id=&#34;css的基本语法&#34;&gt;CSS的基本语法
+&lt;/h3&gt;&lt;p&gt;CSS的基本语法由选择器(selector)和声明块(declaration block)组成。选择器用于指定要应用样式的HTML元素，声明块包含一个或多个声明，每个声明由属性(property)和属性值(value)组成。CSS语法的基本结构如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;selector&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;property&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;color&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;red&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在这个例子中，&lt;code&gt;p&lt;/code&gt;是选择器，表示所有的段落元素；&lt;code&gt;color&lt;/code&gt;是属性，表示文本颜色；&lt;code&gt;red&lt;/code&gt;是属性值，表示将文本颜色设置为红色。声明块就是用大括号&lt;code&gt;{}&lt;/code&gt;包裹起来的部分，可以包含多个声明，每个声明之间用分号&lt;code&gt;;&lt;/code&gt;分隔。&lt;/p&gt;
+&lt;h3 id=&#34;css的注释&#34;&gt;CSS的注释
+&lt;/h3&gt;&lt;p&gt;在CSS中，可以使用&lt;code&gt;/*&lt;/code&gt;和&lt;code&gt;*/&lt;/code&gt;来添加注释。注释不会被浏览器解析和渲染，只用于提高代码的可读性和维护性。注释的语法如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;/* 这是一个注释 */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;color&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;red&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;css的规则&#34;&gt;CSS的@规则
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;@&lt;/code&gt;规则用于定义CSS中的特殊指令，如导入外部样式表、定义媒体查询等。常见的&lt;code&gt;@&lt;/code&gt;规则包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;@import&lt;/code&gt;：用于导入其他CSS文件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@media&lt;/code&gt;：用于定义响应式样式，根据不同的设备特性应用不同的样式。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@font-face&lt;/code&gt;：用于定义自定义字体。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@keyframes&lt;/code&gt;：用于定义动画关键帧。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@charset&lt;/code&gt;：用于指定CSS文件的字符编码。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@supports&lt;/code&gt;：用于检测浏览器是否支持某个CSS特性。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;css的层叠&#34;&gt;CSS的层叠
 &lt;/h2&gt;&lt;p&gt;CSS的全称是层叠样式表（Cascading Style Sheets），其中“层叠”指的是当多个样式规则应用于同一个元素时，浏览器如何决定最终应用哪一个规则,也即优先级的概念。CSS的层叠规则主要包括以下几个方面：&lt;/p&gt;
 &lt;h3 id=&#34;重要性importance&#34;&gt;重要性(Importance)
@@ -829,6 +884,8 @@
 &lt;li&gt;&lt;code&gt;:nth-child(n)&lt;/code&gt;：选择父元素的第n个子元素。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;:first-child&lt;/code&gt;：选择父元素的第一个子元素。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;:last-child&lt;/code&gt;：选择父元素的最后一个子元素。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:not(selector)&lt;/code&gt;：选择不匹配指定选择器的元素。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:root&lt;/code&gt;：选择文档的根元素，通常是&lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt;元素。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;伪元素pseudo-elements&#34;&gt;伪元素(Pseudo-elements)
 &lt;/h3&gt;&lt;p&gt;伪元素用于创建元素的虚拟子元素，常见的伪元素有：&lt;/p&gt;
