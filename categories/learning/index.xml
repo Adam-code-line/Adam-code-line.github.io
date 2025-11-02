@@ -5146,19 +5146,19 @@
 &lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;Vue&lt;/code&gt;是款由尤雨溪（Evan You）创建的渐进式 JavaScript 框架，旨在通过简洁易用的 API 构建用户界面。&lt;code&gt;Vue&lt;/code&gt; 采用组件化开发方式，支持响应式数据绑定和组合式 API，使得构建复杂应用变得高效且灵活。&lt;code&gt;Vue&lt;/code&gt; 的核心特点包括响应式系统、组件化、虚拟 DOM 和单向数据流等。以下是对 &lt;code&gt;Vue &lt;/code&gt;的简要讲解：&lt;/p&gt;
 &lt;h2 id=&#34;核心概念&#34;&gt;核心概念
-&lt;/h2&gt;&lt;h3 id=&#34;1-响应式系统&#34;&gt;1. 响应式系统
+&lt;/h2&gt;&lt;h3 id=&#34;响应式系统&#34;&gt;响应式系统
 &lt;/h3&gt;&lt;p&gt;&lt;code&gt;Vue&lt;/code&gt; 的响应式系统允许数据变化时自动更新视图。通过使用 &lt;code&gt;ref&lt;/code&gt; 和 &lt;code&gt;reactive&lt;/code&gt;，开发者可以轻松创建响应式数据对象。当这些数据发生变化时，相关的组件会自动重新渲染。&lt;/p&gt;
-&lt;h3 id=&#34;2-组件components&#34;&gt;2. 组件（Components）
+&lt;h3 id=&#34;组件components&#34;&gt;组件（Components）
 &lt;/h3&gt;&lt;p&gt;组件是 &lt;code&gt;Vue&lt;/code&gt; 应用的基本构建块。每个组件都是一个独立的、可复用的 UI 单元，可以包含自己的状态和逻辑。组件可以是单文件组件（&lt;code&gt;.vue&lt;/code&gt; 文件），也可以是函数式组件。组件化使得代码更易维护和复用。&lt;/p&gt;
-&lt;h3 id=&#34;3-模板语法template-syntax&#34;&gt;3. 模板语法（Template Syntax）
+&lt;h3 id=&#34;模板语法template-syntax&#34;&gt;模板语法（Template Syntax）
 &lt;/h3&gt;&lt;p&gt;&lt;code&gt;Vue&lt;/code&gt; 使用基于 HTML 的模板语法，允许开发者声明式地绑定数据到 DOM 元素。模板中可以使用指令（如 &lt;code&gt;v-if&lt;/code&gt;、&lt;code&gt;v-for&lt;/code&gt;）来控制渲染逻辑。&lt;/p&gt;
-&lt;h3 id=&#34;4-虚拟-domvirtual-dom&#34;&gt;4. 虚拟 DOM（Virtual DOM）
+&lt;h3 id=&#34;虚拟-domvirtual-dom&#34;&gt;虚拟 DOM（Virtual DOM）
 &lt;/h3&gt;&lt;p&gt;&lt;code&gt;Vue&lt;/code&gt; 使用虚拟 DOM 来提高性能。虚拟 DOM 是一个轻量级的 JavaScript 对象，表示真实 DOM 的副本。当组件的状态发生变化时，&lt;code&gt;Vue&lt;/code&gt; 会首先更新虚拟 DOM，然后通过比较新旧虚拟 DOM 的差异，最小化地更新真实 DOM。&lt;/p&gt;
-&lt;h3 id=&#34;5-单向数据流one-way-data-flow&#34;&gt;5. 单向数据流（One-way Data Flow）
+&lt;h3 id=&#34;单向数据流one-way-data-flow&#34;&gt;单向数据流（One-way Data Flow）
 &lt;/h3&gt;&lt;p&gt;&lt;code&gt;Vue&lt;/code&gt; 采用单向数据流的设计理念，数据从父组件传递到子组件。这样可以更容易地追踪数据的变化，提升应用的可维护性。&lt;/p&gt;
-&lt;h3 id=&#34;6-组合式-apicomposition-api&#34;&gt;6. 组合式 API（Composition API）
+&lt;h3 id=&#34;组合式-apicomposition-api&#34;&gt;组合式 API（Composition API）
 &lt;/h3&gt;&lt;p&gt;&lt;code&gt;Vue 3&lt;/code&gt; 引入了组合式 API，允许开发者通过函数来组织组件逻辑。常用的组合式 API 包括 &lt;code&gt;setup&lt;/code&gt; 函数、&lt;code&gt;ref&lt;/code&gt;、&lt;code&gt;reactive&lt;/code&gt;、&lt;code&gt;computed&lt;/code&gt; 和 &lt;code&gt;watch&lt;/code&gt; 等。&lt;/p&gt;
-&lt;h2 id=&#34;2-开发环境与快速启动&#34;&gt;2. 开发环境与快速启动
+&lt;h2 id=&#34;开发环境与快速启动&#34;&gt;开发环境与快速启动
 &lt;/h2&gt;&lt;p&gt;推荐使用 最新版的 Node.js 与 Vite 创建项目：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -5181,7 +5181,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;打开 &lt;code&gt;http://localhost:5173&lt;/code&gt; 即可预览。&lt;/p&gt;
-&lt;h2 id=&#34;3-组合式-api-基本示例&#34;&gt;3. 组合式 API 基本示例
+&lt;h2 id=&#34;组合式-api-基本示例&#34;&gt;组合式 API 基本示例
 &lt;/h2&gt;&lt;p&gt;以下示例展示计数器的实现：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -5219,7 +5219,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;4-组件传参与事件&#34;&gt;4. 组件传参与事件
+&lt;/div&gt;&lt;h2 id=&#34;组件传参与事件&#34;&gt;组件传参与事件
 &lt;/h2&gt;&lt;p&gt;父组件向子组件传递 props，并通过 emit 触发事件：&lt;/p&gt;
 &lt;p&gt;Child.vue&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -5289,7 +5289,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;5-路由vue-router基础&#34;&gt;5. 路由（Vue Router）基础
+&lt;/div&gt;&lt;h2 id=&#34;路由vue-router基础&#34;&gt;路由（Vue Router）基础
 &lt;/h2&gt;&lt;p&gt;安装并配置 Vue Router：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -5349,7 +5349,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;createApp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;App&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;use&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;router&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;mount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;#app&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;6-状态管理pinia&#34;&gt;6. 状态管理（Pinia）
+&lt;/div&gt;&lt;h2 id=&#34;状态管理pinia&#34;&gt;状态管理（Pinia）
 &lt;/h2&gt;&lt;p&gt;使用 Pinia 取代 Vuex：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -5424,7 +5424,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;7-常用工具与测试&#34;&gt;7. 常用工具与测试
+&lt;/div&gt;&lt;h2 id=&#34;常用工具与测试&#34;&gt;常用工具与测试
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;开发工具：Vite、ESLint、Prettier、TypeScript。&lt;/li&gt;
 &lt;li&gt;测试：Vitest + @vue/test-utils。&lt;/li&gt;
@@ -5458,7 +5458,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;8-部署与发布建议&#34;&gt;8. 部署与发布建议
+&lt;/div&gt;&lt;h2 id=&#34;部署与发布建议&#34;&gt;部署与发布建议
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;小型项目可以使用 Vercel 或 Netlify 直接部署，无需复杂配置。&lt;/li&gt;
 &lt;li&gt;打包命令：&lt;/li&gt;
@@ -5475,7 +5475,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pnpm preview
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;9-参考资源&#34;&gt;9. 参考资源
+&lt;/div&gt;&lt;h2 id=&#34;参考资源&#34;&gt;参考资源
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://vuejs.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Vue 3 官方文档&lt;/a&gt;&lt;/li&gt;
