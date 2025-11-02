@@ -1139,8 +1139,8 @@
         <description>&lt;h1 id=&#34;html详解&#34;&gt;HTML详解
 &lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
 &lt;/h2&gt;&lt;p&gt;之前的&lt;a class=&#34;link&#34; href=&#34;../html&#34; &gt;HTML 基础知识入门&lt;/a&gt;文章中我已经介绍了HTML的基础知识，在本文中我会进行更详细的讲解。&lt;/p&gt;
-&lt;h2 id=&#34;基础&#34;&gt;基础
-&lt;/h2&gt;&lt;p&gt;先来回顾一下HTML的概念，&lt;code&gt;HTML&lt;/code&gt;全称为超文本标记语言(Hyper Text Markup Language),是构建网页和Web应用的标准标记语言，&lt;code&gt;超文本（hypertext）&lt;/code&gt;是指连接单个网站内或多个网站间的网页的链接&lt;code&gt;标记(markup)&lt;/code&gt;用来注明文本、图片和其他内容。HTML使用一系列标签和属性来定义网页的结构和内容,包括文本、图像、链接、表格、表单等元素。浏览器通过解析HTML代码,将其渲染为用户可以看到和交互的网页界面。需要明确的是HTML本身并不是一种编程语言，而是标记语言,它主要用于描述网页的结构和内容,而不是实现逻辑和功能。HTML通常与CSS(层叠样式表)和JavaScript一起使用,以实现网页的样式和交互功能。&lt;/p&gt;
+&lt;h3 id=&#34;html-概述&#34;&gt;HTML 概述
+&lt;/h3&gt;&lt;p&gt;先来回顾一下HTML的概念，&lt;code&gt;HTML&lt;/code&gt;全称为超文本标记语言(Hyper Text Markup Language),是构建网页和Web应用的标准标记语言，&lt;code&gt;超文本（hypertext）&lt;/code&gt;是指连接单个网站内或多个网站间的网页的链接&lt;code&gt;标记(markup)&lt;/code&gt;用来注明文本、图片和其他内容。HTML使用一系列标签和属性来定义网页的结构和内容,包括文本、图像、链接、表格、表单等元素。浏览器通过解析HTML代码,将其渲染为用户可以看到和交互的网页界面。需要明确的是HTML本身并不是一种编程语言，而是标记语言,它主要用于描述网页的结构和内容,而不是实现逻辑和功能。HTML通常与CSS(层叠样式表)和JavaScript一起使用,以实现网页的样式和交互功能。&lt;/p&gt;
 &lt;h3 id=&#34;html-的基本结构&#34;&gt;HTML 的基本结构
 &lt;/h3&gt;&lt;p&gt;在之前的&lt;a class=&#34;link&#34; href=&#34;../html&#34; &gt;HTML 基础知识入门&lt;/a&gt;中我们已经介绍了 &lt;code&gt;HTML&lt;/code&gt; 的基本结构,并简单讲解了一些基本标签，下面我将更详细地讲解HTML的基本结构：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
