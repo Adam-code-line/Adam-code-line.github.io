@@ -290,30 +290,27 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#前言">前言</a>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#html-概述">HTML 概述</a></li>
+    <li><a href="#html-的基本结构">HTML 的基本结构</a>
       <ol>
-        <li><a href="#html-概述">HTML 概述</a></li>
-        <li><a href="#html-的基本结构">HTML 的基本结构</a>
-          <ol>
-            <li><a href="#doctype">DOCTYPE</a></li>
-            <li><a href="#html">html</a></li>
-            <li><a href="#head">head</a></li>
-            <li><a href="#meta">meta</a></li>
-            <li><a href="#title">title</a></li>
-            <li><a href="#link">link</a></li>
-            <li><a href="#style">style</a></li>
-            <li><a href="#body">body</a></li>
-          </ol>
-        </li>
-        <li><a href="#语义化标签">语义化标签</a></li>
-        <li><a href="#块级元素与行内行内块">块级元素与行内/行内块</a>
-          <ol>
-            <li><a href="#块级元素">块级元素</a></li>
-            <li><a href="#行内元素">行内元素</a></li>
-            <li><a href="#行内块元素">行内块元素</a></li>
-            <li><a href="#嵌套与转换">嵌套与转换</a></li>
-          </ol>
-        </li>
+        <li><a href="#doctype">DOCTYPE</a></li>
+        <li><a href="#html">html</a></li>
+        <li><a href="#head">head</a></li>
+        <li><a href="#meta">meta</a></li>
+        <li><a href="#title">title</a></li>
+        <li><a href="#link">link</a></li>
+        <li><a href="#style">style</a></li>
+        <li><a href="#body">body</a></li>
+      </ol>
+    </li>
+    <li><a href="#语义化标签">语义化标签</a></li>
+    <li><a href="#块级元素与行内行内块">块级元素与行内/行内块</a>
+      <ol>
+        <li><a href="#块级元素">块级元素</a></li>
+        <li><a href="#行内元素">行内元素</a></li>
+        <li><a href="#行内块元素">行内块元素</a></li>
+        <li><a href="#嵌套与转换">嵌套与转换</a></li>
       </ol>
     </li>
     <li><a href="#媒体与图形">媒体与图形</a>
@@ -325,12 +322,12 @@
             <li><a href="#source">source</a></li>
           </ol>
         </li>
-        <li><a href="#canvas-与-svg">Canvas 与 SVG</a>
-          <ol>
-            <li><a href="#canvas">canvas</a></li>
-            <li><a href="#svg">svg</a></li>
-          </ol>
-        </li>
+      </ol>
+    </li>
+    <li><a href="#canvas-与-svg">Canvas 与 SVG</a>
+      <ol>
+        <li><a href="#canvas">canvas</a></li>
+        <li><a href="#svg">svg</a></li>
       </ol>
     </li>
     <li><a href="#浏览器能力存储与实时通信">浏览器能力：存储与实时通信</a>
@@ -437,10 +434,10 @@
     <h1 id="html详解">HTML详解
 </h1><h2 id="前言">前言
 </h2><p>之前的<a class="link" href="../html" >HTML 基础知识入门</a>文章中我已经介绍了HTML的基础知识，在本文中我会进行更详细的讲解。</p>
-<h3 id="html-概述">HTML 概述
-</h3><p>先来回顾一下HTML的概念，<code>HTML</code>全称为超文本标记语言(Hyper Text Markup Language),是构建网页和Web应用的标准标记语言，<code>超文本（hypertext）</code>是指连接单个网站内或多个网站间的网页的链接<code>标记(markup)</code>用来注明文本、图片和其他内容。HTML使用一系列标签和属性来定义网页的结构和内容,包括文本、图像、链接、表格、表单等元素。浏览器通过解析HTML代码,将其渲染为用户可以看到和交互的网页界面。需要明确的是HTML本身并不是一种编程语言，而是标记语言,它主要用于描述网页的结构和内容,而不是实现逻辑和功能。HTML通常与CSS(层叠样式表)和JavaScript一起使用,以实现网页的样式和交互功能。</p>
-<h3 id="html-的基本结构">HTML 的基本结构
-</h3><p>在之前的<a class="link" href="../html" >HTML 基础知识入门</a>中我们已经介绍了 <code>HTML</code> 的基本结构,并简单讲解了一些基本标签，下面我将更详细地讲解HTML的基本结构：</p>
+<h2 id="html-概述">HTML 概述
+</h2><p>先来回顾一下HTML的概念，<code>HTML</code>全称为超文本标记语言(Hyper Text Markup Language),是构建网页和Web应用的标准标记语言，<code>超文本（hypertext）</code>是指连接单个网站内或多个网站间的网页的链接<code>标记(markup)</code>用来注明文本、图片和其他内容。HTML使用一系列标签和属性来定义网页的结构和内容,包括文本、图像、链接、表格、表单等元素。浏览器通过解析HTML代码,将其渲染为用户可以看到和交互的网页界面。需要明确的是HTML本身并不是一种编程语言，而是标记语言,它主要用于描述网页的结构和内容,而不是实现逻辑和功能。HTML通常与CSS(层叠样式表)和JavaScript一起使用,以实现网页的样式和交互功能。</p>
+<h2 id="html-的基本结构">HTML 的基本结构
+</h2><p>在之前的<a class="link" href="../html" >HTML 基础知识入门</a>中我们已经介绍了 <code>HTML</code> 的基本结构,并简单讲解了一些基本标签，下面我将更详细地讲解HTML的基本结构：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -487,14 +484,14 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="doctype">DOCTYPE
-</h4><p><code>DOCTYPE</code>是HTML5的文档声明，它可以告诉浏览器，使用哪一个HTML版本解析文档。在浏览器发展的过程中出现过很多HTML的版本，如果没有提前告诉浏览器，那么浏览器就不知道文档解析标准是什么。此时，大部分浏览器将开启最大兼容模式来解析网页，我们一般称为怪异模式，这不仅会降低解析效率，而且会在解析过程中产生一些难以预知的bug，所以文档声明是必须的。</p>
-<h4 id="html">html
-</h4><p><code>&lt;html&gt;</code>标签是HTML文档的根元素，所有其他HTML元素都必须包含在<code>&lt;html&gt;</code>标签内。<code>lang</code>属性指定了文档的语言，这对于搜索引擎优化(SEO)和辅助技术(如屏幕阅读器)非常重要。在这里，<code>zh-CN</code>表示中文(中国大陆)。常见的还有<code>en</code>(英语)、<code>fr</code>(法语)、<code>es</code>(西班牙语)等。</p>
-<h4 id="head">head
-</h4><p><code>&lt;head&gt;</code>标签包含了文档的元数据(metadata)，这些信息不会直接显示在网页上，但对网页的功能和表现非常重要。常见的元数据包括字符集声明、页面标题、样式表链接、脚本文件链接等。meta就是元，data就是数据，元数据是用来描述数据的数据，如一个数据200，我们并不知道这个数据代表什么，但是体重：200，我们就可以知道这个数据代表体重200斤，其中的体重就是元数据，它用来描述200这个数据。下面来详细介绍几个常用的元数据标签以及标签中属性的含义。</p>
-<h4 id="meta">meta
-</h4><p><code>&lt;meta&gt;</code>标签用于定义文档的元数据，如字符集、作者、描述等。<code>&lt;meta&gt;</code>常见的属性有：</p>
+</div><h3 id="doctype">DOCTYPE
+</h3><p><code>DOCTYPE</code>是HTML5的文档声明，它可以告诉浏览器，使用哪一个HTML版本解析文档。在浏览器发展的过程中出现过很多HTML的版本，如果没有提前告诉浏览器，那么浏览器就不知道文档解析标准是什么。此时，大部分浏览器将开启最大兼容模式来解析网页，我们一般称为怪异模式，这不仅会降低解析效率，而且会在解析过程中产生一些难以预知的bug，所以文档声明是必须的。</p>
+<h3 id="html">html
+</h3><p><code>&lt;html&gt;</code>标签是HTML文档的根元素，所有其他HTML元素都必须包含在<code>&lt;html&gt;</code>标签内。<code>lang</code>属性指定了文档的语言，这对于搜索引擎优化(SEO)和辅助技术(如屏幕阅读器)非常重要。在这里，<code>zh-CN</code>表示中文(中国大陆)。常见的还有<code>en</code>(英语)、<code>fr</code>(法语)、<code>es</code>(西班牙语)等。</p>
+<h3 id="head">head
+</h3><p><code>&lt;head&gt;</code>标签包含了文档的元数据(metadata)，这些信息不会直接显示在网页上，但对网页的功能和表现非常重要。常见的元数据包括字符集声明、页面标题、样式表链接、脚本文件链接等。meta就是元，data就是数据，元数据是用来描述数据的数据，如一个数据200，我们并不知道这个数据代表什么，但是体重：200，我们就可以知道这个数据代表体重200斤，其中的体重就是元数据，它用来描述200这个数据。下面来详细介绍几个常用的元数据标签以及标签中属性的含义。</p>
+<h3 id="meta">meta
+</h3><p><code>&lt;meta&gt;</code>标签用于定义文档的元数据，如字符集、作者、描述等。<code>&lt;meta&gt;</code>常见的属性有：</p>
 <ol>
 <li>
 <p><strong>charset</strong>：指定文档的字符编码，如<code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code>表示使用UTF-8编码，这是一种支持多种语言字符的编码方式，推荐使用。</p>
@@ -510,18 +507,18 @@
 </ul>
 </li>
 </ol>
-<h4 id="title">title
-</h4><p><code>&lt;title&gt;</code>标签定义了网页的标题，这个标题会显示在浏览器的标签页上，也是搜索引擎结果中的标题。一个好的标题有助于吸引用户点击。</p>
-<h4 id="link">link
-</h4><p><code>&lt;link&gt;</code>标签用于定义与文档相关的外部资源，如样式表、图标等。常见的用法包括：
+<h3 id="title">title
+</h3><p><code>&lt;title&gt;</code>标签定义了网页的标题，这个标题会显示在浏览器的标签页上，也是搜索引擎结果中的标题。一个好的标题有助于吸引用户点击。</p>
+<h3 id="link">link
+</h3><p><code>&lt;link&gt;</code>标签用于定义与文档相关的外部资源，如样式表、图标等。常见的用法包括：
 - 引入CSS样式表：<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;</code>
 - 定义网页图标：<code>&lt;link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;favicon.ico&quot;&gt;</code></p>
-<h4 id="style">style
-</h4><p><code>&lt;style&gt;</code>标签用于定义文档的内部样式，通常包含CSS代码。与<code>&lt;link&gt;</code>标签不同，<code>&lt;style&gt;</code>标签直接在HTML文档中定义样式，而不是引用外部样式表。css的引用方式有三种，分别是内联样式、内部样式和外部样式，<code>&lt;style&gt;</code>标签属于内部样式。本本就不详细介绍css的内容，这里只做简单说明。</p>
-<h4 id="body">body
-</h4><p><code>&lt;body&gt;</code>标签包含了网页的主要内容，这些内容会直接显示在浏览器中。所有可见的网页元素，如文本、图像、链接、表格等，都必须包含在<code>&lt;body&gt;</code>标签内。</p>
-<h3 id="语义化标签">语义化标签
-</h3><p>在之前的<code>HTML</code> 基础知识入门文章中我已经介绍了HTML的基本标签，所以在本文就不再赘述。在HTML5中引入的语义化标签，这是HTML5的重要特性，下面我将介绍一些常用的HTML语义化标签：</p>
+<h3 id="style">style
+</h3><p><code>&lt;style&gt;</code>标签用于定义文档的内部样式，通常包含CSS代码。与<code>&lt;link&gt;</code>标签不同，<code>&lt;style&gt;</code>标签直接在HTML文档中定义样式，而不是引用外部样式表。css的引用方式有三种，分别是内联样式、内部样式和外部样式，<code>&lt;style&gt;</code>标签属于内部样式。本本就不详细介绍css的内容，这里只做简单说明。</p>
+<h3 id="body">body
+</h3><p><code>&lt;body&gt;</code>标签包含了网页的主要内容，这些内容会直接显示在浏览器中。所有可见的网页元素，如文本、图像、链接、表格等，都必须包含在<code>&lt;body&gt;</code>标签内。</p>
+<h2 id="语义化标签">语义化标签
+</h2><p>在之前的<code>HTML</code> 基础知识入门文章中我已经介绍了HTML的基本标签，所以在本文就不再赘述。在HTML5中引入的语义化标签，这是HTML5的重要特性，下面我将介绍一些常用的HTML语义化标签：</p>
 <ul>
 <li><strong>header</strong>：定义文档或节的头部区域，通常包含标题、导航链接等内容。</li>
 <li><strong>nav</strong>：定义导航链接的区域，通常包含网站的主要导航菜单。</li>
@@ -532,30 +529,30 @@
 <li><strong>footer</strong>：定义文档或节的底部区域，通常包含版权信息、联系信息等内容。</li>
 </ul>
 <p>使用语义化标签有助于提高网页的可读性和可维护性，同时也有助于搜索引擎优化(SEO)和辅助技术的支持。</p>
-<h3 id="块级元素与行内行内块">块级元素与行内/行内块
-</h3><p>在HTML中，元素可以分为块级元素(block-level elements)和行内元素(inline elements)以及行内块元素(inline-block elements)三大类。这两类元素在网页布局和显示方式上有显著的区别。</p>
-<h4 id="块级元素">块级元素
-</h4><p>块级元素通常会占据其父元素的整个宽度，并且在其前后会自动换行。块级元素可以包含其他块级元素和行内元素。常见的块级元素有：
+<h2 id="块级元素与行内行内块">块级元素与行内/行内块
+</h2><p>在HTML中，元素可以分为块级元素(block-level elements)和行内元素(inline elements)以及行内块元素(inline-block elements)三大类。这两类元素在网页布局和显示方式上有显著的区别。</p>
+<h3 id="块级元素">块级元素
+</h3><p>块级元素通常会占据其父元素的整个宽度，并且在其前后会自动换行。块级元素可以包含其他块级元素和行内元素。常见的块级元素有：
 - <code>&lt;div&gt;</code>：用于定义一个容器，可以包含其他元素。
 - <code>&lt;p&gt;</code>：用于定义段落。
 - <code>&lt;h1&gt;</code>至<code>&lt;h6&gt;</code>：用于定义标题，<code>&lt;h1&gt;</code>表示最高级别的标题，<code>&lt;h6&gt;</code>表示最低级别的标题。
 - <code>&lt;ul&gt;</code>和<code>&lt;ol&gt;</code>：用于定义无序列表和有序列表。
 - <code>&lt;li&gt;</code>：用于定义列表项。
 - <code>&lt;table&gt;</code>：用于定义表格。</p>
-<h4 id="行内元素">行内元素
-</h4><p>行内元素不会占据整个宽度，只会占据其内容所需的宽度，并且不会在其前后换行。行内元素通常只能包含文本或其他行内元素。常见的行内元素有：
+<h3 id="行内元素">行内元素
+</h3><p>行内元素不会占据整个宽度，只会占据其内容所需的宽度，并且不会在其前后换行。行内元素通常只能包含文本或其他行内元素。常见的行内元素有：
 - <code>&lt;span&gt;</code>：用于定义一个行内容器，可以包含文本或其他行内元素。
 - <code>&lt;a&gt;</code>：用于定义超链接。
 - <code>&lt;strong&gt;</code>：用于定义重要的文本，通常以粗体显示。
 - <code>&lt;em&gt;</code>：用于定义强调的文本，通常以斜体显示。
 - <code>&lt;img&gt;</code>：用于嵌入图像。</p>
-<h4 id="行内块元素">行内块元素
-</h4><p>行内块元素结合了块级元素和行内元素的特性，它们在文档流中表现为行内元素，但可以设置宽度和高度。常见的行内块元素有：
+<h3 id="行内块元素">行内块元素
+</h3><p>行内块元素结合了块级元素和行内元素的特性，它们在文档流中表现为行内元素，但可以设置宽度和高度。常见的行内块元素有：
 - <code>&lt;button&gt;</code>：用于定义按钮。
 - <code>&lt;input&gt;</code>：用于定义输入字段。
 - <code>&lt;label&gt;</code>：用于定义表单控件的标签。</p>
-<h4 id="嵌套与转换">嵌套与转换
-</h4><p>块级元素和行内元素可以嵌套使用，但需要遵循一定的规则。例如，块级元素不能嵌套在行内元素内，而行内元素可以嵌套在块级元素内。块级元素和行内元素之间也可以转化，例如通过CSS的<code>display</code>属性将块级元素设置为行内元素，反之亦然。</p>
+<h3 id="嵌套与转换">嵌套与转换
+</h3><p>块级元素和行内元素可以嵌套使用，但需要遵循一定的规则。例如，块级元素不能嵌套在行内元素内，而行内元素可以嵌套在块级元素内。块级元素和行内元素之间也可以转化，例如通过CSS的<code>display</code>属性将块级元素设置为行内元素，反之亦然。</p>
 <p>将块级元素转化为行内元素：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -636,10 +633,10 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">video</span><span class="p">&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="canvas-与-svg">Canvas 与 SVG
-</h3><p>HTML5引入了<code>&lt;canvas&gt;</code>和<code>&lt;svg&gt;</code>元素，用于在网页中绘制图形和矢量图形,。</p>
-<h4 id="canvas">canvas
-</h4><p><code>&lt;canvas&gt;</code>元素用于在网页中绘制位图图形。它提供了一个绘图区域，可以通过JavaScript使用Canvas API进行绘图操作。常见的属性有<code>width</code>和<code>height</code>(指定画布的宽度和高度)。例如：</p>
+</div><h2 id="canvas-与-svg">Canvas 与 SVG
+</h2><p>HTML5引入了<code>&lt;canvas&gt;</code>和<code>&lt;svg&gt;</code>元素，用于在网页中绘制图形和矢量图形,。</p>
+<h3 id="canvas">canvas
+</h3><p><code>&lt;canvas&gt;</code>元素用于在网页中绘制位图图形。它提供了一个绘图区域，可以通过JavaScript使用Canvas API进行绘图操作。常见的属性有<code>width</code>和<code>height</code>(指定画布的宽度和高度)。例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -665,8 +662,8 @@
 <li><code>fillStyle</code>属性用于设置填充颜色。</li>
 <li><code>fillRect(x, y, width, height)</code>方法用于绘制一个填充矩形。</li>
 </ul>
-<h4 id="svg">svg
-</h4><p><code>&lt;svg&gt;</code>元素用于在网页中嵌入可缩放矢量图形。SVG是一种基于XML的图形格式，可以通过SVG标签和属性定义图形元素。常见的SVG元素有<code>&lt;circle&gt;</code>(圆形)、<code>&lt;rect&gt;</code>(矩形)、<code>&lt;line&gt;</code>(直线)、<code>&lt;path&gt;</code>(路径)等。例如：</p>
+<h3 id="svg">svg
+</h3><p><code>&lt;svg&gt;</code>元素用于在网页中嵌入可缩放矢量图形。SVG是一种基于XML的图形格式，可以通过SVG标签和属性定义图形元素。常见的SVG元素有<code>&lt;circle&gt;</code>(圆形)、<code>&lt;rect&gt;</code>(矩形)、<code>&lt;line&gt;</code>(直线)、<code>&lt;path&gt;</code>(路径)等。例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
