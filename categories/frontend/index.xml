@@ -868,7 +868,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;在这个例子中，&lt;code&gt;.item1&lt;/code&gt;类的子元素将跨越第一行和第一列、第二列，而&lt;code&gt;.item2&lt;/code&gt;类的子元素将跨越第二行和第一列。&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;在这个例子中，&lt;code&gt;.item1&lt;/code&gt;类的子元素将跨越第一行和第一列、第二列，而&lt;code&gt;.item2&lt;/code&gt;类的子元素将跨越第二行和第一列。在观感上，&lt;code&gt;.item1&lt;/code&gt;会占据网格的第一行的全部宽度，而&lt;code&gt;.item2&lt;/code&gt;会占据第二行的第一列。&lt;/p&gt;
 &lt;h4 id=&#34;grid布局的自动放置&#34;&gt;grid布局的自动放置
 &lt;/h4&gt;&lt;p&gt;Grid布局还支持自动放置子元素，可以使用&lt;code&gt;grid-auto-rows&lt;/code&gt;和&lt;code&gt;grid-auto-columns&lt;/code&gt;属性来定义自动生成的行和列的大小。&lt;/p&gt;
 &lt;p&gt;示例：&lt;/p&gt;
