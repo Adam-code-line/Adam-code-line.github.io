@@ -399,8 +399,12 @@
 &lt;h3 id=&#34;替代盒模型&#34;&gt;替代盒模型
 &lt;/h3&gt;&lt;p&gt;除了标准盒模型外，CSS还提供了替代盒模型，可以通过&lt;code&gt;box-sizing&lt;/code&gt;属性来设置。&lt;code&gt;box-sizing&lt;/code&gt;属性有两个主要值：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;content-box&lt;/code&gt;（默认值，也即标准盒模型）：宽度和高度只包括内容区域，不包括内边距和边框，即&lt;code&gt;width&lt;/code&gt;和&lt;code&gt;height&lt;/code&gt;属性设置的值仅仅是内容区域的大小。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;border-box&lt;/code&gt;：宽度和高度包括内容区域、内边距和边框，即&lt;code&gt;width&lt;/code&gt;和&lt;code&gt;height&lt;/code&gt;属性设置的值是整个盒子的大小。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;content-box&lt;/code&gt;（默认值，也即标准盒模型）：宽度和高度只包括内容区域，不包括内边距和边框，即&lt;code&gt;width&lt;/code&gt;和&lt;code&gt;height&lt;/code&gt;属性设置的值仅仅是内容区域的大小。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;border-box&lt;/code&gt;：宽度和高度包括内容区域、内边距和边框，即&lt;code&gt;width&lt;/code&gt;和&lt;code&gt;height&lt;/code&gt;属性设置的值是整个盒子的大小。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;示例：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
