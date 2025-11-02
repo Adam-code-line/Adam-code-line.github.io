@@ -291,24 +291,24 @@
             <nav id="TableOfContents">
   <ol>
     <li><a href="#前言">前言</a></li>
-    <li><a href="#1-什么是api">1. 什么是API</a></li>
-    <li><a href="#2-web-api的类型">2. Web API的类型</a>
+    <li><a href="#什么是api">什么是API</a></li>
+    <li><a href="#web-api的类型">Web API的类型</a>
       <ol>
-        <li><a href="#21-浏览器api">2.1 浏览器API</a></li>
-        <li><a href="#22-第三方api">2.2 第三方API</a></li>
+        <li><a href="#浏览器api">浏览器API</a></li>
+        <li><a href="#第三方api">第三方API</a></li>
       </ol>
     </li>
     <li><a href="#3-使用web-api的示例">3. 使用Web API的示例</a>
       <ol>
-        <li><a href="#31-使用fetch-api发起网络请求">3.1 使用Fetch API发起网络请求</a></li>
-        <li><a href="#32-使用geolocation-api获取用户位置">3.2 使用Geolocation API获取用户位置</a></li>
-        <li><a href="#33-使用canvas-api绘制图形">3.3 使用Canvas API绘制图形</a></li>
-        <li><a href="#34-使用localstorage存储数据">3.4 使用LocalStorage存储数据</a></li>
-        <li><a href="#35-使用第三方api以openweathermap为例">3.5 使用第三方API（以OpenWeatherMap为例）</a></li>
+        <li><a href="#使用fetch-api发起网络请求">使用Fetch API发起网络请求</a></li>
+        <li><a href="#使用geolocation-api获取用户位置">使用Geolocation API获取用户位置</a></li>
+        <li><a href="#使用canvas-api绘制图形">使用Canvas API绘制图形</a></li>
+        <li><a href="#使用localstorage存储数据">使用LocalStorage存储数据</a></li>
+        <li><a href="#使用第三方api以openweathermap为例">使用第三方API（以OpenWeatherMap为例）</a></li>
       </ol>
     </li>
-    <li><a href="#4-总结">4. 总结</a></li>
-    <li><a href="#5-参考资料">5. 参考资料</a></li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
   </ol>
 </nav>
         </div>
@@ -395,11 +395,11 @@
     <h1 id="web-api">Web API
 </h1><h2 id="前言">前言
 </h2><p><code>API</code>（Application Programming Interface，应用程序编程接口）在软件程序开发中扮演着重要角色。本文将简单介绍什么是<code>API</code>，特别是<code>Web API</code>的概念、类型及其在前端开发中的简单应用。</p>
-<h2 id="1-什么是api">1. 什么是API
+<h2 id="什么是api">什么是API
 </h2><p><code>API</code>是一组定义和协议，允许不同软件应用程序之间进行通信和交互。API抽象了复杂的代码，通过API，开发者可以直接使用已经封装好的代码功能，而无需从头开始编写代码功能的底层逻辑。</p>
-<h2 id="2-web-api的类型">2. Web API的类型
+<h2 id="web-api的类型">Web API的类型
 </h2><p><code>Web API</code>是通过HTTP协议进行通信的API，支持多种操作方式,并支持各种数据格式（如<code>JSON</code>、<code>XML</code>），它可以分成两大类： <code>浏览器API</code> 和 <code>第三方API</code>。</p>
-<h3 id="21-浏览器api">2.1 浏览器API
+<h3 id="浏览器api">浏览器API
 </h3><p>浏览器API是由浏览器提供的接口，允许开发者访问和操作浏览器的功能和资源。常见的浏览器API包括：</p>
 <ul>
 <li><strong>DOM API</strong>：用于操作HTML和XML文档的结构、样式和内容。</li>
@@ -410,7 +410,7 @@
 <li><strong>WebSocket API</strong>：用于实现实时双向通信。</li>
 <li><strong>Media API</strong>：用于处理音频和视频内容。</li>
 </ul>
-<h3 id="22-第三方api">2.2 第三方API
+<h3 id="第三方api">第三方API
 </h3><p>第三方API是由外部服务提供的接口，允许开发者访问这些服务的功能和数据。常见的第三方API包括：</p>
 <ul>
 <li><strong>社交媒体API</strong>：如Facebook Graph API、Twitter API，用于访问社交媒体平台的数据和功能。</li>
@@ -421,7 +421,7 @@
 </ul>
 <h2 id="3-使用web-api的示例">3. 使用Web API的示例
 </h2><p>使用JavaScript编写的简单示例，展示如何使用一些常见的<code>Web API</code>。</p>
-<h3 id="31-使用fetch-api发起网络请求">3.1 使用Fetch API发起网络请求
+<h3 id="使用fetch-api发起网络请求">使用Fetch API发起网络请求
 </h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -436,7 +436,7 @@
 </span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error:&#39;</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="32-使用geolocation-api获取用户位置">3.2 使用Geolocation API获取用户位置
+</div><h3 id="使用geolocation-api获取用户位置">使用Geolocation API获取用户位置
 </h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -459,7 +459,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="33-使用canvas-api绘制图形">3.3 使用Canvas API绘制图形
+</div><h3 id="使用canvas-api绘制图形">使用Canvas API绘制图形
 </h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -474,7 +474,7 @@
 </span></span><span class="line"><span class="cl"><span class="nx">ctx</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="34-使用localstorage存储数据">3.4 使用LocalStorage存储数据
+</div><h3 id="使用localstorage存储数据">使用LocalStorage存储数据
 </h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -499,7 +499,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="35-使用第三方api以openweathermap为例">3.5 使用第三方API（以OpenWeatherMap为例）
+</div><h3 id="使用第三方api以openweathermap为例">使用第三方API（以OpenWeatherMap为例）
 </h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -514,9 +514,9 @@
 </span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error:&#39;</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="4-总结">4. 总结
+</div><h2 id="总结">总结
 </h2><p><code>Web API</code>在现代前端开发中扮演着至关重要的角色。通过利用<code>浏览器API</code>和<code>第三方API</code>，开发者可以创建功能丰富、交互性强的Web应用程序。理解和掌握这些<code>API</code>的使用方法，将大大提升开发效率和用户体验。</p>
-<h2 id="5-参考资料">5. 参考资料
+<h2 id="参考资料">参考资料
 </h2><ul>
 <li><a class="link" href="https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Client-side_APIs"  target="_blank" rel="noopener"
     >MDN Web Docs - 客户端Web API</a></li>
