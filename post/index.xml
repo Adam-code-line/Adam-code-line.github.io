@@ -4731,21 +4731,21 @@
         <description>&lt;h1 id=&#34;vue-响应式原理&#34;&gt;Vue 响应式原理
 &lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
 &lt;/h2&gt;&lt;p&gt;本文为想学习 Vue 响应式系统的前端开发者准备，涵盖 &lt;code&gt;ref&lt;/code&gt; 和 &lt;code&gt;reactive&lt;/code&gt; 的工作原理及其在 Vue 3 中的实现机制。&lt;/p&gt;
-&lt;h2 id=&#34;1-为什么学习响应式原理&#34;&gt;1. 为什么学习响应式原理
+&lt;h2 id=&#34;为什么学习响应式原理&#34;&gt;为什么学习响应式原理
 &lt;/h2&gt;&lt;p&gt;学习 Vue 的响应式原理可以帮助开发者更好地理解框架的内部机制，从而在实际开发中更有效地利用这些特性。掌握响应式原理有助于：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;提高调试能力&lt;/strong&gt;：了解数据是如何变化的，可以更快地定位问题。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;优化性能&lt;/strong&gt;：通过合理使用响应式 API，减少不必要的渲染和计算。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;增强代码可读性&lt;/strong&gt;：清晰的理解数据流动，有助于编写更易于维护的代码。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;2-vue-响应式系统概述&#34;&gt;2. Vue 响应式系统概述
+&lt;h2 id=&#34;vue-响应式系统概述&#34;&gt;Vue 响应式系统概述
 &lt;/h2&gt;&lt;p&gt;Vue 3 的响应式系统基于 ES6 的 &lt;code&gt;Proxy&lt;/code&gt; 对象实现，主要通过 &lt;code&gt;ref&lt;/code&gt; 和 &lt;code&gt;reactive&lt;/code&gt; 两个 API 来创建响应式数据。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;ref&lt;/code&gt;：用于创建基本类型的响应式数据，如字符串、数字、布尔值等。它返回一个包含 &lt;code&gt;.value&lt;/code&gt; 属性的对象。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;reactive&lt;/code&gt;：用于创建复杂类型的响应式数据，如对象和数组。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;这两个 API 都会追踪数据的变化，并在数据更新时通知相关的组件进行重新渲染。&lt;/p&gt;
-&lt;h2 id=&#34;3-ref-的工作原理&#34;&gt;3. &lt;code&gt;ref&lt;/code&gt; 的工作原理
+&lt;h2 id=&#34;ref-的工作原理&#34;&gt;&lt;code&gt;ref&lt;/code&gt; 的工作原理
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;ref&lt;/code&gt; 函数接受一个初始值，并返回一个包含该值的响应式对象。其核心原理如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -4787,7 +4787,7 @@
 &lt;li&gt;&lt;strong&gt;依赖收集&lt;/strong&gt;：当访问 &lt;code&gt;ref&lt;/code&gt; 的 &lt;code&gt;.value&lt;/code&gt; 属性时，会调用 &lt;code&gt;track&lt;/code&gt; 函数，将当前的副作用函数（如组件的渲染函数）与该属性关联起来。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;触发更新&lt;/strong&gt;：当修改 &lt;code&gt;.value&lt;/code&gt; 属性时，会调用 &lt;code&gt;trigger&lt;/code&gt; 函数，通知所有依赖该属性的副作用函数重新执行。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;4-reactive-的工作原理&#34;&gt;4. &lt;code&gt;reactive&lt;/code&gt; 的工作原理
+&lt;h2 id=&#34;reactive-的工作原理&#34;&gt;&lt;code&gt;reactive&lt;/code&gt; 的工作原理
 &lt;/h2&gt;&lt;p&gt;&lt;code&gt;reactive&lt;/code&gt; 函数接受一个对象，并返回该对象的响应式代理。其核心原理如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -4829,7 +4829,7 @@
 &lt;li&gt;&lt;strong&gt;依赖收集&lt;/strong&gt;：当访问对象的属性时，会调用 &lt;code&gt;track&lt;/code&gt; 函数，将当前的副作用函数与该属性关联起来。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;触发更新&lt;/strong&gt;：当修改对象的属性时，会调用 &lt;code&gt;trigger&lt;/code&gt; 函数，通知所有依赖该属性的副作用函数重新执行。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;5-依赖追踪与副作用函数&#34;&gt;5. 依赖追踪与副作用函数
+&lt;h2 id=&#34;依赖追踪与副作用函数&#34;&gt;依赖追踪与副作用函数
 &lt;/h2&gt;&lt;p&gt;Vue 使用一个全局的 &lt;code&gt;activeEffect&lt;/code&gt; 变量来追踪当前正在执行的副作用函数。当副作用函数执行时，&lt;code&gt;activeEffect&lt;/code&gt; 会被设置为该函数。当访问响应式数据时，&lt;code&gt;track&lt;/code&gt; 函数会将 &lt;code&gt;activeEffect&lt;/code&gt; 与该数据关联起来。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -4917,7 +4917,7 @@
 &lt;li&gt;&lt;strong&gt;track 函数&lt;/strong&gt;：将当前的 &lt;code&gt;activeEffect&lt;/code&gt; 添加到对应属性的依赖集合中。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;trigger 函数&lt;/strong&gt;：遍历属性的依赖集合，执行所有副作用函数。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;6-ref-与-reactive-的区别与联系&#34;&gt;6. &lt;code&gt;ref&lt;/code&gt; 与 &lt;code&gt;reactive&lt;/code&gt; 的区别与联系
+&lt;h2 id=&#34;ref-与-reactive-的区别与联系&#34;&gt;&lt;code&gt;ref&lt;/code&gt; 与 &lt;code&gt;reactive&lt;/code&gt; 的区别与联系
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;数据类型&lt;/strong&gt;：&lt;code&gt;ref&lt;/code&gt; 适用于基本类型数据，而 &lt;code&gt;reactive&lt;/code&gt; 适用于对象和数组。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;访问方式&lt;/strong&gt;：&lt;code&gt;ref&lt;/code&gt; 需要通过 &lt;code&gt;.value&lt;/code&gt; 访问和修改值，而 &lt;code&gt;reactive&lt;/code&gt; 可以直接通过属性访问和修改。&lt;/li&gt;
@@ -4925,9 +4925,9 @@
 &lt;li&gt;&lt;strong&gt;性能&lt;/strong&gt;：&lt;code&gt;ref&lt;/code&gt; 在处理大量基本类型数据时，性能可能优于 &lt;code&gt;reactive&lt;/code&gt;，因为后者需要处理更多的代理逻辑。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;使用注意&lt;/strong&gt;： &lt;code&gt;reactive&lt;/code&gt;底层是通过&lt;code&gt;Proxy&lt;/code&gt;实现的，因此不能直接对&lt;code&gt;reactive&lt;/code&gt;对象进行解构赋值，否则会失去响应式特性，同样它也不能监听原始数据类型。相反，&lt;code&gt;ref&lt;/code&gt;可以安全地解构，因为它返回的是一个包含&lt;code&gt;.value&lt;/code&gt;属性的对象。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;7-总结&#34;&gt;7. 总结
+&lt;h2 id=&#34;结语&#34;&gt;结语
 &lt;/h2&gt;&lt;p&gt;通过学习 Vue 的响应式原理，开发者可以更深入地理解框架的工作机制，从而在实际开发中更有效地利用这些特性。掌握 &lt;code&gt;ref&lt;/code&gt; 和 &lt;code&gt;reactive&lt;/code&gt; 的实现原理，有助于提高调试能力、优化性能，并编写更易于维护的代码。&lt;/p&gt;
-&lt;h2 id=&#34;8-参考资料&#34;&gt;8. 参考资料
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://vuejs.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Vue 3 源码解析&lt;/a&gt;&lt;/li&gt;
