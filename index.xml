@@ -15,7 +15,7 @@
         <guid>https://adam-code-line.github.io/p/dtails-for-css/</guid>
         <description>&lt;h1 id=&#34;css详解&#34;&gt;CSS详解
 &lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
-&lt;/h2&gt;&lt;p&gt;在之前的&lt;a class=&#34;link&#34; href=&#34;../css&#34; &gt;CSS 基础知识入门&lt;/a&gt;文章中，我们介绍了CSS的基本概念和常用选择器和三种引入方式。本文将更深入地探讨CSS的详细内容，包括CSS的语法解析，层叠与继承、盒模型、布局方式、伪类和伪元素等。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;在之前的&lt;a class=&#34;link&#34; href=&#34;../css&#34; &gt;CSS 基础知识入门&lt;/a&gt;文章中，我们介绍了CSS的基本概念和常用选择器和三种引入方式。本文将更深入地探讨CSS的详细内容，包括CSS的语法解析、值的单位、层叠与继承、盒模型、文档流、布局方式、伪类和伪元素。&lt;/p&gt;
 &lt;h2 id=&#34;css语法解析&#34;&gt;CSS语法解析
 &lt;/h2&gt;&lt;h3 id=&#34;css的基本语法&#34;&gt;CSS的基本语法
 &lt;/h3&gt;&lt;p&gt;CSS的基本语法由选择器(selector)和声明块(declaration block)组成。选择器用于指定要应用样式的HTML元素，声明块包含一个或多个声明，每个声明由属性(property)和属性值(value)组成。CSS语法的基本结构如下：&lt;/p&gt;
@@ -70,6 +70,27 @@
 &lt;li&gt;&lt;code&gt;@keyframes&lt;/code&gt;：用于定义动画关键帧。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;@charset&lt;/code&gt;：用于指定CSS文件的字符编码。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;@supports&lt;/code&gt;：用于检测浏览器是否支持某个CSS特性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;css的值的单位&#34;&gt;CSS的值的单位
+&lt;/h2&gt;&lt;p&gt;CSS中常用的值的单位包括绝对单位和相对单位两大类。&lt;/p&gt;
+&lt;h3 id=&#34;绝对单位&#34;&gt;绝对单位
+&lt;/h3&gt;&lt;p&gt;绝对单位是指固定的长度单位，不会随着环境的变化而变化。常见的绝对单位包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;px&lt;/code&gt;（像素）：最常用的单位，表示屏幕上的一个点。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cm&lt;/code&gt;（厘米）：表示厘米。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mm&lt;/code&gt;（毫米）：表示毫米。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;in&lt;/code&gt;（英寸）：表示英寸，1英寸=2.54厘米。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pt&lt;/code&gt;（磅）：表示印刷字体的大小，1pt=1/72英寸。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pc&lt;/code&gt;（派卡）：表示印刷字体的大小，1pc=12pt。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;相对单位&#34;&gt;相对单位
+&lt;/h3&gt;&lt;p&gt;相对单位是相对于其他单位或环境的变化而变化的单位。常见的相对单位包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;%&lt;/code&gt;（百分比）：相对于父元素的大小。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;em&lt;/code&gt;：相对于当前元素或者父元素的字体大小。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rem&lt;/code&gt;：相对于根元素的字体大小。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vw&lt;/code&gt;（视口宽度）：相对于视口的宽度，1vw=1%视口宽度。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vh&lt;/code&gt;（视口高度）：相对于视口的高度，1vh=1%视口高度。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;css的层叠&#34;&gt;CSS的层叠
 &lt;/h2&gt;&lt;p&gt;CSS的全称是层叠样式表（Cascading Style Sheets），其中“层叠”指的是当多个样式规则应用于同一个元素时，浏览器如何决定最终应用哪一个规则,也即优先级的概念。CSS的层叠规则主要包括以下几个方面：&lt;/p&gt;
