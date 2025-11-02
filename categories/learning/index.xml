@@ -204,8 +204,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;在这个例子中，段落文本的颜色将是绿色，因为ID选择器的特异性最高。特异性也可以理解成具体程度，越具体的选择器优先级越高。&lt;/p&gt;
-&lt;h2 id=&#34;积分规则&#34;&gt;积分规则
-&lt;/h2&gt;&lt;p&gt;CSS的优先级可以通过积分规则来计算：&lt;/p&gt;
+&lt;h3 id=&#34;积分规则&#34;&gt;积分规则
+&lt;/h3&gt;&lt;p&gt;CSS的优先级可以通过积分规则来计算：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;!important：10000分&lt;/li&gt;
 &lt;li&gt;内联样式：01000分&lt;/li&gt;
