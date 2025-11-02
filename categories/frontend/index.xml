@@ -1072,6 +1072,11 @@
 &lt;/div&gt;&lt;p&gt;这个组件使用了&lt;code&gt;useEffect&lt;/code&gt; Hook来设置一个定时器，每秒钟更新一次计数器的值。当组件卸载时，清除定时器以避免内存泄漏。&lt;/p&gt;
 &lt;h2 id=&#34;结语&#34;&gt;结语
 &lt;/h2&gt;&lt;p&gt;React是一个功能强大的JavaScript库，很多大厂都在使用React,它也是目前前端开发的主流框架，所以学习React是非常有必要的。因为React的知识体系庞大且较为复杂，本文只作为入门概述，建议结合官方文档和实际项目进行深入学习和实践，后面我也会一步步更新React的学习文档，不断深化理解。&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh-hans.react.dev/learn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;React 官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
@@ -1083,9 +1088,9 @@
         <description>&lt;h1 id=&#34;html详解&#34;&gt;HTML详解
 &lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
 &lt;/h2&gt;&lt;p&gt;之前的&lt;a class=&#34;link&#34; href=&#34;../html&#34; &gt;HTML 基础知识入门&lt;/a&gt;文章中我已经介绍了HTML的基础知识，在本文中我会进行更详细的讲解。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;HTML&lt;/code&gt;全称为超文本标记语言(Hyper Text Markup Language),是构建网页和Web应用的标准标记语言，&lt;code&gt;超文本（hypertext）&lt;/code&gt;是指连接单个网站内或多个网站间的网页的链接&lt;code&gt;标记(markup)&lt;/code&gt;用来注明文本、图片和其他内容。HTML使用一系列标签和属性来定义网页的结构和内容,包括文本、图像、链接、表格、表单等元素。浏览器通过解析HTML代码,将其渲染为用户可以看到和交互的网页界面。需要明确的是HTML本身并不是一种编程语言，而是标记语言,它主要用于描述网页的结构和内容,而不是实现逻辑和功能。HTML通常与CSS(层叠样式表)和JavaScript一起使用,以实现网页的样式和交互功能。&lt;/p&gt;
 &lt;h2 id=&#34;基础&#34;&gt;基础
-&lt;/h2&gt;&lt;h3 id=&#34;html-的基本结构&#34;&gt;HTML 的基本结构
+&lt;/h2&gt;&lt;p&gt;先来回顾一下HTML的概念，&lt;code&gt;HTML&lt;/code&gt;全称为超文本标记语言(Hyper Text Markup Language),是构建网页和Web应用的标准标记语言，&lt;code&gt;超文本（hypertext）&lt;/code&gt;是指连接单个网站内或多个网站间的网页的链接&lt;code&gt;标记(markup)&lt;/code&gt;用来注明文本、图片和其他内容。HTML使用一系列标签和属性来定义网页的结构和内容,包括文本、图像、链接、表格、表单等元素。浏览器通过解析HTML代码,将其渲染为用户可以看到和交互的网页界面。需要明确的是HTML本身并不是一种编程语言，而是标记语言,它主要用于描述网页的结构和内容,而不是实现逻辑和功能。HTML通常与CSS(层叠样式表)和JavaScript一起使用,以实现网页的样式和交互功能。&lt;/p&gt;
+&lt;h3 id=&#34;html-的基本结构&#34;&gt;HTML 的基本结构
 &lt;/h3&gt;&lt;p&gt;在之前的&lt;a class=&#34;link&#34; href=&#34;../html&#34; &gt;HTML 基础知识入门&lt;/a&gt;中我们已经介绍了 &lt;code&gt;HTML&lt;/code&gt; 的基本结构,并简单讲解了一些基本标签，下面我将更详细地讲解HTML的基本结构：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -3722,7 +3727,7 @@
         <guid>https://adam-code-line.github.io/p/css/</guid>
         <description>&lt;h1 id=&#34;css-基础知识入门&#34;&gt;CSS 基础知识入门
 &lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;前言
-&lt;/h2&gt;&lt;p&gt;CSS（层叠样式表）是用于描述 HTML 文档外观和格式的语言。本文将介绍 CSS 的基本概念、选择器及其应用，帮助初学者快速入门。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;CSS（层叠样式表）全称Cascading Style Sheets，是用于描述 HTML 文档外观和格式的语言。本文将介绍 CSS 的基本概念、选择器及其应用，帮助初学者快速入门。&lt;/p&gt;
 &lt;h2 id=&#34;1-css-基本概念&#34;&gt;1. CSS 基本概念
 &lt;/h2&gt;&lt;p&gt;CSS 用于控制网页的布局、颜色、字体等视觉效果。它可以与 HTML 结合使用，通过选择器选择 HTML 元素并应用样式规则。
 一个简单的 CSS 规则如下：&lt;/p&gt;
