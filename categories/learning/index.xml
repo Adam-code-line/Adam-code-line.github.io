@@ -1189,20 +1189,14 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;DOCTYPE&lt;/strong&gt;：&lt;code&gt;DOCTYPE&lt;/code&gt;是HTML5的文档声明，它可以告诉浏览器，使用哪一个HTML版本解析文档。在浏览器发展的过程中出现过很多HTML的版本，如果没有提前告诉浏览器，那么浏览器就不知道文档解析标准是什么。此时，大部分浏览器将开启最大兼容模式来解析网页，我们一般称为怪异模式，这不仅会降低解析效率，而且会在解析过程中产生一些难以预知的bug，所以文档声明是必须的。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;html&lt;/strong&gt;：&lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt;标签是HTML文档的根元素，所有其他HTML元素都必须包含在&lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt;标签内。&lt;code&gt;lang&lt;/code&gt;属性指定了文档的语言，这对于搜索引擎优化(SEO)和辅助技术(如屏幕阅读器)非常重要。在这里，&lt;code&gt;zh-CN&lt;/code&gt;表示中文(中国大陆)。常见的还有&lt;code&gt;en&lt;/code&gt;(英语)、&lt;code&gt;fr&lt;/code&gt;(法语)、&lt;code&gt;es&lt;/code&gt;(西班牙语)等。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;head&lt;/strong&gt;：&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;标签包含了文档的元数据(metadata)，这些信息不会直接显示在网页上，但对网页的功能和表现非常重要。常见的元数据包括字符集声明、页面标题、样式表链接、脚本文件链接等。meta就是元，data就是数据，元数据是用来描述数据的数据，如一个数据200，我们并不知道这个数据代表什么，但是体重：200，我们就可以知道这个数据代表体重200斤，其中的体重就是元数据，它用来描述200这个数据。下面来详细介绍几个常用的元数据标签以及标签中属性的含义：&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;meta&lt;/strong&gt;：&lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt;标签用于定义文档的元数据，如字符集、作者、描述等。&lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt;常见的属性有：&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/div&gt;&lt;h4 id=&#34;doctype&#34;&gt;DOCTYPE
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;DOCTYPE&lt;/code&gt;是HTML5的文档声明，它可以告诉浏览器，使用哪一个HTML版本解析文档。在浏览器发展的过程中出现过很多HTML的版本，如果没有提前告诉浏览器，那么浏览器就不知道文档解析标准是什么。此时，大部分浏览器将开启最大兼容模式来解析网页，我们一般称为怪异模式，这不仅会降低解析效率，而且会在解析过程中产生一些难以预知的bug，所以文档声明是必须的。&lt;/p&gt;
+&lt;h4 id=&#34;html&#34;&gt;html
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt;标签是HTML文档的根元素，所有其他HTML元素都必须包含在&lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt;标签内。&lt;code&gt;lang&lt;/code&gt;属性指定了文档的语言，这对于搜索引擎优化(SEO)和辅助技术(如屏幕阅读器)非常重要。在这里，&lt;code&gt;zh-CN&lt;/code&gt;表示中文(中国大陆)。常见的还有&lt;code&gt;en&lt;/code&gt;(英语)、&lt;code&gt;fr&lt;/code&gt;(法语)、&lt;code&gt;es&lt;/code&gt;(西班牙语)等。&lt;/p&gt;
+&lt;h4 id=&#34;head&#34;&gt;head
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;标签包含了文档的元数据(metadata)，这些信息不会直接显示在网页上，但对网页的功能和表现非常重要。常见的元数据包括字符集声明、页面标题、样式表链接、脚本文件链接等。meta就是元，data就是数据，元数据是用来描述数据的数据，如一个数据200，我们并不知道这个数据代表什么，但是体重：200，我们就可以知道这个数据代表体重200斤，其中的体重就是元数据，它用来描述200这个数据。下面来详细介绍几个常用的元数据标签以及标签中属性的含义。&lt;/p&gt;
+&lt;h4 id=&#34;meta&#34;&gt;meta
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt;标签用于定义文档的元数据，如字符集、作者、描述等。&lt;code&gt;&amp;lt;meta&amp;gt;&lt;/code&gt;常见的属性有：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;charset&lt;/strong&gt;：指定文档的字符编码，如&lt;code&gt;&amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;&lt;/code&gt;表示使用UTF-8编码，这是一种支持多种语言字符的编码方式，推荐使用。&lt;/p&gt;
@@ -1218,24 +1212,16 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;title&lt;/strong&gt;：&lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt;标签定义了网页的标题，这个标题会显示在浏览器的标签页上，也是搜索引擎结果中的标题。一个好的标题有助于吸引用户点击。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;link&lt;/strong&gt;：&lt;code&gt;&amp;lt;link&amp;gt;&lt;/code&gt;标签用于定义与文档相关的外部资源，如样式表、图标等。常见的用法包括：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;引入CSS样式表：&lt;code&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;styles.css&amp;quot;&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;定义网页图标：&lt;code&gt;&amp;lt;link rel=&amp;quot;icon&amp;quot; type=&amp;quot;image/x-icon&amp;quot; href=&amp;quot;favicon.ico&amp;quot;&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;style&lt;/strong&gt;：&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;标签用于定义文档的内部样式，通常包含CSS代码。与&lt;code&gt;&amp;lt;link&amp;gt;&lt;/code&gt;标签不同，&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;标签直接在HTML文档中定义样式，而不是引用外部样式表。css的引用方式有三种，分别是内联样式、内部样式和外部样式，&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;标签属于内部样式。本本就不详细介绍css的内容，这里只做简单说明。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;body&lt;/strong&gt;：&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;标签包含了网页的主要内容，这些内容会直接显示在浏览器中。所有可见的网页元素，如文本、图像、链接、表格等，都必须包含在&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;标签内。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&#34;title&#34;&gt;title
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt;标签定义了网页的标题，这个标题会显示在浏览器的标签页上，也是搜索引擎结果中的标题。一个好的标题有助于吸引用户点击。&lt;/p&gt;
+&lt;h4 id=&#34;link&#34;&gt;link
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;&amp;lt;link&amp;gt;&lt;/code&gt;标签用于定义与文档相关的外部资源，如样式表、图标等。常见的用法包括：
+- 引入CSS样式表：&lt;code&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;styles.css&amp;quot;&amp;gt;&lt;/code&gt;
+- 定义网页图标：&lt;code&gt;&amp;lt;link rel=&amp;quot;icon&amp;quot; type=&amp;quot;image/x-icon&amp;quot; href=&amp;quot;favicon.ico&amp;quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;style&#34;&gt;style
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;标签用于定义文档的内部样式，通常包含CSS代码。与&lt;code&gt;&amp;lt;link&amp;gt;&lt;/code&gt;标签不同，&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;标签直接在HTML文档中定义样式，而不是引用外部样式表。css的引用方式有三种，分别是内联样式、内部样式和外部样式，&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;标签属于内部样式。本本就不详细介绍css的内容，这里只做简单说明。&lt;/p&gt;
+&lt;h4 id=&#34;body&#34;&gt;body
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;标签包含了网页的主要内容，这些内容会直接显示在浏览器中。所有可见的网页元素，如文本、图像、链接、表格等，都必须包含在&lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;标签内。&lt;/p&gt;
 &lt;h3 id=&#34;语义化标签&#34;&gt;语义化标签
 &lt;/h3&gt;&lt;p&gt;在之前的&lt;code&gt;HTML&lt;/code&gt; 基础知识入门文章中我已经介绍了HTML的基本标签，所以在本文就不再赘述。在HTML5中引入的语义化标签，这是HTML5的重要特性，下面我将介绍一些常用的HTML语义化标签：&lt;/p&gt;
 &lt;ul&gt;
@@ -1249,39 +1235,29 @@
 &lt;/ul&gt;
 &lt;p&gt;使用语义化标签有助于提高网页的可读性和可维护性，同时也有助于搜索引擎优化(SEO)和辅助技术的支持。&lt;/p&gt;
 &lt;h3 id=&#34;块级元素与行内行内块&#34;&gt;块级元素与行内/行内块
-&lt;/h3&gt;&lt;p&gt;在HTML中，元素可以分为块级元素(block-level elements)和行内元素(inline elements)两大类。这两类元素在网页布局和显示方式上有显著的区别。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;块级元素&lt;/strong&gt;：块级元素通常会占据其父元素的整个宽度，并且在其前后会自动换行。块级元素可以包含其他块级元素和行内元素。常见的块级元素有：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;：用于定义一个容器，可以包含其他元素。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt;：用于定义段落。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;至&lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt;：用于定义标题，&lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;表示最高级别的标题，&lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt;表示最低级别的标题。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;ol&amp;gt;&lt;/code&gt;：用于定义无序列表和有序列表。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;li&amp;gt;&lt;/code&gt;：用于定义列表项。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;table&amp;gt;&lt;/code&gt;：用于定义表格。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;行内元素&lt;/strong&gt;：行内元素不会占据整个宽度，只会占据其内容所需的宽度，并且不会在其前后换行。行内元素通常只能包含文本或其他行内元素。常见的行内元素有：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;span&amp;gt;&lt;/code&gt;：用于定义一个行内容器，可以包含文本或其他行内元素。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt;：用于定义超链接。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;：用于定义重要的文本，通常以粗体显示。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;：用于定义强调的文本，通常以斜体显示。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt;：用于嵌入图像。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;行内块元素&lt;/strong&gt;：行内块元素结合了块级元素和行内元素的特性，它们在文档流中表现为行内元素，但可以设置宽度和高度。常见的行内块元素有：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;button&amp;gt;&lt;/code&gt;：用于定义按钮。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;input&amp;gt;&lt;/code&gt;：用于定义输入字段。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;label&amp;gt;&lt;/code&gt;：用于定义表单控件的标签。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;块级元素和行内元素可以嵌套使用，但需要遵循一定的规则。例如，块级元素不能嵌套在行内元素内，而行内元素可以嵌套在块级元素内。块级元素和行内元素之间也可以转化，例如通过CSS的&lt;code&gt;display&lt;/code&gt;属性将块级元素设置为行内元素，反之亦然。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;在HTML中，元素可以分为块级元素(block-level elements)和行内元素(inline elements)以及行内块元素(inline-block elements)三大类。这两类元素在网页布局和显示方式上有显著的区别。&lt;/p&gt;
+&lt;h4 id=&#34;块级元素&#34;&gt;块级元素
+&lt;/h4&gt;&lt;p&gt;块级元素通常会占据其父元素的整个宽度，并且在其前后会自动换行。块级元素可以包含其他块级元素和行内元素。常见的块级元素有：
+- &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;：用于定义一个容器，可以包含其他元素。
+- &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt;：用于定义段落。
+- &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;至&lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt;：用于定义标题，&lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;表示最高级别的标题，&lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt;表示最低级别的标题。
+- &lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;ol&amp;gt;&lt;/code&gt;：用于定义无序列表和有序列表。
+- &lt;code&gt;&amp;lt;li&amp;gt;&lt;/code&gt;：用于定义列表项。
+- &lt;code&gt;&amp;lt;table&amp;gt;&lt;/code&gt;：用于定义表格。&lt;/p&gt;
+&lt;h4 id=&#34;行内元素&#34;&gt;行内元素
+&lt;/h4&gt;&lt;p&gt;行内元素不会占据整个宽度，只会占据其内容所需的宽度，并且不会在其前后换行。行内元素通常只能包含文本或其他行内元素。常见的行内元素有：
+- &lt;code&gt;&amp;lt;span&amp;gt;&lt;/code&gt;：用于定义一个行内容器，可以包含文本或其他行内元素。
+- &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt;：用于定义超链接。
+- &lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;：用于定义重要的文本，通常以粗体显示。
+- &lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;：用于定义强调的文本，通常以斜体显示。
+- &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt;：用于嵌入图像。&lt;/p&gt;
+&lt;h4 id=&#34;行内块元素&#34;&gt;行内块元素
+&lt;/h4&gt;&lt;p&gt;行内块元素结合了块级元素和行内元素的特性，它们在文档流中表现为行内元素，但可以设置宽度和高度。常见的行内块元素有：
+- &lt;code&gt;&amp;lt;button&amp;gt;&lt;/code&gt;：用于定义按钮。
+- &lt;code&gt;&amp;lt;input&amp;gt;&lt;/code&gt;：用于定义输入字段。
+- &lt;code&gt;&amp;lt;label&amp;gt;&lt;/code&gt;：用于定义表单控件的标签。&lt;/p&gt;
+&lt;h4 id=&#34;嵌套与转换&#34;&gt;嵌套与转换
+&lt;/h4&gt;&lt;p&gt;块级元素和行内元素可以嵌套使用，但需要遵循一定的规则。例如，块级元素不能嵌套在行内元素内，而行内元素可以嵌套在块级元素内。块级元素和行内元素之间也可以转化，例如通过CSS的&lt;code&gt;display&lt;/code&gt;属性将块级元素设置为行内元素，反之亦然。&lt;/p&gt;
 &lt;p&gt;将块级元素转化为行内元素：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1324,9 +1300,8 @@
 &lt;/div&gt;&lt;h2 id=&#34;媒体与图形&#34;&gt;媒体与图形
 &lt;/h2&gt;&lt;h3 id=&#34;多媒体元素&#34;&gt;多媒体元素
 &lt;/h3&gt;&lt;p&gt;HTML5引入了多媒体元素，使得在网页中嵌入音频和视频可以不再依赖外部插件。下面我将介绍HTML中的多媒体元素：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;audio&lt;/strong&gt;：用于在网页中嵌入音频文件。常见的属性有&lt;code&gt;src&lt;/code&gt;(指定音频文件的URL)、&lt;code&gt;controls&lt;/code&gt;(显示音频控件)、&lt;code&gt;autoplay&lt;/code&gt;(自动播放音频)、&lt;code&gt;loop&lt;/code&gt;(循环播放音频)等。例如：&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&#34;audio&#34;&gt;audio
+&lt;/h4&gt;&lt;p&gt;用于在网页中嵌入音频文件。常见的属性有&lt;code&gt;src&lt;/code&gt;(指定音频文件的URL)、&lt;code&gt;controls&lt;/code&gt;(显示音频控件)、&lt;code&gt;autoplay&lt;/code&gt;(自动播放音频)、&lt;code&gt;loop&lt;/code&gt;(循环播放音频)等。例如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1335,9 +1310,8 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;audio&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;audio.mp3&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;controls&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;audio&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;video&lt;/strong&gt;：用于在网页中嵌入视频文件。常见的属性有&lt;code&gt;src&lt;/code&gt;(指定视频文件的URL)、&lt;code&gt;controls&lt;/code&gt;(显示视频控件)、&lt;code&gt;autoplay&lt;/code&gt;(自动播放视频)、&lt;code&gt;loop&lt;/code&gt;(循环播放视频)、&lt;code&gt;width&lt;/code&gt;和&lt;code&gt;height&lt;/code&gt;(指定视频的宽度和高度)等。例如：&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/div&gt;&lt;h4 id=&#34;video&#34;&gt;video
+&lt;/h4&gt;&lt;p&gt;用于在网页中嵌入视频文件。常见的属性有&lt;code&gt;src&lt;/code&gt;(指定视频文件的URL)、&lt;code&gt;controls&lt;/code&gt;(显示视频控件)、&lt;code&gt;autoplay&lt;/code&gt;(自动播放视频)、&lt;code&gt;loop&lt;/code&gt;(循环播放视频)、&lt;code&gt;width&lt;/code&gt;和&lt;code&gt;height&lt;/code&gt;(指定视频的宽度和高度)等。例如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1346,9 +1320,8 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;video&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;video.mp4&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;controls&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;600&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;400&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;video&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;source&lt;/strong&gt;：用于为&lt;code&gt;&amp;lt;audio&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;video&amp;gt;&lt;/code&gt;元素提供多个媒体资源，以便浏览器选择支持的格式。例如：&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/div&gt;&lt;h4 id=&#34;source&#34;&gt;source
+&lt;/h4&gt;&lt;p&gt;用于为&lt;code&gt;&amp;lt;audio&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;video&amp;gt;&lt;/code&gt;元素提供多个媒体资源，以便浏览器选择支持的格式。例如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1367,9 +1340,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h3 id=&#34;canvas-与-svg&#34;&gt;Canvas 与 SVG
 &lt;/h3&gt;&lt;p&gt;HTML5引入了&lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;svg&amp;gt;&lt;/code&gt;元素，用于在网页中绘制图形和矢量图形,。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;canvas&lt;/strong&gt;：&lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt;元素用于在网页中绘制位图图形。它提供了一个绘图区域，可以通过JavaScript使用Canvas API进行绘图操作。常见的属性有&lt;code&gt;width&lt;/code&gt;和&lt;code&gt;height&lt;/code&gt;(指定画布的宽度和高度)。例如：&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&#34;canvas&#34;&gt;canvas
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt;元素用于在网页中绘制位图图形。它提供了一个绘图区域，可以通过JavaScript使用Canvas API进行绘图操作。常见的属性有&lt;code&gt;width&lt;/code&gt;和&lt;code&gt;height&lt;/code&gt;(指定画布的宽度和高度)。例如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1391,19 +1363,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;getContext(&amp;quot;2d&amp;quot;)&lt;/code&gt;方法用于获取2D绘图上下文，可以使用该上下文对象进行绘图操作。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;fillStyle&lt;/code&gt;属性用于设置填充颜色。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;fillRect(x, y, width, height)&lt;/code&gt;方法用于绘制一个填充矩形。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;svg&lt;/strong&gt;：&lt;code&gt;&amp;lt;svg&amp;gt;&lt;/code&gt;元素用于在网页中嵌入可缩放矢量图形。SVG是一种基于XML的图形格式，可以通过SVG标签和属性定义图形元素。常见的SVG元素有&lt;code&gt;&amp;lt;circle&amp;gt;&lt;/code&gt;(圆形)、&lt;code&gt;&amp;lt;rect&amp;gt;&lt;/code&gt;(矩形)、&lt;code&gt;&amp;lt;line&amp;gt;&lt;/code&gt;(直线)、&lt;code&gt;&amp;lt;path&amp;gt;&lt;/code&gt;(路径)等。例如：&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getContext(&amp;quot;2d&amp;quot;)&lt;/code&gt;方法用于获取2D绘图上下文，可以使用该上下文对象进行绘图操作。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fillStyle&lt;/code&gt;属性用于设置填充颜色。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fillRect(x, y, width, height)&lt;/code&gt;方法用于绘制一个填充矩形。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h4 id=&#34;svg&#34;&gt;svg
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;&amp;lt;svg&amp;gt;&lt;/code&gt;元素用于在网页中嵌入可缩放矢量图形。SVG是一种基于XML的图形格式，可以通过SVG标签和属性定义图形元素。常见的SVG元素有&lt;code&gt;&amp;lt;circle&amp;gt;&lt;/code&gt;(圆形)、&lt;code&gt;&amp;lt;rect&amp;gt;&lt;/code&gt;(矩形)、&lt;code&gt;&amp;lt;line&amp;gt;&lt;/code&gt;(直线)、&lt;code&gt;&amp;lt;path&amp;gt;&lt;/code&gt;(路径)等。例如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1425,16 +1390,12 @@
 &lt;h2 id=&#34;浏览器能力存储与实时通信&#34;&gt;浏览器能力：存储与实时通信
 &lt;/h2&gt;&lt;h3 id=&#34;本地存储与会话存储&#34;&gt;本地存储与会话存储
 &lt;/h3&gt;&lt;p&gt;HTML5引入了本地存储(Local Storage)和会话存储(Session Storage)两种机制，用于在用户浏览器中存储数据。这些存储机制允许网页在用户关闭浏览器后仍然保留数据，提供更好的用户体验。下面我将介绍HTML5的本地存储：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;本地存储(Local Storage)&lt;/strong&gt;：本地存储允许网页在用户浏览器中存储数据，数据没有过期时间，除非用户手动清除，否则数据会一直保留。常用的方法有：
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;localStorage.setItem(key, value)&lt;/code&gt;：存储数据。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;localStorage.getItem(key)&lt;/code&gt;：获取数据。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;localStorage.removeItem(key)&lt;/code&gt;：删除数据。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;localStorage.clear()&lt;/code&gt;：清空所有数据。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&#34;本地存储local-storage&#34;&gt;本地存储(Local Storage)
+&lt;/h4&gt;&lt;p&gt;本地存储允许网页在用户浏览器中存储数据，数据没有过期时间，除非用户手动清除，否则数据会一直保留。常用的方法有：
+- &lt;code&gt;localStorage.setItem(key, value)&lt;/code&gt;：存储数据。
+- &lt;code&gt;localStorage.getItem(key)&lt;/code&gt;：获取数据。
+- &lt;code&gt;localStorage.removeItem(key)&lt;/code&gt;：删除数据。
+- &lt;code&gt;localStorage.clear()&lt;/code&gt;：清空所有数据。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -1465,16 +1426,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;localStorage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;clear&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;会话存储(Session Storage)&lt;/strong&gt;：会话存储与本地存储类似，但数据只在当前浏览器会话中保留，关闭浏览器窗口或标签页后数据会被清除。常用的方法与本地存储相同：
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;sessionStorage.setItem(key, value)&lt;/code&gt;：存储数据。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sessionStorage.getItem(key)&lt;/code&gt;：获取数据。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sessionStorage.removeItem(key)&lt;/code&gt;：删除数据。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sessionStorage.clear()&lt;/code&gt;：清空所有数据。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/div&gt;&lt;h4 id=&#34;会话存储session-storage&#34;&gt;会话存储(Session Storage)
+&lt;/h4&gt;&lt;p&gt;会话存储与本地存储类似，但数据只在当前浏览器会话中保留，关闭浏览器窗口或标签页后数据会被清除。常用的方法与本地存储相同：
+- &lt;code&gt;sessionStorage.setItem(key, value)&lt;/code&gt;：存储数据。
+- &lt;code&gt;sessionStorage.getItem(key)&lt;/code&gt;：获取数据。
+- &lt;code&gt;sessionStorage.removeItem(key)&lt;/code&gt;：删除数据。
+- &lt;code&gt;sessionStorage.clear()&lt;/code&gt;：清空所有数据。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
