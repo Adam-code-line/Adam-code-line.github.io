@@ -642,7 +642,7 @@
 &lt;li&gt;&lt;code&gt;fixed&lt;/code&gt;：相对于浏览器窗口进行定位，滚动页面时位置不变。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;sticky&lt;/code&gt;：在特定的滚动位置下表现为&lt;code&gt;relative&lt;/code&gt;，否则表现为&lt;code&gt;fixed&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;relative-解析&#34;&gt;relative 解析：
+&lt;h4 id=&#34;relative相对定位解析&#34;&gt;relative(相对定位)解析：
 &lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -660,7 +660,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;在上面的例子中，&lt;code&gt;.box&lt;/code&gt;元素将相对于其正常位置向下移动20px，向右移动30px。这个相对是相对于它在文档流中的原始位置。&lt;/p&gt;
-&lt;h4 id=&#34;absolute-解析&#34;&gt;absolute 解析：
+&lt;h4 id=&#34;absolute绝对定位-解析&#34;&gt;absolute(绝对定位) 解析：
 &lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -684,7 +684,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;在这个例子中，&lt;code&gt;.box&lt;/code&gt;元素将相对于其最近的已定位祖先元素&lt;code&gt;.container&lt;/code&gt;定位，距离顶部50px，距离左侧100px。注意，如果没有已定位的祖先元素，&lt;code&gt;.box&lt;/code&gt;将相对于初始包含块（通常是&lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt;元素）进行定位。所以，使用&lt;code&gt;absolute&lt;/code&gt;定位时，通常会为其祖先元素设置&lt;code&gt;position: relative&lt;/code&gt;以确保定位的参考点正确。&lt;/p&gt;
-&lt;h4 id=&#34;fixed-解析&#34;&gt;fixed 解析：
+&lt;h4 id=&#34;fixed固定定位-解析&#34;&gt;fixed(固定定位) 解析：
 &lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -704,7 +704,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;在这个例子中，&lt;code&gt;.box&lt;/code&gt;元素将固定在浏览器窗口的右上角，距离顶部10px，距离右侧10px。无论页面如何滚动，&lt;code&gt;.box&lt;/code&gt;的位置都不会改变。&lt;/p&gt;
-&lt;h4 id=&#34;sticky-解析&#34;&gt;sticky 解析：
+&lt;h4 id=&#34;sticky粘性定位-解析&#34;&gt;sticky(粘性定位) 解析：
 &lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1

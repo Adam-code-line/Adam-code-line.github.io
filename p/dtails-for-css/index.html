@@ -338,10 +338,10 @@
         <li><a href="#流式布局flow-layout">流式布局(Flow Layout)</a></li>
         <li><a href="#定位布局positioning-layout">定位布局(Positioning Layout)</a>
           <ol>
-            <li><a href="#relative-解析">relative 解析：</a></li>
-            <li><a href="#absolute-解析">absolute 解析：</a></li>
-            <li><a href="#fixed-解析">fixed 解析：</a></li>
-            <li><a href="#sticky-解析">sticky 解析：</a></li>
+            <li><a href="#relative相对定位解析">relative(相对定位)解析：</a></li>
+            <li><a href="#absolute绝对定位-解析">absolute(绝对定位) 解析：</a></li>
+            <li><a href="#fixed固定定位-解析">fixed(固定定位) 解析：</a></li>
+            <li><a href="#sticky粘性定位-解析">sticky(粘性定位) 解析：</a></li>
           </ol>
         </li>
         <li><a href="#浮动布局floating-layout">浮动布局(Floating Layout)</a></li>
@@ -1092,7 +1092,7 @@
 <li><code>fixed</code>：相对于浏览器窗口进行定位，滚动页面时位置不变。</li>
 <li><code>sticky</code>：在特定的滚动位置下表现为<code>relative</code>，否则表现为<code>fixed</code>。</li>
 </ul>
-<h4 id="relative-解析">relative 解析：
+<h4 id="relative相对定位解析">relative(相对定位)解析：
 </h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1110,7 +1110,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在上面的例子中，<code>.box</code>元素将相对于其正常位置向下移动20px，向右移动30px。这个相对是相对于它在文档流中的原始位置。</p>
-<h4 id="absolute-解析">absolute 解析：
+<h4 id="absolute绝对定位-解析">absolute(绝对定位) 解析：
 </h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1134,7 +1134,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在这个例子中，<code>.box</code>元素将相对于其最近的已定位祖先元素<code>.container</code>定位，距离顶部50px，距离左侧100px。注意，如果没有已定位的祖先元素，<code>.box</code>将相对于初始包含块（通常是<code>&lt;html&gt;</code>元素）进行定位。所以，使用<code>absolute</code>定位时，通常会为其祖先元素设置<code>position: relative</code>以确保定位的参考点正确。</p>
-<h4 id="fixed-解析">fixed 解析：
+<h4 id="fixed固定定位-解析">fixed(固定定位) 解析：
 </h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1154,7 +1154,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在这个例子中，<code>.box</code>元素将固定在浏览器窗口的右上角，距离顶部10px，距离右侧10px。无论页面如何滚动，<code>.box</code>的位置都不会改变。</p>
-<h4 id="sticky-解析">sticky 解析：
+<h4 id="sticky粘性定位-解析">sticky(粘性定位) 解析：
 </h4><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
