@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="React的State状态 在React中，State（状态）是组件用于存储和管理数据的对象。State的变化会触发组件的重新渲染，从而更新UI以反映最新的数据状态。State通常用于存储用户输入、服务器响应数据或其他动态信息。组件的State和组件实例密切相关，每个组件实例都有自己的State。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="React的State状态 在React中，State（状态）是组件用于存储和管理数据的对象。State的变化会触发组件的重新渲染，从而更新UI以反映最新的数据状态。State通常用于存储用户输入、服务器响应数据或其他动态信息。可以把State看成组件的“记忆”，它记录了组件在不同时间点上的数据状态。\n">
 <title>React的State状态</title>
 
 <link rel='canonical' href='https://adam-code-line.github.io/p/react-state/'>
 
 <link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="React的State状态">
-<meta property='og:description' content="React的State状态 在React中，State（状态）是组件用于存储和管理数据的对象。State的变化会触发组件的重新渲染，从而更新UI以反映最新的数据状态。State通常用于存储用户输入、服务器响应数据或其他动态信息。组件的State和组件实例密切相关，每个组件实例都有自己的State。\n">
+<meta property='og:description' content="React的State状态 在React中，State（状态）是组件用于存储和管理数据的对象。State的变化会触发组件的重新渲染，从而更新UI以反映最新的数据状态。State通常用于存储用户输入、服务器响应数据或其他动态信息。可以把State看成组件的“记忆”，它记录了组件在不同时间点上的数据状态。\n">
 <meta property='og:url' content='https://adam-code-line.github.io/p/react-state/'>
 <meta property='og:site_name' content='Adam&#39;s Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-29T19:55:32&#43;08:00'/><meta property='article:modified_time' content='2025-10-29T19:55:32&#43;08:00'/>
 <meta name="twitter:title" content="React的State状态">
-<meta name="twitter:description" content="React的State状态 在React中，State（状态）是组件用于存储和管理数据的对象。State的变化会触发组件的重新渲染，从而更新UI以反映最新的数据状态。State通常用于存储用户输入、服务器响应数据或其他动态信息。组件的State和组件实例密切相关，每个组件实例都有自己的State。\n">
+<meta name="twitter:description" content="React的State状态 在React中，State（状态）是组件用于存储和管理数据的对象。State的变化会触发组件的重新渲染，从而更新UI以反映最新的数据状态。State通常用于存储用户输入、服务器响应数据或其他动态信息。可以把State看成组件的“记忆”，它记录了组件在不同时间点上的数据状态。\n">
     </head>
     <body class="
     article-page
@@ -290,6 +290,21 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
+    <li><a href="#state的作用">State的作用</a>
+      <ol>
+        <li><a href="#数据存储">数据存储</a></li>
+        <li><a href="#ui更新">UI更新</a></li>
+        <li><a href="#组件交互">组件交互</a></li>
+        <li><a href="#状态管理">状态管理</a></li>
+      </ol>
+    </li>
+    <li><a href="#state的分类">State的分类</a>
+      <ol>
+        <li><a href="#本地state">本地State</a></li>
+        <li><a href="#提升state">提升State</a></li>
+        <li><a href="#全局state">全局State</a></li>
+      </ol>
+    </li>
     <li><a href="#usestate">useState</a>
       <ol>
         <li><a href="#usestate原理">useState原理</a></li>
@@ -297,10 +312,19 @@
       </ol>
     </li>
     <li><a href="#添加state变量">添加State变量</a></li>
-    <li><a href="#更新state变量">更新State变量</a></li>
-    <li><a href="#state的异步更新">State的异步更新</a></li>
+    <li><a href="#更新state">更新State</a>
+      <ol>
+        <li><a href="#使用更新函数">使用更新函数</a></li>
+        <li><a href="#state的异步更新">State的异步更新</a></li>
+      </ol>
+    </li>
     <li><a href="#多个state变量管理">多个State变量管理</a></li>
-    <li><a href="#state在组件中">State在组件中</a></li>
+    <li><a href="#state在组件中">State在组件中</a>
+      <ol>
+        <li><a href="#state在独立组件中">State在独立组件中</a></li>
+        <li><a href="#state在多个组件间共享">State在多个组件间共享</a></li>
+      </ol>
+    </li>
     <li><a href="#结语">结语</a></li>
   </ol>
 </nav>
@@ -374,7 +398,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 6 分钟
+                    阅读时长: 7 分钟
                 </time>
             </div>
         
@@ -390,7 +414,25 @@
     
     
     <h1 id="react的state状态">React的State状态
-</h1><p>在React中，State（状态）是组件用于存储和管理数据的对象。State的变化会触发组件的重新渲染，从而更新UI以反映最新的数据状态。State通常用于存储用户输入、服务器响应数据或其他动态信息。组件的State和组件实例密切相关，每个组件实例都有自己的State。</p>
+</h1><p>在React中，State（状态）是组件用于存储和管理数据的对象。State的变化会触发组件的重新渲染，从而更新UI以反映最新的数据状态。State通常用于存储用户输入、服务器响应数据或其他动态信息。可以把State看成组件的“记忆”，它记录了组件在不同时间点上的数据状态。</p>
+<h2 id="state的作用">State的作用
+</h2><p>React中的State扮演着重要的角色，主要有以下几个作用：</p>
+<h3 id="数据存储">数据存储
+</h3><p>State用于存储组件的动态数据，这些数据可能会随着用户交互或其他事件而变化。</p>
+<h3 id="ui更新">UI更新
+</h3><p>当State发生变化时，React会自动重新渲染组件，以确保UI与最新的State保持同步。</p>
+<h3 id="组件交互">组件交互
+</h3><p>State允许组件根据用户的操作或其他事件动态地改变其行为和外观。</p>
+<h3 id="状态管理">状态管理
+</h3><p>State是React中管理组件状态的核心机制，帮助开发者构建交互性强的用户界面。</p>
+<h2 id="state的分类">State的分类
+</h2><p>根据Stated的作用范围，State可以分为以下几类：</p>
+<h3 id="本地state">本地State
+</h3><p>每个组件都有自己的本地State，通常使用 <code>useState</code> Hook 来管理。它只在组件内部使用，不会被其他组件访问。</p>
+<h3 id="提升state">提升State
+</h3><p>当多个组件需要共享同一份State时，可以将State提升到它们的共同父组件中进行管理。这样，父组件可以通过props将State传递给子组件。</p>
+<h3 id="全局state">全局State
+</h3><p>对于大型应用程序，可能需要在多个组件之间共享State。可以使用React的Context API或状态管理库（如Redux、MobX）来管理全局State。</p>
 <h2 id="usestate">useState
 </h2><p><code>useState</code> 是React中用于在函数组件中添加State的Hook。它允许你在函数组件中声明State变量，并提供一个更新函数来修改这些变量。<code>useState</code> 的使用非常简单，下面是它的详细解释：</p>
 <div class="highlight"><div class="chroma">
@@ -462,8 +504,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在上面的例子中，我们使用 <code>useState(0)</code> 来创建一个名为 <code>count</code> 的State变量，初始值为0。注意不要在循环、条件语句或嵌套函数中调用 <code>useState</code>，因为Hooks必须在组件的顶层调用，以确保每次渲染时都能以相同的顺序调用。</p>
-<h2 id="更新state变量">更新State变量
-</h2><p>要更新State变量，可以使用 <code>useState</code> 返回的更新函数。在上面的例子中，我们可以使用 <code>setCount</code> 函数来更新 <code>count</code> 的值。</p>
+<h2 id="更新state">更新State
+</h2><h3 id="使用更新函数">使用更新函数
+</h3><p>要更新State变量，可以使用 <code>useState</code> 返回的更新函数。在上面的例子中，我们可以使用 <code>setCount</code> 函数来更新 <code>count</code> 的值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -499,8 +542,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在这个例子中，当用户点击按钮时，<code>setCount(count + 1)</code> 会被调用，<code>count</code> 的值会增加1，并触发组件重新渲染以显示最新的计数值。要注意的是使用<code>state</code>更新函数时，确保不会直接修改State变量，而是通过调用更新函数来实现状态的更新。比如不能直接写 <code>count = count + 1</code>，而应该使用 <code>setCount(count + 1)</code>。</p>
-<h2 id="state的异步更新">State的异步更新
-</h2><p>在React中，State的更新是异步的，这意味着当你调用更新函数时，State不会立即更新，而是在下一次渲染时才会反映最新的状态。这种行为有助于提高性能，因为React可以批量处理多个State更新。</p>
+<h3 id="state的异步更新">State的异步更新
+</h3><p>在React中，State的更新是异步的，这意味着当你调用更新函数时，State不会立即更新，而是在下一次渲染时才会反映最新的状态。这种行为有助于提高性能，因为React可以批量处理多个State更新。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -633,7 +676,8 @@
 </div>
 </div><p>在上面的例子中，我们创建了两个State变量 <code>name</code> 和 <code>age</code>，分别用于存储用户的姓名和年龄。每个State变量都有自己的更新函数，可以独立更新。注意不要在一个State中引用另一个State变量的值进行更新，以避免潜在的同步问题。</p>
 <h2 id="state在组件中">State在组件中
-</h2><p>每一个React组件实例都有自己的State，这意味着同一个组件类的不同实例可以有不同的State值。这使得组件可以在不同的上下文中表现出不同的行为和外观。</p>
+</h2><h3 id="state在独立组件中">State在独立组件中
+</h3><p>每一个React组件实例都有自己的State，这意味着同一个组件类的不同实例可以有不同的State值。这使得组件可以在不同的上下文中表现出不同的行为和外观。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -699,7 +743,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在上面的例子中，<code>App</code> 组件渲染了两个 <code>Counter</code> 组件实例。每个 <code>Counter</code> 实例都有自己的State变量 <code>count</code>，它们的值是独立的，互不影响。</p>
-<p>如果希望在多个组件之间共享State,可以将State提升到它们的共同父组件中，或者使用React的Context API或状态管理库（如Redux）来实现更复杂的状态共享和管理。</p>
+<h3 id="state在多个组件间共享">State在多个组件间共享
+</h3><p>如果希望在多个组件之间共享State,可以将State提升到它们的共同父组件中，或者使用React的Context API或状态管理库（如Redux）来实现更复杂的状态共享和管理。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
