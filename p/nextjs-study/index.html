@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Next.js学习 Next.js简介 Next.js是一个基于React的全栈框架，提供了服务器端渲染（SSR）、静态站点生成（SSG）等功能，极大地简化了React应用的开发流程。在React弃用Create React App (CRA)之后，React官方就推荐使用框架来构建应用，而Next.js是目前React最主流的框架，拥有庞大的社区和丰富的生态系统，对于一个想用React构建一个新的应用或网站的开发者来说，Next.js无疑是一个非常好的选择。作为一个全栈框架，Next.js不仅可以用于构建前端界面，还可以处理后端逻辑，使得开发者可以在同一个项目中同时处理前后端代码，极大地提高了开发效率。\n">
+<title>Next.js学习</title>
+
+<link rel='canonical' href='https://adam-code-line.github.io/p/nextjs-study/'>
+
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Next.js学习">
+<meta property='og:description' content="Next.js学习 Next.js简介 Next.js是一个基于React的全栈框架，提供了服务器端渲染（SSR）、静态站点生成（SSG）等功能，极大地简化了React应用的开发流程。在React弃用Create React App (CRA)之后，React官方就推荐使用框架来构建应用，而Next.js是目前React最主流的框架，拥有庞大的社区和丰富的生态系统，对于一个想用React构建一个新的应用或网站的开发者来说，Next.js无疑是一个非常好的选择。作为一个全栈框架，Next.js不仅可以用于构建前端界面，还可以处理后端逻辑，使得开发者可以在同一个项目中同时处理前后端代码，极大地提高了开发效率。\n">
+<meta property='og:url' content='https://adam-code-line.github.io/p/nextjs-study/'>
+<meta property='og:site_name' content='Adam&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-10-29T19:55:32&#43;08:00'/><meta property='article:modified_time' content='2025-10-29T19:55:32&#43;08:00'/>
+<meta name="twitter:title" content="Next.js学习">
+<meta name="twitter:description" content="Next.js学习 Next.js简介 Next.js是一个基于React的全栈框架，提供了服务器端渲染（SSR）、静态站点生成（SSG）等功能，极大地简化了React应用的开发流程。在React弃用Create React App (CRA)之后，React官方就推荐使用框架来构建应用，而Next.js是目前React最主流的框架，拥有庞大的社区和丰富的生态系统，对于一个想用React构建一个新的应用或网站的开发者来说，Next.js无疑是一个非常好的选择。作为一个全栈框架，Next.js不仅可以用于构建前端界面，还可以处理后端逻辑，使得开发者可以在同一个项目中同时处理前后端代码，极大地提高了开发效率。\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_36131018bee75336.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Adam&#39;s Blog</a></h1>
+            <h2 class="site-description">欢迎来到我的博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://adam-code-line.github.io/en/" >English</option>
+                                
+                                    <option value="https://adam-code-line.github.io/" selected>简体中文</option>
+                                
+                                    <option value="https://adam-code-line.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#nextjs简介">Next.js简介</a></li>
+    <li><a href="#nextjs的核心特性">Next.js的核心特性</a>
+      <ol>
+        <li><a href="#服务器端渲染ssr">服务器端渲染（SSR）</a></li>
+        <li><a href="#静态站点生成ssg">静态站点生成（SSG）</a></li>
+        <li><a href="#api路由">API路由</a></li>
+        <li><a href="#文件系统路由">文件系统路由</a></li>
+        <li><a href="#内置css和sass支持">内置CSS和Sass支持</a></li>
+        <li><a href="#图片优化">图片优化</a></li>
+      </ol>
+    </li>
+    <li><a href="#开始使用nextjs">开始使用Next.js</a>
+      <ol>
+        <li><a href="#创建nextjs项目">创建Next.js项目</a></li>
+        <li><a href="#运行开发服务器">运行开发服务器</a></li>
+        <li><a href="#项目结构">项目结构</a></li>
+        <li><a href="#eslint和prettier配置">ESLint和Prettier配置</a>
+          <ol>
+            <li><a href="#eslint配置">ESLint配置</a></li>
+            <li><a href="#prettier配置">prettier配置</a></li>
+            <li><a href="#集成eslint和prettier">集成ESLint和Prettier</a></li>
+          </ol>
+        </li>
+        <li><a href="#创建布局与页面">创建布局与页面</a></li>
+        <li><a href="#使用api路由">使用API路由</a></li>
+        <li><a href="#自定义配置">自定义配置</a></li>
+        <li><a href="#部署nextjs应用">部署Next.js应用</a></li>
+      </ol>
+    </li>
+    <li><a href="#结语">结语</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/frontend/" style="background-color: #2a9d8f; color: #fff;">
+                Frontend
+            </a>
+        
+            <a href="/categories/react/" style="background-color: #2a9d8f; color: #fff;">
+                React
+            </a>
+        
+            <a href="/categories/learning/" style="background-color: #2a9d8f; color: #fff;">
+                Learning
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/nextjs-study/">Next.js学习</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 29, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 8 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="nextjs学习">Next.js学习
+</h1><h2 id="nextjs简介">Next.js简介
+</h2><p>Next.js是一个基于React的全栈框架，提供了服务器端渲染（SSR）、静态站点生成（SSG）等功能，极大地简化了React应用的开发流程。在React弃用Create React App (CRA)之后，React官方就推荐使用框架来构建应用，而Next.js是目前React最主流的框架，拥有庞大的社区和丰富的生态系统，对于一个想用React构建一个新的应用或网站的开发者来说，Next.js无疑是一个非常好的选择。作为一个全栈框架，Next.js不仅可以用于构建前端界面，还可以处理后端逻辑，使得开发者可以在同一个项目中同时处理前后端代码，极大地提高了开发效率。</p>
+<h2 id="nextjs的核心特性">Next.js的核心特性
+</h2><p>Next.js有着许多重要的特性，以下是其中一些核心特性：</p>
+<h3 id="服务器端渲染ssr">服务器端渲染（SSR）
+</h3><p>服务器端渲染是Next.js的一个重要特性，它允许在服务器上预先渲染React组件，然后将生成的HTML发送到客户端。这种方式不仅提高了页面加载速度，还对SEO非常友好，因为搜索引擎可以更容易地抓取预渲染的内容。Next.js通过<code>getServerSideProps</code>函数实现SSR，可以在这个函数中获取数据并传递给页面组件。</p>
+<h3 id="静态站点生成ssg">静态站点生成（SSG）
+</h3><p>静态站点生成是Next.js的另一个重要特性，它允许在构建时预先生成静态HTML文件，然后在请求时直接提供这些文件。SSG适用于内容不频繁变化的页面，如博客文章、产品展示等。Next.js通过<code>getStaticProps</code>和<code>getStaticPaths</code>函数实现SSG，可以在这些函数中获取数据并生成静态页面。</p>
+<h3 id="api路由">API路由
+</h3><p>Next.js内置了API路由功能，允许开发者在项目中创建后端API接口。在<code>app</code>下可以创建<code>api</code>文件夹，然后可以在<code>api</code>文件夹下创建如<code>route.ts</code>的文件来定义API路由，在<code>route.ts</code>中编写处理请求、身份验证等的代码。</p>
+<h3 id="文件系统路由">文件系统路由
+</h3><p>Next.js采用文件系统路由的方式，根据<code>app</code>目录下的文件和文件夹结构自动生成路由。这种方式使得路由管理变得非常简单，只需创建相应的文件和文件夹即可定义路由，无需手动配置路由表。后面我会详细介绍文件系统路由的使用方法。</p>
+<h3 id="内置css和sass支持">内置CSS和Sass支持
+</h3><p>Next.js内置了对CSS和Sass的支持，允许开发者直接在组件中导入CSS或Sass文件进行样式管理。此外，Next.js还支持CSS模块化，避免了样式冲突的问题。开发者可以通过创建<code>.module.css</code>或<code>.module.scss</code>文件来实现组件级别的样式隔离。</p>
+<h3 id="图片优化">图片优化
+</h3><p>Next.js提供了内置的图片优化功能，通过<code>next/image</code>组件可以自动处理图片的大小、格式和质量，提升页面加载速度和用户体验。使用<code>next/image</code>组件替代传统的<code>&lt;img&gt;</code>标签，可以很方便地实现响应式图片和懒加载等功能。</p>
+<h2 id="开始使用nextjs">开始使用Next.js
+</h2><h3 id="创建nextjs项目">创建Next.js项目
+</h3><p>要创建一个新的Next.js项目，可以使用以下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">npx create-next-app@latest
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这将启动一个交互式的命令行工具，帮助你配置项目的基本设置。你可以选择使用TypeScript、ESLint等选项。</p>
+<h3 id="运行开发服务器">运行开发服务器
+</h3><p>进入项目目录后，可以使用以下命令启动开发服务器：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm/pnpm run dev
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这将在<code>http://localhost:3000</code>启动开发服务器，你可以在浏览器中访问该地址查看你的Next.js应用。</p>
+<h3 id="项目结构">项目结构
+</h3><p>Next.js项目的基本结构如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">my-app/
+</span></span><span class="line"><span class="cl">├── .next/
+</span></span><span class="line"><span class="cl">├── app/
+</span></span><span class="line"><span class="cl">│   ├── api/
+</span></span><span class="line"><span class="cl">│   ├── layout.tsx
+</span></span><span class="line"><span class="cl">│   ├── page.tsx
+</span></span><span class="line"><span class="cl">│   └── ...
+</span></span><span class="line"><span class="cl">├── components/
+</span></span><span class="line"><span class="cl">├── node_modules/
+</span></span><span class="line"><span class="cl">├── public/
+</span></span><span class="line"><span class="cl">├── next.config.js
+</span></span><span class="line"><span class="cl">├── package.json
+</span></span><span class="line"><span class="cl">└── ...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>app/</code>：存放应用的页面和布局文件。</li>
+<li><code>components/</code>：存放可复用的React组件。</li>
+<li><code>public/</code>：存放静态资源，如图片、字体等。</li>
+<li><code>next.config.js</code>：Next.js的配置文件。</li>
+<li><code>package.json</code>：项目的依赖和脚本配置文件。</li>
+</ul>
+<p>以上并非完整的项目结构，只是一个简要的概览，实际项目中可能会有更多的文件和文件夹。</p>
+<h3 id="eslint和prettier配置">ESLint和Prettier配置
+</h3><h4 id="eslint配置">ESLint配置
+</h4><p>Next.js默认集成了ESLint，可以帮助你保持代码质量和一致性。如果你在创建项目时选择了ESLint选项，Next.js会自动生成一个<code>.eslintrc.config.mjs</code>文件，你可以根据需要进行修改和扩展。如果你使用VS Code，可以安装ESLint插件，以便在编辑器中实时检查代码问题。</p>
+<p>创建项目默认生成的ESLint配置文件内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mjs" data-lang="mjs"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">defineConfig</span><span class="p">,</span> <span class="nx">globalIgnores</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;eslint/config&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">nextVitals</span> <span class="nx">from</span> <span class="s2">&#34;eslint-config-next/core-web-vitals&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">nextTs</span> <span class="nx">from</span> <span class="s2">&#34;eslint-config-next/typescript&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">eslintConfig</span> <span class="o">=</span> <span class="nx">defineConfig</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span><span class="nx">nextVitals</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span><span class="nx">nextTs</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Override default ignores of eslint-config-next.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">globalIgnores</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Default ignores of eslint-config-next:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;.next/**&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;out/**&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;build/**&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;next-env.d.ts&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]),</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">eslintConfig</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中，<code>nextVitals</code>和<code>nextTs</code>分别包含了Next.js核心Web Vitals和TypeScript相关的ESLint规则。globalIgnores用于定义全局忽略的文件和文件夹，避免ESLint检查这些文件。</p>
+<h4 id="prettier配置">prettier配置
+</h4><p>Next.js项目通常也会集成Prettier，用于代码格式化。如果你使用VS Code，可以下载Prettier插件，以便在编辑器中自动格式化代码。你可以在项目中安装Prettier依赖：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm/pnpm install --save-dev prettier
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后在项目根目录下创建一个<code>.prettierrc</code>文件，配置Prettier的选项。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;semi&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;singleQuote&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;tabWidth&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;trailingComma&#34;</span><span class="p">:</span> <span class="s2">&#34;es5&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里的配置选项包括是否使用分号、单引号、制表符宽度和尾随逗号等。你可以根据实际情况进行调整。</p>
+<h4 id="集成eslint和prettier">集成ESLint和Prettier
+</h4><p>为了避免ESLint和Prettier之间的冲突，可以安装<code>eslint-config-prettier</code>和<code>eslint-plugin-prettier</code>，并在ESLint配置文件中进行相应的设置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm/pnpm install --save-dev eslint-config-prettier eslint-plugin-prettier
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后在<code>.eslintrc.config.mjs</code>中添加以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mjs" data-lang="mjs"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">prettierConfig</span> <span class="nx">from</span> <span class="s2">&#34;eslint-config-prettier&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">prettierPlugin</span> <span class="nx">from</span> <span class="s2">&#34;eslint-plugin-prettier&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">eslintConfig</span> <span class="o">=</span> <span class="nx">defineConfig</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span><span class="nx">nextVitals</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span><span class="nx">nextTs</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span><span class="nx">prettierConfig</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span><span class="nx">prettierPlugin</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rules</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;prettier/prettier&#34;</span><span class="o">:</span> <span class="s2">&#34;error&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Override default ignores of eslint-config-next.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">globalIgnores</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Default ignores of eslint-config-next:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;.next/**&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;out/**&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;build/**&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;next-env.d.ts&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]),</span>
+</span></span><span class="line"><span class="cl"><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">eslintConfig</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样，ESLint会使用Prettier的规则进行代码格式检查，确保代码风格的一致性。</p>
+<h3 id="创建布局与页面">创建布局与页面
+</h3><p>在Next.js中，布局文件通常命名为<code>layout.tsx</code>，用于定义应用的整体结构和样式。页面文件通常命名为<code>page.tsx</code>，用于定义具体的页面内容。你可以在<code>app</code>目录下找到这些文件，并根据需要进行修改和扩展。也可以在<code>app</code>目录下创建子文件夹来组织不同的页面和布局。Next.js会根据文件夹结构自动生成相应的路由。</p>
+<p>例如我想创建<code>about</code>页面，可以在<code>app</code>目录下创建一个名为<code>about</code>的文件夹，然后在该文件夹下创建<code>layout.tsx</code>，<code>page.tsx</code>文件，内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="c1">// app/about/layout.tsx
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">AboutLayout</span><span class="p">({</span> <span class="nx">children</span> <span class="p">}</span><span class="o">:</span> <span class="p">{</span> <span class="nx">children</span>: <span class="kt">React.ReactNode</span> <span class="p">})</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">About</span> <span class="nx">Us</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;{</span><span class="nx">children</span><span class="p">}&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="c1">// app/about/page.tsx
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">AboutPage() {</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">This</span> <span class="k">is</span> <span class="nx">the</span> <span class="nx">about</span> <span class="nx">page</span><span class="p">.&lt;/</span><span class="nt">p</span><span class="p">&gt;;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样就创建了一个<code>/about</code>路由，对应的页面内容为&quot;This is the about page.&quot;，并且使用了<code>AboutLayout</code>作为布局。可以访问<code>http://localhost:3000/about</code>来查看效果。</p>
+<h3 id="使用api路由">使用API路由
+</h3><p>要创建API路由，可以在<code>app/api</code>目录下创建相应的文件夹和文件。例如，创建一个名为<code>hello</code>的API路由，可以在<code>app/api/hello/route.ts</code>中编写如下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">NextResponse</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;next/server&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">async</span> <span class="kd">function</span> <span class="nx">GET() {</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">NextResponse</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Hello, Next.js API!&#39;</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样就创建了一个<code>/api/hello</code>的API路由，可以通过发送GET请求来获取响应。可以使用浏览器或Postman等工具访问<code>http://localhost:3000/api/hello</code>来查看效果。</p>
+<h3 id="自定义配置">自定义配置
+</h3><p>Next.js允许通过<code>next.config.js</code>文件进行自定义配置。你可以在该文件中设置各种选项，如环境变量、Webpack配置等。例如，以下是一个简单的<code>next.config.js</code>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">NextConfig</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;next&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">nextConfig</span>: <span class="kt">NextConfig</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">reactStrictMode</span>: <span class="kt">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">swcMinify</span>: <span class="kt">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">nextConfig</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个配置启用了React严格模式和SWC压缩，可以根据项目需求进行调整和扩展。</p>
+<h3 id="部署nextjs应用">部署Next.js应用
+</h3><p>Next.js应用可以部署到多种平台，如Vercel、Netlify、AWS等。Vercel是Next.js的官方部署平台，提供了无缝的集成和优化。要部署到Vercel，可以按照以下步骤操作：</p>
+<ol>
+<li>在Vercel官网注册并登录账号。</li>
+<li>连接你的GitHub/GitLab/Bitbucket仓库。</li>
+<li>选择要部署的Next.js项目。</li>
+<li>配置构建和部署选项，然后点击“Deploy”按钮。</li>
+</ol>
+<p>Vercel会自动构建并部署你的Next.js应用，完成后会提供一个访问链接。需要注意的是Vercel对免费账号有一定的使用限制，具体可以参考Vercel官网的说明。</p>
+<h2 id="结语">结语
+</h2><p>Next.js是一个十分好用的React全栈框架，也是现在国内很多公司使用的主流框架。学习Next.js对于提升React开发技能和构建高性能Web应用非常有帮助。</p>
+<h2 id="参考资料">参考资料
+</h2><ul>
+<li><a class="link" href="https://zh-hans.nextjs.im/docs"  target="_blank" rel="noopener"
+    >Next.js官方文档</a></li>
+<li><a class="link" href="https://vercel.com/docs"  target="_blank" rel="noopener"
+    >Vercel官方文档</a></li>
+<li><a class="link" href="https://juejin.cn/post/7470823978480451596?searchId=202511112043095F3012922F785C99A0BE"  target="_blank" rel="noopener"
+    >VSCode 自动格式化：ESLint 与 Prettier</a></li>
+<li><a class="link" href="https://juejin.cn/post/7477869412273012776"  target="_blank" rel="noopener"
+    >NEXT.js 中文文档</a></li>
+<li><a class="link" href="https://juejin.cn/post/7194410416879960125?searchId=202511111938294D1E191CA4838AA749A8"  target="_blank" rel="noopener"
+    >Next.js 项目最佳实践</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/react-learning-guide/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">React概述</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/react-state/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">React的State状态</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/dtails-for-css/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CSS详解</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/dtails-for-html/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">HTML详解</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/component-communication-in-vue/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">vue中组件之间传值的八种方式</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 Adam
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.31.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
