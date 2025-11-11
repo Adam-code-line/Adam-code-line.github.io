@@ -767,6 +767,13 @@
 &lt;/div&gt;&lt;p&gt;在上面的例子中，&lt;code&gt;App&lt;/code&gt; 组件管理了 &lt;code&gt;count&lt;/code&gt; State，并将其作为props传递给 &lt;code&gt;Counter&lt;/code&gt; 组件。这样，&lt;code&gt;Counter&lt;/code&gt; 组件可以共享和更新 &lt;code&gt;App&lt;/code&gt; 组件中的State。&lt;/p&gt;
 &lt;h2 id=&#34;结语&#34;&gt;结语
 &lt;/h2&gt;&lt;p&gt;State是前端开发中非常重要的概念。在vue、flutter框架中也会有类似的状态概念。而状态管理更是前端开发中的核心工作之一，理解和掌握State的使用对于构建动态和交互性强的用户界面至关重要。&lt;/p&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh-hans.react.dev/learn/managing-state&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;React官方文档 - 状态管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh-hans.react.dev/learn/state-a-components-memory&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;React官方文档 - State：组件的记忆&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
