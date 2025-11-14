@@ -1610,7 +1610,7 @@
 &lt;/div&gt;&lt;p&gt;在上面的例子中，我们创建了两个State变量 &lt;code&gt;name&lt;/code&gt; 和 &lt;code&gt;age&lt;/code&gt;，分别用于存储用户的姓名和年龄。每个State变量都有自己的更新函数，可以独立更新。注意不要在一个State中引用另一个State变量的值进行更新，以避免潜在的同步问题。&lt;/p&gt;
 &lt;h2 id=&#34;state在组件中&#34;&gt;State在组件中
 &lt;/h2&gt;&lt;h3 id=&#34;state在独立组件中&#34;&gt;State在独立组件中
-&lt;/h3&gt;&lt;p&gt;每一个React组件实例都有自己的State，这意味着同一个组件类的不同实例可以有不同的State值。这使得组件可以在不同的上下文中表现出不同的行为和外观。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;每一个React组件实例都有自己的State，这意味着同一个组件类的不同实例可以有不同的State值。这使得组件可以在不同的上下文中表现出不同的行为和外观。同时与props不同，State完全私有于声明它的组件，父组件无法更改子组件的State。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
