@@ -4978,7 +4978,15 @@
 &lt;/ul&gt;
 &lt;h5 id=&#34;事件循环&#34;&gt;事件循环
 &lt;/h5&gt;&lt;p&gt;事件循环(Event Loop)是 JavaScript 处理异步操作的核心机制。它不断地检查执行栈和任务队列，当执行栈为空时，它会从宏任务队列中取出下一个宏任务来执行。在所有同步代码或每个宏任务执行完后，事件循环会检查微任务队列，并执行所有的微任务，如果执行微任务产生了新的微任务，那新的微任务就会被加到队尾并在本轮一起执行完，直到微任务队列为空，然后才会继续处理下一个宏任务。可以将事件循环理解为银行的叫号系统和柜员的工作流程。事件循环的标准流程大致如下：&lt;/p&gt;
-&lt;p&gt;1.执行栈 (Call Stack)： 首先执行主线程中的同步代码。 2.清空微任务队列： 当同步代码执行完毕（或一个宏任务执行完毕），立即检查微任务队列。 3.如果有微任务，全部执行完（清空队列）。 4.如果在执行微任务时产生了新的微任务，继续加到队尾并在本轮一起执行完。 5.渲染 UI (可选)： 浏览器判断是否需要更新页面视图。 6.执行一个宏任务： 从宏任务队列中取出一个（最老的）任务执行。 7.回到步骤 2（循环往复）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;执行栈 (Call Stack)： 首先执行主线程中的同步代码。&lt;/li&gt;
+&lt;li&gt;清空微任务队列： 当同步代码执行完毕（或一个宏任务执行完毕），立即检查微任务队列。&lt;/li&gt;
+&lt;li&gt;如果有微任务，全部执行完（清空队列）。&lt;/li&gt;
+&lt;li&gt;如果在执行微任务时产生了新的微任务，继续加到队尾并在本轮一起执行完。&lt;/li&gt;
+&lt;li&gt;渲染 UI (可选)： 浏览器判断是否需要更新页面视图。&lt;/li&gt;
+&lt;li&gt;执行一个宏任务： 从宏任务队列中取出一个（最老的）任务执行。&lt;/li&gt;
+&lt;li&gt;回到步骤 2（循环往复）。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h5 id=&#34;事件循环示例&#34;&gt;事件循环示例
 &lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -5502,8 +5510,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;这里&lt;code&gt;await&lt;/code&gt;对应着&lt;code&gt;yield&lt;/code&gt;，标记暂停点，让出控制权。&lt;code&gt;Promise.resolve.then()&lt;/code&gt;对应着恢复执行，确保&lt;code&gt;await&lt;/code&gt;后面的代码以微任务的形式被调度。因此我们可以得出，async/await 的原理就是引擎将同步的写法，在编译阶段高效地转化成了基于 Promise 和微任务的异步流程控制。&lt;/p&gt;
 &lt;h2 id=&#34;结语&#34;&gt;结语
-&lt;/h2&gt;&lt;p&gt;到此为止，我们已将 JavaScript 中的 Promise 及其相关概念进行了全面的介绍。从 Promise 的基本概念、状态管理，到其背后的发布-订阅模式和微任务队列机制，再到 async/await 的语法糖及其原理，我们深入探讨了异步编程在 JavaScript 中的实现方式。现在我们可以把这三个概念穿通一下：
-Event Loop 是底层机制-&amp;gt;Promise 是核心对象-&amp;gt;Async/Await 是最佳写法。希望本文对你有所帮助。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;到此为止，我们已将 JavaScript 中的 Promise 及其相关概念进行了全面的介绍。从 Promise 的基本概念、状态管理，到其背后的发布-订阅模式和微任务队列机制，再到 async/await 的语法糖及其原理，我们深入探讨了异步编程在 JavaScript 中的实现方式。现在我们可以把这三个概念穿通一下：Event Loop 是底层机制-&amp;gt;Promise 是核心对象-&amp;gt;Async/Await 是最佳写法。希望本文对你有所帮助。&lt;/p&gt;
 </description>
         </item>
         <item>
