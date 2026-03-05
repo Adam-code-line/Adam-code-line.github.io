@@ -8637,7 +8637,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;/div&gt;&lt;h2 id=&#34;结语&#34;&gt;结语
+&lt;/h2&gt;&lt;p&gt;设计模式实在太多了，以上只是提到了几个比较重要和常见的设计模式，个人感觉不用过于苛求每个设计模式都要熟练掌握，了解它们的核心思想和基本适用场景就足够了，在实际开发中，根据具体问题选择合适的设计模式来解决问题才是最重要的。设计模式是工具，不是目的，过度使用设计模式可能会导致代码过于复杂，反而不利于维护和理解，所以在使用设计模式时要根据实际情况进行权衡和选择。&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>前端学习路线</title>
