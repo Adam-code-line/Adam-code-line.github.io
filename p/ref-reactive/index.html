@@ -56,7 +56,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_36131018bee75336.png" width="300"
+                        <img src="/img/avatar_hu_f906e8e36686cafc.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -428,13 +428,13 @@
 </span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">r</span> <span class="o">=</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kr">get</span> <span class="nx">value() {</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// 依赖收集
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">track</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="cl">      <span class="nx">track</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">initialValue</span>
 </span></span><span class="line"><span class="cl">    <span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="kr">set</span> <span class="nx">value</span><span class="p">(</span><span class="nx">newValue</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">initialValue</span> <span class="o">=</span> <span class="nx">newValue</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// 触发更新
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">trigger</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="cl">      <span class="nx">trigger</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">r</span>
@@ -470,13 +470,13 @@
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="k">new</span> <span class="nx">Proxy</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kr">get</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// 依赖收集
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">track</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="cl">      <span class="nx">track</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">Reflect</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="kr">set</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">Reflect</span><span class="p">.</span><span class="kr">set</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="c1">// 触发更新
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">trigger</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="cl">      <span class="nx">trigger</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">result</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">})</span>
@@ -704,7 +704,9 @@
     <section class="copyright">
         &copy; 
         
-        2025 Adam
+            2025 - 
+        
+        2026 Adam
     </section>
     
     <section class="powerby">

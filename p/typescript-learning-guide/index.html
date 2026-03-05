@@ -57,7 +57,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_36131018bee75336.png" width="300"
+                        <img src="/img/avatar_hu_f906e8e36686cafc.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -316,8 +316,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/p/typescript-learning-guide/">
-                <img src="/p/typescript-learning-guide/cover_hu_d306b3ba29487788.jpg"
-                        srcset="/p/typescript-learning-guide/cover_hu_d306b3ba29487788.jpg 800w, /p/typescript-learning-guide/cover_hu_a5964db1b2b24f10.jpg 1600w"
+                <img src="/p/typescript-learning-guide/cover_hu_d4af4bfeb0ad0d8d.jpg"
+                        srcset="/p/typescript-learning-guide/cover_hu_d4af4bfeb0ad0d8d.jpg 800w, /p/typescript-learning-guide/cover_hu_b383d02e95cca506.jpg 1600w"
                         width="800" 
                         height="450" 
                         loading="lazy"
@@ -480,24 +480,24 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// 原始类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">s</span>: <span class="kt">string</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
+</span></span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">s</span>: <span class="kt">string</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">n</span>: <span class="kt">number</span> <span class="o">=</span> <span class="mi">123</span>
 </span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">b</span>: <span class="kt">boolean</span> <span class="o">=</span> <span class="kc">true</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 数组与元组
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">arr</span>: <span class="kt">number</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+</span></span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">arr</span>: <span class="kt">number</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">tup</span><span class="o">:</span> <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">number</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 联合类型与类型别名
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">type</span> <span class="nx">ID</span> <span class="o">=</span> <span class="kt">string</span> <span class="o">|</span> <span class="kt">number</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">ID</span> <span class="o">=</span> <span class="kt">string</span> <span class="o">|</span> <span class="kt">number</span>
 </span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">id</span>: <span class="kt">ID</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 接口与类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span> <span class="nx">id</span>: <span class="kt">ID</span><span class="p">;</span> <span class="nx">name</span>: <span class="kt">string</span> <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span> <span class="nx">id</span>: <span class="kt">ID</span><span class="p">;</span> <span class="nx">name</span>: <span class="kt">string</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">user</span>: <span class="kt">User</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Alice&#39;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 函数类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">b</span>: <span class="kt">number</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">b</span>: <span class="kt">number</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="4-进阶类型">4. 进阶类型
@@ -704,7 +704,9 @@
     <section class="copyright">
         &copy; 
         
-        2025 Adam
+            2025 - 
+        
+        2026 Adam
     </section>
     
     <section class="powerby">

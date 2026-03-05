@@ -56,7 +56,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_36131018bee75336.png" width="300"
+                        <img src="/img/avatar_hu_f906e8e36686cafc.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -569,7 +569,7 @@
 <pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">setup</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nx">definePageMeta</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">layout</span><span class="o">:</span> <span class="s1">&#39;custom&#39;</span> <span class="c1">// 使用 layouts/custom.vue 作为布局
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">})</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">})</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -604,10 +604,10 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// composables/useCounter.ts
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kd">function</span> <span class="nx">useCounter() {</span>
 </span></span><span class="line"><span class="cl"><span class="c1">//这里ref被nuxt自动导入
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kr">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">increment</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">count</span><span class="p">.</span><span class="nx">value</span><span class="o">++</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">};</span>
@@ -631,7 +631,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// plugins/axios.ts
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="nx">axios</span> <span class="kr">from</span> <span class="s1">&#39;axios&#39;</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">axios</span> <span class="kr">from</span> <span class="s1">&#39;axios&#39;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">defineNuxtPlugin</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">provide</span><span class="o">:</span> <span class="p">{</span>
@@ -655,9 +655,9 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// middleware/auth.ts
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="k">default</span> <span class="nx">defineNuxtRouteMiddleware</span><span class="p">((</span><span class="nx">to</span><span class="p">,</span> <span class="kr">from</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">defineNuxtRouteMiddleware</span><span class="p">((</span><span class="nx">to</span><span class="p">,</span> <span class="kr">from</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">isAuthenticated</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// 示例：实际应检查用户状态
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isAuthenticated</span> <span class="o">&amp;&amp;</span> <span class="nx">to</span><span class="p">.</span><span class="nx">path</span> <span class="o">!==</span> <span class="s1">&#39;/login&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isAuthenticated</span> <span class="o">&amp;&amp;</span> <span class="nx">to</span><span class="p">.</span><span class="nx">path</span> <span class="o">!==</span> <span class="s1">&#39;/login&#39;</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">navigateTo</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">});</span>
@@ -680,7 +680,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// nuxt.config.ts
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="k">default</span> <span class="nx">defineNuxtConfig</span><span class="p">({</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">defineNuxtConfig</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">modules</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;@nuxt/content&#39;</span><span class="p">,</span> <span class="s1">&#39;@nuxtjs/axios&#39;</span><span class="p">],</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">css</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;~/assets/css/main.css&#39;</span><span class="p">],</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">build</span><span class="o">:</span> <span class="p">{</span>
@@ -731,7 +731,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="nx">API_BASE</span><span class="o">=</span><span class="nx">https</span><span class="o">:</span><span class="c1">//api.example.com
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">API_KEY</span><span class="o">=</span><span class="nx">your_api_key_here</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">API_KEY</span><span class="o">=</span><span class="nx">your_api_key_here</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -845,7 +845,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="c1">// app/app.config.ts
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">export</span> <span class="k">default</span> <span class="nx">defineAppConfig</span><span class="p">({</span>
+</span></span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">defineAppConfig</span><span class="p">({</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Hello Nuxt&#39;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">theme</span><span class="o">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">dark</span>: <span class="kt">true</span><span class="p">,</span>
@@ -995,7 +995,9 @@
     <section class="copyright">
         &copy; 
         
-        2025 Adam
+            2025 - 
+        
+        2026 Adam
     </section>
     
     <section class="powerby">
