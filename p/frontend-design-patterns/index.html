@@ -948,12 +948,84 @@
 </ul>
 <h3 id="4-应用场景">4. 应用场景
 </h3><ul>
-<li>
-<p><strong>观察者模式</strong>：在基础库的内部逻辑中比较常见，比如Vue.js中的响应式系统就是基于观察者模式实现的。</p>
-</li>
-<li>
-<p><strong>发布订阅模式</strong>：在跨组件通信、事件驱动的系统中比较常见，比如前端框架中的事件总线就是基于发布订阅模式实现的。如Vuex和Redux中的状态管理也是基于发布订阅模式实现的。</p>
-</li>
+<li><strong>观察者模式</strong>：在基础库的内部逻辑中比较常见，比如Vue.js中的响应式系统就是基于观察者模式实现的。</li>
+</ul>
+<p><code>ref</code> 函数接受一个初始值，并返回一个包含该值的响应式对象。其核心原理如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">ref</span><span class="p">(</span><span class="nx">initialValue</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">r</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">get</span> <span class="nx">value() {</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// 依赖收集
+</span></span></span><span class="line"><span class="cl">      <span class="nx">track</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">initialValue</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">set</span> <span class="nx">value</span><span class="p">(</span><span class="nx">newValue</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">initialValue</span> <span class="o">=</span> <span class="nx">newValue</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// 触发更新
+</span></span></span><span class="line"><span class="cl">      <span class="nx">trigger</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">r</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>reactive</code> 函数接受一个对象，并返回该对象的响应式代理。其核心原理如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">reactive</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="k">new</span> <span class="nx">Proxy</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">get</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// 依赖收集
+</span></span></span><span class="line"><span class="cl">      <span class="nx">track</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">Reflect</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">set</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">Reflect</span><span class="p">.</span><span class="kr">set</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// 触发更新
+</span></span></span><span class="line"><span class="cl">      <span class="nx">trigger</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">result</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>发布订阅模式</strong>：在跨组件通信、事件驱动的系统中比较常见，比如前端框架中的事件总线就是基于发布订阅模式实现的。如Vuex和Redux中的状态管理也是基于发布订阅模式实现的。</li>
 </ul>
 <h2 id="装饰器模式的优缺及使用场景">装饰器模式的优缺及使用场景
 </h2><p>装饰器模式的核心理念是在不改变对象代码，不使用继承的情况下，动态地为对象添加额外的功能。</p>
