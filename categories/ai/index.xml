@@ -24,7 +24,7 @@
 &lt;li&gt;&lt;strong&gt;标准化的状态码&lt;/strong&gt;：200 成功、404 未找到(这个大家应该都见过)、500 服务器错误等&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;通用的头部字段&lt;/strong&gt;：Content-Type、Authorization 等&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;从某种角度来看，计算机世界中的一切，本质上都可以归结为对各种协议与标准的定义与实现，AI的调用也不例外。&lt;/p&gt;
+&lt;p&gt;从某种角度来看，计算机世界中的一切，本质上都可以归结为对各种协议与标准的定义与实现。&lt;/p&gt;
 &lt;h3 id=&#34;ai-api-协议的必要性&#34;&gt;AI API 协议的必要性
 &lt;/h3&gt;&lt;p&gt;同样的道理，AI 模型的调用也需要标准化的协议：&lt;/p&gt;
 &lt;ol&gt;
