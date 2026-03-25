@@ -5,7 +5,7 @@
         <link>https://adam-code-line.github.io/categories/vue/</link>
         <description>Recent content in Vue on Adam&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
+        <language>en-us</language>
         <copyright>Adam</copyright>
         <lastBuildDate>Fri, 24 Oct 2025 13:52:42 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/categories/vue/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>vue中组件之间传值的八种方式</title>
