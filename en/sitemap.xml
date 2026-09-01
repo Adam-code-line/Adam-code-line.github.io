@@ -5,6 +5,11 @@
     <loc>https://adam-code-line.github.io/en/</loc>
     <xhtml:link
                 rel="alternate"
+                hreflang="en"
+                href="https://adam-code-line.github.io/en/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="en-us"
                 href="https://adam-code-line.github.io/"
                 />
@@ -13,13 +18,13 @@
                 hreflang="ar"
                 href="https://adam-code-line.github.io/ar/"
                 />
+  </url><url>
+    <loc>https://adam-code-line.github.io/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://adam-code-line.github.io/en/"
+                href="https://adam-code-line.github.io/en/categories/"
                 />
-  </url><url>
-    <loc>https://adam-code-line.github.io/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
@@ -30,13 +35,13 @@
                 hreflang="ar"
                 href="https://adam-code-line.github.io/ar/categories/"
                 />
+  </url><url>
+    <loc>https://adam-code-line.github.io/en/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://adam-code-line.github.io/en/categories/"
+                href="https://adam-code-line.github.io/en/tags/"
                 />
-  </url><url>
-    <loc>https://adam-code-line.github.io/en/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
@@ -46,11 +51,6 @@
                 rel="alternate"
                 hreflang="ar"
                 href="https://adam-code-line.github.io/ar/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://adam-code-line.github.io/en/tags/"
                 />
   </url>
 </urlset>

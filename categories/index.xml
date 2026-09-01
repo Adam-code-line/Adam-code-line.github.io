@@ -7,29 +7,45 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>Adam</copyright>
-        <lastBuildDate>Wed, 25 Mar 2026 21:37:37 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 01 Sep 2026 13:53:36 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Frontend</title>
+        <link>https://adam-code-line.github.io/categories/frontend/</link>
+        <pubDate>Tue, 01 Sep 2026 13:53:36 +0800</pubDate>
+        
+        <guid>https://adam-code-line.github.io/categories/frontend/</guid>
+        <description>&lt;img src="https://adam-code-line.github.io/categories/frontend/cover.jpg" alt="Featured image of post Frontend" /&gt;</description>
+        </item>
+        <item>
+        <title>JavaScript</title>
+        <link>https://adam-code-line.github.io/categories/javascript/</link>
+        <pubDate>Tue, 01 Sep 2026 13:53:36 +0800</pubDate>
+        
+        <guid>https://adam-code-line.github.io/categories/javascript/</guid>
+        <description>&lt;img src="https://adam-code-line.github.io/categories/javascript/cover.jpg" alt="Featured image of post JavaScript" /&gt;</description>
+        </item>
+        <item>
+        <title>Learning</title>
+        <link>https://adam-code-line.github.io/categories/learning/</link>
+        <pubDate>Tue, 01 Sep 2026 13:53:36 +0800</pubDate>
+        
+        <guid>https://adam-code-line.github.io/categories/learning/</guid>
+        <description>&lt;img src="https://adam-code-line.github.io/categories/learning/cover.jpg" alt="Featured image of post Learning" /&gt;</description>
+        </item>
+        <item>
+        <title>TypeScript</title>
+        <link>https://adam-code-line.github.io/categories/typescript/</link>
+        <pubDate>Tue, 01 Sep 2026 13:53:36 +0800</pubDate>
+        
+        <guid>https://adam-code-line.github.io/categories/typescript/</guid>
+        <description>&lt;img src="https://adam-code-line.github.io/categories/typescript/cover.jpg" alt="Featured image of post TypeScript" /&gt;</description>
+        </item>
+        <item>
         <title>AI</title>
         <link>https://adam-code-line.github.io/categories/ai/</link>
         <pubDate>Wed, 25 Mar 2026 21:37:37 +0800</pubDate>
         
         <guid>https://adam-code-line.github.io/categories/ai/</guid>
         <description>&lt;img src="https://adam-code-line.github.io/cover.jpg" alt="Featured image of post AI" /&gt;</description>
-        </item>
-        <item>
-        <title>Learning</title>
-        <link>https://adam-code-line.github.io/categories/learning/</link>
-        <pubDate>Wed, 25 Mar 2026 21:37:37 +0800</pubDate>
-        
-        <guid>https://adam-code-line.github.io/categories/learning/</guid>
-        <description>&lt;img src="https://adam-code-line.github.io/categories/learning/cover.jpg" alt="Featured image of post Learning" /&gt;</description>
-        </item>
-        <item>
-        <title>Frontend</title>
-        <link>https://adam-code-line.github.io/categories/frontend/</link>
-        <pubDate>Fri, 31 Oct 2025 20:50:21 +0800</pubDate>
-        
-        <guid>https://adam-code-line.github.io/categories/frontend/</guid>
-        <description>&lt;img src="https://adam-code-line.github.io/categories/frontend/cover.jpg" alt="Featured image of post Frontend" /&gt;</description>
         </item>
         <item>
         <title>React</title>
@@ -54,22 +70,6 @@
         
         <guid>https://adam-code-line.github.io/categories/nuxt/</guid>
         <description>&lt;img src="https://adam-code-line.github.io/categories/nuxt/cover.jpg" alt="Featured image of post Nuxt" /&gt;</description>
-        </item>
-        <item>
-        <title>JavaScript</title>
-        <link>https://adam-code-line.github.io/categories/javascript/</link>
-        <pubDate>Sat, 11 Oct 2025 21:37:37 +0800</pubDate>
-        
-        <guid>https://adam-code-line.github.io/categories/javascript/</guid>
-        <description>&lt;img src="https://adam-code-line.github.io/categories/javascript/cover.jpg" alt="Featured image of post JavaScript" /&gt;</description>
-        </item>
-        <item>
-        <title>TypeScript</title>
-        <link>https://adam-code-line.github.io/categories/typescript/</link>
-        <pubDate>Wed, 01 Oct 2025 11:35:10 +0800</pubDate>
-        
-        <guid>https://adam-code-line.github.io/categories/typescript/</guid>
-        <description>&lt;img src="https://adam-code-line.github.io/categories/typescript/cover.jpg" alt="Featured image of post TypeScript" /&gt;</description>
         </item>
         <item>
         <title>Life</title>

@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://adam-code-line.github.io/p/ai-standard/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="AI 大模型 API 调用完全指南：从协议到实战">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="AI 大模型 API 调用完全指南：从协议到实战">
 <meta property='og:description' content="AI 标准协议及调用 前言 AI近期来发展迅速，这段时间刷视频和朋友圈总是看到大家又在说什么前端已死、后端已死，还有什么你们搞大模型的都是码奸之类的话，这些也都是AI迅速发展的表现。在这种环境下，学习开发的人很难不焦虑，有些时候甚至会想还有必要学基础的编程吗，直接全部vibe coding不就好了吗，但其实不是这样的，编程能力从来不是跳跃式获得的，所有的学习都是一条平滑上升的曲线，要学好计算机，先从最基本的coding学起，学习前端、后端，再到全栈、agent,逐渐再转向研发大模型，这样才算是健全的学习道路，而非是从一开始就跑去学习大模型。本质上，AI 不是起点，而是建立在扎实工程能力之上的。接下来就会讲解在学习AI的过程中最基础的AI标准协议及调用。\n">
 <meta property='og:url' content='https://adam-code-line.github.io/p/ai-standard/'>
 <meta property='og:site_name' content='Adam&#39;s Blog'>
@@ -1644,90 +1644,90 @@
 </div>
 </div><h4 id="与-openai-协议的主要区别">与 OpenAI 协议的主要区别
 </h4><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>特性</th>
-          <th>OpenAI</th>
-          <th>Gemini</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>消息结构</td>
-          <td><code>messages</code></td>
-          <td><code>contents</code></td>
-      </tr>
-      <tr>
-          <td>消息组成</td>
-          <td><code>content</code> (string)</td>
-          <td><code>parts</code> (array)</td>
-      </tr>
-      <tr>
-          <td>助手角色名</td>
-          <td><code>assistant</code></td>
-          <td><code>model</code></td>
-      </tr>
-      <tr>
-          <td>工具结果角色</td>
-          <td><code>tool</code></td>
-          <td><code>tool</code> (Gemini 3)</td>
-      </tr>
-      <tr>
-          <td>系统提示</td>
-          <td><code>role: &quot;system&quot;</code></td>
-          <td><code>systemInstruction</code></td>
-      </tr>
-      <tr>
-          <td>生成配置</td>
-          <td>顶层参数</td>
-          <td><code>generationConfig</code> 对象</td>
-      </tr>
-      <tr>
-          <td>安全设置</td>
-          <td>无（依赖内容审核）</td>
-          <td><code>safetySettings</code> 数组</td>
-      </tr>
-      <tr>
-          <td>多模态支持</td>
-          <td>需要特殊格式</td>
-          <td>原生支持，使用 parts 数组</td>
-      </tr>
-      <tr>
-          <td>推理深度控制</td>
-          <td>无</td>
-          <td><code>thinking_level</code></td>
-      </tr>
-      <tr>
-          <td>思维签名</td>
-          <td>无</td>
-          <td><code>thought_signature</code></td>
-      </tr>
-      <tr>
-          <td>函数调用 ID</td>
-          <td><code>tool_calls[].id</code></td>
-          <td><code>function_call.id</code></td>
-      </tr>
-      <tr>
-          <td>函数结果 ID</td>
-          <td><code>tool_call_id</code></td>
-          <td><code>function_response.id</code></td>
-      </tr>
-      <tr>
-          <td>函数参数格式</td>
-          <td>JSON 字符串</td>
-          <td>对象</td>
-      </tr>
-      <tr>
-          <td>联网搜索溯源</td>
-          <td>无</td>
-          <td><code>groundingMetadata</code></td>
-      </tr>
-      <tr>
-          <td>Token 分项统计</td>
-          <td>基础统计</td>
-          <td>详细分项（推理、媒体等）</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>特性</th>
+					<th>OpenAI</th>
+					<th>Gemini</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>消息结构</td>
+					<td><code>messages</code></td>
+					<td><code>contents</code></td>
+			</tr>
+			<tr>
+					<td>消息组成</td>
+					<td><code>content</code> (string)</td>
+					<td><code>parts</code> (array)</td>
+			</tr>
+			<tr>
+					<td>助手角色名</td>
+					<td><code>assistant</code></td>
+					<td><code>model</code></td>
+			</tr>
+			<tr>
+					<td>工具结果角色</td>
+					<td><code>tool</code></td>
+					<td><code>tool</code> (Gemini 3)</td>
+			</tr>
+			<tr>
+					<td>系统提示</td>
+					<td><code>role: &quot;system&quot;</code></td>
+					<td><code>systemInstruction</code></td>
+			</tr>
+			<tr>
+					<td>生成配置</td>
+					<td>顶层参数</td>
+					<td><code>generationConfig</code> 对象</td>
+			</tr>
+			<tr>
+					<td>安全设置</td>
+					<td>无（依赖内容审核）</td>
+					<td><code>safetySettings</code> 数组</td>
+			</tr>
+			<tr>
+					<td>多模态支持</td>
+					<td>需要特殊格式</td>
+					<td>原生支持，使用 parts 数组</td>
+			</tr>
+			<tr>
+					<td>推理深度控制</td>
+					<td>无</td>
+					<td><code>thinking_level</code></td>
+			</tr>
+			<tr>
+					<td>思维签名</td>
+					<td>无</td>
+					<td><code>thought_signature</code></td>
+			</tr>
+			<tr>
+					<td>函数调用 ID</td>
+					<td><code>tool_calls[].id</code></td>
+					<td><code>function_call.id</code></td>
+			</tr>
+			<tr>
+					<td>函数结果 ID</td>
+					<td><code>tool_call_id</code></td>
+					<td><code>function_response.id</code></td>
+			</tr>
+			<tr>
+					<td>函数参数格式</td>
+					<td>JSON 字符串</td>
+					<td>对象</td>
+			</tr>
+			<tr>
+					<td>联网搜索溯源</td>
+					<td>无</td>
+					<td><code>groundingMetadata</code></td>
+			</tr>
+			<tr>
+					<td>Token 分项统计</td>
+					<td>基础统计</td>
+					<td>详细分项（推理、媒体等）</td>
+			</tr>
+	</tbody>
 </table></div>
 <h4 id="python-sdk-使用示例">Python SDK 使用示例
 </h4><h5 id="安装依赖">安装依赖
@@ -1944,55 +1944,55 @@
 </div><p>每条消息以 <code>data:</code> 开头，以两个换行符 <code>\n\n</code> 结束。</p>
 <h3 id="sse-vs-websocket">SSE vs WebSocket
 </h3><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>特性</th>
-          <th>SSE</th>
-          <th>WebSocket</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>通信方向</td>
-          <td>单向（服务器 → 客户端）</td>
-          <td>双向（客户端 ↔ 服务器）</td>
-      </tr>
-      <tr>
-          <td>协议</td>
-          <td>HTTP</td>
-          <td>WebSocket 协议（ws://）</td>
-      </tr>
-      <tr>
-          <td>连接建立</td>
-          <td>简单，标准 HTTP 请求</td>
-          <td>需要握手升级</td>
-      </tr>
-      <tr>
-          <td>浏览器支持</td>
-          <td>原生支持（EventSource API）</td>
-          <td>原生支持（WebSocket API）</td>
-      </tr>
-      <tr>
-          <td>自动重连</td>
-          <td>内置自动重连</td>
-          <td>需要手动实现</td>
-      </tr>
-      <tr>
-          <td>数据格式</td>
-          <td>文本（通常 JSON）</td>
-          <td>文本或二进制</td>
-      </tr>
-      <tr>
-          <td>防火墙友好</td>
-          <td>是（使用标准 HTTP）</td>
-          <td>可能被阻止</td>
-      </tr>
-      <tr>
-          <td>适用场景</td>
-          <td>服务器推送、实时通知、AI 流式</td>
-          <td>聊天、游戏、实时协作</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>特性</th>
+					<th>SSE</th>
+					<th>WebSocket</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>通信方向</td>
+					<td>单向（服务器 → 客户端）</td>
+					<td>双向（客户端 ↔ 服务器）</td>
+			</tr>
+			<tr>
+					<td>协议</td>
+					<td>HTTP</td>
+					<td>WebSocket 协议（ws://）</td>
+			</tr>
+			<tr>
+					<td>连接建立</td>
+					<td>简单，标准 HTTP 请求</td>
+					<td>需要握手升级</td>
+			</tr>
+			<tr>
+					<td>浏览器支持</td>
+					<td>原生支持（EventSource API）</td>
+					<td>原生支持（WebSocket API）</td>
+			</tr>
+			<tr>
+					<td>自动重连</td>
+					<td>内置自动重连</td>
+					<td>需要手动实现</td>
+			</tr>
+			<tr>
+					<td>数据格式</td>
+					<td>文本（通常 JSON）</td>
+					<td>文本或二进制</td>
+			</tr>
+			<tr>
+					<td>防火墙友好</td>
+					<td>是（使用标准 HTTP）</td>
+					<td>可能被阻止</td>
+			</tr>
+			<tr>
+					<td>适用场景</td>
+					<td>服务器推送、实时通知、AI 流式</td>
+					<td>聊天、游戏、实时协作</td>
+			</tr>
+	</tbody>
 </table></div>
 <h4 id="为什么-ai-api-使用-sse-而不是-websocket">为什么 AI API 使用 SSE 而不是 WebSocket？
 </h4><ol>
@@ -3213,40 +3213,40 @@
 </ol>
 <h4 id="tool-call-vs-传统-api-调用">Tool Call vs 传统 API 调用
 </h4><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>特性</th>
-          <th>传统 API 调用</th>
-          <th>Tool Call</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>调用决策</td>
-          <td>开发者硬编码逻辑</td>
-          <td>AI 根据对话内容自动决定</td>
-      </tr>
-      <tr>
-          <td>参数提取</td>
-          <td>开发者手动解析用户输入</td>
-          <td>AI 自动从自然语言中提取参数</td>
-      </tr>
-      <tr>
-          <td>灵活性</td>
-          <td>固定的调用流程</td>
-          <td>AI 可以根据上下文灵活选择工具</td>
-      </tr>
-      <tr>
-          <td>多步骤</td>
-          <td>需要复杂的状态机管理</td>
-          <td>AI 可以自动进行多轮工具调用</td>
-      </tr>
-      <tr>
-          <td>用户体验</td>
-          <td>用户需要按固定格式输入</td>
-          <td>用户可以用自然语言表达</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>特性</th>
+					<th>传统 API 调用</th>
+					<th>Tool Call</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>调用决策</td>
+					<td>开发者硬编码逻辑</td>
+					<td>AI 根据对话内容自动决定</td>
+			</tr>
+			<tr>
+					<td>参数提取</td>
+					<td>开发者手动解析用户输入</td>
+					<td>AI 自动从自然语言中提取参数</td>
+			</tr>
+			<tr>
+					<td>灵活性</td>
+					<td>固定的调用流程</td>
+					<td>AI 可以根据上下文灵活选择工具</td>
+			</tr>
+			<tr>
+					<td>多步骤</td>
+					<td>需要复杂的状态机管理</td>
+					<td>AI 可以自动进行多轮工具调用</td>
+			</tr>
+			<tr>
+					<td>用户体验</td>
+					<td>用户需要按固定格式输入</td>
+					<td>用户可以用自然语言表达</td>
+			</tr>
+	</tbody>
 </table></div>
 <h3 id="工具定义详解">工具定义详解
 </h3><p>工具定义是 Tool Call 的核心，它告诉 AI 模型有哪些工具可用，以及如何使用这些工具。</p>
@@ -4392,50 +4392,50 @@
 </div>
 </div><h3 id="对比总结">对比总结
 </h3><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>特性</th>
-          <th>JSON Mode（传统）</th>
-          <th>Tool Use（现代）</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>可靠性</td>
-          <td>中等，可能返回格式错误</td>
-          <td>高，AI 按 schema 生成</td>
-      </tr>
-      <tr>
-          <td>类型安全</td>
-          <td>需要手动验证</td>
-          <td>自动保证类型正确</td>
-      </tr>
-      <tr>
-          <td>错误处理</td>
-          <td>需要处理解析异常</td>
-          <td>减少了格式错误</td>
-      </tr>
-      <tr>
-          <td>语义清晰度</td>
-          <td>依赖 prompt 描述</td>
-          <td>工具名称和描述更明确</td>
-      </tr>
-      <tr>
-          <td>复杂结构支持</td>
-          <td>需要详细的 prompt 说明</td>
-          <td>Schema 定义清晰</td>
-      </tr>
-      <tr>
-          <td>开发体验</td>
-          <td>需要多次调试 prompt</td>
-          <td>定义好 schema 即可</td>
-      </tr>
-      <tr>
-          <td>适用场景</td>
-          <td>简单的数据提取</td>
-          <td>复杂的结构化输出、多步骤工作流</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>特性</th>
+					<th>JSON Mode（传统）</th>
+					<th>Tool Use（现代）</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>可靠性</td>
+					<td>中等，可能返回格式错误</td>
+					<td>高，AI 按 schema 生成</td>
+			</tr>
+			<tr>
+					<td>类型安全</td>
+					<td>需要手动验证</td>
+					<td>自动保证类型正确</td>
+			</tr>
+			<tr>
+					<td>错误处理</td>
+					<td>需要处理解析异常</td>
+					<td>减少了格式错误</td>
+			</tr>
+			<tr>
+					<td>语义清晰度</td>
+					<td>依赖 prompt 描述</td>
+					<td>工具名称和描述更明确</td>
+			</tr>
+			<tr>
+					<td>复杂结构支持</td>
+					<td>需要详细的 prompt 说明</td>
+					<td>Schema 定义清晰</td>
+			</tr>
+			<tr>
+					<td>开发体验</td>
+					<td>需要多次调试 prompt</td>
+					<td>定义好 schema 即可</td>
+			</tr>
+			<tr>
+					<td>适用场景</td>
+					<td>简单的数据提取</td>
+					<td>复杂的结构化输出、多步骤工作流</td>
+			</tr>
+	</tbody>
 </table></div>
 <p><strong>最佳实践建议</strong>：</p>
 <ul>
@@ -6027,50 +6027,50 @@
 </div>
 </div><h4 id="claude-vs-openai-tool-call-对比">Claude vs OpenAI Tool Call 对比
 </h4><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>特性</th>
-          <th>OpenAI</th>
-          <th>Claude</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>工具定义</td>
-          <td><code>parameters</code></td>
-          <td><code>input_schema</code></td>
-      </tr>
-      <tr>
-          <td>工具调用位置</td>
-          <td><code>tool_calls</code> 字段</td>
-          <td><code>content</code> 数组中的 <code>tool_use</code> 块</td>
-      </tr>
-      <tr>
-          <td>工具调用 ID</td>
-          <td><code>tool_calls[].id</code></td>
-          <td><code>tool_use.id</code></td>
-      </tr>
-      <tr>
-          <td>工具结果角色</td>
-          <td><code>role: &quot;tool&quot;</code></td>
-          <td><code>role: &quot;user&quot;</code></td>
-      </tr>
-      <tr>
-          <td>工具结果类型</td>
-          <td>顶层 <code>tool_call_id</code> 和 <code>content</code></td>
-          <td><code>content</code> 中的 <code>tool_result</code> 块</td>
-      </tr>
-      <tr>
-          <td>工具结果 ID 字段</td>
-          <td><code>tool_call_id</code></td>
-          <td><code>tool_use_id</code></td>
-      </tr>
-      <tr>
-          <td>停止原因</td>
-          <td><code>finish_reason: &quot;tool_calls&quot;</code></td>
-          <td><code>stop_reason: &quot;tool_use&quot;</code></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>特性</th>
+					<th>OpenAI</th>
+					<th>Claude</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>工具定义</td>
+					<td><code>parameters</code></td>
+					<td><code>input_schema</code></td>
+			</tr>
+			<tr>
+					<td>工具调用位置</td>
+					<td><code>tool_calls</code> 字段</td>
+					<td><code>content</code> 数组中的 <code>tool_use</code> 块</td>
+			</tr>
+			<tr>
+					<td>工具调用 ID</td>
+					<td><code>tool_calls[].id</code></td>
+					<td><code>tool_use.id</code></td>
+			</tr>
+			<tr>
+					<td>工具结果角色</td>
+					<td><code>role: &quot;tool&quot;</code></td>
+					<td><code>role: &quot;user&quot;</code></td>
+			</tr>
+			<tr>
+					<td>工具结果类型</td>
+					<td>顶层 <code>tool_call_id</code> 和 <code>content</code></td>
+					<td><code>content</code> 中的 <code>tool_result</code> 块</td>
+			</tr>
+			<tr>
+					<td>工具结果 ID 字段</td>
+					<td><code>tool_call_id</code></td>
+					<td><code>tool_use_id</code></td>
+			</tr>
+			<tr>
+					<td>停止原因</td>
+					<td><code>finish_reason: &quot;tool_calls&quot;</code></td>
+					<td><code>stop_reason: &quot;tool_use&quot;</code></td>
+			</tr>
+	</tbody>
 </table></div>
 <h2 id="统一接口工具">统一接口工具
 </h2><h3 id="litellm---一套代码调用所有模型">LiteLLM - 一套代码调用所有模型
@@ -6290,34 +6290,34 @@
 </ul>
 <h3 id="工具对比">工具对比
 </h3><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>工具</th>
-          <th>类型</th>
-          <th>优势</th>
-          <th>适用场景</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>LiteLLM</strong></td>
-          <td>统一接口库</td>
-          <td>支持最多模型，功能丰富</td>
-          <td>需要调用多种模型的应用</td>
-      </tr>
-      <tr>
-          <td><strong>OpenRouter</strong></td>
-          <td>云端聚合平台</td>
-          <td>一个 Key 访问所有模型</td>
-          <td>快速测试和对比模型</td>
-      </tr>
-      <tr>
-          <td><strong>Ollama</strong></td>
-          <td>本地运行工具</td>
-          <td>免费、隐私、离线</td>
-          <td>开发测试、隐私敏感场景</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>工具</th>
+					<th>类型</th>
+					<th>优势</th>
+					<th>适用场景</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>LiteLLM</strong></td>
+					<td>统一接口库</td>
+					<td>支持最多模型，功能丰富</td>
+					<td>需要调用多种模型的应用</td>
+			</tr>
+			<tr>
+					<td><strong>OpenRouter</strong></td>
+					<td>云端聚合平台</td>
+					<td>一个 Key 访问所有模型</td>
+					<td>快速测试和对比模型</td>
+			</tr>
+			<tr>
+					<td><strong>Ollama</strong></td>
+					<td>本地运行工具</td>
+					<td>免费、隐私、离线</td>
+					<td>开发测试、隐私敏感场景</td>
+			</tr>
+	</tbody>
 </table></div>
 <h2 id="错误处理最佳实践">错误处理最佳实践
 </h2><h3 id="1-重试机制设计">1. 重试机制设计
@@ -7356,102 +7356,102 @@
 </div><h2 id="国内外主流-ai-服务">国内外主流 AI 服务
 </h2><h3 id="国内服务">国内服务
 </h3><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>服务商</th>
-          <th>OpenAI 兼容</th>
-          <th>官网</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>DeepSeek</strong></td>
-          <td>兼容</td>
-          <td><a class="link" href="https://www.deepseek.com/"  target="_blank" rel="noopener"
+	<thead>
+			<tr>
+					<th>服务商</th>
+					<th>OpenAI 兼容</th>
+					<th>官网</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>DeepSeek</strong></td>
+					<td>兼容</td>
+					<td><a class="link" href="https://www.deepseek.com/"  target="_blank" rel="noopener"
     >https://www.deepseek.com/</a></td>
-      </tr>
-      <tr>
-          <td><strong>阿里云通义千问</strong></td>
-          <td>兼容</td>
-          <td><a class="link" href="https://tongyi.aliyun.com/"  target="_blank" rel="noopener"
+			</tr>
+			<tr>
+					<td><strong>阿里云通义千问</strong></td>
+					<td>兼容</td>
+					<td><a class="link" href="https://tongyi.aliyun.com/"  target="_blank" rel="noopener"
     >https://tongyi.aliyun.com/</a></td>
-      </tr>
-      <tr>
-          <td><strong>智谱 AI</strong></td>
-          <td>兼容</td>
-          <td><a class="link" href="https://www.zhipuai.cn/"  target="_blank" rel="noopener"
+			</tr>
+			<tr>
+					<td><strong>智谱 AI</strong></td>
+					<td>兼容</td>
+					<td><a class="link" href="https://www.zhipuai.cn/"  target="_blank" rel="noopener"
     >https://www.zhipuai.cn/</a></td>
-      </tr>
-      <tr>
-          <td><strong>百度文心</strong></td>
-          <td>部分兼容</td>
-          <td><a class="link" href="https://yiyan.baidu.com/"  target="_blank" rel="noopener"
+			</tr>
+			<tr>
+					<td><strong>百度文心</strong></td>
+					<td>部分兼容</td>
+					<td><a class="link" href="https://yiyan.baidu.com/"  target="_blank" rel="noopener"
     >https://yiyan.baidu.com/</a></td>
-      </tr>
-      <tr>
-          <td><strong>月之暗面</strong></td>
-          <td>兼容</td>
-          <td><a class="link" href="https://www.moonshot.cn/"  target="_blank" rel="noopener"
+			</tr>
+			<tr>
+					<td><strong>月之暗面</strong></td>
+					<td>兼容</td>
+					<td><a class="link" href="https://www.moonshot.cn/"  target="_blank" rel="noopener"
     >https://www.moonshot.cn/</a></td>
-      </tr>
-  </tbody>
+			</tr>
+	</tbody>
 </table></div>
 <h3 id="国外服务">国外服务
 </h3><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>服务商</th>
-          <th>协议类型</th>
-          <th>官网</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>OpenAI</strong></td>
-          <td>OpenAI</td>
-          <td><a class="link" href="https://openai.com/"  target="_blank" rel="noopener"
+	<thead>
+			<tr>
+					<th>服务商</th>
+					<th>协议类型</th>
+					<th>官网</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>OpenAI</strong></td>
+					<td>OpenAI</td>
+					<td><a class="link" href="https://openai.com/"  target="_blank" rel="noopener"
     >https://openai.com/</a></td>
-      </tr>
-      <tr>
-          <td><strong>Anthropic</strong></td>
-          <td>Claude</td>
-          <td><a class="link" href="https://www.anthropic.com/"  target="_blank" rel="noopener"
+			</tr>
+			<tr>
+					<td><strong>Anthropic</strong></td>
+					<td>Claude</td>
+					<td><a class="link" href="https://www.anthropic.com/"  target="_blank" rel="noopener"
     >https://www.anthropic.com/</a></td>
-      </tr>
-      <tr>
-          <td><strong>Google</strong></td>
-          <td>Gemini</td>
-          <td><a class="link" href="https://ai.google.dev/"  target="_blank" rel="noopener"
+			</tr>
+			<tr>
+					<td><strong>Google</strong></td>
+					<td>Gemini</td>
+					<td><a class="link" href="https://ai.google.dev/"  target="_blank" rel="noopener"
     >https://ai.google.dev/</a></td>
-      </tr>
-  </tbody>
+			</tr>
+	</tbody>
 </table></div>
 <p><strong>其他服务</strong>：字节豆包、xAI (Grok) 等。</p>
 <h3 id="统一接口平台">统一接口平台
 </h3><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>平台</th>
-          <th>官网</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>LiteLLM</strong></td>
-          <td><a class="link" href="https://litellm.ai/"  target="_blank" rel="noopener"
+	<thead>
+			<tr>
+					<th>平台</th>
+					<th>官网</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>LiteLLM</strong></td>
+					<td><a class="link" href="https://litellm.ai/"  target="_blank" rel="noopener"
     >https://litellm.ai/</a></td>
-      </tr>
-      <tr>
-          <td><strong>OpenRouter</strong></td>
-          <td><a class="link" href="https://openrouter.ai/"  target="_blank" rel="noopener"
+			</tr>
+			<tr>
+					<td><strong>OpenRouter</strong></td>
+					<td><a class="link" href="https://openrouter.ai/"  target="_blank" rel="noopener"
     >https://openrouter.ai/</a></td>
-      </tr>
-      <tr>
-          <td><strong>Ollama</strong></td>
-          <td><a class="link" href="https://ollama.com/"  target="_blank" rel="noopener"
+			</tr>
+			<tr>
+					<td><strong>Ollama</strong></td>
+					<td><a class="link" href="https://ollama.com/"  target="_blank" rel="noopener"
     >https://ollama.com/</a></td>
-      </tr>
-  </tbody>
+			</tr>
+	</tbody>
 </table></div>
 <h2 id="参考资源">参考资源
 </h2><h3 id="官方文档">官方文档
@@ -7671,6 +7671,19 @@
             
                 
 <article class="">
+    <a href="/p/scheduler/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">带并发限制的异步调度器Scheduler - 字节经典面试题</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/dtails-for-css/">
         
         
@@ -7716,19 +7729,6 @@
 
         <div class="article-details">
             <h2 class="article-title">React的State状态</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/dtails-for-html/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">HTML详解</h2>
         </div>
     </a>
 </article>

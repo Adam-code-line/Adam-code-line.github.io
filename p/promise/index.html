@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://adam-code-line.github.io/p/promise/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="JavaScript中的Promise详解">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="JavaScript中的Promise详解">
 <meta property='og:description' content="JavaScript 中的 Promise 详解 前言 在现代 Web 开发中，异步编程是一个相当重要的概念。异步编程是一种编程模式，旨在处理耗时操作而不阻塞主线程。与同步编程不同，异步编程允许程序在等待某些操作完成时继续执行其他任务。JavaScript 中的 Promise 是一种用于处理异步操作的强大工具。本文将深入探讨 Promise 的概念、用法及其在实际开发中的应用。\n">
 <meta property='og:url' content='https://adam-code-line.github.io/p/promise/'>
 <meta property='og:site_name' content='Adam&#39;s Blog'>
@@ -778,70 +778,70 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th style="text-align: left">时间节点</th>
-          <th style="text-align: left">正在执行 (Call Stack)</th>
-          <th style="text-align: left">微任务队列 (Micro Queue)</th>
-          <th style="text-align: left">宏任务队列 (Macro Queue)</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left"><strong>1. 启动</strong></td>
-          <td style="text-align: left"><strong>Script (Macro #1)</strong></td>
-          <td style="text-align: left"><code>[]</code></td>
-          <td style="text-align: left"><code>[]</code></td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>2. 运行中</strong></td>
-          <td style="text-align: left"><code>console.log(1)...</code></td>
-          <td style="text-align: left"><code>[Promise回调]</code></td>
-          <td style="text-align: left"><code>[setTimeout回调]</code></td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>3. Script 结束</strong></td>
-          <td style="text-align: left"><em>(空)</em></td>
-          <td style="text-align: left"><code>[Promise回调]</code></td>
-          <td style="text-align: left"><code>[setTimeout回调]</code></td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>4. 清算微任务</strong></td>
-          <td style="text-align: left"><strong>执行 Promise 回调</strong></td>
-          <td style="text-align: left"><code>[]</code></td>
-          <td style="text-align: left"><code>[setTimeout回调]</code></td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>5. 第一轮结束</strong></td>
-          <td style="text-align: left"><em>(空)</em></td>
-          <td style="text-align: left"><code>[]</code></td>
-          <td style="text-align: left"><code>[setTimeout回调]</code></td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>6. 启动第二轮</strong></td>
-          <td style="text-align: left"><strong>执行 setTimeout</strong></td>
-          <td style="text-align: left"><code>[]</code></td>
-          <td style="text-align: left"><code>[]</code></td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>7. 运行中</strong></td>
-          <td style="text-align: left"><code>console.log(4)...</code></td>
-          <td style="text-align: left"><code>[内部新回调]</code></td>
-          <td style="text-align: left"><code>[]</code></td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>8. 宏任务结束</strong></td>
-          <td style="text-align: left"><em>(空)</em></td>
-          <td style="text-align: left"><code>[内部新回调]</code></td>
-          <td style="text-align: left"><code>[]</code></td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>9. 清算微任务</strong></td>
-          <td style="text-align: left"><strong>执行 内部新回调</strong></td>
-          <td style="text-align: left"><code>[]</code></td>
-          <td style="text-align: left"><code>[]</code></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th style="text-align: left">时间节点</th>
+					<th style="text-align: left">正在执行 (Call Stack)</th>
+					<th style="text-align: left">微任务队列 (Micro Queue)</th>
+					<th style="text-align: left">宏任务队列 (Macro Queue)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left"><strong>1. 启动</strong></td>
+					<td style="text-align: left"><strong>Script (Macro #1)</strong></td>
+					<td style="text-align: left"><code>[]</code></td>
+					<td style="text-align: left"><code>[]</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>2. 运行中</strong></td>
+					<td style="text-align: left"><code>console.log(1)...</code></td>
+					<td style="text-align: left"><code>[Promise回调]</code></td>
+					<td style="text-align: left"><code>[setTimeout回调]</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>3. Script 结束</strong></td>
+					<td style="text-align: left"><em>(空)</em></td>
+					<td style="text-align: left"><code>[Promise回调]</code></td>
+					<td style="text-align: left"><code>[setTimeout回调]</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>4. 清算微任务</strong></td>
+					<td style="text-align: left"><strong>执行 Promise 回调</strong></td>
+					<td style="text-align: left"><code>[]</code></td>
+					<td style="text-align: left"><code>[setTimeout回调]</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>5. 第一轮结束</strong></td>
+					<td style="text-align: left"><em>(空)</em></td>
+					<td style="text-align: left"><code>[]</code></td>
+					<td style="text-align: left"><code>[setTimeout回调]</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>6. 启动第二轮</strong></td>
+					<td style="text-align: left"><strong>执行 setTimeout</strong></td>
+					<td style="text-align: left"><code>[]</code></td>
+					<td style="text-align: left"><code>[]</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>7. 运行中</strong></td>
+					<td style="text-align: left"><code>console.log(4)...</code></td>
+					<td style="text-align: left"><code>[内部新回调]</code></td>
+					<td style="text-align: left"><code>[]</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>8. 宏任务结束</strong></td>
+					<td style="text-align: left"><em>(空)</em></td>
+					<td style="text-align: left"><code>[内部新回调]</code></td>
+					<td style="text-align: left"><code>[]</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>9. 清算微任务</strong></td>
+					<td style="text-align: left"><strong>执行 内部新回调</strong></td>
+					<td style="text-align: left"><code>[]</code></td>
+					<td style="text-align: left"><code>[]</code></td>
+			</tr>
+	</tbody>
 </table></div>
 <h3 id="promise-链式调用">Promise 链式调用
 </h3><p>Promise 支持<code>.then()</code>链式调用，这是因为<code>then()</code>和<code>catch()</code>方法内部会返回一个新的 Promise 实例(不是原来那个)，使得可以在前一个 Promise 处理完成后继续处理下一个 Promise。如果前一个<code>then</code>或<code>catch</code>中返回一个值，这个值会被传递给下一个<code>then</code>的回调函数；如果返回一个 Promise，则下一个<code>then</code>会等待这个 Promise 状态改变后再执行。</p>
@@ -1272,6 +1272,19 @@
             
                 
 <article class="">
+    <a href="/p/scheduler/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">带并发限制的异步调度器Scheduler - 字节经典面试题</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/javascript/">
         
         
@@ -1317,19 +1330,6 @@
 
         <div class="article-details">
             <h2 class="article-title">CSS详解</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/nextjs-study/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Next.js学习(一)</h2>
         </div>
     </a>
 </article>

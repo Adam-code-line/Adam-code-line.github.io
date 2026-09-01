@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://adam-code-line.github.io/</loc>
-    <lastmod>2026-03-25T21:37:37+08:00</lastmod>
+    <lastmod>2026-09-01T13:53:36+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -11,23 +11,17 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="ar"
-                href="https://adam-code-line.github.io/ar/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="en-us"
                 href="https://adam-code-line.github.io/"
                 />
-  </url><url>
-    <loc>https://adam-code-line.github.io/categories/ai/</loc>
-    <lastmod>2026-03-25T21:37:37+08:00</lastmod>
-  </url><url>
-    <loc>https://adam-code-line.github.io/p/ai-standard/</loc>
-    <lastmod>2026-03-25T21:37:37+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ar"
+                href="https://adam-code-line.github.io/ar/"
+                />
   </url><url>
     <loc>https://adam-code-line.github.io/categories/</loc>
-    <lastmod>2026-03-25T21:37:37+08:00</lastmod>
+    <lastmod>2026-09-01T13:53:36+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -35,25 +29,40 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="ar"
-                href="https://adam-code-line.github.io/ar/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="en-us"
                 href="https://adam-code-line.github.io/categories/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ar"
+                href="https://adam-code-line.github.io/ar/categories/"
+                />
+  </url><url>
+    <loc>https://adam-code-line.github.io/categories/frontend/</loc>
+    <lastmod>2026-09-01T13:53:36+08:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/categories/javascript/</loc>
+    <lastmod>2026-09-01T13:53:36+08:00</lastmod>
   </url><url>
     <loc>https://adam-code-line.github.io/categories/learning/</loc>
-    <lastmod>2026-03-25T21:37:37+08:00</lastmod>
+    <lastmod>2026-09-01T13:53:36+08:00</lastmod>
   </url><url>
     <loc>https://adam-code-line.github.io/post/</loc>
+    <lastmod>2026-09-01T13:53:36+08:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/categories/typescript/</loc>
+    <lastmod>2026-09-01T13:53:36+08:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/p/scheduler/</loc>
+    <lastmod>2026-09-01T13:53:36+08:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/categories/ai/</loc>
+    <lastmod>2026-03-25T21:37:37+08:00</lastmod>
+  </url><url>
+    <loc>https://adam-code-line.github.io/p/ai-standard/</loc>
     <lastmod>2026-03-25T21:37:37+08:00</lastmod>
   </url><url>
     <loc>https://adam-code-line.github.io/p/dtails-for-css/</loc>
-    <lastmod>2025-10-31T20:50:21+08:00</lastmod>
-  </url><url>
-    <loc>https://adam-code-line.github.io/categories/frontend/</loc>
     <lastmod>2025-10-31T20:50:21+08:00</lastmod>
   </url><url>
     <loc>https://adam-code-line.github.io/p/nextjs-study/</loc>
@@ -89,9 +98,6 @@
     <loc>https://adam-code-line.github.io/p/nuxt/</loc>
     <lastmod>2025-10-12T11:51:13+08:00</lastmod>
   </url><url>
-    <loc>https://adam-code-line.github.io/categories/javascript/</loc>
-    <lastmod>2025-10-11T21:37:37+08:00</lastmod>
-  </url><url>
     <loc>https://adam-code-line.github.io/p/javascript/</loc>
     <lastmod>2025-10-11T21:37:37+08:00</lastmod>
   </url><url>
@@ -121,9 +127,6 @@
   </url><url>
     <loc>https://adam-code-line.github.io/p/ref-reactive/</loc>
     <lastmod>2025-10-09T17:00:49+08:00</lastmod>
-  </url><url>
-    <loc>https://adam-code-line.github.io/categories/typescript/</loc>
-    <lastmod>2025-10-01T11:35:10+08:00</lastmod>
   </url><url>
     <loc>https://adam-code-line.github.io/p/typescript-learning-guide/</loc>
     <lastmod>2025-10-01T11:35:10+08:00</lastmod>
@@ -157,13 +160,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="ar"
-                href="https://adam-code-line.github.io/ar/tags/"
+                hreflang="en-us"
+                href="https://adam-code-line.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en-us"
-                href="https://adam-code-line.github.io/tags/"
+                hreflang="ar"
+                href="https://adam-code-line.github.io/ar/tags/"
                 />
   </url><url>
     <loc>https://adam-code-line.github.io/%E5%85%B3%E4%BA%8E/</loc>
