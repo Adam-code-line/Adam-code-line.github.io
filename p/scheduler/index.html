@@ -485,7 +485,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>比较重要的是add方法的设计，根据题目很明显我们需要一个定时器来控制任务的执行时间，并且由于任务得是异步的，所以我们得用一个Promise来包裹任务:</p>
+</div><p>比较重要的是add方法的设计，根据题目很明显我们需要一个定时器来控制任务的执行时间，并且由于任务得是异步的，所以我们得用一个Promise来包裹任务：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -501,7 +501,7 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nx">add</span><span class="p">(</span><span class="nx">time</span>:<span class="kt">number</span><span class="p">,</span> <span class="nx">name</span>:<span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">&lt;</span><span class="nt">void</span><span class="p">&gt;((</span><span class="nx">resolve</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">queue</span><span class="p">.</span><span class="nx">push</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">&lt;</span><span class="nt">void</span><span class="p">&gt;((</span><span class="nx">resolve</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">            <span class="nx">resolve</span><span class="p">();</span>
@@ -510,7 +510,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>这样我们就完成了Scheduler类的设计，接下可以展示完整的代码实现。</p>
+</div><p>这样我们就完成了Scheduler类的设计，接下来可以展示完整的代码实现。</p>
 <h2 id="完整代码">完整代码
 </h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -586,7 +586,7 @@
 </div>
 </div><h2 id="扩展一下">扩展一下
 </h2><h3 id="优化任务添加">优化任务添加
-</h3><p>我们发现,使用start方法需要手动调用，并且必须得把所有的任务都添加完毕之后才能调用start方法，这样就不太符合实际的使用场景了。我们可以在add方法中添加任务后自动执行任务，这样就不需要手动调用start方法了。我们可以在add方法中调用start方法来实现这个功能。</p>
+</h3><p>我们发现，使用start方法需要手动调用，并且必须得把所有的任务都添加完毕之后才能调用start方法，这样就不太符合实际的使用场景了。我们可以在add方法中添加任务后自动执行任务，这样就不需要手动调用start方法了。我们可以在add方法中调用start方法来实现这个功能。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -642,7 +642,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="改造addtask方法">改造addTask方法
-</h3><p>然后改造一下addTask方法，让其可以接收time和name参数:</p>
+</h3><p>然后改造一下addTask方法，让其可以接收time和name参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -782,20 +782,20 @@
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="原理解析">原理解析
-</h3><p>并发的过程如下:</p>
+</h3><p>并发的过程如下：</p>
 <ul>
-<li>Task 1 入队：queue 存入 Task 1，调用 start()。start() 检查：runningCount (0) &lt; limit (2) 成立 runningCount 变为 1。立刻执行 Task 1 的函数 setTimeout(&hellip;, 1000) 被丢给浏览器的定时器线程。</li>
-<li>Task 2 入队：queue 存入 Task 2，调用 start()。start() 检查：runningCount (1) &lt; limit (2) 依然成立runningCount 变为 2。立刻执行 Task 2 的函数 setTimeout(&hellip;, 500) 也被丢给定时器线程。</li>
+<li>Task 1 入队：queue 存入 Task 1，调用 start()。start() 检查：runningCount (0) &lt; limit (2) 成立，runningCount 变为 1。立刻执行 Task 1 的函数 setTimeout(&hellip;, 1000) 被丢给浏览器的定时器线程。</li>
+<li>Task 2 入队：queue 存入 Task 2，调用 start()。start() 检查：runningCount (1) &lt; limit (2) 依然成立，runningCount 变为 2。立刻执行 Task 2 的函数 setTimeout(&hellip;, 500) 也被丢给定时器线程。</li>
 <li>Task 3 入队：queue 存入 Task 3，调用 start()。start() 检查：runningCount (2) &lt; limit (2) 不成立（容量已满）。while 循环直接跳过，Task 3 安静地停留在 queue 数组中，函数根本没被调用（定时器还没倒计时）。</li>
 <li>Task 4 入队：同理，runningCount 依旧是 2，Task 4 留在 queue 中。Task 1 和 Task 2 的 setTimeout 在 0ms 时同时在后台开始倒计时，它俩此时是并发的。</li>
 </ul>
-<p>当来到500ms时:</p>
+<p>当来到500ms时：</p>
 <ul>
 <li>Task 2 (500ms) 率先定时结束！</li>
 <li>Task 1 (1000ms) 还在继续倒计时（还剩 500ms）。</li>
 <li>Task 3, 4 依然在 queue 数组里挂起。</li>
 </ul>
-<p>当 Task 2 的 setTimeout 触发时，连锁反应发生：Task 2 执行 console.log(&ldquo;2&rdquo;)。Task 2 调用 resolve()，触发自己的 .finally()。.finally() 的回调函数被放入微任务队列，立刻执行：this.runningCount&ndash;,正在运行数由 2 降为 1（腾出了一个空位）。再次调用 this.start()，重新进入 start() 的 while 循环：条件检查：runningCount (1) &lt; limit (2) 且 queue.length (2) &gt; 0 成立。runningCount 再次变为 2。queue.shift() 弹出 Task 3 并执行它,Task 3 的 setTimeout(&hellip;, 600) 正式启动</p>
+<p>当 Task 2 的 setTimeout 触发时，连锁反应发生：Task 2 执行 console.log(&ldquo;2&rdquo;)。Task 2 调用 resolve()，触发自己的 .finally()。.finally() 的回调函数被放入微任务队列，立刻执行：this.runningCount&ndash;，正在运行数由 2 降为 1（腾出了一个空位）。再次调用 this.start()，重新进入 start() 的 while 循环：条件检查：runningCount (1) &lt; limit (2) 且 queue.length (2) &gt; 0 成立。runningCount 再次变为 2。queue.shift() 弹出 Task 3 并执行它，Task 3 的 setTimeout(&hellip;, 600) 正式启动。</p>
 <h2 id="最终版">最终版
 </h2><p>按照这个思路我们可以更加泛化的实现一个带并发限制的异步调度器Scheduler，可以引入泛型，并且优化一下逻辑，代码如下：</p>
 <div class="highlight"><div class="chroma">
