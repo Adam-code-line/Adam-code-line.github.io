@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="前言 浏览器是前端的基石，理解浏览器的工作原理对前端开发者来说十分重要。浏览器缓存是浏览器为了提高网页加载速度和减少网络请求开销等而采取的一种机制。其中涉及到数据结构、计算机网络等多方面的知识。本文将从浏览器缓存的概念、类型、工作原理以及实际应用等方面，同时也结合CDN缓存来对浏览器缓存进行详细讲解。\n">
+<title>浏览器缓存</title>
+
+<link rel='canonical' href='https://adam-code-line.github.io/p/browser-cache/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="浏览器缓存">
+<meta property='og:description' content="前言 浏览器是前端的基石，理解浏览器的工作原理对前端开发者来说十分重要。浏览器缓存是浏览器为了提高网页加载速度和减少网络请求开销等而采取的一种机制。其中涉及到数据结构、计算机网络等多方面的知识。本文将从浏览器缓存的概念、类型、工作原理以及实际应用等方面，同时也结合CDN缓存来对浏览器缓存进行详细讲解。\n">
+<meta property='og:url' content='https://adam-code-line.github.io/p/browser-cache/'>
+<meta property='og:site_name' content='Adam&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-09-13T15:33:10&#43;08:00'/><meta property='article:modified_time' content='2026-09-13T15:33:10&#43;08:00'/>
+<meta name="twitter:title" content="浏览器缓存">
+<meta name="twitter:description" content="前言 浏览器是前端的基石，理解浏览器的工作原理对前端开发者来说十分重要。浏览器缓存是浏览器为了提高网页加载速度和减少网络请求开销等而采取的一种机制。其中涉及到数据结构、计算机网络等多方面的知识。本文将从浏览器缓存的概念、类型、工作原理以及实际应用等方面，同时也结合CDN缓存来对浏览器缓存进行详细讲解。\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_7301603370da9550.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Adam&#39;s Blog</a></h1>
+            <h2 class="site-description">欢迎来到我的博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://adam-code-line.github.io/en/" >English</option>
+                                
+                                    <option value="https://adam-code-line.github.io/" selected>简体中文</option>
+                                
+                                    <option value="https://adam-code-line.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#按照缓存的存储位置">按照缓存的存储位置</a></li>
+    <li><a href="#按照缓存的控制机制">按照缓存的控制机制</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#service-worker的控制机制基本代码实现">Service Worker的控制机制基本代码实现</a>
+      <ol>
+        <li><a href="#控制机制">控制机制</a></li>
+        <li><a href="#代码实现">代码实现</a></li>
+      </ol>
+    </li>
+    <li><a href="#几种常见的-sw-缓存拦截策略">几种常见的 SW 缓存拦截策略</a>
+      <ol>
+        <li><a href="#cache-first优先缓存适合静态不常变的文件如图片字体">Cache First（优先缓存，适合静态不常变的文件如图片、字体）</a></li>
+        <li><a href="#2-network-first优先网络适合实时数据经常更新的数据">2. Network First（优先网络，适合实时数据/经常更新的数据）</a></li>
+        <li><a href="#3-stale-while-revalidate缓存优先后台静默更新适合新闻博客文章">3. Stale-While-Revalidate（缓存优先，后台静默更新，适合新闻/博客文章）</a></li>
+      </ol>
+    </li>
+    <li><a href="#service-worker-生产环境的最佳实践建议">Service Worker 生产环境的最佳实践建议</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#强缓存strong-cache">强缓存（Strong Cache）</a>
+      <ol>
+        <li><a href="#1-核心控制头对比">1. 核心控制头对比</a></li>
+        <li><a href="#2-response-headers响应头中的-cache-control-指令">2. Response Headers（响应头）中的 Cache-Control 指令</a></li>
+      </ol>
+    </li>
+    <li><a href="#协商缓存validation-cache">协商缓存（Validation Cache）</a>
+      <ol>
+        <li><a href="#1-协商缓存成对校验头">1. 协商缓存成对校验头</a></li>
+        <li><a href="#2-etag-与-last-modified-深度对比">2. ETag 与 Last-Modified 深度对比</a></li>
+      </ol>
+    </li>
+    <li><a href="#request-headers请求头中的-cache-control-指令">Request Headers（请求头）中的 Cache-Control 指令</a></li>
+    <li><a href="#现代-web-工程最佳配置实践">现代 Web 工程最佳配置实践</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/frontend/" style="background-color: #2a9d8f; color: #fff;">
+                Frontend
+            </a>
+        
+            <a href="/categories/browser/" style="background-color: #2a9d8f; color: #fff;">
+                Browser
+            </a>
+        
+            <a href="/categories/learning/" style="background-color: #2a9d8f; color: #fff;">
+                Learning
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/browser-cache/">浏览器缓存</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 13, 2026</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 13 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="前言">前言
+</h1><p>浏览器是前端的基石，理解浏览器的工作原理对前端开发者来说十分重要。浏览器缓存是浏览器为了提高网页加载速度和减少网络请求开销等而采取的一种机制。其中涉及到数据结构、计算机网络等多方面的知识。本文将从浏览器缓存的概念、类型、工作原理以及实际应用等方面，同时也结合CDN缓存来对浏览器缓存进行详细讲解。</p>
+<h1 id="浏览器缓存的概念">浏览器缓存的概念
+</h1><p>浏览器缓存简单来说就是浏览器把用户下载过的网页资源（HTML、CSS、JS、图片等）保存在本地磁盘或内存中，当用户再次请求同一资源时，浏览器会直接从缓存中读取资源，而不是重新向服务器发送请求，从而提高网页加载速度和减少网络请求开销，也能够减轻服务器的压力。</p>
+<h1 id="浏览器缓存的类型">浏览器缓存的类型
+</h1><h2 id="按照缓存的存储位置">按照缓存的存储位置
+</h2><p>按照缓存的存储位置，浏览器缓存可以分为四种类型，它们的读取优先级由高到低为：</p>
+<ol>
+<li>
+<p><strong>服务工作线程缓存（Service Worker Cache）</strong></p>
+<ul>
+<li>存储位置：浏览器的Service Worker缓存中。</li>
+<li>特点：可以在离线状态下访问缓存资源，生命周期较长，开发者可以通过js代码手动管理缓存，精准拦截网络请求。</li>
+<li>适用场景：适用于需要离线访问的Web应用，如PWA（Progressive Web App）。</li>
+</ul>
+</li>
+<li>
+<p><strong>内存缓存（Memory Cache）</strong></p>
+<ul>
+<li>存储位置：电脑/手机的内存(RAM)中。</li>
+<li>特点：读取速度最快，但占用内存空间，浏览器关闭后缓存会被清空，生命周期极短。</li>
+<li>适用场景：适用于频繁访问的小型静态资源，如图片、JS文件等。</li>
+</ul>
+</li>
+<li>
+<p><strong>磁盘缓存（Disk Cache）</strong></p>
+<ul>
+<li>存储位置：电脑/手机的硬盘中。</li>
+<li>特点：读取速度较慢，但占用空间大，浏览器关闭后缓存不会被清空，生命周期较长。</li>
+<li>适用场景：适用于大型静态资源，如视频、音频等。</li>
+</ul>
+</li>
+<li>
+<p><strong>推送缓存（Push Cache）</strong></p>
+<ul>
+<li>存储位置：浏览器的HTTP/2推送缓存中。</li>
+<li>特点：当服务端向客户端推送资源时，浏览器会将这些资源暂时存储在推送缓存中，生命周期非常短。</li>
+<li>适用场景：用于消除关键资源的加载延迟，提升网页加载速度，但现在基本上已经被弃用。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><strong>页面发起网络请求</strong>
+<ul>
+<li><strong>1. Service Worker 线程</strong>（最先收到 <code>fetch</code> 事件）
+<ul>
+<li><strong>分支 A：命中 Cache Storage</strong>
+<ul>
+<li>明确直接返回数据（不经过任何 HTTP 缓存）</li>
+</ul>
+</li>
+<li><strong>分支 B：调用 <code>event.respondWith(fetch(request))</code></strong>
+<ul>
+<li>将请求放行，下发给浏览器底层网络层：
+<ul>
+<li><strong>2. HTTP Cache 模块</strong>（浏览器原生网络层）
+<ul>
+<li><strong>2.1 Memory Cache</strong>（内存缓存）</li>
+<li><strong>2.2 Disk Cache</strong>（磁盘缓存）</li>
+<li><strong>2.3 Push Cache</strong>（推送缓存）</li>
+</ul>
+</li>
+<li><strong>3. 真正发出网络请求</strong>（发送至 CDN / 边缘服务器 / 源站）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="按照缓存的控制机制">按照缓存的控制机制
+</h2><p>按照缓存的控制机制，浏览器缓存可以分为两种类型：</p>
+<ol>
+<li>
+<p><strong>强制缓存（Forced Cache）</strong></p>
+<ul>
+<li>特点：浏览器判断缓存未过期，直接使用本地资源，完全不发请求给服务器（直接返回 200 OK (from disk/memory cache)）。</li>
+<li>控制方式：通过HTTP响应头中的<code>Cache-Control</code>(如 <code>max-age=3600</code> )和<code>Expires</code>字段来控制。</li>
+</ul>
+</li>
+<li>
+<p><strong>协商缓存（Negotiated Cache）</strong></p>
+<ul>
+<li>特点：浏览器判断强缓存被禁用或者缓存已过期，向服务器发送请求，服务器根据资源是否发生变化来决定是否返回新的资源（返回 304 Not Modified 或 200 OK）。</li>
+<li>控制方式：<code>ETag</code>/ <code>If-None-Match</code>（基于内容哈希）和 <code>Last-Modified</code> / <code>If-Modified-Since</code>（基于修改时间）。</li>
+</ul>
+</li>
+</ol>
+<h1 id="cdn缓存">CDN缓存
+</h1><p>CDN（Content Delivery Network，内容分发网络）是一种通过在全球范围内部署节点服务器，将用户请求就近分发到节点服务器上，从而提高访问速度和降低网络延迟的技术。CDN缓存是指CDN节点服务器对源站资源进行缓存，当用户请求资源时，CDN节点服务器会直接返回缓存的资源，而不是向源站发送请求，且缩短了请求的物理距离，从而提高访问速度和减少源站压力。</p>
+<ul>
+<li>
+<p><strong>1. 域名解析阶段（智能导航）</strong></p>
+<ul>
+<li>用户在浏览器输入网址发起请求。</li>
+<li><strong>智能 DNS（GSLB）</strong> 接收请求，分析用户的 IP 地址与运营商（如：上海电信）。</li>
+<li>DNS 返回距离该用户<strong>物理位置最近、网络最优</strong>的 CDN 节点 IP 给浏览器。</li>
+</ul>
+</li>
+<li>
+<p><strong>2. 边缘节点响应阶段（CDN 查找）</strong></p>
+<ul>
+<li>浏览器连接该 <strong>CDN 边缘节点</strong>。</li>
+<li><strong>分支 A：缓存命中（Cache Hit）</strong>
+<ul>
+<li>节点发现本地存有该资源且在有效期内（未超过 <code>s-maxage</code> 或 CDN 缓存 TTL）。</li>
+<li>极速直接返回资源给用户（流程结束）。</li>
+</ul>
+</li>
+<li><strong>分支 B：缓存未命中（Cache Miss）</strong>
+<ul>
+<li>节点本地没有该资源，或资源已过期。</li>
+<li>触发下一阶段：<strong>回源</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>3. 回源与数据更新阶段（拉取与缓存）</strong></p>
+<ul>
+<li>CDN 节点以客户端身份向**源站服务器（Origin Server）**发起请求。</li>
+<li>源站响应并返回最新资源。</li>
+<li><strong>CDN 节点保存缓存</strong>：节点将拿到的新资源存储在本地磁盘/内存中（以便后续同区域用户直接复用）。</li>
+<li>CDN 节点将资源返回给用户的浏览器（流程结束）。</li>
+</ul>
+</li>
+</ul>
+<h1 id="浏览器缓存的完整工作流程">浏览器缓存的完整工作流程
+</h1><p>结合上文提到的缓存类型、控制机制以及CDN缓存，我们可以总结出浏览器缓存的完整工作流程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[ 页面发起资源请求 ]
+</span></span><span class="line"><span class="cl">          │
+</span></span><span class="line"><span class="cl">          ▼
+</span></span><span class="line"><span class="cl">1.【Service Worker 层】（最顶层网络代理拦截）
+</span></span><span class="line"><span class="cl">          │
+</span></span><span class="line"><span class="cl">          ├───► [命中 Cache Storage] ──► 返回 200 (from ServiceWorker)
+</span></span><span class="line"><span class="cl">          │
+</span></span><span class="line"><span class="cl">          └───► [未命中 / 未注册 / SW 内显式执行 fetch()]
+</span></span><span class="line"><span class="cl">                                │
+</span></span><span class="line"><span class="cl">                                ▼
+</span></span><span class="line"><span class="cl">2.【HTTP 强缓存检查】（Cache-Control 优先级高于 Expires）
+</span></span><span class="line"><span class="cl">          │
+</span></span><span class="line"><span class="cl">          ├───► 检查 Cache-Control: no-store ─► [是] ─► 跳过强缓存，直接去发网络
+</span></span><span class="line"><span class="cl">          ├───► 检查 Cache-Control: no-cache ─► [是] ─► 跳过强缓存，强制协商缓存
+</span></span><span class="line"><span class="cl">          │
+</span></span><span class="line"><span class="cl">          ├───► [未过期] ──► 命中强缓存（依据内存/生命周期状态读取）:
+</span></span><span class="line"><span class="cl">          │        │
+</span></span><span class="line"><span class="cl">          │        ├──► Memory 有缓存 (当前 Tab 运行中 / 频繁引用 / 预加载)
+</span></span><span class="line"><span class="cl">          │        │       └──► 返回 200 (from memory cache)
+</span></span><span class="line"><span class="cl">          │        │
+</span></span><span class="line"><span class="cl">          │        └──► Memory 已清空 (Tab关过 / 浏览器重启 / 大文件未进内存)
+</span></span><span class="line"><span class="cl">          │                └──► 从 Disk Cache 读取，并重新加载进 Memory
+</span></span><span class="line"><span class="cl">          │                        └──► 返回 200 (from disk cache)
+</span></span><span class="line"><span class="cl">          │
+</span></span><span class="line"><span class="cl">          └───► [已过期 或 显式要求协商缓存]
+</span></span><span class="line"><span class="cl">                                │
+</span></span><span class="line"><span class="cl">                                ▼
+</span></span><span class="line"><span class="cl">3.【构建协商缓存请求头】（装配条件 Headers）
+</span></span><span class="line"><span class="cl">          │
+</span></span><span class="line"><span class="cl">          ├───► 若存在 ETag          ──► 请求头带上 If-None-Match
+</span></span><span class="line"><span class="cl">          └───► 若存在 Last-Modified ──► 请求头带上 If-Modified-Since
+</span></span><span class="line"><span class="cl">                                │
+</span></span><span class="line"><span class="cl">                                ▼
+</span></span><span class="line"><span class="cl">4.【网络层：CDN 边缘节点校验】（Smart DNS 定位至最近 CDN 节点）
+</span></span><span class="line"><span class="cl">          │
+</span></span><span class="line"><span class="cl">          ├───► CDN 未命中 / 已过期 ──► 向源站（Origin）拉取新资源
+</span></span><span class="line"><span class="cl">          │
+</span></span><span class="line"><span class="cl">          └───► CDN 节点对比条件头:
+</span></span><span class="line"><span class="cl">                   ├─ 资源未改变 ──► 返回 304 Not Modified（不带 Body）
+</span></span><span class="line"><span class="cl">                   └─ 资源已改变 ──► 返回 200 OK（带全新资源与 Header）
+</span></span><span class="line"><span class="cl">                                │
+</span></span><span class="line"><span class="cl">                                ▼
+</span></span><span class="line"><span class="cl">5.【客户端接收与存储更新】
+</span></span><span class="line"><span class="cl">          │
+</span></span><span class="line"><span class="cl">          ├───► 收到 304 ──► 复用 Disk Cache，更新 HTTP Header 缓存标记
+</span></span><span class="line"><span class="cl">          └───► 收到 200 ──► 渲染页面，【双写/落盘】:
+</span></span><span class="line"><span class="cl">                   ├──► 写入 Disk Cache（持久化保存）
+</span></span><span class="line"><span class="cl">                   ├──► 同步载入 Memory Cache（供当前页/近期极速读取）
+</span></span><span class="line"><span class="cl">                   └──► 同步写入 Service Worker Cache Storage（若已启用）
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="service-worker讲解">Service Worker讲解
+</h1><p>Service Worker（服务工作线程，简称 SW） 简单来说，就是运行在浏览器后台的一台“独立小型代理服务器（Proxy Server）”。 它可以拦截网页发出的网络请求，并根据开发者的逻辑决定是直接返回缓存资源，还是去网络上拉取最新资源。可以说Service Worker 的出现，赋予了前端开发者完全掌控网络请求与离线体验的能力。它是现代 PWA（Progressive Web App，渐进式 Web 应用） 技术的核心基石.</p>
+<h2 id="service-worker的控制机制基本代码实现">Service Worker的控制机制基本代码实现
+</h2><h3 id="控制机制">控制机制
+</h3><ol>
+<li>
+<p><strong>作用域（Scope）</strong></p>
+<ul>
+<li>SW 只能拦截其所在目录及子目录下的网络请求。</li>
+<li>如果脚本放在 /js/sw.js，默认作用域是 /js/，它无法拦截 /api/ 或 /index.html 的请求。</li>
+<li>最佳实践：将 sw.js 放在网站根目录下（如 /sw.js），这样就能拦截整个域名的请求。</li>
+</ul>
+</li>
+<li>
+<p><strong>生命周期（Lifecycle）</strong></p>
+<ul>
+<li>SW 的生命周期分为安装（install）、激活（activate）和运行（running）三个阶段，完全独立于网页。</li>
+<li>安装阶段：浏览器下载并安装 SW 脚本。</li>
+<li>激活阶段：SW 接管页面的控制权，可以拦截网络请求。</li>
+<li>运行阶段：SW 可以处理 fetch 事件，决定如何响应网络请求。</li>
+</ul>
+</li>
+<li>
+<p><strong>首次加载与更新控制</strong></p>
+<ul>
+<li>首次加载不拦截：用户第一次打开页面注册 SW 时，SW 正在安装激活，默认不会拦截当次页面的请求，只有刷新或再次进入页面才会开始拦截。
+<ul>
+<li>解决办法：在 Activate 阶段调用 clients.claim() 强制接管当前所有页面。</li>
+</ul>
+</li>
+<li>SW 脚本本身的缓存：浏览器默认也会缓存 sw.js 脚本。
+<ul>
+<li>解决办法：服务器必须为 sw.js 设置 Cache-Control: no-cache 或 max-age=0，确保浏览器每次打开网页都能去服务器检查 SW 脚本是否有改动。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="代码实现">代码实现
+</h3><p>一个完整的 Service Worker 实现分为两个文件：</p>
+<ul>
+<li>主线程脚本（如 main.js 或 index.html 内）：负责注册与通信。</li>
+<li>Service Worker 脚本（sw.js）：负责生命周期控制与请求拦截。</li>
+</ul>
+<p>文件 1：<code>main.js</code>（在页面主线程中注册 SW）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 1. 检查浏览器是否支持 Service Worker
+</span></span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="s1">&#39;serviceWorker&#39;</span> <span class="k">in</span> <span class="nx">navigator</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 2. 注册根目录下的 sw.js，作用域默认为 &#39;/&#39;
+</span></span></span><span class="line"><span class="cl">    <span class="nx">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">&#39;/sw.js&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">scope</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span> <span class="p">})</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">registration</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Service Worker 注册成功，Scope 为:&#39;</span><span class="p">,</span> <span class="nx">registration</span><span class="p">.</span><span class="nx">scope</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">})</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Service Worker 注册失败:&#39;</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>文件 2：<code>sw.js</code>（核心逻辑控制）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// 定义缓存版本和缓存库名称
+</span></span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">CACHE_NAME</span> <span class="o">=</span> <span class="s1">&#39;my-app-v1&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 预缓存的静态资源列表（App Shell）
+</span></span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">PRE_CACHE_RESOURCES</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;/index.html&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;/css/style.css&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;/js/main.js&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;/images/logo.png&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ==========================================
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 1. Install 事件：预缓存核心资源
+</span></span></span><span class="line"><span class="cl"><span class="c1">// ==========================================
+</span></span></span><span class="line"><span class="cl"><span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;install&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[SW] 正在安装...&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1">// event.waitUntil 确保 SW 在缓存完成前不会变为 active 状态
+</span></span></span><span class="line"><span class="cl">  <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">CACHE_NAME</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">cache</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[SW] 正在预缓存静态资源&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">(</span><span class="nx">PRE_CACHE_RESOURCES</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// 强制跳过等待期（skipWaiting），让新 SW 安装后立即激活，不用等旧页面关闭
+</span></span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">skipWaiting</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ==========================================
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 2. Activate 事件：清理旧缓存与接管页面
+</span></span></span><span class="line"><span class="cl"><span class="c1">// ==========================================
+</span></span></span><span class="line"><span class="cl"><span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;activate&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[SW] 正在激活...&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 获取所有的缓存 key
+</span></span></span><span class="line"><span class="cl">    <span class="nx">caches</span><span class="p">.</span><span class="nx">keys</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">cacheNames</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">cacheNames</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">cache</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">// 如果不是当前版本的缓存，全部删掉
+</span></span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="p">(</span><span class="nx">cache</span> <span class="o">!==</span> <span class="nx">CACHE_NAME</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[SW] 删除旧版本缓存:&#39;</span><span class="p">,</span> <span class="nx">cache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">cache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">      <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// 强制让 SW 立即接管当前所有打开的页面（Clients）
+</span></span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">clients</span><span class="p">.</span><span class="nx">claim</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// ==========================================
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 3. Fetch 事件：拦截请求（策略：Network First / 优先网络）
+</span></span></span><span class="line"><span class="cl"><span class="c1">// ==========================================
+</span></span></span><span class="line"><span class="cl"><span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;fetch&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 只拦截 GET 请求，Post/Put 等请求不缓存
+</span></span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span> <span class="o">!==</span> <span class="s1">&#39;GET&#39;</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 先尝试发网络请求
+</span></span></span><span class="line"><span class="cl">    <span class="nx">fetch</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">networkResponse</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 如果网络正常，且响应有效，克隆一份响应存进 Cache Storage
+</span></span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">networkResponse</span> <span class="o">&amp;&amp;</span> <span class="nx">networkResponse</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="kr">const</span> <span class="nx">responseToCache</span> <span class="o">=</span> <span class="nx">networkResponse</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">CACHE_NAME</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">cache</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">,</span> <span class="nx">responseToCache</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">networkResponse</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">})</span>
+</span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="k">catch</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 网络失败（断网/服务器挂了），降级从 Cache Storage 里找缓存
+</span></span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[SW] 网络离线，尝试从 Cache 读取:&#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="几种常见的-sw-缓存拦截策略">几种常见的 SW 缓存拦截策略
+</h2><h3 id="cache-first优先缓存适合静态不常变的文件如图片字体">Cache First（优先缓存，适合静态不常变的文件如图片、字体）
+</h3><p>先查 SW 缓存，如果有直接返回；没有再发网络请求，成功后写入缓存。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">cachedResponse</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">cachedResponse</span> <span class="o">||</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-network-first优先网络适合实时数据经常更新的数据">2. Network First（优先网络，适合实时数据/经常更新的数据）
+</h3><p>先发网络请求；如果网络通畅就直接用，并更新缓存；网络断开时（Offline）降级读取缓存。</p>
+<h3 id="3-stale-while-revalidate缓存优先后台静默更新适合新闻博客文章">3. Stale-While-Revalidate（缓存优先，后台静默更新，适合新闻/博客文章）
+</h3><p>立即返回本地缓存给用户看，同时后台偷偷发网络请求拉取新数据并更新缓存，下一次刷新就能看到最新的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">CACHE_NAME</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">cache</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">cachedResponse</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 后台异步去发网络请求更新缓存
+</span></span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">fetchPromise</span> <span class="o">=</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">networkResponse</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">,</span> <span class="nx">networkResponse</span><span class="p">.</span><span class="nx">clone</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">networkResponse</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 如果有本地缓存优先用本地，没有就等网络请求
+</span></span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">cachedResponse</span> <span class="o">||</span> <span class="nx">fetchPromise</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="service-worker-生产环境的最佳实践建议">Service Worker 生产环境的最佳实践建议
+</h2><ol>
+<li>
+<p>必须在 HTTPS 下运行：SW 拥有拦截所有请求的能力，为了安全，浏览器限制 SW 只能在 HTTPS 环境或 http://localhost 下生效。</p>
+</li>
+<li>
+<p>不要原生手写复杂 SW：原生手写逻辑容易造成缓存死锁（页面永远刷不出新代码）。推荐直接使用 Google 官方的 Workbox 库（Vite/Webpack 均有对应插件 vite-plugin-pwa），它把常用的缓存策略和版本更新封装得非常安全。</p>
+</li>
+</ol>
+<h1 id="强缓存与协商缓存控制细节">强缓存与协商缓存控制细节
+</h1><p>强缓存和协商缓存是浏览器缓存的两种主要控制机制，都是通过HTTP请求头和响应头来实现的。下面我们详细讲解它们的控制细节。</p>
+<h2 id="强缓存strong-cache">强缓存（Strong Cache）
+</h2><p>强缓存无需发送网络请求，浏览器直接检查本地存储（Memory Cache / Disk Cache）。如果命中且未过期，直接返回 <code>200 OK (from memory/disk cache)</code>。</p>
+<hr>
+<h3 id="1-核心控制头对比">1. 核心控制头对比
+</h3><div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>字段</th>
+					<th>类型</th>
+					<th>版本</th>
+					<th>示例 / 取值</th>
+					<th>底层细节与行为</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Cache-Control</td>
+					<td>响应头</td>
+					<td>HTTP/1.1</td>
+					<td>max-age=31536000</td>
+					<td>绝对优先。相对时间（秒）。指定资源在客户端被视为新鲜（Fresh）的最大有效时长。</td>
+			</tr>
+			<tr>
+					<td>Expires</td>
+					<td>响应头</td>
+					<td>HTTP/1.0</td>
+					<td>Expires: Sun, 13 Sep 2026 08:00:00 GMT</td>
+					<td>绝对时间戳。受限于客户端本地电脑时钟（若用户修改系统时间，缓存判定会失效）。当与 max-age 共存时被覆盖。</td>
+			</tr>
+	</tbody>
+</table></div>
+<h3 id="2-response-headers响应头中的-cache-control-指令">2. Response Headers（响应头）中的 Cache-Control 指令
+</h3><div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>指令</th>
+					<th>示例</th>
+					<th>说明与适用场景</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>max-age=<seconds></td>
+					<td>max-age=3600</td>
+					<td>资源强缓存有效时间（秒）。表示指定时间内无需重新发请求。</td>
+			</tr>
+			<tr>
+					<td>s-maxage=<seconds></td>
+					<td>s-maxage=86400</td>
+					<td>仅对共享缓存（如 CDN / 代理服务器）生效，优先级高于 max-age。</td>
+			</tr>
+			<tr>
+					<td>no-cache</td>
+					<td>no-cache</td>
+					<td><strong>跳过强缓存，强制走协商缓存</strong>。表明可以存储该资源，但使用前必须向服务器校验（携带 ETag / Last-Modified）。</td>
+			</tr>
+			<tr>
+					<td>no-store</td>
+					<td>no-store</td>
+					<td><strong>绝对禁止任何缓存</strong>。浏览器和 CDN 不得存储响应副本，每次必须全量下载。</td>
+			</tr>
+			<tr>
+					<td>public</td>
+					<td>public</td>
+					<td>表明该响应可以被任何中继节点（客户端、CDN、代理服务器）缓存。</td>
+			</tr>
+			<tr>
+					<td>private</td>
+					<td>private</td>
+					<td>表明该响应为单用户私有（如含个人信息的 API），禁止 CDN 节点存储，仅允许浏览器缓存。</td>
+			</tr>
+			<tr>
+					<td>immutable</td>
+					<td>immutable</td>
+					<td>告知浏览器资源在生命周期内绝不改变（常用于 Hash 命名静态文件）。刷新页面也不发协商请求。</td>
+			</tr>
+			<tr>
+					<td>stale-while-revalidate=<seconds></td>
+					<td>stale-while-revalidate=60</td>
+					<td>允许先展示已过期的旧缓存，同时后台静默发请求拉取最新资源更新缓存。</td>
+			</tr>
+	</tbody>
+</table></div>
+<h2 id="协商缓存validation-cache">协商缓存（Validation Cache）
+</h2><p>当强缓存失效（已过期）或显式设置为 <code>no-cache</code> 时，浏览器携带校验头向服务器发请求：</p>
+<ul>
+<li><strong>资源未变动</strong>：返回 <code>304 Not Modified</code>（无响应体 Body），通知浏览器复用本地缓存。</li>
+<li><strong>资源已变动</strong>：返回 <code>200 OK</code>（带全新 Body 与最新 Header），浏览器使用新资源并更新本地缓存。</li>
+</ul>
+<hr>
+<h3 id="1-协商缓存成对校验头">1. 协商缓存成对校验头
+</h3><div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>校验维度</th>
+					<th>响应头（服务器返回并保存）</th>
+					<th>请求头（客户端协商时携带）</th>
+					<th>校验原理与精确度</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>内容 Hash 校验 (优先选用)</td>
+					<td>ETag <br><code>ETag: &quot;w/33a64df5&quot;</code></td>
+					<td>If-None-Match <br><code>If-None-Match: &quot;w/33a64df5&quot;</code></td>
+					<td>基于文件内容或元信息生成的指纹。<br>• 强 ETag：字节级变动全更新。<br>• 弱 ETag（W/ 前缀）：仅语义变动时更新。</td>
+			</tr>
+			<tr>
+					<td>修改时间校验 (降级备用)</td>
+					<td>Last-Modified <br><code>Last-Modified: Sun, 13 Sep 2026 08:00:00 GMT</code></td>
+					<td>If-Modified-Since <br><code>If-Modified-Since: Sun, 13 Sep 2026 08:00:00 GMT</code></td>
+					<td>基于文件在磁盘上的最后修改时间戳（精确到秒）。</td>
+			</tr>
+	</tbody>
+</table></div>
+<h3 id="2-etag-与-last-modified-深度对比">2. ETag 与 Last-Modified 深度对比
+</h3><ol>
+<li><strong>精确度</strong>：<code>Last-Modified</code> 只能精确到秒，1 秒内的多次修改无法识别；<code>ETag</code> 基于内容 Hash，哪怕改动 1 个字符也能精确感知。</li>
+<li><strong>服务器重写场景</strong>：仅编辑文件但内容未变时，<code>Last-Modified</code> 时间戳更新会导致误判；<code>ETag</code> 校验 Hash 一致依然能准确命中 304。</li>
+<li><strong>计算成本</strong>：<code>Last-Modified</code> 直接读取文件系统的 <code>stat</code> 元数据，极快；<code>ETag</code> 计算大文件 Hash 会产生微量 CPU 开销。</li>
+</ol>
+<h2 id="request-headers请求头中的-cache-control-指令">Request Headers（请求头）中的 Cache-Control 指令
+</h2><p>客户端（浏览器、Fetch/Axios 或用户刷新行为）发送请求时，通过请求头中的 <code>Cache-Control</code> 表达对响应内容的新鲜度期望：</p>
+<div class="table-wrapper"><table>
+	<thead>
+			<tr>
+					<th>指令</th>
+					<th>示例</th>
+					<th>说明与适用场景</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>no-cache</td>
+					<td>Cache-Control: no-cache</td>
+					<td>告知中继与源站：<strong>跳过强缓存</strong>，必须向源站进行协商校验（按 F5 刷新时浏览器自动发送）。</td>
+			</tr>
+			<tr>
+					<td>no-store</td>
+					<td>Cache-Control: no-store</td>
+					<td>告知所有节点：<strong>不要使用任何本地缓存</strong>，也不要存储本次响应（按 Ctrl + F5 强制刷新时发送）。</td>
+			</tr>
+			<tr>
+					<td>max-age=<seconds></td>
+					<td>Cache-Control: max-age=0</td>
+					<td>告知服务器：不接受过期时间超过 N 秒的资源。设为 0 表示强制发起校验请求。</td>
+			</tr>
+			<tr>
+					<td>max-stale[=<seconds>]</td>
+					<td>Cache-Control: max-stale=3600</td>
+					<td>告知服务器：可以接受已经过期的资源，只要过期时间不超过 N 秒（弱网/断网降级时使用）。</td>
+			</tr>
+			<tr>
+					<td>min-fresh=<seconds></td>
+					<td>Cache-Control: min-fresh=60</td>
+					<td>告知服务器：要求返回的资源在未来 N 秒内依然是新鲜（未过期）的。</td>
+			</tr>
+			<tr>
+					<td>only-if-cached</td>
+					<td>Cache-Control: only-if-cached</td>
+					<td>告知客户端/代理：只从本地/代理缓存中获取。若无缓存直接返回 504 Gateway Timeout（离线模式常用）。</td>
+			</tr>
+	</tbody>
+</table></div>
+<h2 id="现代-web-工程最佳配置实践">现代 Web 工程最佳配置实践
+</h2><ol>
+<li>
+<p><strong>静态资源（JS/CSS/图片）</strong>：</p>
+<ul>
+<li>使用 Hash 命名（如 <code>main.abc123.js</code>），并设置：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Cache-Control: public, max-age=31536000, immutable
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>这样浏览器可以长期缓存，且不会发协商请求。</li>
+</ul>
+</li>
+<li>
+<p><strong>动态资源（API 接口）</strong>：</p>
+<ul>
+<li>设置：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Cache-Control: no-cache
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>这样浏览器每次请求都会发协商请求，确保获取最新数据</li>
+</ul>
+</li>
+<li>
+<p><strong>敏感资源（用户隐私数据）</strong>：</p>
+<ul>
+<li>设置：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Cache-Control: private, no-store
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>禁止 CDN 或代理缓存，确保数据安全。</li>
+</ul>
+</li>
+</ol>
+<h1 id="结语">结语
+</h1><p>浏览器缓存是前端性能优化的重要手段，合理利用强缓存和协商缓存可以显著提升网页加载速度，减少服务器压力。通过理解浏览器缓存的工作原理、类型以及控制机制，前端开发者可以更好地设计和优化网页资源的缓存策略。同时，结合CDN缓存的使用，可以进一步提升用户体验和网站性能。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 Adam
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.31.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
