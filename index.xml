@@ -7,7 +7,672 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>Adam</copyright>
-        <lastBuildDate>Tue, 01 Sep 2026 13:53:36 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 13 Sep 2026 09:52:54 +0800</lastBuildDate><atom:link href="https://adam-code-line.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Webpack基本使用和核心原理</title>
+        <link>https://adam-code-line.github.io/p/webpack-basic-usage-and-core-principles/</link>
+        <pubDate>Sun, 13 Sep 2026 09:52:54 +0800</pubDate>
+        
+        <guid>https://adam-code-line.github.io/p/webpack-basic-usage-and-core-principles/</guid>
+        <description>&lt;h1 id=&#34;前言&#34;&gt;前言
+&lt;/h1&gt;&lt;p&gt;Webpack 是一个用于现代 JavaScript 应用程序的静态模块打包工具（Static Module Bundler），在next.js等现代前端框架中有重要作用，经常被和vite进行对比。我想要通过这篇文章总结一下Webpack的基本使用和核心原理，以及包括一些Webpack的进阶拓展如Rspack、Turbopack等。&lt;/p&gt;
+&lt;h1 id=&#34;为什么需要webpack&#34;&gt;为什么需要webpack
+&lt;/h1&gt;&lt;p&gt;早期的浏览器不支持模块化开发，前端开发者需要将多个JS文件通过script标签引入到HTML中&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;a.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;b.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这种方式很容易出现一些问题，比如出现命名冲突、依赖管理困难、加载顺序不确定等。Webpack的出现解决了这些问题，它可以将多个模块打包成一个或多个文件，并且可以处理模块之间的依赖关系，通过打包还可以进行代码压缩、优化和分割，提高网页的加载速度和性能。&lt;/p&gt;
+&lt;h1 id=&#34;webpack的基本使用&#34;&gt;Webpack的基本使用
+&lt;/h1&gt;&lt;h2 id=&#34;webpack的基本安装配置和运行&#34;&gt;webpack的基本安装配置和运行
+&lt;/h2&gt;&lt;p&gt;webpack依赖node.js，可以直接通过npm或者pnpm安装，首先需要在项目中初始化一个package.json文件(npm init)，然后安装webpack和webpack-cli：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pnpm/npm install --save-dev webpack webpack-cli
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;之后在项目根目录下创建一个webpack.config.js文件，配置webpack的入口和输出：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;path&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exports&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// 1. 设置打包模式：&amp;#39;development&amp;#39;（开发模式，注重编译速度与调试） 或 &amp;#39;production&amp;#39;（生产模式，自动开启压缩和优化）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;mode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;development&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// 2. 入口文件：Webpack 从哪里开始构建依赖图
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;entry&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;./src/index.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// 3. 出口配置：打包后的文件存放在哪里
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;output&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;filename&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;main.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 打包后的文件名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;resolve&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;__dirname&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;dist&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 输出目录的绝对路径（dist 目录）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;clean&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 每次打包前自动清空 dist 目录
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// 4. Loader 加载器：配置处理非 JS/JSON 文件的规则
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;rules&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;sr&#34;&gt;/\.css$/i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 匹配以 .css 结尾的文件
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;use&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;style-loader&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;css-loader&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 注意：执行顺序是从右往左/从下往上！
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// 5. Plugins 插件：扩展打包功能
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;plugins&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 这里未来可以放入 HtmlWebpackPlugin 等插件
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后在package.json中添加一个脚本命令来运行webpack：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;scripts&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;build&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;webpack&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;之后可以通过运行以下命令来打包项目：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pnpm/npm run build
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;每次都要运行这个打包命令有点麻烦，所以可以使用webpack-dev-server和html-webpack-plugin来实现热更新和自动刷新页面，并且可以自动生成HTML文件，在界面中展示。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pnpm/npm install --save-dev webpack-dev-server html-webpack-plugin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后在webpack.config.js中添加devServer配置：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;devServer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kr&#34;&gt;static&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;./dist&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 告诉服务器从哪里提供内容
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;hot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 启用热模块替换（HMR）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;open&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 自动打开浏览器
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;8080&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 指定端口号
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;plugins&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;HtmlWebpackPlugin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;./index.html&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 指定HTML模板文件
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;之后在package.json中添加一个脚本命令来启动开发服务器：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;scripts&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;start&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;webpack serve&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这样就可以通过运行以下命令来启动开发服务器：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pnpm/npm start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;我们可以在浏览器中访问 http://localhost:8080 来查看打包后的页面，并且在修改源代码后，浏览器会自动刷新页面。&lt;/p&gt;
+&lt;h2 id=&#34;在nextjs中使用webpack&#34;&gt;在next.js中使用webpack
+&lt;/h2&gt;&lt;p&gt;Next.js 是一个基于 React 的前端框架，它内置了对 Webpack 的支持。在Next.js 15之前，Next.js 默认使用 Webpack 5 作为其打包工具，在Next.js 16+，Next.js 全面使用 Turbopack 作为其打包工具，但仍然保留了对 Webpack 的支持。你可以通过配置文件来定制 Webpack 的行为。&lt;/p&gt;
+&lt;h3 id=&#34;nextjs中的webpack&#34;&gt;next.js中的webpack
+&lt;/h3&gt;&lt;p&gt;创建了一个Next.js项目后，Next.js会自动配置Webpack生成next.config.js(或者next.config.mjs)文件，你可以在next.config.mjs中自定义Webpack配置：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// next.config.mjs
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/** @type {import(&amp;#39;next&amp;#39;).NextTypes.NextConfig} */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;nextConfig&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// 扩展 webpack 配置
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;webpack&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;buildId&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;dev&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;isServer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;defaultLoaders&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;nextRuntime&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;webpack&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 示例：添加处理 SVG 的 Loader (如 @svgr/webpack)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;rules&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;push&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nx&#34;&gt;test&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;sr&#34;&gt;/\.svg$/i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nx&#34;&gt;use&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;@svgr/webpack&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 示例：配置路径别名或全局 externals
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;isServer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;c1&#34;&gt;// 仅在服务端打包时生效的逻辑
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 必须返回修改后的 config 对象
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;default&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;nextConfig&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;之后脚本的运行方式和普通的Next.js项目一样，这里不再赘述。&lt;/p&gt;
+&lt;h1 id=&#34;webpack的核心原理&#34;&gt;Webpack的核心原理
+&lt;/h1&gt;&lt;p&gt;Webpack的核心是依赖图（Dependency Graph）和模块打包（Module Bundling）。Webpack会从入口文件开始，递归地解析所有依赖的模块，构建出一个依赖图，然后根据这个依赖图将所有模块打包成一个或多个文件。&lt;/p&gt;
+&lt;h2 id=&#34;完整构建流程&#34;&gt;完整构建流程
+&lt;/h2&gt;&lt;p&gt;webapck的完整打包构建大概包含七个阶段：&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style=&#34;text-align: center&#34;&gt;步骤&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;流程阶段&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;核心任务与内部逻辑&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;关键输出 / 状态&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;01&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;初始化阶段&lt;/strong&gt;&lt;br&gt;&lt;em&gt;(Initialization)&lt;/em&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;1. 读取配置文件与 CLI 参数并合并&lt;br&gt;2. 实例化全局 &lt;code&gt;Compiler&lt;/code&gt; 对象&lt;br&gt;3. 注册并挂载所有配置的 Plugins&lt;br&gt;4. 确定打包的 &lt;code&gt;Entry&lt;/code&gt; 入口&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;Compiler&lt;/code&gt; 实例初始化完成&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;02&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;编译构建阶段&lt;/strong&gt;&lt;br&gt;&lt;em&gt;(Module Graph Construction)&lt;/em&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;1. 从 Entry 入口文件开始递归递归解析&lt;br&gt;2. 调用匹配的 &lt;code&gt;Loader&lt;/code&gt; 将非 JS/TS 文件翻译为标准模块&lt;br&gt;3. 通过 &lt;code&gt;AST&lt;/code&gt; 语法树静态分析内部依赖&lt;br&gt;4. 收集 &lt;code&gt;import/export&lt;/code&gt; 导出标记为 Tree-Shaking 准备&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;构建出完整的 &lt;strong&gt;Module Graph&lt;/strong&gt;（模块依赖图）&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;03&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;优化与摇树阶段&lt;/strong&gt;&lt;br&gt;&lt;em&gt;(Optimization &amp;amp; Tree-Shaking)&lt;/em&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;1. 遍历 Module Graph 依赖树&lt;br&gt;2. 评估 package.json 中的 &lt;code&gt;sideEffects&lt;/code&gt; 标记&lt;br&gt;3. 标记未使用的导出字段（Unused Exports）&lt;br&gt;4. 执行死代码剔除逻辑&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;干净无死代码的纯净模块依赖关系&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;04&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;代码分割与 Chunk 组装&lt;/strong&gt;&lt;br&gt;&lt;em&gt;(Chunk Graph Assembly)&lt;/em&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;1. 结合 Entry 配置与 &lt;code&gt;SplitChunksPlugin&lt;/code&gt;&lt;br&gt;2. 处理动态导入 &lt;code&gt;import()&lt;/code&gt; 拆包点&lt;br&gt;3. 将关联的 Module 组合分配为独立的 Chunk&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;组装完成 &lt;strong&gt;Chunk Graph&lt;/strong&gt;（代码块图）&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;05&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;代码生成与 Source Map 挂载&lt;/strong&gt;&lt;br&gt;&lt;em&gt;(Code Generation)&lt;/em&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;1. 针对每个 Chunk 组装并生成最终代码&lt;br&gt;2. 利用 &lt;code&gt;SourceMapGenerator&lt;/code&gt; 生成字符位置映射矩阵&lt;br&gt;3. 注入 &lt;code&gt;__webpack_require__&lt;/code&gt; 等 Runtime 胶水代码&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;附带 Source Map 的 Chunk 目标代码&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;06&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;代码压缩&lt;/strong&gt;&lt;br&gt;&lt;em&gt;(Minification)&lt;/em&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;1. 调用 &lt;code&gt;Terser&lt;/code&gt; / &lt;code&gt;SWC&lt;/code&gt; / &lt;code&gt;ESBuild&lt;/code&gt; 压缩工具&lt;br&gt;2. 清理所有无用空格、注释与不可达分支&lt;br&gt;3. 执行变量名混淆（Mangle）与短语法替换&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;体积极小且混淆的高效代码文件&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;07&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;文件输出&lt;/strong&gt;&lt;br&gt;&lt;em&gt;(Emit &amp;amp; Assets)&lt;/em&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;1. 根据 &lt;code&gt;output.filename&lt;/code&gt; 配置生成最终文件名（计算 &lt;code&gt;contenthash&lt;/code&gt;）&lt;br&gt;2. 将内存中的资源 Asset 对象写入磁盘 &lt;code&gt;dist&lt;/code&gt; 目录&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;最终磁盘文件（&lt;code&gt;.js&lt;/code&gt;, &lt;code&gt;.css&lt;/code&gt;, &lt;code&gt;.map&lt;/code&gt; 等）&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;核心概念与过程&#34;&gt;核心概念与过程
+&lt;/h2&gt;&lt;p&gt;其中我们需要知道十个核心概念和四个核心过程：&lt;/p&gt;
+&lt;p&gt;十个核心概念：&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;核心概念&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;英文名称&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;概念定位&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;核心作用与原理&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;入口&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Entry&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;依赖起点&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;告诉 Webpack 从哪个文件开始分析依赖关系图（如 &lt;code&gt;./src/index.js&lt;/code&gt;），是构建依赖树的根节点。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;出口&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Output&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;产物目标&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;定义打包后文件的输出位置（&lt;code&gt;path&lt;/code&gt;）以及文件名命名规则（&lt;code&gt;filename&lt;/code&gt;），指示打包结果落盘的位置。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;加载器&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Loader&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;文件翻译官&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Webpack 原生仅识别 JS/JSON。Loader 负责将 CSS、Sass、TS、图片等非 JS 资源转译为 Webpack 可处理的有效模块。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;插件&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Plugin&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;功能扩展器&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;基于 Tapable 事件钩子机制，贯穿整个打包生命周期，执行范围更广的任务（如代码压缩、注入 HTML、清除目录等）。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;模式&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Mode&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;环境开关&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;区分开发（&lt;code&gt;development&lt;/code&gt;，注重构建速度与调试）与生产（&lt;code&gt;production&lt;/code&gt;，自动开启代码压缩与摇树优化）环境。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;模块&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Module&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;源码单元&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;在 Webpack 世界中“一切皆模块”。开发时编写的每一个 JS、CSS、图片等单独文件，在编译过程中都被视为一个 Module。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;代码块&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Chunk&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;组织形态&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Webpack 在打包过程中的中间存在形态。由 Entry 入口文件或动态加载点（Code Splitting）引用的多个 Module 组合而成。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;文件包&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Bundle&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;最终产物&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;打包完成后最终输出到 &lt;code&gt;dist&lt;/code&gt; 目录、可直接被浏览器加载运行的静态文件（如 &lt;code&gt;main.js&lt;/code&gt;），通常由 Chunk 转换而来。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;编译器&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Compiler&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;全局指挥官&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;代表整个 Webpack 启动到结束的全局单例对象。包含所有的配置信息、环境变量和生命周期 Hook，贯穿进程始末。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;单次构建&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Compilation&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;具体执行者&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;代表某一次具体的编译过程（文件修改触发热更新时会重新创建）。包含当前的模块资源、编译后的 Chunk 以及产物信息。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;语法树&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;AST&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;语法结构载体&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;源代码的抽象树状结构表示。Webpack 解析依赖、Babel/SWC 代码转译、Terser 混淆压缩以及 Tree-Shaking 剔除死代码，底层都是通过分析与修改 AST 节点来实现的。&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;四个核心过程：&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;核心过程&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;英文名称&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;概念定位&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;核心作用与原理解析&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;摇树优化&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Tree-Shaking&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;死代码消除&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;在打包时剔除 JS 中未被引用的代码（Dead Code）。基于 ES Modules 的静态分析特性，对模块间的导入导出进行依赖追踪，把永远不会执行的函数和变量排除在最终 Bundle 之外。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;代码映射&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Source Map&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;调试辅助工具&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;建立打包压缩后的生产环境代码（Bundle）与原始开发代码之间的映射关系文件（如 &lt;code&gt;.js.map&lt;/code&gt;）。当线上代码抛出异常时，能够精准定位到源码的行与列，极大方便问题排查。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;代码压缩&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Minification&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;体积极致优化&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;通过解析 AST，对打包代码进行深度瘦身：移除所有注释、空格与缩进，将长变量名与函数名替换为极短字母（混淆 Mangle），并进行等价语法精简（如简化 &lt;code&gt;if-else&lt;/code&gt;），大幅减小网络传输体积。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;代码转译&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Babel / SWC&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;兼容性工具链&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;将现代 ECMAScript（ES6+）、JSX、TypeScript 等高版本语法，转译为旧版浏览器兼容的 JavaScript 代码（如 ES5），确保应用在不同设备和浏览器上都能正常运行。&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;babel-vs-swc-核心维度对比&#34;&gt;Babel vs SWC 核心维度对比
+&lt;/h2&gt;&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;对比维度&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;Babel&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;SWC (Speedy Web Compiler)&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;底层实现语言&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;JavaScript (运行于 Node.js)&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Rust&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;编译性能&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;较慢（随着单线程 JS 处理大项目而变慢）&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;极快（比 Babel 快 &lt;strong&gt;20 ~ 70 倍&lt;/strong&gt;，原生支持多线程并行）&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;构建生态&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;极度成熟，拥有数千个插件及完善社区支持&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;正在迅速演进，已全面替代 Babel 成为 Next.js/Rspack 等现代工具默认编译器&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;转译功能&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;ES6+ 转译、JSX/TS 解析、Polyfill 自动注入&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;完整兼容 Babel 的基础转译能力（ES6+/JSX/TS）&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;压缩功能&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;自身仅专注转译，压缩需依赖 Terser 插件&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;原生支持代码压缩（SWC Minifier），且性能远超 Terser&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;扩展方式&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;编写自定义 Babel 插件极为简单（JS 生态）&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;需使用 Rust 开发 WASM 插件，门槛相对更高&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;webpack开发环境与生产环境打包策略差异&#34;&gt;Webpack开发环境与生产环境打包策略差异
+&lt;/h2&gt;&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;核心构建阶段&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;开发环境 (Mode: &amp;lsquo;development&amp;rsquo;)&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;生产环境 (Mode: &amp;lsquo;production&amp;rsquo;)&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;开发环境策略变化 / 简化原因&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;1. 初始化阶段&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;开启 DevServer 监听，在内存中构建虚拟文件系统&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;解析环境变量，准备将产物写入磁盘 &lt;code&gt;dist&lt;/code&gt; 目录&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;调整&lt;/strong&gt;：产物只存放在内存（Memory FS），省去磁盘 I/O 开销。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;2. 编译构建阶段&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;开启增量编译，追踪修改的文件模块&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;全量分析并构建完整的 Module Graph&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;优化&lt;/strong&gt;：配合 HMR，仅重新编译发生变动的 Module。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;3. 优化与摇树阶段&lt;/strong&gt;&lt;br&gt;&lt;em&gt;(Tree-Shaking)&lt;/em&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;❌ &lt;strong&gt;不启用&lt;/strong&gt;（或仅做简单的标记）&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;✅ &lt;strong&gt;全面启用&lt;/strong&gt;（标记 Unused Exports 并彻底剔除死代码）&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;❌ &lt;strong&gt;省略&lt;/strong&gt;：计算静态依赖和剔除未引用代码极其耗时，开发阶段无需移除死代码。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;4. 代码分割&lt;/strong&gt;&lt;br&gt;&lt;em&gt;(Code Splitting)&lt;/em&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;简化分割，尽量少拆包（保留完整的开发者可读结构）&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;✅ &lt;strong&gt;深度拆包&lt;/strong&gt;（SplitChunks + 动态导入提取公共包）&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;⚠️ &lt;strong&gt;简化&lt;/strong&gt;：仅进行必要的模块隔离，减少复杂的分包计算以提升编译速度。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;5. Source Map 挂载&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;使用 &lt;code&gt;eval-cheap-module-source-map&lt;/code&gt; 等&lt;strong&gt;高效构建&lt;/strong&gt;模式&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;使用 &lt;code&gt;source-map&lt;/code&gt; 或 &lt;strong&gt;完全关闭&lt;/strong&gt;（或仅生成独立 &lt;code&gt;.map&lt;/code&gt;）&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;优化&lt;/strong&gt;：开发环境追求快速构建并能定位到源码行；生产环境追求安全性与体积。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;6. 代码压缩&lt;/strong&gt;&lt;br&gt;&lt;em&gt;(Minification)&lt;/em&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;❌ &lt;strong&gt;不启用&lt;/strong&gt;（保留格式化空格、缩进与长变量名）&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;✅ &lt;strong&gt;全面开启&lt;/strong&gt;（调用 Terser/SWC 执行压缩与变量名混淆）&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;❌ &lt;strong&gt;省略&lt;/strong&gt;：代码混淆压缩极其消耗 CPU 和时间，且压缩后无法在开发工具中阅读。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;7. 文件输出&lt;/strong&gt;&lt;br&gt;&lt;em&gt;(Emit &amp;amp; Assets)&lt;/em&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;输出包含 HMR Runtime 胶水代码的内存 Bundle，自动插入网页&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;计算 &lt;code&gt;contenthash&lt;/code&gt; 并写出带长效缓存标记的真实磁盘文件&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;调整&lt;/strong&gt;：开发环境采用简单固定的文件名，避免每次改动都重新计算 Hash。&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;webpack的进阶拓展&#34;&gt;Webpack的进阶拓展
+&lt;/h1&gt;&lt;p&gt;Rspack 是由字节跳动（ByteDance）开源的、基于 Rust 语言重写的高性能 JavaScript 打包工具。而Turbopack 是由 Vercel 团队推出、使用 Rust 语言编写的新一代高性能 JavaScript/TypeScript 打包工具（Bundler）。两者都是使用Rust来对Webpack进行优化和改进的工具，旨在提高构建速度和性能。两者各自有特点和优势，适用于不同的场景和需求。&lt;/p&gt;
+&lt;h2 id=&#34;webapck-vs-vite&#34;&gt;Webapck vs Vite
+&lt;/h2&gt;&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;对比维度&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;Webpack&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;Vite&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;底层定位&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;传统打包工具 (Bundler)&lt;/strong&gt;&lt;br&gt;采用全量打包思想，构建出静态 bundle 产物。&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;下一代前端开发构建工具 (Dev Server + Bundler)&lt;/strong&gt;&lt;br&gt;基于原生 ESM 的 No-Bundle 思想，结合 Esbuild 和 Rollup。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;开发环境机制&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;全量/增量打包 (Bundle-based)&lt;/strong&gt;&lt;br&gt;冷启动时需要递归分析整个依赖图，把所有模块打包进内存后才能启动服务。&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;基于原生 ESM (No-Bundle)&lt;/strong&gt;&lt;br&gt;利用浏览器的原生 &lt;code&gt;import&lt;/code&gt; 按需加载页面，利用 Go 语言写的 Esbuild 预构建第三方依赖（&lt;code&gt;node_modules&lt;/code&gt;）。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;生产环境机制&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;基于自身的依赖图和插件体系打包为 &lt;code&gt;bundle.js&lt;/code&gt;。&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;使用 &lt;strong&gt;Rollup&lt;/strong&gt; 进行生产环境打包，优化分包、Tree-Shaking 与 CSS 提取。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;冷启动速度&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;较慢&lt;/strong&gt;（随项目模块数量增长成线性变慢，大型项目需十几秒至几分钟）。&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;极快（毫秒级）&lt;/strong&gt;（无需提前打包，只处理当前请求的路由模块）。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;热更新速度 (HMR)&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;较慢&lt;/strong&gt;（随着项目变大，重新分析与重新编译的开销增加）。&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;极快&lt;/strong&gt;（利用浏览器 ESM 缓存，修改哪个文件只让浏览器重新请求该文件，与项目规模无关）。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;配置与开箱即用&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;配置繁琐&lt;/strong&gt;（需要手动安装和配置很多 Loader、Plugin 才能处理 CSS、TS、图片等）。&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;开箱即用&lt;/strong&gt;（原生支持 TypeScript、JSX、CSS Modules、Sass 等，几乎零配置）。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;生态与扩展性&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;生态极其庞大与成熟&lt;/strong&gt;，插件与加载器几乎覆盖所有极其复杂的打包场景。&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;生态快速成长，基于 &lt;strong&gt;Rollup 插件接口&lt;/strong&gt;，兼容大部分 Rollup 插件与 Vite 专属插件。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;优势区间&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;复杂大型企业级应用、老旧项目维护、微前端 (Module Federation)&lt;/strong&gt;。&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;现代通用前端项目（Vue/React）、中小型应用、快速原型开发&lt;/strong&gt;。&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;rspack-vs-turbopack-综合对比矩阵&#34;&gt;Rspack vs Turbopack 综合对比矩阵
+&lt;/h2&gt;&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;对比维度&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;Rspack&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;Turbopack&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;主导团队与背景&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;字节跳动 (ByteDance)&lt;br&gt;&lt;em&gt;(旨在解决巨型企业级 Webpack 项目打包慢问题)&lt;/em&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Vercel (由 Webpack 原作者 Tobias Koppers 主导)&lt;br&gt;&lt;em&gt;(旨在构建下一代现代化全栈应用的理想 Bundler)&lt;/em&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;核心机制与原理&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;兼容式 Rust 增量打包&lt;/strong&gt;&lt;br&gt;采用 Rust 重构了 Webpack 的依赖图（Graph）与架构，保留了标准的打包/分包流程，依靠 Rust 多线程并行与 SWC 加速。&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;函数级增量计算 Engine (Turbo Engine)&lt;/strong&gt;&lt;br&gt;将打包全流程拆解为纯函数并建立缓存图。配合按需编译（On-demand Compilation），仅编译当前请求的路由模块。&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;对 Webpack 的优化点&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;1. &lt;strong&gt;语言级替换&lt;/strong&gt;：用 Rust 替代 Node.js，消除单线程与 GC 瓶颈&lt;br&gt;2. &lt;strong&gt;架构级兼容&lt;/strong&gt;：实现 Rust 版 Tapable 钩子系统&lt;br&gt;3. &lt;strong&gt;开箱即用&lt;/strong&gt;：内置 SWC、CSS 提取、Minifier，无需繁琐 Loader&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;1. &lt;strong&gt;计算级优化&lt;/strong&gt;：Turbo Engine 实现细粒度函数级缓存，避免重复计算&lt;br&gt;2. &lt;strong&gt;按需编译&lt;/strong&gt;：开发模式下无需分析全量依赖图，按路由动态编译&lt;br&gt;3. &lt;strong&gt;下一代架构&lt;/strong&gt;：针对 React Server Components (RSC) 深度优化&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;核心优势 (Pros)&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;1. &lt;strong&gt;Webpack 生态无缝迁移&lt;/strong&gt;：配置/架构高度兼容，迁移成本极低&lt;br&gt;2. &lt;strong&gt;独立性与通用性强&lt;/strong&gt;：不绑定特定框架，纯前端/微前端场景均适用&lt;br&gt;3. &lt;strong&gt;模块联邦 (Module Federation)&lt;/strong&gt;：原生内置深度支持&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;1. &lt;strong&gt;毫秒级冷启动与 HMR&lt;/strong&gt;：依赖增量缓存与按需编译，热更新体验极佳&lt;br&gt;2. &lt;strong&gt;Next.js 深度集成&lt;/strong&gt;：与 Next.js 框架无缝融合，零配置开箱即用&lt;br&gt;3. &lt;strong&gt;强大的磁盘缓存&lt;/strong&gt;：持久化文件系统缓存，服务重启近乎 0 毫秒&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;核心劣势 (Cons)&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;1. 传统 Webpack 插件仍需通过 JS 桥接运行，过于偏门的插件可能存在兼容问题&lt;br&gt;2. 上层现代化生态（如 Rsbuild/Rslib）仍在快速迭代中&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;1. &lt;strong&gt;框架捆绑度高&lt;/strong&gt;：目前高度绑定 Next.js 生态，脱离 Next.js 使用门槛高&lt;br&gt;2. &lt;strong&gt;不兼容传统 Webpack 插件&lt;/strong&gt;：无法直接运行传统的 JS 插件&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;优势区间 / 选型建议&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;大型 Webpack 老旧项目迁移 / 复杂微前端架构&lt;/strong&gt;&lt;br&gt;已有项目存在大量 Webpack 配置，且需要保留原有的打包逻辑与分包策略。&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Next.js 全栈应用 / 现代化 React 生态项目&lt;/strong&gt;&lt;br&gt;使用 Next.js (App Router) 进行全新项目开发，追求极致的开发热更新体验与现代化 Server Components 场景。&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;优化手段与适用场景&#34;&gt;优化手段与适用场景
+&lt;/h2&gt;&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;优化维度&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;Webpack&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;Rspack 的优化策略&lt;/th&gt;
+					&lt;th style=&#34;text-align: left&#34;&gt;Turbopack 的优化策略&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;语言开销&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;Node.js 单线程 / 有 GC&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Rust 多线程并行&lt;/strong&gt;，彻底消除 GC 停顿&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Rust 多线程并行&lt;/strong&gt;，高效内存管理&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;开发编译范围&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;分析全量依赖树或部分 Cache&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Rust 极速全量/增量构建&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;极致按需编译&lt;/strong&gt;（仅编译当前访问页面/路由）&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;缓存粒度&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;模块级 / 磁盘文件缓存&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;模块级 &amp;amp; 多线程并行缓存&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;函数级增量计算&lt;/strong&gt;（Turbo Engine 纯函数缓存树）&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;编译/压缩链&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;依赖外置 Babel / Terser&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;内置 SWC&lt;/strong&gt; 完成转译与压缩&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;内置 SWC&lt;/strong&gt; 完成转译与压缩&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;总结&#34;&gt;总结
+&lt;/h1&gt;&lt;p&gt;Webpack 是一个功能强大且灵活的前端打包工具，它通过构建依赖图和模块打包来优化前端资源的加载和性能。通过合理配置 Loader 和 Plugin，开发者可以处理各种类型的文件，并实现代码分割、压缩和优化。随着前端技术的发展，Rspack 和 Turbopack 等新兴工具也在不断涌现，为开发者提供了更多选择。理解 Webpack 的核心原理和使用方法，对于提升前端开发效率和应用性能具有重要意义。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>带并发限制的异步调度器Scheduler - 字节经典面试题</title>
         <link>https://adam-code-line.github.io/p/scheduler/</link>
         <pubDate>Tue, 01 Sep 2026 13:53:36 +0800</pubDate>
