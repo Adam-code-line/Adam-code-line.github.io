@@ -651,6 +651,7 @@
 					<th style="text-align: center">步骤</th>
 					<th style="text-align: left">流程阶段</th>
 					<th style="text-align: left">核心任务与内部逻辑</th>
+					<th style="text-align: left">关键工具 / 概念介入</th>
 					<th style="text-align: left">关键输出 / 状态</th>
 			</tr>
 	</thead>
@@ -658,44 +659,51 @@
 			<tr>
 					<td style="text-align: center"><strong>01</strong></td>
 					<td style="text-align: left"><strong>初始化阶段</strong><br><em>(Initialization)</em></td>
-					<td style="text-align: left">1. 读取配置文件与 CLI 参数并合并<br>2. 实例化全局 <code>Compiler</code> 对象<br>3. 注册并挂载所有配置的 Plugins<br>4. 确定打包的 <code>Entry</code> 入口</td>
-					<td style="text-align: left"><code>Compiler</code> 实例初始化完成</td>
+					<td style="text-align: left">1. 读取配置文件与 CLI 参数并合并<br>2. 实例化全局 <code>Compiler</code> 对象<br>3. <strong>遍历 <code>plugins</code> 数组，调用 <code>plugin.apply(compiler)</code> 注册并挂载所有 Hook 监听器</strong><br>4. 确定打包的 <code>Entry</code> 入口</td>
+					<td style="text-align: left"><strong>Tapable</strong>（事件发布订阅架构）、<code>Compiler</code> 实例</td>
+					<td style="text-align: left"><code>Compiler</code> 实例化完成，插件全部注册完毕</td>
 			</tr>
 			<tr>
 					<td style="text-align: center"><strong>02</strong></td>
 					<td style="text-align: left"><strong>编译构建阶段</strong><br><em>(Module Graph Construction)</em></td>
-					<td style="text-align: left">1. 从 Entry 入口文件开始递归递归解析<br>2. 调用匹配的 <code>Loader</code> 将非 JS/TS 文件翻译为标准模块<br>3. 通过 <code>AST</code> 语法树静态分析内部依赖<br>4. 收集 <code>import/export</code> 导出标记为 Tree-Shaking 准备</td>
+					<td style="text-align: left">1. 从 Entry 递归解析模块<br>2. <strong>调用 Babel / SWC 等 Loader 将高版本 JS/TS/JSX 或 Sass/Less 等翻译转换</strong><br>3. Webpack 利用 Babel/Acorn 生成 AST 语法树，分析 <code>import/export</code> 依赖<br>4. 收集导出标记，为 Tree-Shaking 准备</td>
+					<td style="text-align: left"><strong>babel-loader / swc-loader</strong>、Acorn（AST 解析器）、<code>Compilation</code> 实例</td>
 					<td style="text-align: left">构建出完整的 <strong>Module Graph</strong>（模块依赖图）</td>
 			</tr>
 			<tr>
 					<td style="text-align: center"><strong>03</strong></td>
 					<td style="text-align: left"><strong>优化与摇树阶段</strong><br><em>(Optimization &amp; Tree-Shaking)</em></td>
-					<td style="text-align: left">1. 遍历 Module Graph 依赖树<br>2. 评估 package.json 中的 <code>sideEffects</code> 标记<br>3. 标记未使用的导出字段（Unused Exports）<br>4. 执行死代码剔除逻辑</td>
-					<td style="text-align: left">干净无死代码的纯净模块依赖关系</td>
+					<td style="text-align: left">1. 遍历 Module Graph<br>2. 评估 <code>package.json</code> 中的 <code>sideEffects</code> 标记<br>3. 标记未使用的导出字段（Unused Exports）<br>4. 执行死代码剔除标记逻辑</td>
+					<td style="text-align: left">Webpack 内置优化逻辑（如 <code>FlagDependencyUsagePlugin</code>）</td>
+					<td style="text-align: left">干净且无死代码标记的依赖关系</td>
 			</tr>
 			<tr>
 					<td style="text-align: center"><strong>04</strong></td>
 					<td style="text-align: left"><strong>代码分割与 Chunk 组装</strong><br><em>(Chunk Graph Assembly)</em></td>
 					<td style="text-align: left">1. 结合 Entry 配置与 <code>SplitChunksPlugin</code><br>2. 处理动态导入 <code>import()</code> 拆包点<br>3. 将关联的 Module 组合分配为独立的 Chunk</td>
+					<td style="text-align: left"><code>SplitChunksPlugin</code>、动态导入解析器</td>
 					<td style="text-align: left">组装完成 <strong>Chunk Graph</strong>（代码块图）</td>
 			</tr>
 			<tr>
 					<td style="text-align: center"><strong>05</strong></td>
 					<td style="text-align: left"><strong>代码生成与 Source Map 挂载</strong><br><em>(Code Generation)</em></td>
-					<td style="text-align: left">1. 针对每个 Chunk 组装并生成最终代码<br>2. 利用 <code>SourceMapGenerator</code> 生成字符位置映射矩阵<br>3. 注入 <code>__webpack_require__</code> 等 Runtime 胶水代码</td>
-					<td style="text-align: left">附带 Source Map 的 Chunk 目标代码</td>
+					<td style="text-align: left">1. 针对每个 Chunk 生成最终运行代码<br>2. <strong>注入 Webpack Runtime 胶水代码</strong>（如 <code>__webpack_require__</code>）<br>3. 利用 <code>SourceMapGenerator</code> 计算并生成字符位置映射</td>
+					<td style="text-align: left"><code>SourceMapGenerator</code>、Webpack Template 引擎</td>
+					<td style="text-align: left">包含 Runtime 胶水代码和 Source Map 的完整 Chunk</td>
 			</tr>
 			<tr>
 					<td style="text-align: center"><strong>06</strong></td>
 					<td style="text-align: left"><strong>代码压缩</strong><br><em>(Minification)</em></td>
-					<td style="text-align: left">1. 调用 <code>Terser</code> / <code>SWC</code> / <code>ESBuild</code> 压缩工具<br>2. 清理所有无用空格、注释与不可达分支<br>3. 执行变量名混淆（Mangle）与短语法替换</td>
-					<td style="text-align: left">体积极小且混淆的高效代码文件</td>
+					<td style="text-align: left">1. 调用压缩工具进行 AST 压缩处理<br>2. 清理所有无用空格、注释与不可达分支<br>3. 执行变量名混淆（Mangle）与短语法替换</td>
+					<td style="text-align: left"><strong>TerserWebpackPlugin</strong> / <strong>SWC Minifier</strong> / <strong>ESBuild</strong></td>
+					<td style="text-align: left">体积分数大幅减小、经混淆的高效代码文件</td>
 			</tr>
 			<tr>
 					<td style="text-align: center"><strong>07</strong></td>
 					<td style="text-align: left"><strong>文件输出</strong><br><em>(Emit &amp; Assets)</em></td>
-					<td style="text-align: left">1. 根据 <code>output.filename</code> 配置生成最终文件名（计算 <code>contenthash</code>）<br>2. 将内存中的资源 Asset 对象写入磁盘 <code>dist</code> 目录</td>
-					<td style="text-align: left">最终磁盘文件（<code>.js</code>, <code>.css</code>, <code>.map</code> 等）</td>
+					<td style="text-align: left">1. 结合 <code>output.filename</code> 计算 Hash（如 <code>contenthash</code>）<br>2. 将内存中的 Asset 资源列表写入磁盘目标目录</td>
+					<td style="text-align: left"><code>compiler.inputFileSystem</code> / <code>outputFileSystem</code></td>
+					<td style="text-align: left">目标静态资源落地写入到 <code>dist</code> 目录</td>
 			</tr>
 	</tbody>
 </table></div>
