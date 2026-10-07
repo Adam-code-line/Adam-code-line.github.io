@@ -1030,7 +1030,7 @@ ES6 extends 的两处关键底层升级&lt;/p&gt;
         
         <guid>https://adam-code-line.github.io/p/react-virtual-dom-diff-fiber/</guid>
         <description>&lt;h1 id=&#34;前言&#34;&gt;前言
-&lt;/h1&gt;&lt;p&gt;Virtual DOM是前端中一个重要的概念，它是React框架中实现高效渲染的核心技术之一。而Diff算法则是比较新旧Virtual DOM树的核心算法，它决定了如何高效地更新真实DOM。Fiber则是&lt;code&gt;React&lt;/code&gt;在Virtual DOM基础上进行的一次重构, 使用了拆分工作单元等方式提高了react的性能。本文将详细介绍Virtual DOM、Fiber和Diff算法的概念及其工作原理。&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;Virtual DOM 是前端中一个重要的概念，它是React框架中实现高效渲染的核心技术之一。而Diff算法则是比较新旧Virtual DOM树的核心算法，它决定了如何高效地更新真实DOM。Fiber则是&lt;code&gt;React&lt;/code&gt;在Virtual DOM基础上进行的一次重构, 使用了拆分工作单元等方式提高了react的性能。本文将详细介绍Virtual DOM、Fiber和Diff算法的概念及其工作原理。&lt;/p&gt;
 &lt;h1 id=&#34;virtual-dom&#34;&gt;Virtual DOM
 &lt;/h1&gt;&lt;h2 id=&#34;什么是virtual-dom&#34;&gt;什么是Virtual DOM
 &lt;/h2&gt;&lt;p&gt;Virtual DOM（虚拟DOM）是一个轻量级的JavaScript对象，它是对真实DOM的一种抽象表示。通过使用Virtual DOM，React可以在内存中构建一个虚拟的DOM树，当状态发生变化时，React会先更新Virtual DOM，然后通过Diff算法计算出最小的变更，再将这些变更应用到真实DOM上，从而提高性能。&lt;/p&gt;
