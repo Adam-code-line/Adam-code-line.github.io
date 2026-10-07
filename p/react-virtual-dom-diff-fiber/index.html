@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="前言 Virtual DOM是前端中一个重要的概念，它是React框架中实现高效渲染的核心技术之一。而Diff算法则是比较新旧Virtual DOM树的核心算法，它决定了如何高效地更新真实DOM。Fiber则是React在Virtual DOM基础上进行的一次重构, 旨在解决React在处理复杂应用时的性能问题。本文将详细介绍Virtual DOM、Fiber和Diff算法的概念及其工作原理。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="前言 Virtual DOM是前端中一个重要的概念，它是React框架中实现高效渲染的核心技术之一。而Diff算法则是比较新旧Virtual DOM树的核心算法，它决定了如何高效地更新真实DOM。Fiber则是React在Virtual DOM基础上进行的一次重构, 使用了拆分工作单元等方式提高了react的性能。本文将详细介绍Virtual DOM、Fiber和Diff算法的概念及其工作原理。\n">
 <title>React的Virtual DOM、Diff算法和Fiber</title>
 
 <link rel='canonical' href='https://adam-code-line.github.io/p/react-virtual-dom-diff-fiber/'>
 
 <link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="React的Virtual DOM、Diff算法和Fiber">
-<meta property='og:description' content="前言 Virtual DOM是前端中一个重要的概念，它是React框架中实现高效渲染的核心技术之一。而Diff算法则是比较新旧Virtual DOM树的核心算法，它决定了如何高效地更新真实DOM。Fiber则是React在Virtual DOM基础上进行的一次重构, 旨在解决React在处理复杂应用时的性能问题。本文将详细介绍Virtual DOM、Fiber和Diff算法的概念及其工作原理。\n">
+<meta property='og:description' content="前言 Virtual DOM是前端中一个重要的概念，它是React框架中实现高效渲染的核心技术之一。而Diff算法则是比较新旧Virtual DOM树的核心算法，它决定了如何高效地更新真实DOM。Fiber则是React在Virtual DOM基础上进行的一次重构, 使用了拆分工作单元等方式提高了react的性能。本文将详细介绍Virtual DOM、Fiber和Diff算法的概念及其工作原理。\n">
 <meta property='og:url' content='https://adam-code-line.github.io/p/react-virtual-dom-diff-fiber/'>
 <meta property='og:site_name' content='Adam&#39;s Blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-09-14T11:25:11&#43;08:00'/><meta property='article:modified_time' content='2026-09-14T11:25:11&#43;08:00'/>
 <meta name="twitter:title" content="React的Virtual DOM、Diff算法和Fiber">
-<meta name="twitter:description" content="前言 Virtual DOM是前端中一个重要的概念，它是React框架中实现高效渲染的核心技术之一。而Diff算法则是比较新旧Virtual DOM树的核心算法，它决定了如何高效地更新真实DOM。Fiber则是React在Virtual DOM基础上进行的一次重构, 旨在解决React在处理复杂应用时的性能问题。本文将详细介绍Virtual DOM、Fiber和Diff算法的概念及其工作原理。\n">
+<meta name="twitter:description" content="前言 Virtual DOM是前端中一个重要的概念，它是React框架中实现高效渲染的核心技术之一。而Diff算法则是比较新旧Virtual DOM树的核心算法，它决定了如何高效地更新真实DOM。Fiber则是React在Virtual DOM基础上进行的一次重构, 使用了拆分工作单元等方式提高了react的性能。本文将详细介绍Virtual DOM、Fiber和Diff算法的概念及其工作原理。\n">
     </head>
     <body class="
     article-page
@@ -321,7 +321,7 @@
         <li><a href="#模拟演练旧列表-a-0-b-1-c-2-d-3">模拟演练（旧列表: A-0, B-1, C-2, D-3）</a></li>
       </ol>
     </li>
-    <li><a href="#4-可运行的-element-diff-代码模拟">4. 可运行的 Element Diff 代码模拟</a></li>
+    <li><a href="#4-element-diff-代码模拟">4. Element Diff 代码模拟</a></li>
     <li><a href="#5-为什么绝不能使用-index-作为-key">5. 为什么绝不能使用 index 作为 key？</a></li>
     <li><a href="#6-react-diff算法与vue-diff算法的对比">6. React Diff算法与Vue Diff算法的对比</a></li>
   </ol>
@@ -480,7 +480,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 28 分钟
+                    阅读时长: 29 分钟
                 </time>
             </div>
         
@@ -496,12 +496,12 @@
     
     
     <h1 id="前言">前言
-</h1><p>Virtual DOM是前端中一个重要的概念，它是React框架中实现高效渲染的核心技术之一。而Diff算法则是比较新旧Virtual DOM树的核心算法，它决定了如何高效地更新真实DOM。Fiber则是<code>React</code>在Virtual DOM基础上进行的一次重构, 旨在解决React在处理复杂应用时的性能问题。本文将详细介绍Virtual DOM、Fiber和Diff算法的概念及其工作原理。</p>
+</h1><p>Virtual DOM是前端中一个重要的概念，它是React框架中实现高效渲染的核心技术之一。而Diff算法则是比较新旧Virtual DOM树的核心算法，它决定了如何高效地更新真实DOM。Fiber则是<code>React</code>在Virtual DOM基础上进行的一次重构, 使用了拆分工作单元等方式提高了react的性能。本文将详细介绍Virtual DOM、Fiber和Diff算法的概念及其工作原理。</p>
 <h1 id="virtual-dom">Virtual DOM
 </h1><h2 id="什么是virtual-dom">什么是Virtual DOM
 </h2><p>Virtual DOM（虚拟DOM）是一个轻量级的JavaScript对象，它是对真实DOM的一种抽象表示。通过使用Virtual DOM，React可以在内存中构建一个虚拟的DOM树，当状态发生变化时，React会先更新Virtual DOM，然后通过Diff算法计算出最小的变更，再将这些变更应用到真实DOM上，从而提高性能。</p>
 <h2 id="为什么需要virtual-dom">为什么需要Virtual DOM
-</h2><p>使用Virtual DOM并不是因为Virtual DOM本身比真实DOM更快，而是基于以下几个原因：</p>
+</h2><p>一个很大的误解是操作Virtual DOM会比操作真实 DOM 要快，实际上直接操作真实 DOM 要比Virtual DOM快不少，使用Virtual DOM并不是因为Virtual DOM本身比真实DOM更快，而是基于以下几个原因：</p>
 <ol>
 <li>
 <p><strong>减少直接操作真实DOM的次数</strong>：直接操作真实DOM是昂贵的，频繁的DOM操作会触发浏览器的重排（Reflow）与重绘（Repaint），影响性能。Virtual DOM通过批量更新和最小化变更，减少了对真实DOM的操作次数，精确地更新需要改变的部分。</p>
@@ -860,7 +860,7 @@
 </div><h1 id="diff算法">Diff算法
 </h1><p>Diff算法是用于比较新旧Virtual DOM树的算法，下面主要会介绍React中Diff算法的核心思想和优化策略，并且对react和vue的Diff算法进行简单对比。</p>
 <h2 id="1-算法前提三大启发式假设">1. 算法前提：三大启发式假设
-</h2><p>如果使用标准的树对比算法（如 Levenshtein Distance 扩展到树结构），将一棵树转化为另一棵树的最小操作树复杂度为 <strong>$O(n^3)$</strong>（$n$ 是树中节点的数量）。当页面有 1000 个节点时，$1000^3 = 10^9$ 次对比，渲染性能将极其低下。</p>
+</h2><p>如果使用标准的树对比算法（如 Levenshtein Distance 扩展到树结构），将一棵树转化为另一棵树的最小操作树复杂度为 <strong>$O(n^3)$</strong>（$n$ 是树中节点的数量）。当页面有 1000 个节点时，$1000^3 = 10^9$ 次对比，渲染性能会极其低下。</p>
 <p>为了将算法复杂度降至 <strong>$O(n)$</strong>，React 提出了 <strong>三大启发式假设（Heuristic Hypotheses）</strong>：</p>
 <ol>
 <li><strong>跨层级移动极其罕见（Tree Diff 假设）</strong>：两个不同层级的节点很少会相互移动。因此 React 策略性地选择<strong>只对同层级节点进行 Diff</strong>，放弃跨层级的对比。</li>
@@ -955,7 +955,7 @@
 </ol>
 <p><strong>最终结果</strong>：只对 <code>A</code> 和 <code>C</code> 执行 DOM 的移动操作，<code>B</code> 和 <code>D</code> 保持物理位置不动。</p>
 <hr>
-<h2 id="4-可运行的-element-diff-代码模拟">4. 可运行的 Element Diff 代码模拟
+<h2 id="4-element-diff-代码模拟">4. Element Diff 代码模拟
 </h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1179,13 +1179,13 @@
 	</tbody>
 </table></div>
 <h1 id="react-fiber-深度全景解析">React Fiber 深度全景解析
-</h1><p>React Fiber 是 React 16 引入的全新<strong>协调引擎（Reconciler）<strong>与</strong>底层核心架构</strong>。它彻底改变了 React 的更新与渲染机制，解决了大型应用在复杂场景下的卡顿问题，并为 React 18+ 的并发特性（Concurrent Features）奠定了坚实基础。</p>
+</h1><p>React Fiber 是 React 16 引入的全新<strong>协调引擎（Reconciler）<strong>与</strong>底层核心架构</strong>。Fiber 取代了以往的栈协调策略，引入了双缓存树、可中断的数据结构、提供了时间切片、优先级调度机制等，解决了复杂应用下的卡顿问题。</p>
 <hr>
 <h2 id="一-什么是-fiber">一、 什么是 Fiber？
 </h2><p>“Fiber” 在不同视角下具有三个层次的含义：</p>
 <ol>
 <li><strong>从架构视角（Engine）：</strong> 一种<strong>异步、可中断、基于优先级调度</strong>的全新 Reconciler（协调器），用于替代旧版 React 15 的 Stack Reconciler（栈协调器）。</li>
-<li><strong>从数据结构视角（Data Structure）：</strong> 一种用 JavaScript 对象实现的<strong>双向单链表节点</strong>，用来替代原有的 JavaScript 宿主递归调用栈。</li>
+<li><strong>从数据结构视角（Data Structure）：</strong> 一种用 JavaScript 对象实现的<strong>单向链表节点</strong>，用来替代原有的 JavaScript 宿主递归调用栈。</li>
 <li><strong>从工作单元视角（Work Unit）：</strong> 一个<strong>微型的渲染工作单元</strong>，保存了组件的类型、属性、状态、Effect 标记以及用于排队的优先级信息。</li>
 </ol>
 <hr>
@@ -1257,7 +1257,7 @@
 </ul>
 <hr>
 <h2 id="四-fiber-的数据结构">四、 Fiber 的数据结构
-</h2><p>为了实现“随时暂停、随时恢复”的链表遍历，Fiber 将树状结构重构成<strong>双向单链表</strong>。每一个 Fiber 节点的数据结构字段可拆解如下：</p>
+</h2><p>为了实现“随时暂停、随时恢复”的链表遍历，Fiber 将树状结构重构成<strong>单链表</strong>。每一个 Fiber 节点的数据结构字段可拆解如下：</p>
 <h3 id="1-核心属性定义">1. 核心属性定义
 </h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1300,7 +1300,7 @@
 </span></span></span><span class="line"><span class="cl">  <span class="k">this</span><span class="p">.</span><span class="nx">elementType</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>        <span class="c1">// 元素类型
 </span></span></span><span class="line"><span class="cl">  <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>               <span class="c1">// 对应的 Component 类/函数或 HTML 标签名
 </span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="c1">// 2. 链表结构指针（构成双向单链表树）
+</span></span><span class="line"><span class="cl">  <span class="c1">// 2. 链表结构指针（构单链表树）
 </span></span></span><span class="line"><span class="cl">  <span class="k">this</span><span class="p">.</span><span class="nx">child</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>              <span class="c1">// 指向【第一个子 Fiber 节点】
 </span></span></span><span class="line"><span class="cl">  <span class="k">this</span><span class="p">.</span><span class="nx">sibling</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>            <span class="c1">// 指向【下一个右侧兄弟 Fiber 节点】
 </span></span></span><span class="line"><span class="cl">  <span class="k">this</span><span class="p">.</span><span class="k">return</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>             <span class="c1">// 指向【父级 Fiber 节点】（相当于父节点栈回溯）
@@ -1505,7 +1505,7 @@
 			<tr>
 					<td style="text-align: left"><strong>核心数据结构</strong></td>
 					<td style="text-align: left">树状 Virtual DOM + 宿主函数调用栈</td>
-					<td style="text-align: left"><strong>双向单链表 Fiber 节点树</strong></td>
+					<td style="text-align: left"><strong>单链表 Fiber 节点树</strong></td>
 			</tr>
 			<tr>
 					<td style="text-align: left"><strong>遍历与执行模式</strong></td>
@@ -1934,7 +1934,7 @@ React 从 <code>HostRoot</code> 开始，通过 <code>alternate</code> 指针复
 <h3 id="1-effect-list-在并发模式下的致命缺陷">1. Effect List 在并发模式下的致命缺陷
 </h3><ol>
 <li><strong>不支持部分树跳过（Subtree Bypassing）：</strong>
-在 React 18 的 Concurrent 模式与 <code>Suspense</code> 中，渲染是<strong>可打断、可选择性渲染局部子树</strong>的。Effect List 是一条扁平的“一刀切”单链表，破坏了原本 Fiber 树的层级与结构上下文，导致 React 无法精准地“只提交某一部分子树的更新，而暂缓另一部分”。</li>
+在 React 18 的 Concurrent 模式与 <code>Suspense</code> 中，渲染是<strong>可打断、可选择性渲染局部子树</strong>的。Effect List 是一条扁平的单链表，破坏了原本 Fiber 树的层级与结构上下文，导致 React 无法精准地“只提交某一部分子树的更新，而暂缓另一部分”。</li>
 <li><strong>内存与指针维护成本高：</strong>
 在频繁打断、重新开始的并发渲染中，反复拼接、重组、解绑 <code>firstEffect / nextEffect / lastEffect</code> 单链表极易出错，且增加了额外的 GC 内存开销。</li>
 </ol>
@@ -2031,7 +2031,7 @@ React 从 <code>HostRoot</code> 开始，通过 <code>alternate</code> 指针复
 	</tbody>
 </table></div>
 <h1 id="结语">结语
-</h1><p>virtual DOM 的 Diff 算法是 React 的核心优化点，而 Fiber 架构的引入彻底解决了旧架构在性能、调度和用户体验上的痛点。通过双缓存机制、时间切片、优先级调度以及 <code>subtreeFlags</code> 剪枝，React 18+ 实现了高效、可中断、可恢复的渲染流程，为现代 Web 应用提供了流畅的用户体验。</p>
+</h1><p>本篇文章前面看似讲了很多，其实主要都是为了最后讲解 Fiber 架构做铺垫。virtual DOM 的 Diff 算法是 React 的核心优化点，而 Fiber 架构的引入彻底解决了旧架构在性能、调度和用户体验上的痛点。通过双缓存机制、时间切片、优先级调度以及 <code>subtreeFlags</code> 剪枝，React 18+ 实现了高效、可中断、可恢复的渲染流程。React 18 的并发模式（Concurrent Mode）、Suspense、Transition use() 等新特性，也都是在 Fiber 架构的基础上实现的。了解 Fiber 对于了解 React 的底层原理、优化策略等非常重要。</p>
 
 </section>
 

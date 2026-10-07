@@ -14,12 +14,12 @@
         
         <guid>https://adam-code-line.github.io/p/react-virtual-dom-diff-fiber/</guid>
         <description>&lt;h1 id=&#34;前言&#34;&gt;前言
-&lt;/h1&gt;&lt;p&gt;Virtual DOM是前端中一个重要的概念，它是React框架中实现高效渲染的核心技术之一。而Diff算法则是比较新旧Virtual DOM树的核心算法，它决定了如何高效地更新真实DOM。Fiber则是&lt;code&gt;React&lt;/code&gt;在Virtual DOM基础上进行的一次重构, 旨在解决React在处理复杂应用时的性能问题。本文将详细介绍Virtual DOM、Fiber和Diff算法的概念及其工作原理。&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;Virtual DOM是前端中一个重要的概念，它是React框架中实现高效渲染的核心技术之一。而Diff算法则是比较新旧Virtual DOM树的核心算法，它决定了如何高效地更新真实DOM。Fiber则是&lt;code&gt;React&lt;/code&gt;在Virtual DOM基础上进行的一次重构, 使用了拆分工作单元等方式提高了react的性能。本文将详细介绍Virtual DOM、Fiber和Diff算法的概念及其工作原理。&lt;/p&gt;
 &lt;h1 id=&#34;virtual-dom&#34;&gt;Virtual DOM
 &lt;/h1&gt;&lt;h2 id=&#34;什么是virtual-dom&#34;&gt;什么是Virtual DOM
 &lt;/h2&gt;&lt;p&gt;Virtual DOM（虚拟DOM）是一个轻量级的JavaScript对象，它是对真实DOM的一种抽象表示。通过使用Virtual DOM，React可以在内存中构建一个虚拟的DOM树，当状态发生变化时，React会先更新Virtual DOM，然后通过Diff算法计算出最小的变更，再将这些变更应用到真实DOM上，从而提高性能。&lt;/p&gt;
 &lt;h2 id=&#34;为什么需要virtual-dom&#34;&gt;为什么需要Virtual DOM
-&lt;/h2&gt;&lt;p&gt;使用Virtual DOM并不是因为Virtual DOM本身比真实DOM更快，而是基于以下几个原因：&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;一个很大的误解是操作Virtual DOM会比操作真实 DOM 要快，实际上直接操作真实 DOM 要比Virtual DOM快不少，使用Virtual DOM并不是因为Virtual DOM本身比真实DOM更快，而是基于以下几个原因：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;减少直接操作真实DOM的次数&lt;/strong&gt;：直接操作真实DOM是昂贵的，频繁的DOM操作会触发浏览器的重排（Reflow）与重绘（Repaint），影响性能。Virtual DOM通过批量更新和最小化变更，减少了对真实DOM的操作次数，精确地更新需要改变的部分。&lt;/p&gt;
@@ -378,7 +378,7 @@
 &lt;/div&gt;&lt;h1 id=&#34;diff算法&#34;&gt;Diff算法
 &lt;/h1&gt;&lt;p&gt;Diff算法是用于比较新旧Virtual DOM树的算法，下面主要会介绍React中Diff算法的核心思想和优化策略，并且对react和vue的Diff算法进行简单对比。&lt;/p&gt;
 &lt;h2 id=&#34;1-算法前提三大启发式假设&#34;&gt;1. 算法前提：三大启发式假设
-&lt;/h2&gt;&lt;p&gt;如果使用标准的树对比算法（如 Levenshtein Distance 扩展到树结构），将一棵树转化为另一棵树的最小操作树复杂度为 &lt;strong&gt;$O(n^3)$&lt;/strong&gt;（$n$ 是树中节点的数量）。当页面有 1000 个节点时，$1000^3 = 10^9$ 次对比，渲染性能将极其低下。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;如果使用标准的树对比算法（如 Levenshtein Distance 扩展到树结构），将一棵树转化为另一棵树的最小操作树复杂度为 &lt;strong&gt;$O(n^3)$&lt;/strong&gt;（$n$ 是树中节点的数量）。当页面有 1000 个节点时，$1000^3 = 10^9$ 次对比，渲染性能会极其低下。&lt;/p&gt;
 &lt;p&gt;为了将算法复杂度降至 &lt;strong&gt;$O(n)$&lt;/strong&gt;，React 提出了 &lt;strong&gt;三大启发式假设（Heuristic Hypotheses）&lt;/strong&gt;：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;跨层级移动极其罕见（Tree Diff 假设）&lt;/strong&gt;：两个不同层级的节点很少会相互移动。因此 React 策略性地选择&lt;strong&gt;只对同层级节点进行 Diff&lt;/strong&gt;，放弃跨层级的对比。&lt;/li&gt;
@@ -473,7 +473,7 @@
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;最终结果&lt;/strong&gt;：只对 &lt;code&gt;A&lt;/code&gt; 和 &lt;code&gt;C&lt;/code&gt; 执行 DOM 的移动操作，&lt;code&gt;B&lt;/code&gt; 和 &lt;code&gt;D&lt;/code&gt; 保持物理位置不动。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;4-可运行的-element-diff-代码模拟&#34;&gt;4. 可运行的 Element Diff 代码模拟
+&lt;h2 id=&#34;4-element-diff-代码模拟&#34;&gt;4. Element Diff 代码模拟
 &lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -697,13 +697,13 @@
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;react-fiber-深度全景解析&#34;&gt;React Fiber 深度全景解析
-&lt;/h1&gt;&lt;p&gt;React Fiber 是 React 16 引入的全新&lt;strong&gt;协调引擎（Reconciler）&lt;strong&gt;与&lt;/strong&gt;底层核心架构&lt;/strong&gt;。它彻底改变了 React 的更新与渲染机制，解决了大型应用在复杂场景下的卡顿问题，并为 React 18+ 的并发特性（Concurrent Features）奠定了坚实基础。&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;React Fiber 是 React 16 引入的全新&lt;strong&gt;协调引擎（Reconciler）&lt;strong&gt;与&lt;/strong&gt;底层核心架构&lt;/strong&gt;。Fiber 取代了以往的栈协调策略，引入了双缓存树、可中断的数据结构、提供了时间切片、优先级调度机制等，解决了复杂应用下的卡顿问题。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;一-什么是-fiber&#34;&gt;一、 什么是 Fiber？
 &lt;/h2&gt;&lt;p&gt;“Fiber” 在不同视角下具有三个层次的含义：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;从架构视角（Engine）：&lt;/strong&gt; 一种&lt;strong&gt;异步、可中断、基于优先级调度&lt;/strong&gt;的全新 Reconciler（协调器），用于替代旧版 React 15 的 Stack Reconciler（栈协调器）。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;从数据结构视角（Data Structure）：&lt;/strong&gt; 一种用 JavaScript 对象实现的&lt;strong&gt;双向单链表节点&lt;/strong&gt;，用来替代原有的 JavaScript 宿主递归调用栈。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;从数据结构视角（Data Structure）：&lt;/strong&gt; 一种用 JavaScript 对象实现的&lt;strong&gt;单向链表节点&lt;/strong&gt;，用来替代原有的 JavaScript 宿主递归调用栈。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;从工作单元视角（Work Unit）：&lt;/strong&gt; 一个&lt;strong&gt;微型的渲染工作单元&lt;/strong&gt;，保存了组件的类型、属性、状态、Effect 标记以及用于排队的优先级信息。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
@@ -775,7 +775,7 @@
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;四-fiber-的数据结构&#34;&gt;四、 Fiber 的数据结构
-&lt;/h2&gt;&lt;p&gt;为了实现“随时暂停、随时恢复”的链表遍历，Fiber 将树状结构重构成&lt;strong&gt;双向单链表&lt;/strong&gt;。每一个 Fiber 节点的数据结构字段可拆解如下：&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;为了实现“随时暂停、随时恢复”的链表遍历，Fiber 将树状结构重构成&lt;strong&gt;单链表&lt;/strong&gt;。每一个 Fiber 节点的数据结构字段可拆解如下：&lt;/p&gt;
 &lt;h3 id=&#34;1-核心属性定义&#34;&gt;1. 核心属性定义
 &lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -818,7 +818,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;elementType&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 元素类型
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;               &lt;span class=&#34;c1&#34;&gt;// 对应的 Component 类/函数或 HTML 标签名
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// 2. 链表结构指针（构成双向单链表树）
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;// 2. 链表结构指针（构单链表树）
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;child&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;              &lt;span class=&#34;c1&#34;&gt;// 指向【第一个子 Fiber 节点】
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;sibling&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;// 指向【下一个右侧兄弟 Fiber 节点】
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;             &lt;span class=&#34;c1&#34;&gt;// 指向【父级 Fiber 节点】（相当于父节点栈回溯）
@@ -1023,7 +1023,7 @@
 			&lt;tr&gt;
 					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;核心数据结构&lt;/strong&gt;&lt;/td&gt;
 					&lt;td style=&#34;text-align: left&#34;&gt;树状 Virtual DOM + 宿主函数调用栈&lt;/td&gt;
-					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;双向单链表 Fiber 节点树&lt;/strong&gt;&lt;/td&gt;
+					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;单链表 Fiber 节点树&lt;/strong&gt;&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;遍历与执行模式&lt;/strong&gt;&lt;/td&gt;
@@ -1452,7 +1452,7 @@ React 从 &lt;code&gt;HostRoot&lt;/code&gt; 开始，通过 &lt;code&gt;alternat
 &lt;h3 id=&#34;1-effect-list-在并发模式下的致命缺陷&#34;&gt;1. Effect List 在并发模式下的致命缺陷
 &lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;不支持部分树跳过（Subtree Bypassing）：&lt;/strong&gt;
-在 React 18 的 Concurrent 模式与 &lt;code&gt;Suspense&lt;/code&gt; 中，渲染是&lt;strong&gt;可打断、可选择性渲染局部子树&lt;/strong&gt;的。Effect List 是一条扁平的“一刀切”单链表，破坏了原本 Fiber 树的层级与结构上下文，导致 React 无法精准地“只提交某一部分子树的更新，而暂缓另一部分”。&lt;/li&gt;
+在 React 18 的 Concurrent 模式与 &lt;code&gt;Suspense&lt;/code&gt; 中，渲染是&lt;strong&gt;可打断、可选择性渲染局部子树&lt;/strong&gt;的。Effect List 是一条扁平的单链表，破坏了原本 Fiber 树的层级与结构上下文，导致 React 无法精准地“只提交某一部分子树的更新，而暂缓另一部分”。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;内存与指针维护成本高：&lt;/strong&gt;
 在频繁打断、重新开始的并发渲染中，反复拼接、重组、解绑 &lt;code&gt;firstEffect / nextEffect / lastEffect&lt;/code&gt; 单链表极易出错，且增加了额外的 GC 内存开销。&lt;/li&gt;
 &lt;/ol&gt;
@@ -1549,7 +1549,7 @@ React 从 &lt;code&gt;HostRoot&lt;/code&gt; 开始，通过 &lt;code&gt;alternat
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;结语&#34;&gt;结语
-&lt;/h1&gt;&lt;p&gt;virtual DOM 的 Diff 算法是 React 的核心优化点，而 Fiber 架构的引入彻底解决了旧架构在性能、调度和用户体验上的痛点。通过双缓存机制、时间切片、优先级调度以及 &lt;code&gt;subtreeFlags&lt;/code&gt; 剪枝，React 18+ 实现了高效、可中断、可恢复的渲染流程，为现代 Web 应用提供了流畅的用户体验。&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;本篇文章前面看似讲了很多，其实主要都是为了最后讲解 Fiber 架构做铺垫。virtual DOM 的 Diff 算法是 React 的核心优化点，而 Fiber 架构的引入彻底解决了旧架构在性能、调度和用户体验上的痛点。通过双缓存机制、时间切片、优先级调度以及 &lt;code&gt;subtreeFlags&lt;/code&gt; 剪枝，React 18+ 实现了高效、可中断、可恢复的渲染流程。React 18 的并发模式（Concurrent Mode）、Suspense、Transition use() 等新特性，也都是在 Fiber 架构的基础上实现的。了解 Fiber 对于了解 React 的底层原理、优化策略等非常重要。&lt;/p&gt;
 </description>
         </item>
         <item>
