@@ -1713,7 +1713,7 @@ ES6 extends 的两处关键底层升级&lt;/p&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h1 id=&#34;react-fiber-深度全景解析&#34;&gt;React Fiber 深度全景解析
-&lt;/h1&gt;&lt;p&gt;React Fiber 是 React 16 引入的全新&lt;strong&gt;协调引擎（Reconciler）&lt;strong&gt;与&lt;/strong&gt;底层核心架构&lt;/strong&gt;。Fiber 取代了以往的栈协调策略，引入了双缓存树、可中断的数据结构、提供了时间切片、优先级调度机制等，解决了复杂应用下的卡顿问题。&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;React Fiber 是 React 16 引入的全新&lt;strong&gt;协调引擎（Reconciler）&lt;strong&gt;与&lt;/strong&gt;底层核心架构&lt;/strong&gt;。Fiber 取代了以往的栈协调策略，引入了双缓存树、可中断的数据结构、提供了时间切片、优先级调度机制等，解决了复杂应用下的卡顿问题。根据 Fiber 的架构其实也不难发现 Fiber 的设计其实参考了操作系统线程调度模型，本质上都是为了让高优先级的任务能及时响应，并且减少线程阻塞等。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;一-什么是-fiber&#34;&gt;一、 什么是 Fiber？
 &lt;/h2&gt;&lt;p&gt;“Fiber” 在不同视角下具有三个层次的含义：&lt;/p&gt;

@@ -1179,7 +1179,7 @@
 	</tbody>
 </table></div>
 <h1 id="react-fiber-深度全景解析">React Fiber 深度全景解析
-</h1><p>React Fiber 是 React 16 引入的全新<strong>协调引擎（Reconciler）<strong>与</strong>底层核心架构</strong>。Fiber 取代了以往的栈协调策略，引入了双缓存树、可中断的数据结构、提供了时间切片、优先级调度机制等，解决了复杂应用下的卡顿问题。</p>
+</h1><p>React Fiber 是 React 16 引入的全新<strong>协调引擎（Reconciler）<strong>与</strong>底层核心架构</strong>。Fiber 取代了以往的栈协调策略，引入了双缓存树、可中断的数据结构、提供了时间切片、优先级调度机制等，解决了复杂应用下的卡顿问题。根据 Fiber 的架构其实也不难发现 Fiber 的设计其实参考了操作系统线程调度模型，本质上都是为了让高优先级的任务能及时响应，并且减少线程阻塞等。</p>
 <hr>
 <h2 id="一-什么是-fiber">一、 什么是 Fiber？
 </h2><p>“Fiber” 在不同视角下具有三个层次的含义：</p>
