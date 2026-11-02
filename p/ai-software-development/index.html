@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="前言 技术奇点（Technological Singularity）是指当人工智能（AI）和其他颠覆性技术发展到超越人类智慧的临界点时，人类历史的发展曲线将变得无限陡峭，之后的未来将彻底超出人类的理解和预测能力。单以现在的视角看，我们正在一个技术奇点的前夜，人工智能正在以前所未有的速度发展，软件开发的门槛前所未有地被拉低。对于现在的软件开发者来讲，我们可能正处于一个“集体迷茫”的时期。我们不清楚未来的软件开发到底应该是什么样的，甚至不清楚我们现在的软件开发到底应该是什么样的。\n">
+<title>AI 真的重构了软件开发吗？</title>
+
+<link rel='canonical' href='https://adam-code-line.github.io/p/ai-software-development/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="AI 真的重构了软件开发吗？">
+<meta property='og:description' content="前言 技术奇点（Technological Singularity）是指当人工智能（AI）和其他颠覆性技术发展到超越人类智慧的临界点时，人类历史的发展曲线将变得无限陡峭，之后的未来将彻底超出人类的理解和预测能力。单以现在的视角看，我们正在一个技术奇点的前夜，人工智能正在以前所未有的速度发展，软件开发的门槛前所未有地被拉低。对于现在的软件开发者来讲，我们可能正处于一个“集体迷茫”的时期。我们不清楚未来的软件开发到底应该是什么样的，甚至不清楚我们现在的软件开发到底应该是什么样的。\n">
+<meta property='og:url' content='https://adam-code-line.github.io/p/ai-software-development/'>
+<meta property='og:site_name' content='Adam&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-11-02T19:23:09&#43;08:00'/><meta property='article:modified_time' content='2026-11-02T19:23:09&#43;08:00'/>
+<meta name="twitter:title" content="AI 真的重构了软件开发吗？">
+<meta name="twitter:description" content="前言 技术奇点（Technological Singularity）是指当人工智能（AI）和其他颠覆性技术发展到超越人类智慧的临界点时，人类历史的发展曲线将变得无限陡峭，之后的未来将彻底超出人类的理解和预测能力。单以现在的视角看，我们正在一个技术奇点的前夜，人工智能正在以前所未有的速度发展，软件开发的门槛前所未有地被拉低。对于现在的软件开发者来讲，我们可能正处于一个“集体迷茫”的时期。我们不清楚未来的软件开发到底应该是什么样的，甚至不清楚我们现在的软件开发到底应该是什么样的。\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_7301603370da9550.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Adam&#39;s Blog</a></h1>
+            <h2 class="site-description">欢迎来到我的博客</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://adam-code-line.github.io/en/" >English</option>
+                                
+                                    <option value="https://adam-code-line.github.io/" selected>简体中文</option>
+                                
+                                    <option value="https://adam-code-line.github.io/ar/" >عربي</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/ai/" style="background-color: #2a9d8f; color: #fff;">
+                AI
+            </a>
+        
+            <a href="/categories/learning/" style="background-color: #2a9d8f; color: #fff;">
+                Learning
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/ai-software-development/">AI 真的重构了软件开发吗？</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 02, 2026</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="前言">前言
+</h1><p>技术奇点（Technological Singularity）是指当人工智能（AI）和其他颠覆性技术发展到超越人类智慧的临界点时，人类历史的发展曲线将变得无限陡峭，之后的未来将彻底超出人类的理解和预测能力。单以现在的视角看，我们正在一个技术奇点的前夜，人工智能正在以前所未有的速度发展，软件开发的门槛前所未有地被拉低。对于现在的软件开发者来讲，我们可能正处于一个“集体迷茫”的时期。我们不清楚未来的软件开发到底应该是什么样的，甚至不清楚我们现在的软件开发到底应该是什么样的。</p>
+<h1 id="ai之本质">AI之本质
+</h1><p>AI在代码方面的工作其实并不新颖，甚至可以说我们其实也一直在做类似的事情。在机器语言时代，程序员必须使用由 0 和 1 组成的机器码进行编程。他们需要对 CPU 寄存器、内存寻址等计算机底层架构有极深的理解，才能精细地控制硬件并编写出高效的程序，并且强依赖计算机的物理架构。为了优化这一过程，汇编语言被引入，它使用助记符和符号来表示机器指令，使得程序员可以更容易地编写代码，本质上是用更高级的语言来抽象底层的复杂性，但汇编语言仍然难以编写和复用。之后我们迎来了高级编程语言的时代，如 C、C++、Java、Python 等，这些语言提供了更高层次的抽象，使得程序员可以专注于业务逻辑而不是底层实现细节。而到了AI时代，AI在代码层面进行了更进一步的抽象，连写代码这一过程都进行了抽象，让我们可以使用自然语言来实现我们需要的功能，而不需要去关心底层的实现细节。软件开发的演进，本质上就是“抽象层级不断抬升”的过程。而 AI 是这个趋势下的最新一环。</p>
+<h1 id="ai仍然具有局限">AI仍然具有局限
+</h1><p>人工智能经过多年演进，早期依靠专家系统手工编写逻辑，随后进入机器学习时代通过数据自学特征，再到 Transformer 架构推动的大模型，AI 逐步具备了强大的泛化理解与代码生成能力。但大模型仍然是基于统计学，它通过对大量数据的学习来预测和生成代码，而不是像人类程序员那样理解问题的本质和逻辑。本质仍是一个Token概率预测器。这也是AI最大的局限，它无法真正理解代码的语义和逻辑，只能根据已有的数据进行模式匹配和生成，并且生成不具备幂等性，也就是说同样的输入可能会得到不同的输出，这在软件开发中是不可接受的。虽然现在Agent的架构层出不穷，并且不断宣称有新的技术涌现，但是也容易看出，现在的AI发展已经进入了一个瓶颈期，AI的能力已经达到了一个极限，仅仅依靠堆叠数据和算力的 Scaling Law（规模法则）边际效应正在递减，单纯依靠“下一个 Token 预测”的范式似乎触碰到了瓶颈。如果不引入新的底层架构或推理范式，AI 很难单凭现有大模型实现真正严密的逻辑推理与长链条决策。</p>
+<h1 id="为ai做的工作">为AI做的工作
+</h1><p>现在有许多开发者也做了很多工作去优化、扩展大模型的能力，为大模型搭建完整的生态系统，面向大模型提供了诸多工具和服务，结合软件工程的理念和方法论，把大模型的不确定性和不可控性进行封装，形成了各种Agent架构。在这个过程中我们也能够发现，AI其实并没有真正地降低我们的开发成本，而是将成本转移到了其他环节，我们仍需要花费大量时间去完善软件的架构和基础框架，或者说我们更加需要去处理AI生成代码的不可控性和不确定性，并且将其结合到业务之中。</p>
+<h1 id="ai的时代真的来了吗">AI的时代真的来了吗
+</h1><p>电力的发明彻底改变了人类社会的生产方式和生活方式，其普及让生产力得到了极大的提升，推动了工业革命和现代化进程。但电力的发明并没有立即改变人类社会的生产方式和生活方式，电力的普及经历了一个漫长的过程。最初，电力主要应用于照明和简单的机械设备，只有少数工业企业和富裕家庭能够使用。随着电力技术的不断发展和成本的降低，电力逐渐普及到更多的领域，如交通、通信、制造业等，最终才能彻底改变了人类社会的生产方式和生活方式，这个过程大概耗费四十年的时间。而AI虽然看似在诸多领域取得了突破，但是并没有见到能够真正创新性的突破，也没有真正改变人类的生产方式、真正提高生产力。而AI也并没有真正得到普及，虽然现在很多人都在谈论AI，但是真正能够使用AI的人群还是少数，绝大多数人只是停留在对AI有基本的认知，并没有真正使用AI来提高生产力。一个良性的产业线应该由上游推至下游，从基础的硬件设施到上层的应用软件，形成一个完整的产业链。但现在很明显可以看出AI并没有能极大提高上游的产出，而是极大地增加了下游的产品的数量，虽然看似使用AI让软件的产出大大增加，但是并没有多少真正有价值的软件，也并无真正的那么多的消费者去消费这些软件。</p>
+<h1 id="结语">结语
+</h1><p>AI在这个时代确实给我们带来了红利，但也在一定程度上让我们产生了AI无所不能的幻觉，我想我们对AI可能有过高的期待，AI的时代远没有到来，我们也不一定真的会到达奇点。计算机这门科学的可迭代性远强于其他领域学科，我们所做的工作很容易可以被后来者取代，但是我们现在仍然会沿用前人给我们留下的架构思想，现在的Agent架构设计等也并没有脱离计算机架构的设计思路，比起像AI预测Token一样去预测我们的未来，将一套真正有价值的基础的体系和方法论建立完善可能更为重要。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/ai-standard/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AI 大模型 API 调用完全指南：从协议到实战</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/react-virtual-dom-diff-fiber/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">React的Virtual DOM、Diff算法和Fiber</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/webpack-basic-usage-and-core-principles/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Webpack基本使用和核心原理</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/scheduler/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">带并发限制的异步调度器Scheduler - 字节经典面试题</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/dtails-for-css/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CSS详解</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 Adam
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.31.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
